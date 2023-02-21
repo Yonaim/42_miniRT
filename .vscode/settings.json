@@ -1,0 +1,11 @@
+{
+	"files.associations": {
+		"minirt.h": "c",
+		"s_image.h": "c",
+		"color.h": "c",
+		"s_camera.h": "c",
+		"s_ray_tracing.h": "c",
+		"libmath.h": "c",
+		"vector3.h": "c"
+	}
+}
