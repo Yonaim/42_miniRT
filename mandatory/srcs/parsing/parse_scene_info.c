@@ -106,7 +106,8 @@ int	parse_scene_info(t_ray_tracing *rt, char *path)
 // 	// printf("%d\n", get_element_type("  pl"));
 
 // 	// TEST: Function parse_scene_info
-// 	parse_scene_info(&rt, argv[1]);
+// 	if (parse_scene_info(&rt, argv[1]) == FAILURE)
+// 		printf("Error: failed to parse scene info.\n");
 // 	print_vector3(rt.world.background_color);
 // }
 
