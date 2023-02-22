@@ -7,8 +7,15 @@ NAME			= miniRT
 CC				= cc
 CFLAGS			= -Wall -Wextra -Werror
 CFLAGS_SANITIZE	= -fsanitize=address
-CPPFLAGS		= -I./$(LIB_PATH)/includes -I./$(PART_PATH)/includes
-LDFLAGS			= -L./$(LIBFT_PATH) -L./$(LIBMLX_PATH) $(LIBMLX_FLAGS) -L./$(LIBMATH_PATH)
+CPPFLAGS		= \
+					-I./$(LIB_PATH)/includes \
+					-I./$(LIB_PATH)/libmath/includes \
+					-I./$(PART_PATH)/includes \
+					-I./$(PART_PATH)/includes/structs
+LDFLAGS			= \
+					-L./$(LIBFT_PATH) \
+					-L./$(LIBMLX_PATH) $(LIBMLX_FLAGS) \
+					-L./$(LIBMATH_PATH)
 LDLIBS			= -lft -lmlx -lmath
 
 ifdef SANITIZE
@@ -24,17 +31,17 @@ include 		config/library.mk
 
 # determine part
 ifdef BONUS
-PART_PATH		= ./bonus
+PART_PATH		= bonus
 PART_SUFFIX		= _bonus
 else
-PART_PATH		= ./mandatory
+PART_PATH		= mandatory
 PART_SUFFIX 	= 
 endif
 
 # files
 include			config/filename.mk
-SRCS			= $(addprefix $(PART_PATH)/srcs/, $(addsuffix $(PART_SUFFIX).c, $(FILENAME)))
-OBJS			= $(addprefix $(PART_PATH)/srcs/, $(addsuffix $(PART_SUFFIX).o, $(FILENAME)))
+SRCS			= $(addprefix ./$(PART_PATH)/srcs/, $(addsuffix $(PART_SUFFIX).c, $(FILENAME)))
+OBJS			= $(addprefix ./$(PART_PATH)/srcs/, $(addsuffix $(PART_SUFFIX).o, $(FILENAME)))
 
 # build
 $(NAME): $(OBJS)
