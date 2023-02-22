@@ -82,3 +82,19 @@ re:
 	make all
 
 .PHONY: all clean fclean re bonus
+
+# ******************************* ASSIST RULES ******************************* #
+
+library:
+	make -C $(LIBFT_PATH) --silent
+	make -C $(LIBMLX_PATH) --silent
+	make -C $(LIBMATH_PATH) --silent
+
+clean_test:
+	rm ./test_parse
+
+test_parse: ./mandatory/srcs/parsing/*.c
+	make library
+# $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) ./mandatory/srcs/parsing/*.c -o ./test_parse
+	$(CC) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) ./mandatory/srcs/parsing/*.c ./mandatory/srcs/object/*.c -o ./test_parse
+	./test_parse ./dev/test/parsing/sample.rt
