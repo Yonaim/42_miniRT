@@ -93,8 +93,11 @@ library:
 clean_test:
 	rm ./test_parse
 
-test_parse: ./mandatory/srcs/parsing/*.c
+test_parse: ./mandatory/srcs/parsing/*.c ./mandatory/srcs/object/*.c
 	make library
 # $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) ./mandatory/srcs/parsing/*.c -o ./test_parse
-	$(CC) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) ./mandatory/srcs/parsing/*.c ./mandatory/srcs/object/*.c -o ./test_parse
+	$(CC) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -g \
+	./mandatory/srcs/parsing/*.c \
+	./mandatory/srcs/object/*.c \
+	-o ./test_parse
 	./test_parse ./dev/test/parsing/sample.rt
