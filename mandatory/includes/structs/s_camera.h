@@ -13,24 +13,24 @@ typedef struct s_viewport
 
 typedef struct s_base_vector
 {
-	t_vector	dir;
-	t_vector	up;
-	t_vector	right;
+	t_vector3	dir;
+	t_vector3	up;
+	t_vector3	right;
 }	t_base_vector;
 
 typedef struct s_focus_plane
 {
 	double		dist;
-	t_vector	horiz;
-	t_vector	vert;
-	t_vector	bottom_left;
+	t_vector3	horiz;
+	t_vector3	vert;
+	t_vector3	bottom_left;
 }	t_focus_plane;
 
 typedef struct s_camera
 {
 	t_viewport		viewport;
-	t_point			origin;
-	t_point			look_at;
+	t_point3			origin;
+	t_point3			look_at;
 	double			lens_radius;
 	t_base_vector	base;
 	t_focus_plane	focus;

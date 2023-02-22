@@ -37,7 +37,7 @@ t_color	traced_color(t_ray *ray, t_world *world, int depth)
 		if (h_rec.material->scatter(h_rec.material, ray, &h_rec, &s_rec) \
 																	== false)
 			return (color(0, 0, 0));
-		return (v_comp_wise(traced_color(\
+		return (v3_comp_wise(traced_color(\
 										&s_rec.scattered, world, depth - 1), \
 										s_rec.attenuation));
 	}

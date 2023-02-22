@@ -1,5 +1,12 @@
+
 #ifndef QUADRATIC_H
 # define QUADRATIC_H
+
+/*--------------- STANDARD HEADERS ---------------*/
+
+# include <math.h>
+
+/*------------- STRUCT DECLARATIONS --------------*/
 
 typedef struct s_quad_sol
 {

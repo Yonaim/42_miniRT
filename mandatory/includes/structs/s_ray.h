@@ -5,8 +5,8 @@
 
 typedef struct s_ray
 {
-	t_point		origin;
-	t_vector	dir;
+	t_point3		origin;
+	t_vector3	dir;
 }	t_ray;
 
 #endif

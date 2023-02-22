@@ -4,7 +4,7 @@
 # include "libmath.h"
 
 // scattered vector constructor
-t_vector	reflect_vector(t_vector in, t_vector normal);
-t_vector	refract_vector(t_vector in, t_vector normal, double idx_ratio);
+t_vector3	reflect_vector3(t_vector3 in, t_vector3 normal);
+t_vector3	refract_vector3(t_vector3 in, t_vector3 normal, double idx_ratio);
 
 #endif

@@ -1,13 +1,32 @@
-#ifndef LIBMATH_H
-# define LIBMATH_H
 
-# include "vector3.h"
-# include "quadratic.h"
+#ifndef VECTOR3_H
+# define VECTOR3_H
+
+/*--------------- STANDARD HEADERS ---------------*/
+
+# include <stdbool.h>
+
+/*------------ DEFINE MACRO CONSTANTS ------------*/
+
+# define EPSILON 1e-8
+
+/*------------- STRUCT DECLARATIONS --------------*/
+
+typedef struct s_vector3
+{
+	double	x;
+	double	y;
+	double	z;
+}	t_vector3;
+
+typedef t_vector3	t_point3;
+
+/*-------------- FUNCTION PROTOTYPES -------------*/
 
 // vector constructor
 t_vector3	vector3(double x, double y, double z);
-t_point3		point3(double x, double y, double z);
-t_point3		color(double x, double y, double z);
+t_point3	point3(double x, double y, double z);
+t_point3	color(double x, double y, double z);
 
 // basic operator
 t_vector3	v3_add(t_vector3 u, t_vector3 v);
@@ -34,18 +53,5 @@ t_vector3	v3_random_in_unit_sphere(void);
 t_vector3	v3_random_on_unit_sphere(void);
 t_vector3	v3_random_in_unit_disk(void);
 t_vector3	v3_random_on_unit_disk(void);
-
-// discriminant
-t_quad_sol	solve_quadratic(double a, double half_b, double c);
-
-// bounding
-double		clamp(double x, double min, double max);
-
-// trigonometry
-double		degree_to_radian(double degrees);
-
-// random
-double		random_double(void);
-double		random_double_range(double min, double max);
 
 #endif

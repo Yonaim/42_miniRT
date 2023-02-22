@@ -28,14 +28,14 @@ typedef struct s_object_point_light
 {
 	t_hit		hit;
 	t_material	material;
-	t_point		pos;
+	t_point3		pos;
 }	t_object_point_light;
 
 typedef struct s_object_sphere
 {
 	t_hit		hit;
 	t_material	material;
-	t_point		center;
+	t_point3		center;
 	double		radius;
 }	t_object_sphere;
 
@@ -43,19 +43,19 @@ typedef struct s_object_disk
 {
 	t_hit		hit;
 	t_material	material;
-	t_point		center;
+	t_point3		center;
 	double		radius;
-	t_vector	normal;
+	t_vector3	normal;
 }	t_object_disk;
 
 typedef struct s_object_cylinder
 {
 	t_hit			hit;
 	t_material		material;
-	t_point			center;
+	t_point3			center;
 	double			radius;
 	double			height;
-	t_vector		orient;
+	t_vector3		orient;
 	t_object_disk	disks[2];
 }	t_object_cylinder;
 
@@ -63,8 +63,8 @@ typedef struct s_object_plane
 {
 	t_hit		hit;
 	t_material	material;
-	t_point		point;
-	t_vector	normal;
+	t_point3		point;
+	t_vector3	normal;
 }	t_object_plane;
 
 #endif
