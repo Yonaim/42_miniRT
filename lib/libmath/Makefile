@@ -1,5 +1,5 @@
 
-NAME = libmath
+NAME = libmath.a
 .DEFAULT_GOAL := all
 
 include config/definition.mk
