@@ -26,7 +26,7 @@ t_vector	v_normalize(t_vector v);
 // product
 double		v_dot(t_vector u, t_vector v);
 t_vector	v_cross(t_vector u, t_vector v);
-t_vector	v_componentwise(t_vector u, t_vector v);
+t_vector	v_comp_wise(t_vector u, t_vector v);
 
 // random vector
 t_vector	v_random(double min, double max);
@@ -36,6 +36,16 @@ t_vector	v_random_in_unit_disk(void);
 t_vector	v_random_on_unit_disk(void);
 
 // discriminant
-t_discr		solve_quadratic(double a, double b, double c);
+t_quad_sol	solve_quadratic(double a, double b, double c);
+
+// bounding
+double		clamp(double x, double min, double max);
+
+// trigonometry
+double		degree_to_radian(double degrees);
+
+// random
+double		random_double(void);
+double		random_double_range(double min, double max);
 
 #endif

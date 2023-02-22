@@ -2,49 +2,42 @@
 # define S_MATERIAL_H
 
 # include "libmath.h"
+# include "s_scatter_record.h"
 # include "color.h"
 
-enum e_material_type
-{
-	LAMBERTIAN,
-	METAL,
-	DIELECTRIC,
-	EMMISIVE
-};
-
-typedef struct s_lambertian
-{
-	t_color	albedo;
-}	t_lambertian;
-
-typedef struct s_metal
-{
-	t_color	albedo;
-	double	fuzz;
-}	t_metal;
-
-typedef struct s_dielectric
-{
-	double	refractive_idx;
-}	t_dielectric;
-
-typedef struct s_emmisive
-{
-	t_color	albedo;	// brightness 감안하여 값 구하기
-}	t_emmisive;
-
-typedef union u_material_data
-{
-	t_lambertian	lambertian;
-	t_metal			metal;
-	t_dielectric	dielectric;
-	t_emmisive		emmisive;
-}	t_material_data;
+typedef bool	(*t_scatter)(\
+							t_material *self, t_ray *ray, \
+							t_hit_record *h_rec, t_scatter_record *s_rec);
 
 typedef struct s_material
 {
-	int				type;
-	t_material_data	data;
+	t_scatter	scatter;
 }	t_material;
+
+typedef struct s_material_lambertian
+{
+	t_scatter	scatter;
+	t_color		albedo;
+}	t_material_lambertian;
+
+typedef struct s_material_metal
+{
+	t_scatter	scatter;
+	t_color		albedo;
+	double		fuzz;
+}	t_material_metal;
+
+typedef struct s_material_dielectric
+{
+	t_scatter	scatter;
+	double		refractive_idx;
+}	t_material_dielectric;
+
+typedef struct s_material_emmisive
+{
+	t_scatter	scatter;
+	t_color		albedo;
+	// brightness 감안하여 값 구하기
+}	t_material_emmisive;
 
 #endif

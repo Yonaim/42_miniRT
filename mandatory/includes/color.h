@@ -6,8 +6,7 @@
 
 typedef t_vector	t_color;
 
-void	write_color(t_color pixel_color, int samples_per_pixel);
+int		albedo_to_rgb(t_color albedo);
 t_color	background_color(void);
-
 
 #endif

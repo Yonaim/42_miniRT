@@ -1,66 +1,70 @@
 #ifndef S_OBJECT_H
 # define S_OBJECT_H
 
+# include <stdbool.h>
+# include <stddef.h>
 # include "libmath.h"
 # include "s_material.h"
+# include "s_ray.h"
+# include "s_hit_record.h"
 
-enum e_object_type {
-	SPHERE,
-	DISK,
-	CYLINDER,
-	PLANE
-};
+typedef bool			(*t_hit)(\
+								t_object *self, t_ray *ray, \
+								t_hit_record *h_rec, double t_max);
 
-enum	e_cylinder_disk_type {
+enum	e_cylinder_disk_type
+{
 	TOP,
 	BOTTOM
 };
 
-typedef struct s_point_light {
-	t_point		pos;
+typedef struct s_object
+{
+	t_hit		hit;
 	t_material	material;
-}	t_point_light;
-
-typedef struct s_sphere {
-	t_point		center;
-	double		radius;
-	t_material	material;
-}	t_sphere;
-
-typedef struct s_disk {
-	t_point		center;
-	double		radius;
-	t_vector	normal;
-	t_material	material;
-}	t_disk;
-
-typedef struct s_cylinder {
-	t_point		center;
-	double		radius;
-	double		height;
-	t_vector	orient;
-	t_disk		disks[2];
-	t_material	material;
-}	t_cylinder;
-
-typedef struct s_plane {
-	t_point		point;
-	t_vector	normal;
-	t_material	material;
-}	t_plane;
-
-typedef union u_object {
-	t_sphere	sp;
-	t_disk		dk;
-	t_cylinder	cy;
-	t_plane		pl;
 }	t_object;
 
-typedef struct s_object_array {
-	int			*type;
-	t_object	*data;
-	int			alloc_size;
-	int			used_size;
-}	t_object_array;
+typedef struct s_object_point_light
+{
+	t_hit		hit;
+	t_material	material;
+	t_point		pos;
+}	t_object_point_light;
+
+typedef struct s_object_sphere
+{
+	t_hit		hit;
+	t_material	material;
+	t_point		center;
+	double		radius;
+}	t_object_sphere;
+
+typedef struct s_object_disk
+{
+	t_hit		hit;
+	t_material	material;
+	t_point		center;
+	double		radius;
+	t_vector	normal;
+}	t_object_disk;
+
+typedef struct s_object_cylinder
+{
+	t_hit			hit;
+	t_material		material;
+	t_point			center;
+	double			radius;
+	double			height;
+	t_vector		orient;
+	t_object_disk	disks[2];
+}	t_object_cylinder;
+
+typedef struct s_object_plane
+{
+	t_hit		hit;
+	t_material	material;
+	t_point		point;
+	t_vector	normal;
+}	t_object_plane;
 
 #endif

@@ -6,6 +6,15 @@
 		"s_camera.h": "c",
 		"s_ray_tracing.h": "c",
 		"libmath.h": "c",
-		"vector3.h": "c"
+		"vector3.h": "c",
+		"s_material.h": "c",
+		"s_object.h": "c",
+		"shading_internal.h": "c",
+		"locale": "c",
+		"array": "c",
+		"iterator": "c",
+		"string": "c",
+		"string_view": "c",
+		"vector": "c"
 	}
 }

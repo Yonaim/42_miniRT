@@ -34,7 +34,7 @@ t_vector	v_normalize(t_vector v);
 // product
 double		v_dot(t_vector u, t_vector v);
 t_vector	v_cross(t_vector u, t_vector v);
-t_vector	v_componentwise(t_vector u, t_vector v);
+t_vector	v_comp_wise(t_vector u, t_vector v);
 
 // random vector
 t_vector	v_random(double min, double max);
