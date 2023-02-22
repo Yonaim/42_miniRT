@@ -29,8 +29,8 @@ typedef struct s_focus_plane
 typedef struct s_camera
 {
 	t_viewport		viewport;
-	t_point3			origin;
-	t_point3			look_at;
+	t_point3		origin;
+	t_point3		look_at;
 	double			lens_radius;
 	t_base_vector	base;
 	t_focus_plane	focus;

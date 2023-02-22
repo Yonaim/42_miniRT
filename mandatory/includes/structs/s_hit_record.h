@@ -9,7 +9,7 @@
 typedef struct s_hit_record
 {
 	double		t;
-	t_point3		p;
+	t_point3	p;
 	t_vector3	normal;
 	t_material	*material;
 	bool		opposed;
