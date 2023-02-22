@@ -8,6 +8,7 @@
 # include "s_ray.h"
 # include "s_hit_record.h"
 
+typedef struct s_object	t_object;
 typedef bool			(*t_hit)(\
 								t_object *self, t_ray *ray, \
 								t_hit_record *h_rec, double t_max);
@@ -18,41 +19,41 @@ enum	e_cylinder_disk_type
 	BOTTOM
 };
 
-typedef struct s_object
+struct s_object
 {
-	t_hit		hit;
-	t_material	material;
-}	t_object;
+	t_hit			hit;
+	t_material		material;
+};
 
 typedef struct s_object_point_light
 {
-	t_hit		hit;
-	t_material	material;
+	t_hit			hit;
+	t_material		material;
 	t_point3		pos;
 }	t_object_point_light;
 
 typedef struct s_object_sphere
 {
-	t_hit		hit;
-	t_material	material;
+	t_hit			hit;
+	t_material		material;
 	t_point3		center;
-	double		radius;
+	double			radius;
 }	t_object_sphere;
 
 typedef struct s_object_disk
 {
-	t_hit		hit;
-	t_material	material;
+	t_hit			hit;
+	t_material		material;
 	t_point3		center;
-	double		radius;
-	t_vector3	normal;
+	double			radius;
+	t_vector3		normal;
 }	t_object_disk;
 
 typedef struct s_object_cylinder
 {
 	t_hit			hit;
 	t_material		material;
-	t_point3			center;
+	t_point3		center;
 	double			radius;
 	double			height;
 	t_vector3		orient;
@@ -61,10 +62,10 @@ typedef struct s_object_cylinder
 
 typedef struct s_object_plane
 {
-	t_hit		hit;
-	t_material	material;
+	t_hit			hit;
+	t_material		material;
 	t_point3		point;
-	t_vector3	normal;
+	t_vector3		normal;
 }	t_object_plane;
 
 #endif

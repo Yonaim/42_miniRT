@@ -3,14 +3,14 @@
 
 # include "s_mlx.h"
 # include "s_camera.h"
-# include "s_object.h"
+# include "s_world.h"
 # include "color.h"
 
 typedef struct s_ray_tracing
 {
 	t_mlx		mlx;
-	t_camera	cam;
 	t_world		world;
+	t_camera	cam;
 }	t_ray_tracing;
 
 #endif

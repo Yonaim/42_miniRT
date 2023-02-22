@@ -5,14 +5,16 @@
 # include "s_scatter_record.h"
 # include "color.h"
 
-typedef bool	(*t_scatter)(\
+typedef struct s_material	t_material;
+# include "s_hit_record.h"
+typedef bool				(*t_scatter)(\
 							t_material *self, t_ray *ray, \
 							t_hit_record *h_rec, t_scatter_record *s_rec);
 
-typedef struct s_material
+struct s_material
 {
 	t_scatter	scatter;
-}	t_material;
+};
 
 typedef struct s_material_lambertian
 {
