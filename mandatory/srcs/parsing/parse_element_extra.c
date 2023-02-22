@@ -8,7 +8,7 @@ int	parse_element_ambient(t_ray_tracing *rt, char *str)
 	skip_until_next_value(&str);
 	ratio = parse_double(&str);
 	rgb = parse_vector3(&str);
-	if (*str != '\n' || *str != '\0')
+	if (*str != '\n' && *str != '\0')
 		return (FAILURE);
 	if (!is_num_in_range(ratio, 0, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
@@ -25,7 +25,7 @@ int	parse_element_camera(t_ray_tracing *rt, char *str)
 	origin = parse_vector3(&str);
 	dir = parse_vector3(&str);
 	fov = parse_integer(&str);
-	if (*str != '\n' || *str != '\0')
+	if (*str != '\n' && *str != '\0')
 		return (FAILURE);
 	if (!is_vec3_in_range(dir, -1, 1) || !is_num_in_range(fov, 0, 180))
 		return (FAILURE);
