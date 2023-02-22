@@ -22,20 +22,20 @@ enum	e_cylinder_disk_type
 struct s_object
 {
 	t_hit			hit;
-	t_material		material;
+	t_material_lambertian		*material;
 };
 
 typedef struct s_object_point_light
 {
 	t_hit			hit;
-	t_material		material;
+	t_material_emmisive		*material;
 	t_point3		pos;
 }	t_object_point_light;
 
 typedef struct s_object_sphere
 {
 	t_hit			hit;
-	t_material		material;
+	t_material_lambertian		*material;
 	t_point3		center;
 	double			radius;
 }	t_object_sphere;
@@ -43,7 +43,7 @@ typedef struct s_object_sphere
 typedef struct s_object_disk
 {
 	t_hit			hit;
-	t_material		material;
+	t_material_lambertian		*material;
 	t_point3		center;
 	double			radius;
 	t_vector3		normal;
@@ -52,7 +52,7 @@ typedef struct s_object_disk
 typedef struct s_object_cylinder
 {
 	t_hit			hit;
-	t_material		material;
+	t_material_lambertian		*material;
 	t_point3		center;
 	double			radius;
 	double			height;
@@ -63,7 +63,7 @@ typedef struct s_object_cylinder
 typedef struct s_object_plane
 {
 	t_hit			hit;
-	t_material		material;
+	t_material_lambertian		*material;
 	t_point3		point;
 	t_vector3		normal;
 }	t_object_plane;
