@@ -1,44 +1,48 @@
-.DEFAULT_GOAL	= all
+.DEFAULT_GOAL	=	all
 
 # program name
-NAME			= miniRT
+NAME			=	miniRT
 
 # compile 
-CC				= cc
+CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror -MMD -MP
-CFLAGS_SANITIZE	= -fsanitize=address
-CPPFLAGS		= \
+CFLAGS_SANITIZE	=	-fsanitize=address
+CPPFLAGS		=	\
 					-I./$(LIB_PATH)/includes \
 					-I./$(LIB_PATH)/libmath/includes \
 					-I./$(PART_PATH)/includes \
 					-I./$(PART_PATH)/includes/structs
-LDFLAGS			= \
+LDFLAGS			=	\
 					-L./$(LIBFT_PATH) \
 					-L./$(LIBMLX_PATH) $(LIBMLX_FLAGS) \
 					-L./$(LIBMATH_PATH)
-LDLIBS			= -lft -lmlx -lmath
+LDLIBS			=	-lft -lmlx -lmath
 
 ifdef SANITIZE
-CFLAGS		+=	CFLAGS_SANITIZE
+CFLAGS			+=	CFLAGS_SANITIZE
 endif
 
 # ********************************** LIBRARY ********************************* #
 
 # libft, libmlx, libmath
-include 		config/library.mk
+include 			config/library.mk
 
 # ********************************** miniRT ********************************* #
 
 # determine part
 ifdef BONUS
-PART_PATH		= bonus
-PART_SUFFIX		= _bonus
+PART_PATH		=	bonus
+PART_SUFFIX		=	_bonus
 else
-PART_PATH		= mandatory
-PART_SUFFIX 	= 
+PART_PATH		=	mandatory
+PART_SUFFIX 	=	
 endif
 
 # files
+include				config/filename.mk
+
+SRCS			=	$(addprefix ./$(PART_PATH)/srcs/, $(addsuffix $(PART_SUFFIX).c, $(FILENAME)))
+OBJS			=	$(addprefix ./$(PART_PATH)/objs/, $(addsuffix $(PART_SUFFIX).o, $(FILENAME)))
 DEPS			=	$(OBJS:.o=.d)
 
 # build
@@ -47,6 +51,7 @@ include				config/build.mk
 # ******************************* BASIC RULES ******************************** #
 
 all:
+	make get_filenames
 	make -C $(LIBFT_PATH) --silent
 	make -C $(LIBMLX_PATH) --silent
 	make -C $(LIBMATH_PATH) --silent
@@ -83,7 +88,7 @@ re:
 # ******************************* ASSIST RULES ******************************* #
 
 ifdef DEBUG
-LLDB	= lldb
+LLDB	=	lldb
 endif
 
 library:
