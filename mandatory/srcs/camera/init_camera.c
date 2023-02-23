@@ -10,9 +10,9 @@ static void	init_camera_basis(t_camera *cam)
 	cam->base.up = v3_cross(cam->base.dir, cam->base.right);
 }
 
-static void	init_camera_viewport(t_viewport *viewport, t_image *image)
+static void	init_camera_viewport(t_viewport *viewport)
 {
-	viewport->aspect_ratio = (double)image->width / image->height;
+	viewport->aspect_ratio = (double)IMG_WIDTH / IMG_HEIGHT;
 	viewport->width = 2 * tan(degree_to_radian(viewport->fov) / 2);
 	viewport->height = viewport->width / viewport->aspect_ratio;
 }
@@ -28,10 +28,10 @@ static void	init_camera_focus_plane(t_camera *cam, t_focus_plane *focus)
 			v3_div(v3_add(focus->horiz, focus->vert), 2));
 }
 
-void	init_camera(t_camera *cam, t_image *img)
+void	init_camera(t_camera *cam)
 {
 	init_camera_basis(cam);
-	init_camera_viewport(&cam->viewport, img);
+	init_camera_viewport(&cam->viewport);
 	init_camera_focus_plane(cam, &cam->focus);
 	cam->lens_radius = APERTURE / 2;
 }
