@@ -14,7 +14,7 @@ typedef struct s_world
 {
 	// t_object_arr	*objects;
 	t_list			*object_list;
-	t_color			background_color;
+	t_color3		background_color;
 }	t_world;
 
 #endif

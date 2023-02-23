@@ -12,7 +12,7 @@ int	parse_element_ambient(t_ray_tracing *rt, char *str)
 		return (FAILURE);
 	if (!is_num_in_range(ratio, 0, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
-	rt->world.background_color = (t_color)v3_mul(rgb, ratio / 255);
+	rt->world.background_color = (t_color3)v3_mul(rgb, ratio / 255);
 	return (SUCCESS);
 }
 

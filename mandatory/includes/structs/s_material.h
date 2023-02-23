@@ -19,13 +19,13 @@ struct s_material
 typedef struct s_material_lambertian
 {
 	t_scatter	scatter;
-	t_color		albedo;
+	t_color3	albedo;
 }	t_material_lambertian;
 
 typedef struct s_material_metal
 {
 	t_scatter	scatter;
-	t_color		albedo;
+	t_color3	albedo;
 	double		fuzz;
 }	t_material_metal;
 
@@ -38,7 +38,7 @@ typedef struct s_material_dielectric
 typedef struct s_material_emmisive
 {
 	t_scatter	scatter;
-	t_color		albedo;
+	t_color3	albedo;
 	// brightness 감안하여 값 구하기
 }	t_material_emmisive;
 

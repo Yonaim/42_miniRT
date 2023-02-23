@@ -25,7 +25,7 @@ static bool	hit_world(t_world *world, t_ray *ray, t_hit_record *final_rec)
 	return (is_hit);
 }
 
-t_color	traced_color(t_ray *ray, t_world *world, int depth)
+t_color3	traced_color(t_ray *ray, t_world *world, int depth)
 {
 	t_hit_record		h_rec;
 	t_scatter_record	s_rec;

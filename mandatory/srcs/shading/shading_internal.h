@@ -9,6 +9,6 @@
 # include "s_world.h"
 # include "camera.h"
 
-t_color	traced_color(t_ray *ray, t_world *world, int depth);
+t_color3	traced_color(t_ray *ray, t_world *world, int depth);
 
 #endif

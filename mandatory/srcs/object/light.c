@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "s_object.h"
 
-t_object	*create_light(t_point3 pos, double ratio, t_color rgb)
+t_object	*create_light(t_point3 pos, double ratio, t_color3 rgb)
 {
 	t_object_point_light	*new;
 
