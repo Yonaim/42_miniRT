@@ -22,11 +22,10 @@ static void	init_camera_focus_plane(t_camera *cam, t_focus_plane *focus)
 	focus->dist = FOCAL_DISTANCE;
 	focus->horiz = v3_mul(cam->base.right, focus->dist * cam->viewport.width);
 	focus->vert = v3_mul(cam->base.up, focus->dist * cam->viewport.height);
-	focus->bottom_left = v3_sub(\
-							v3_sub(\
-								v3_sub(cam->origin, v3_div(focus->horiz, 2)), \
-								v3_div(focus->vert, 2)), \
-							v3_mul(cam->base.dir, focus->dist));
+	focus->bottom_left = \
+		v3_sub(\
+			v3_add(cam->origin, v3_mul(cam->base.dir, -focus->dist)), \
+			v3_div(v3_add(focus->horiz, focus->vert), 2));
 }
 
 void	init_camera(t_camera *cam, t_image *img)
