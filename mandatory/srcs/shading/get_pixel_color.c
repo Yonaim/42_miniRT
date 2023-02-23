@@ -12,6 +12,13 @@ static t_color	sampled_color(t_ray_tracing *rt, int x, int y)
 	return (traced_color(&ray, &rt->world, MAX_DEPTH));
 }
 
+static void	gamma_correction(t_color *color)
+{
+	color->x = sqrt(color->x);
+	color->y = sqrt(color->y);
+	color->z = sqrt(color->z);
+}
+
 t_color	get_pixel_color(t_ray_tracing *rt, int x, int y)
 {
 	t_color	pixel_color;
@@ -24,5 +31,7 @@ t_color	get_pixel_color(t_ray_tracing *rt, int x, int y)
 		pixel_color = v3_add(pixel_color, sampled_color(rt, x, y));
 		i++;
 	}
+	pixel_color = v3_div(pixel_color, SAMPLES_PER_PIXEL);
+	gamma_correction(&pixel_color);
 	return (pixel_color);
 }
