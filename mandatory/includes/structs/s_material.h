@@ -10,7 +10,7 @@ struct s_material
 
 struct s_material_lambertian
 {
-r	t_scatte	scatter;
+	t_scatter	scatter;
 	t_color3	albedo;
 }	t_material_lambertian;
 
