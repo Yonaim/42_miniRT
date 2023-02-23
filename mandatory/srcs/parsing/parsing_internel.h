@@ -30,15 +30,15 @@ enum e_rgb
 
 # define ELEMENT_COUNT	7
 
-typedef int	(*t_parse_element)(t_ray_tracing *rt, char *str);
+typedef int	(*t_parse_element)(t_scene *scene, char *str);
 
 // parse element
-int			parse_element_ambient(t_ray_tracing *rt, char *str);
-int			parse_element_camera(t_ray_tracing *rt, char *str);
-int			parse_element_light(t_ray_tracing *rt, char *str);
-int			parse_element_plane(t_ray_tracing *rt, char *str);
-int			parse_element_sphere(t_ray_tracing *rt, char *str);
-int			parse_element_cylinder(t_ray_tracing *rt, char *str);
+int			parse_element_ambient(t_scene *scene, char *str);
+int			parse_element_camera(t_scene *scene, char *str);
+int			parse_element_light(t_scene *scene, char *str);
+int			parse_element_plane(t_scene *scene, char *str);
+int			parse_element_sphere(t_scene *scene, char *str);
+int			parse_element_cylinder(t_scene *scene, char *str);
 
 // parse value
 int			parse_integer(char **str);
