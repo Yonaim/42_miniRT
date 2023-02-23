@@ -5,7 +5,7 @@ NAME			= miniRT
 
 # compile 
 CC				= cc
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror -MMD -MP
 CFLAGS_SANITIZE	= -fsanitize=address
 CPPFLAGS		= \
 					-I./$(LIB_PATH)/includes \
@@ -39,13 +39,10 @@ PART_SUFFIX 	=
 endif
 
 # files
-include			config/filename.mk
-SRCS			= $(addprefix ./$(PART_PATH)/srcs/, $(addsuffix $(PART_SUFFIX).c, $(FILENAME)))
-OBJS			= $(addprefix ./$(PART_PATH)/srcs/, $(addsuffix $(PART_SUFFIX).o, $(FILENAME)))
+DEPS			=	$(OBJS:.o=.d)
 
 # build
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) $^ -o $@
+include				config/build.mk
 
 # ******************************* BASIC RULES ******************************** #
 
