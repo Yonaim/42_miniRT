@@ -5,7 +5,7 @@
 # include "libmath.h"
 # include "constants.h"
 # include "color.h"
-# include "s_ray_tracing.h"
+# include "s_scene.h"
 # include "s_world.h"
 # include "camera.h"
 
