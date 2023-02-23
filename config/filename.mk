@@ -7,10 +7,11 @@ FILENAME		=		camera/init_camera\
 						object/light\
 						object/plane\
 						object/sphere\
+						parsing/add_to_object_list\
 						parsing/ft_atof\
 						parsing/parse_element_extra\
 						parsing/parse_element_solid\
-						parsing/parse_scene_info\
+						parsing/parse_scene\
 						parsing/parse_value\
 						parsing/utils\
 						pdf/pdf\
