@@ -1,6 +1,6 @@
 #include "shading_internal.h"
 
-static t_color	sampled_color(t_ray_tracing *rt, int x, int y)
+static t_color3	sampled_color(t_ray_tracing *rt, int x, int y)
 {
 	t_ray	ray;
 	double	u;
@@ -12,20 +12,20 @@ static t_color	sampled_color(t_ray_tracing *rt, int x, int y)
 	return (traced_color(&ray, &rt->world, MAX_DEPTH));
 }
 
-static void	gamma_correction(t_color *color)
+static void	gamma_correction(t_color3 *color)
 {
 	color->x = sqrt(color->x);
 	color->y = sqrt(color->y);
 	color->z = sqrt(color->z);
 }
 
-t_color	get_pixel_color(t_ray_tracing *rt, int x, int y)
+t_color3	get_pixel_color(t_ray_tracing *rt, int x, int y)
 {
-	t_color	pixel_color;
-	int		i;
+	t_color3	pixel_color;
+	int			i;
 
 	i = 0;
-	pixel_color = (t_color)vector3(0, 0, 0);
+	pixel_color = (t_color3)vector3(0, 0, 0);
 	while (i < SAMPLES_PER_PIXEL)
 	{
 		pixel_color = v3_add(pixel_color, sampled_color(rt, x, y));

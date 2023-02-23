@@ -1,5 +1,6 @@
 #include "minirt.h"
 
+// init하는 함수들 호출
 void	init_ray_tracing(t_ray_tracing *rt, char *path)
 {
 	// init하는 함수들 호출
@@ -9,12 +10,12 @@ void	init_ray_tracing(t_ray_tracing *rt, char *path)
 	init_mlx(rt->mlx);
 }
 
+// 모든 픽셀 값  구하기	
 void	do_rendering(t_ray_tracing *rt, t_image *img)
 {
-	// 모든 픽셀 값  구하기
-	t_color	pixel_color;
-	int		x;
-	int		y;
+	t_color3	pixel_color;
+	int			x;
+	int			y;
 
 	y = 0;
 	while (y < img->height)
@@ -31,9 +32,9 @@ void	do_rendering(t_ray_tracing *rt, t_image *img)
 	mlx_put_image_to_window(rt->mlx.conn, rt->mlx.win, img->obj, 0, 0);
 }
 
+// 종료 전 할당한 메모리 정리
 void	flush_ray_tracing(t_ray_tracing *rt)
 {
-	// 종료 전 할당한 메모리 정리
 }
 
 int	main(int argc, char *argv)

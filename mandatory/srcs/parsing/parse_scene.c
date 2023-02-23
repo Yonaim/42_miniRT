@@ -87,28 +87,28 @@ int	parse_scene(t_ray_tracing *rt, char *path)
 	return (SUCCESS);
 }
 
-// void	print_vector3(t_vector3 v)
-// {
-// 	printf("x: %f, y: %f, z: %f\n", v.x, v.y, v.z);
-// }
+void	print_vector3(t_vector3 v)
+{
+	printf("x: %f, y: %f, z: %f\n", v.x, v.y, v.z);
+}
 
-// int main(int argc, char *argv[])
-// {
-// 	t_ray_tracing	rt;
+int main(int argc, char *argv[])
+{
+	t_ray_tracing	rt;
 
-// 	if (argc != 2)
-// 		return 1;
+	if (argc != 2)
+		return 1;
 
-// 	// TEST: Function is_empty_string
-// 	// printf("%d\n", is_empty_string("  \ng"));
+	// TEST: Function is_empty_string
+	// printf("%d\n", is_empty_string("  \ng"));
 
-// 	// TEST: Function get_element_type
-// 	// printf("%d\n", get_element_type("  pl"));
+	// TEST: Function get_element_type
+	// printf("%d\n", get_element_type("  pl"));
 
-// 	// TEST: Function parse_scene
-// 	if (parse_scene(&rt, argv[1]) == FAILURE)
-// 		printf("Error: failed to parse scene info.\n");
-// 	print_vector3(rt.world.background_color);
-// }
+	// TEST: Function parse_scene_info
+	if (parse_scene_info(&rt, argv[1]) == FAILURE)
+		printf("Error: failed to parse scene info.\n");
+	print_vector3(rt.world.background_color);
+}
 
 // gnl 마지막 줄의 경우 개행이 없을 수도 있는지 확인 필요함
