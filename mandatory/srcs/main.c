@@ -1,39 +1,41 @@
 #include "minirt.h"
 
 // init하는 함수들 호출
-void	init_ray_tracing(t_mlx *mlx, t_scene *scene, char *path)
+static void	init_ray_tracing(t_mlx *mlx, t_scene *scene, char *path)
 {
 	// init하는 함수들 호출
 	if (parse_scene(scene, path) == FAILURE)
 		handle_error(ERRMSG_PARSE);
+	scene->width = mlx->img.width;
+	scene->height = mlx->img.height;
 	init_camera(scene->cam, &mlx->img);
 	init_mlx(mlx);
 }
 
 // 모든 픽셀 값  구하기	
-void	do_rendering(t_mlx *mlx, t_scene *scene)
+static void	do_rendering(t_mlx *mlx, t_scene *scene)
 {
 	t_color3	pixel_color;
 	int			x;
 	int			y;
 
 	y = 0;
-	while (y < img->height)
+	while (y < mlx->img.height)
 	{
 		x = 0;
-		while (x < img->width)
+		while (x < mlx->img.width)
 		{
-			pixel_color = get_pixel_color(rt, x, y);
-			put_pixel_to_image(img, x, y, pixel_color);
+			pixel_color = get_pixel_color(scene, x, y);
+			put_pixel_to_image(mlx->img, x, y, pixel_color);
 			x++;
 		}
 		y++;
 	}
-	mlx_put_image_to_window(rt->mlx.conn, rt->mlx.win, img->obj, 0, 0);
+	mlx_put_image_to_window(mlx->conn, mlx->win, mlx->img.obj, 0, 0);
 }
 
 // 종료 전 할당한 메모리 정리
-void	flush_scene(t_scene *scene)
+static void	flush_scene(t_scene *scene)
 {
 }
 
