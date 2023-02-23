@@ -1,6 +1,7 @@
 #ifndef S_WORLD_H
 # define S_WORLD_H
 
+# include "libft.h"
 # include "s_object.h"
 
 // typedef struct s_object_arr

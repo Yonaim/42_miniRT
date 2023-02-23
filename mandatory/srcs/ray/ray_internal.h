@@ -1,6 +1,7 @@
 #ifndef RAY_INTERNAL_H
 # define RAY_INTERNAL_H
 
+# include <math.h>
 # include "libmath.h"
 # include "s_ray.h"
 # include "s_camera.h"
