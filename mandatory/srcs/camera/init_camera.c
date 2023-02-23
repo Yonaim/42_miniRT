@@ -12,7 +12,7 @@ static void	init_camera_basis(t_camera *cam)
 
 static void	init_camera_viewport(t_viewport *viewport)
 {
-	viewport->aspect_ratio = (double)WINDOW_WIDTH / IMG_HEIGHT;
+	viewport->aspect_ratio = (double)WINDOW_WIDTH / WINDOW_HEIGHT;
 	viewport->width = 2 * tan(degree_to_radian(viewport->fov) / 2);
 	viewport->height = viewport->width / viewport->aspect_ratio;
 }
