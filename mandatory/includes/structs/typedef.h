@@ -10,6 +10,9 @@ typedef struct s_mlx					t_mlx;
 // scene
 typedef struct s_scene					t_scene;
 
+// scatter record
+typedef struct s_scatter_record			t_scatter_record;
+
 // ray
 typedef struct s_ray					t_ray;
 
@@ -39,9 +42,6 @@ typedef struct s_material_emmisive		t_material_emmisive;
 
 // hit record
 typedef struct s_hit_record				t_hit_record;
-
-// scatter record
-typedef struct s_scatter_record			t_scatter_record;
 
 // pdf
 typedef struct s_pdf					t_pdf;

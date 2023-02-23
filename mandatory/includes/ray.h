@@ -1,8 +1,9 @@
 #ifndef RAY_H
 # define RAY_H
 
-# include "s_camera.h"
-# include "s_ray.h"
+// # include "s_camera.h"
+// # include "s_ray.h"
+# include "typedef.h"
 
 // ray constructor
 t_ray		ray(t_point3 origin, t_vector3 dir);

@@ -3,8 +3,9 @@
 
 # include <stdbool.h>
 # include "typedef.h"
-
+# include "s_ray.h"
 // pdf = probability density function
+
 struct s_scatter_record
 {
 	bool		is_specular;

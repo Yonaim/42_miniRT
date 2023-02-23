@@ -1,7 +1,10 @@
 #ifndef S_MLX_H
 # define S_MLX_H
 
-struct s_image {
+# include "typedef.h"
+
+struct s_image
+{
 	void	*obj;
 	char	*data;
 	int		data_size;
@@ -12,7 +15,8 @@ struct s_image {
 	int		endian;
 };
 
-struct s_mlx {
+struct s_mlx
+{
 	void	*conn;
 	void	*win;
 	t_image	img;

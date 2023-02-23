@@ -1,5 +1,4 @@
-#include "libft.h"
-#include "s_object.h"
+# include "object_internal.h"
 
 t_object	*create_light(t_point3 pos, double ratio, t_color3 rgb)
 {

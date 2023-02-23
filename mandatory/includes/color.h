@@ -3,8 +3,7 @@
 # define COLOR_H
 
 # include "libmath.h"
-
-typedef t_vector3	t_color3;
+# include "typedef.h"
 
 int		albedo_to_rgb(t_color3 albedo);
 

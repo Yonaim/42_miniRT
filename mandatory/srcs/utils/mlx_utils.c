@@ -1,4 +1,5 @@
 #include "constants.h"
+#include "s_mlx.h"
 #include "mlx_utils.h"
 #include "color.h"
 

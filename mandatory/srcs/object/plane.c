@@ -1,5 +1,4 @@
-#include "libft.h"
-#include "s_object.h"
+#include "object_internal.h"
 
 t_object	*create_plane(t_point3 pos, t_vector3 normal, t_color3 rgb)
 {

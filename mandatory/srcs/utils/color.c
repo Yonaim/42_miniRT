@@ -1,4 +1,4 @@
-#include "color.h"
+#include "typedef.h"
 
 t_color3	color(double r, double g, double b)
 {

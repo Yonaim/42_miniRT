@@ -1,7 +1,4 @@
-// 생성자, hit 함수
-
-#include "libft.h"
-#include "s_object.h"
+#include "object_internal.h"
 
 t_object	*create_sphere(t_point3 pos, double radius, t_vector3 rgb)
 {
