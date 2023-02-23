@@ -1,6 +1,26 @@
-# Names of files in directory 'src'
-
-FILENAME = \
-			dir1/test \
-			dir2/hello \
-			hyeyukim-babo
+FILENAME		=		camera/init_camera\
+						material/dielectric\
+						material/lambertian\
+						material/metal\
+						object/cylinder\
+						object/disk\
+						object/light\
+						object/plane\
+						object/sphere\
+						parsing/ft_atof\
+						parsing/parse_element_extra\
+						parsing/parse_element_solid\
+						parsing/parse_scene_info\
+						parsing/parse_value\
+						parsing/utils\
+						pdf/pdf\
+						ray/primary_ray\
+						ray/ray\
+						ray/scattered_ray\
+						ray/scattered_vector\
+						shading/get_pixel_color\
+						shading/traced_color\
+						utils/color\
+						utils/error\
+						utils/mlx_utils\
+						main

@@ -104,3 +104,8 @@ build_parse: ./mandatory/srcs/parsing/*.c ./mandatory/srcs/object/*.c
 test_parse:
 	make build_parse
 	$(LLDB) ./test_parse_exe ./sample.rt
+
+get_filenames:
+	sh dev/scripts/get_filenames.sh
+
+.PHONY: library clean_test build_parse test_parse get_filenames
