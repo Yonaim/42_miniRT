@@ -39,7 +39,7 @@ typedef struct s_material_emmisive
 {
 	t_scatter	scatter;
 	t_color3	albedo;
-	// brightness 감안하여 값 구하기
+		// brightness 감안하여 값 구하기
 }	t_material_emmisive;
 
 #endif

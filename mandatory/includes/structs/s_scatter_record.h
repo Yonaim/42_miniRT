@@ -8,12 +8,12 @@
 
 typedef struct s_scatter_record
 {
-	bool	is_specular;
-	t_ray	scattered;
+	bool		is_specular;
+	t_ray		scattered;
 	t_color3	attenuation;
-	// probability density function
-	t_ray	specular_ray;
-	t_pdf	*pdf;
+		// probability density function
+	t_ray		specular_ray;
+	t_pdf		*pdf;
 }	t_scatter_record;
 
 #endif
