@@ -1,6 +1,6 @@
 #include "typedef.h"
 
-t_color3	color(double r, double g, double b)
+t_color3	color3(double r, double g, double b)
 {
 	return ((t_color3)vector3(r, g, b));
 }

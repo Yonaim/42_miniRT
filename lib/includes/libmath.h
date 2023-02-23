@@ -11,7 +11,7 @@
 // vector constructor
 t_vector3	vector3(double x, double y, double z);
 t_point3	point3(double x, double y, double z);
-t_point3	color(double x, double y, double z);
+t_point3	color3(double x, double y, double z);
 
 // basic operator
 t_vector3	v3_add(t_vector3 u, t_vector3 v);
