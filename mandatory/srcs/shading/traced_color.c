@@ -6,21 +6,21 @@ static bool	hit_world(t_world *world, t_ray *ray, t_hit_record *final_rec)
 	double			closest_t;
 	t_hit_record	cur_rec;
 	t_object		*cur_obj;
-	int				i;
+	t_list			*cur_node;
 
 	is_hit = false;
 	closest_t = T_INFINITY;
-	i = 0;
-	while (i < world->objects->count)
+	cur_node = world->object_list;
+	while (cur_node)
 	{
-		cur_obj = &world->objects->data[i];
+		cur_obj = (t_object *)&world->object_list->content;
 		if (cur_obj->hit(cur_obj, ray, &cur_rec, closest_t) == true)
 		{
 			is_hit = true;
 			*final_rec = cur_rec;
 			closest_t = cur_rec.t;
 		}
-		i++;
+		cur_node = cur_node->next;
 	}
 	return (is_hit);
 }
