@@ -6,11 +6,16 @@
 # include "s_world.h"
 # include "color.h"
 
+typedef struct s_scene
+{
+	t_world		world;
+	t_camera	cam;
+}	t_scene;
+
 typedef struct s_ray_tracing
 {
 	t_mlx		mlx;
-	t_world		world;
-	t_camera	cam;
+	t_scene		scene;
 }	t_ray_tracing;
 
 #endif
