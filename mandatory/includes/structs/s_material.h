@@ -8,7 +8,7 @@
 typedef struct s_material	t_material;
 # include "s_hit_record.h"
 typedef bool				(*t_scatter)(\
-							t_material *self, t_ray *ray, \
+							t_material *self, t_ray *in, \
 							t_hit_record *h_rec, t_scatter_record *s_rec);
 
 struct s_material
