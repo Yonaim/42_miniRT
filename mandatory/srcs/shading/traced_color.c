@@ -31,12 +31,12 @@ t_color3	traced_color(t_ray *in_ray, t_world *world, int depth)
 	t_scatter_record	s_rec;
 
 	if (depth <= 0)
-		return (color(0, 0, 0));
+		return (color3(0, 0, 0));
 	if (hit_world(world, in_ray, &h_rec) == true)
 	{
 		if (h_rec.material->scatter(h_rec.material, in_ray, &h_rec, &s_rec) \
 																	== false)
-			return (color(0, 0, 0));
+			return (color3(0, 0, 0));
 		return (v3_comp_wise(traced_color(\
 										&s_rec.scattered, world, depth - 1), \
 										s_rec.attenuation));
