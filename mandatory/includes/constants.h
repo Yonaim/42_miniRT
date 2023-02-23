@@ -29,6 +29,7 @@ enum e_success_or_failure
 /** dev **/
 // image
 # define IMG_WIDTH				1920
+# define IMG_HEIGHT				1080
 # define IMG_ASPECT_RATIO		(double)1920 / 1080
 // object
 # define MATERIAL_NUMBER		4
