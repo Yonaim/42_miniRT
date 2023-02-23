@@ -17,11 +17,14 @@ static bool	scatter_dielectric(\
 	return (true);
 }
 
-t_material_dielectric	material_dielectric(double refractive_idx)
+t_material_dielectric	*create_dielectric(double refractive_idx)
 {
-	t_material_dielectric	dielectric;
+	t_material_dielectric	*dielectric;
 
-	dielectric.refractive_idx = refractive_idx;
-	dielectric.scatter = scatter_dielectric;
+	dielectric = malloc(sizeof(t_material_dielectric));
+	if (!dielectric)
+		return (NULL);
+	dielectric->refractive_idx = refractive_idx;
+	dielectric->scatter = scatter_dielectric;
 	return (dielectric);
 }
