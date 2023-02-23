@@ -1,17 +1,15 @@
 #include "minirt.h"
 
-// init하는 함수들 호출
-void	init_ray_tracing(t_mlx *mlx, t_scene *scene, char *path)
+static void	init_scene(t_scene *scene, char *path)
 {
-	// init하는 함수들 호출
 	if (parse_scene(scene, path) == FAILURE)
 		handle_error(ERRMSG_PARSE);
-	init_camera(scene->cam, &mlx->img);
-	init_mlx(mlx);
+	scene->width = IMG_WIDTH;
+	scene->height = IMG_HEIGHT;
+	init_camera(scene->cam);
 }
 
-// 모든 픽셀 값  구하기	
-void	do_rendering(t_mlx *mlx, t_scene *scene)
+static void	do_rendering(t_mlx *mlx, t_scene *scene)
 {
 	t_color3	pixel_color;
 	int			x;
@@ -29,11 +27,10 @@ void	do_rendering(t_mlx *mlx, t_scene *scene)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(rt->mlx.conn, rt->mlx.win, img->obj, 0, 0);
 }
 
 // 종료 전 할당한 메모리 정리
-void	flush_scene(t_scene *scene)
+static void	flush_scene(t_scene *scene)
 {
 }
 
@@ -44,9 +41,11 @@ int	main(int argc, char *argv)
 
 	if (argc != 2)
 		return (handle_error(ERRMSG_ARG_CNT));
-	init_ray_tracing(&mlx, &scene, argv[1]);
+	init_scene(&mlx, &scene, argv[1]);
+	init_mlx(mlx);
 	do_rendering(&mlx, &scene);
 	flush_scene(&scene);
 	// esc, red button 관련 hook 함수 추가
+	mlx_put_image_to_window(mlx.conn, mlx.win, mlx.img->obj, 0, 0);
 	return (0);
 }
