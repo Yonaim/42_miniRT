@@ -63,7 +63,7 @@ static int	parse_element_info(t_ray_tracing *rt, char *str, int elem_exist[])
 	return (SUCCESS);
 }
 
-int	parse_scene_info(t_ray_tracing *rt, char *path)
+int	parse_scene(t_ray_tracing *rt, char *path)
 {
 	const int	fd = open(path, O_RDONLY);
 	char		*line;
@@ -105,8 +105,8 @@ int	parse_scene_info(t_ray_tracing *rt, char *path)
 // 	// TEST: Function get_element_type
 // 	// printf("%d\n", get_element_type("  pl"));
 
-// 	// TEST: Function parse_scene_info
-// 	if (parse_scene_info(&rt, argv[1]) == FAILURE)
+// 	// TEST: Function parse_scene
+// 	if (parse_scene(&rt, argv[1]) == FAILURE)
 // 		printf("Error: failed to parse scene info.\n");
 // 	print_vector3(rt.world.background_color);
 // }

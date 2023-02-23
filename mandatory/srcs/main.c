@@ -3,7 +3,7 @@
 void	init_ray_tracing(t_ray_tracing *rt, char *path)
 {
 	// init하는 함수들 호출
-	if (parse_scene_info(rt, path) == FAILURE)
+	if (parse_scene(rt, path) == FAILURE)
 		handle_error(ERRMSG_PARSE);
 	init_camera(rt->cam, &rt->mlx.img);
 	init_mlx(rt->mlx);
@@ -46,4 +46,5 @@ int	main(int argc, char *argv)
 	do_rendering(&rt, &rt.mlx.img);
 	flush_ray_tracing(&rt);
 	// esc, red button 관련 hook 함수 추가
+	return (0);
 }
