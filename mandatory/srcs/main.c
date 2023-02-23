@@ -4,7 +4,7 @@ static void	init_scene(t_scene *scene, char *path)
 {
 	if (parse_scene(scene, path) == FAILURE)
 		handle_error(ERRMSG_PARSE);
-	scene->width = IMG_WIDTH;
+	scene->width = WINDOW_WIDTH;
 	scene->height = IMG_HEIGHT;
 	init_camera(scene->cam);
 }
