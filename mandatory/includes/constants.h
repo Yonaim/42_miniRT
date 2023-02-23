@@ -3,13 +3,16 @@
 
 # include <limits.h>
 
-# define WINDOW_NAME			"meyun & yona's wonderful miniRT"
-
 enum e_success_or_failure
 {
 	SUCCESS,
 	FAILURE
 };
+
+// window
+# define WINDOW_NAME			"meyun & yona's wonderful miniRT"
+# define WINDOW_WIDTH			1920
+# define WINDOW_HEIGHT			1080
 
 // t range
 # define T_MINIMUM				0.001
@@ -27,12 +30,11 @@ enum e_success_or_failure
 # define UP_VECTOR				(t_vector3){0, 1, 0}
 
 /** dev **/
-// image
-# define IMG_WIDTH				1920
-# define IMG_ASPECT_RATIO		(double)1920 / 1080
+
 // object
 # define MATERIAL_NUMBER		4
 # define OBJECT_NUMBER			5
+
 // camera
 # define FIELD_OF_VIEW			30
 # define LOOK_FROM				(t_point3){13, 2, 3}

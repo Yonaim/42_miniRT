@@ -30,15 +30,15 @@ enum e_rgb
 
 # define ELEMENT_COUNT	7
 
-typedef int	(*t_parse_element)(t_ray_tracing *rt, char *str);
+typedef int	(*t_parse_element)(t_scene *scene, char *str);
 
 // parse element
-int			parse_element_ambient(t_ray_tracing *rt, char *str);
-int			parse_element_camera(t_ray_tracing *rt, char *str);
-int			parse_element_light(t_ray_tracing *rt, char *str);
-int			parse_element_plane(t_ray_tracing *rt, char *str);
-int			parse_element_sphere(t_ray_tracing *rt, char *str);
-int			parse_element_cylinder(t_ray_tracing *rt, char *str);
+int			parse_element_ambient(t_scene *scene, char *str);
+int			parse_element_camera(t_scene *scene, char *str);
+int			parse_element_light(t_scene *scene, char *str);
+int			parse_element_plane(t_scene *scene, char *str);
+int			parse_element_sphere(t_scene *scene, char *str);
+int			parse_element_cylinder(t_scene *scene, char *str);
 
 // parse value
 int			parse_integer(char **str);
@@ -56,5 +56,8 @@ bool		is_vec3_in_range(t_vector3 vec3, double min, double max);
 
 // atof
 double		ft_atof(char *str);
+
+// list
+int			add_to_object_list(t_list **object_list, t_object *new_object);
 
 #endif

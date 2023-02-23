@@ -5,6 +5,6 @@
 # include "s_camera.h"
 
 t_ray	primary_ray(t_camera *cam, double u, double v);
-void	init_camera(t_camera *cam, t_image *img);
+void	init_camera(t_camera *cam);
 
 #endif

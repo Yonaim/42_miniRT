@@ -1,6 +1,6 @@
 #include "parsing_internel.h"
 
-int	parse_element_ambient(t_ray_tracing *rt, char *str)
+int	parse_element_ambient(t_scene *scene, char *str)
 {
 	double		ratio;
 	t_vector3	rgb;
@@ -12,11 +12,11 @@ int	parse_element_ambient(t_ray_tracing *rt, char *str)
 		return (FAILURE);
 	if (!is_num_in_range(ratio, 0, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
-	rt->world.background_color = (t_color3)v3_mul(rgb, ratio / 255);
+	scene->world.background_color = (t_color3)v3_mul(rgb, ratio / 255);
 	return (SUCCESS);
 }
 
-int	parse_element_camera(t_ray_tracing *rt, char *str)
+int	parse_element_camera(t_scene *scene, char *str)
 {
 	t_point3	origin;
 	t_vector3	dir;
@@ -29,8 +29,8 @@ int	parse_element_camera(t_ray_tracing *rt, char *str)
 		return (FAILURE);
 	if (!is_vec3_in_range(dir, -1, 1) || !is_num_in_range(fov, 0, 180))
 		return (FAILURE);
-	rt->cam.origin = origin;
-	rt->cam.base.dir = dir;
-	rt->cam.viewport.fov = fov;
+	scene->cam.origin = origin;
+	scene->cam.base.dir = dir;
+	scene->cam.viewport.fov = fov;
 	return (SUCCESS);
 }

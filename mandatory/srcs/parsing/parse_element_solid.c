@@ -1,19 +1,6 @@
 #include "parsing_internel.h"
 
-int	add_to_object_list(t_list **object_list, t_object *new_object)
-{
-	t_list	*new;
-
-	if (!new_object)
-		return (FAILURE);
-	new = ft_lstnew(new_object);
-	if (!new)
-		return (FAILURE);
-	ft_lstadd_back(object_list, new);
-	return (SUCCESS);
-}
-
-int	parse_element_light(t_ray_tracing *rt, char *str)
+int	parse_element_light(t_scene *scene, char *str)
 {
 	t_point3	pos;
 	double		ratio;
@@ -27,13 +14,13 @@ int	parse_element_light(t_ray_tracing *rt, char *str)
 		return (FAILURE);
 	if (!is_num_in_range(ratio, 0, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
-	if (add_to_object_list(&rt->world.object_list, \
+	if (add_to_object_list(&scene->world.object_list, \
 							create_light(pos, ratio, rgb)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
 
-int	parse_element_plane(t_ray_tracing *rt, char *str)
+int	parse_element_plane(t_scene *scene, char *str)
 {
 	t_point3	pos;
 	t_vector3	normal;
@@ -46,13 +33,13 @@ int	parse_element_plane(t_ray_tracing *rt, char *str)
 		return (FAILURE);
 	if (!is_vec3_in_range(normal, -1, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
-	if (add_to_object_list(&rt->world.object_list, \
+	if (add_to_object_list(&scene->world.object_list, \
 							create_plane(pos, normal, rgb)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
 
-int	parse_element_sphere(t_ray_tracing *rt, char *str)
+int	parse_element_sphere(t_scene *scene, char *str)
 {
 	t_point3	pos;
 	double		diameter;
@@ -65,13 +52,13 @@ int	parse_element_sphere(t_ray_tracing *rt, char *str)
 		return (FAILURE);
 	if (!is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
-	if (add_to_object_list(&rt->world.object_list, \
+	if (add_to_object_list(&scene->world.object_list, \
 							create_sphere(pos, diameter / 2, rgb)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
 
-int	parse_element_cylinder(t_ray_tracing *rt, char *str)
+int	parse_element_cylinder(t_scene *scene, char *str)
 {
 	t_point3	center;
 	t_vector3	orient;
@@ -89,7 +76,7 @@ int	parse_element_cylinder(t_ray_tracing *rt, char *str)
 		return (FAILURE);
 	if (!is_vec3_in_range(orient, -1, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
-	if (add_to_object_list(&rt->world.object_list, \
+	if (add_to_object_list(&scene->world.object_list, \
 		create_cylinder(center, orient, diameter / 2, height, rgb)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
