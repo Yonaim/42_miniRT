@@ -4,7 +4,7 @@
 
 # include "libft.h"
 # include "constants.h"
-# include "s_ray_tracing.h"
+# include "s_scene.h"
 # include "s_object.h"
 # include "object.h"
 # include <stdio.h>

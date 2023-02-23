@@ -1,5 +1,5 @@
-#ifndef S_RAY_TRACING_H
-# define S_RAY_TRACING_H
+#ifndef S_SCENE_H
+# define S_SCENE_H
 
 # include "s_mlx.h"
 # include "s_camera.h"
@@ -10,12 +10,8 @@ typedef struct s_scene
 {
 	t_world		world;
 	t_camera	cam;
+	int			width;
+	int			height;
 }	t_scene;
-
-typedef struct s_ray_tracing
-{
-	t_mlx		mlx;
-	t_scene		scene;
-}	t_ray_tracing;
 
 #endif
