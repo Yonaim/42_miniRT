@@ -1,15 +1,15 @@
 #include "shading_internal.h"
 
-static t_color3	sampled_color(t_ray_tracing *rt, int x, int y)
+static t_color3	sampled_color(t_scene *scene, int x, int y)
 {
 	t_ray	ray;
 	double	u;
 	double	v;
 
-	u = (x + random_double()) / (rt->mlx.img.width - 1);
-	v = (y + random_double()) / (rt->mlx.img.height - 1);
-	ray = primary_ray(&rt->cam, u, v);
-	return (traced_color(&ray, &rt->world, MAX_DEPTH));
+	u = (x + random_double()) / (scene->width - 1);
+	v = (y + random_double()) / (scene->height - 1);
+	ray = primary_ray(&scene->cam, u, v);
+	return (traced_color(&ray, &scene->world, MAX_DEPTH));
 }
 
 static void	gamma_correction(t_color3 *color)
@@ -19,7 +19,7 @@ static void	gamma_correction(t_color3 *color)
 	color->z = sqrt(color->z);
 }
 
-t_color3	get_pixel_color(t_ray_tracing *rt, int x, int y)
+t_color3	get_pixel_color(t_scene *scene, int x, int y)
 {
 	t_color3	pixel_color;
 	int			i;
@@ -28,7 +28,7 @@ t_color3	get_pixel_color(t_ray_tracing *rt, int x, int y)
 	pixel_color = (t_color3)vector3(0, 0, 0);
 	while (i < SAMPLES_PER_PIXEL)
 	{
-		pixel_color = v3_add(pixel_color, sampled_color(rt, x, y));
+		pixel_color = v3_add(pixel_color, sampled_color(scene, x, y));
 		i++;
 	}
 	pixel_color = v3_div(pixel_color, SAMPLES_PER_PIXEL);

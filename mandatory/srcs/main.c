@@ -16,13 +16,13 @@ static void	do_rendering(t_mlx *mlx, t_scene *scene)
 	int			y;
 
 	y = 0;
-	while (y < img->height)
+	while (y < mlx->img.height)
 	{
 		x = 0;
-		while (x < img->width)
+		while (x < mlx->img.width)
 		{
-			pixel_color = get_pixel_color(rt, x, y);
-			put_pixel_to_image(img, x, y, pixel_color);
+			pixel_color = get_pixel_color(scene, x, y);
+			put_pixel_to_image(mlx->img, x, y, pixel_color);
 			x++;
 		}
 		y++;
