@@ -4,9 +4,10 @@
 # include "libmath.h"
 # include "s_scatter_record.h"
 # include "color.h"
+# include "s_hit_record.h"
 
 typedef struct s_material	t_material;
-# include "s_hit_record.h"
+
 typedef bool				(*t_scatter)(\
 							t_material *self, t_ray *in, \
 							t_hit_record *h_rec, t_scatter_record *s_rec);

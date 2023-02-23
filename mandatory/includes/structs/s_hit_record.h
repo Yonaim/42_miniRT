@@ -4,7 +4,8 @@
 # include <stdbool.h>
 # include "libmath.h"
 # include "constants.h"
-# include "s_material.h"
+
+typedef struct s_material	t_material;
 
 typedef struct s_hit_record
 {
