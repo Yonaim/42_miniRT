@@ -9,7 +9,7 @@ static bool	scatter_metal(\
 
 	s_rec->scattered = reflected_ray(in->dir, h_rec, metal->fuzz);
 	s_rec->attenuation = metal->albedo;
-	if (v3_dot_product(s_rec->scattered.dir, h_rec->normal) > 0)
+	if (v3_dot(s_rec->scattered.dir, h_rec->normal) > 0)
 		return (true);
 	else
 		return (false);
