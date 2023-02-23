@@ -3,15 +3,7 @@
 
 # include <stdbool.h>
 # include <stddef.h>
-# include "libmath.h"
-# include "s_material.h"
-# include "s_ray.h"
-# include "s_hit_record.h"
-
-typedef struct s_object	t_object;
-typedef bool			(*t_hit)(\
-								t_object *self, t_ray *ray, \
-								t_hit_record *h_rec, double t_max);
+# include "typedef.h"
 
 enum	e_cylinder_disk_type
 {
@@ -21,51 +13,51 @@ enum	e_cylinder_disk_type
 
 struct s_object
 {
-	t_hit			hit;
-	t_material_lambertian		*material;
+	t_hit					hit;
+	t_material_lambertian	*material;
 };
 
-typedef struct s_object_point_light
+struct s_object_point_light
 {
-	t_hit			hit;
-	t_material_emmisive		*material;
-	t_point3		pos;
-}	t_object_point_light;
+	t_hit				hit;
+	t_material_emmisive	*material;
+	t_point3			pos;
+};
 
-typedef struct s_object_sphere
+struct s_object_sphere
 {
-	t_hit			hit;
-	t_material_lambertian		*material;
-	t_point3		center;
-	double			radius;
-}	t_object_sphere;
+	t_hit					hit;
+	t_material_lambertian	*material;
+	t_point3				center;
+	double					radius;
+};
 
-typedef struct s_object_disk
+struct s_object_disk
 {
-	t_hit			hit;
-	t_material_lambertian		*material;
-	t_point3		center;
-	double			radius;
-	t_vector3		normal;
-}	t_object_disk;
+	t_hit					hit;
+	t_material_lambertian	*material;
+	t_point3				center;
+	double					radius;
+	t_vector3				normal;
+};
 
-typedef struct s_object_cylinder
+struct s_object_cylinder
 {
-	t_hit			hit;
-	t_material_lambertian		*material;
-	t_point3		center;
-	double			radius;
-	double			height;
-	t_vector3		orient;
-	t_object_disk	disks[2];
-}	t_object_cylinder;
+	t_hit					hit;
+	t_material_lambertian	*material;
+	t_point3				center;
+	double					radius;
+	double					height;
+	t_vector3				orient;
+	t_object_disk			disks[2];
+};
 
-typedef struct s_object_plane
+struct s_object_plane
 {
-	t_hit			hit;
-	t_material_lambertian		*material;
-	t_point3		point;
-	t_vector3		normal;
-}	t_object_plane;
+	t_hit					hit;
+	t_material_lambertian	*material;
+	t_point3				point;
+	t_vector3				normal;
+};
 
 #endif

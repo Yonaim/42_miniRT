@@ -3,16 +3,16 @@
 
 # include <stdbool.h>
 # include "libmath.h"
+# include "typedef.h"
 # include "constants.h"
-# include "s_material.h"
 
-typedef struct s_hit_record
+struct s_hit_record
 {
 	double		t;
 	t_point3	p;
 	t_vector3	normal;
 	t_material	*material;
 	bool		opposed;
-}	t_hit_record;
+};
 
 #endif

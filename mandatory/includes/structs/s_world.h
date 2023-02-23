@@ -2,20 +2,12 @@
 # define S_WORLD_H
 
 # include "libft.h"
-# include "s_object.h"
+# include "typedef.h"
 
-// typedef struct s_object_arr
-// {
-// 	t_object		*data;
-// 	size_t			capacity;
-// 	size_t			count;
-// }	t_object_arr;
-
-typedef struct s_world
+struct s_world
 {
-	// t_object_arr	*objects;
 	t_list			*object_list;
 	t_color3		background_color;
-}	t_world;
+};
 
 #endif
