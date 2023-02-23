@@ -6,6 +6,6 @@
 # include "s_ray_tracing.h"
 # include "error.h"
 # include "color.h"
-
+# include "shading.h"
 
 #endif
