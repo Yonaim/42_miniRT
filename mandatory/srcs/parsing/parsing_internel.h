@@ -57,4 +57,7 @@ bool		is_vec3_in_range(t_vector3 vec3, double min, double max);
 // atof
 double		ft_atof(char *str);
 
+// list
+int			add_to_object_list(t_list **object_list, t_object *new_object);
+
 #endif
