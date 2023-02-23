@@ -14,5 +14,5 @@ int	albedo_to_rgb(t_color albedo)
 	r = 256 * clamp(albedo.x, 0.0, 0.999);
 	g = 256 * clamp(albedo.y, 0.0, 0.999);
 	b = 256 * clamp(albedo.z, 0.0, 0.999);
-	return (r << 16 || g << 8 || b);
+	return (r << 16 | g << 8 | b);
 }
