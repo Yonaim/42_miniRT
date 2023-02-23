@@ -17,6 +17,9 @@
 		"string_view": "c",
 		"vector": "c",
 		"stdbool.h": "c",
-		"quadratic.h": "c"
+		"quadratic.h": "c",
+		"s_ray.h": "c",
+		"camera.h": "c",
+		"s_mlx.h": "c"
 	}
 }

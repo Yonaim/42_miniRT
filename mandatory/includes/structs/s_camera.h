@@ -5,6 +5,7 @@
 
 typedef struct s_viewport
 {
+	// width / height
 	double	aspect_ratio;
 	double	width;
 	double	height;
@@ -30,7 +31,6 @@ typedef struct s_camera
 {
 	t_viewport		viewport;
 	t_point3		origin;
-	t_point3		look_at;
 	double			lens_radius;
 	t_base_vector	base;
 	t_focus_plane	focus;
