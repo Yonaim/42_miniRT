@@ -15,7 +15,7 @@ int	parse_element_light(t_scene *scene, char *str)
 	if (!is_num_in_range(ratio, 0, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
 	if (add_to_object_list(&scene->world.object_list, \
-							create_light(pos, ratio, rgb)) == FAILURE)
+							new_light(pos, ratio, rgb)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -34,7 +34,7 @@ int	parse_element_plane(t_scene *scene, char *str)
 	if (!is_vec3_in_range(normal, -1, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
 	if (add_to_object_list(&scene->world.object_list, \
-							create_plane(pos, normal, rgb)) == FAILURE)
+							new_plane(pos, normal, rgb)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -53,7 +53,7 @@ int	parse_element_sphere(t_scene *scene, char *str)
 	if (!is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
 	if (add_to_object_list(&scene->world.object_list, \
-							create_sphere(pos, diameter / 2, rgb)) == FAILURE)
+							new_sphere(pos, diameter / 2, rgb)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -77,7 +77,7 @@ int	parse_element_cylinder(t_scene *scene, char *str)
 	if (!is_vec3_in_range(orient, -1, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
 	if (add_to_object_list(&scene->world.object_list, \
-		create_cylinder(center, orient, diameter / 2, height, rgb)) == FAILURE)
+		new_cylinder(center, orient, diameter / 2, height, rgb)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

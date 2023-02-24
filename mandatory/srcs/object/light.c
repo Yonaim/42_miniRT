@@ -1,6 +1,6 @@
 # include "object_internal.h"
 
-t_object	*create_light(t_point3 pos, double ratio, t_color3 rgb)
+t_object	*new_light(t_point3 pos, double ratio, t_color3 rgb)
 {
 	t_object_point_light	*new;
 

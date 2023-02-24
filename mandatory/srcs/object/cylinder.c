@@ -1,6 +1,6 @@
 # include "object_internal.h"
 
-t_object	*create_cylinder(t_point3 pos, t_vector3 orient, \
+t_object	*new_cylinder(t_point3 pos, t_vector3 orient, \
 								double radius, double height, t_color3 rgb)
 {
 	t_object_cylinder	*new;

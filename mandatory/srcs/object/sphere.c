@@ -1,6 +1,6 @@
 #include "object_internal.h"
 
-t_object	*create_sphere(t_point3 pos, double radius, t_vector3 rgb)
+t_object	*new_sphere(t_point3 pos, double radius, t_vector3 rgb)
 {
 	t_object_sphere	*new;
 
