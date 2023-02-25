@@ -1,6 +1,6 @@
 
-NAME = libmath.a
 .DEFAULT_GOAL := all
+NAME = libmath.a
 
 include config/definition.mk
 
@@ -9,7 +9,7 @@ include config/definition.mk
 .PHONY : all bonus
 all : $(NAME)
 $(NAME) : $(OBJ)
-	$(AR) $(ARFLAGS) $@ $(OBJ)
+	$(AR) $(ARFLAGS) $@ $^
 
 bonus : all
 

@@ -8,15 +8,14 @@ CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror -MMD -MP
 CFLAGS_SANITIZE	=	-fsanitize=address
 CPPFLAGS		=	\
-					-I./$(LIB_PATH)/includes \
 					-I./$(LIB_PATH)/libmath/includes \
-					-I./$(PART_PATH)/includes \
-					-I./$(PART_PATH)/includes/structs
+					-I./$(LIB_PATH)/includes \
+					-I./$(PART_PATH)/includes/structs \
+					-I./$(PART_PATH)/includes
 LDFLAGS			=	\
 					-L./$(LIBFT_PATH) \
-					-L./$(LIBMLX_PATH) $(LIBMLX_FLAGS) \
 					-L./$(LIBMATH_PATH)
-LDLIBS			=	-lft -lmlx -lmath
+LDLIBS			=	-lft -lmath -lm
 
 ifdef SANITIZE
 CFLAGS			+=	CFLAGS_SANITIZE
@@ -53,30 +52,25 @@ include				config/build.mk
 all:
 	make get_filenames
 	make -C $(LIBFT_PATH) --silent
-	make -C $(LIBMLX_PATH) --silent
 	make -C $(LIBMATH_PATH) --silent
 	make $(NAME)
 
 bonus:
 	make -C $(LIBFT_PATH) --silent
-	make -C $(LIBMLX_PATH) --silent
 	make -C $(LIBMATH_PATH) --silent
 	BONUS=1 make $(NAME)
 
 clean:
 	make -C $(LIBFT_PATH) clean --silent
-	make -C $(LIBMLX_PATH) clean --silent
 	make -C $(LIBMATH_PATH) clean --silent
-	$(RM) $(addprefix ./mandatory/srcs/, $(addsuffix .o, $(FILENAME)))
-	$(RM) $(addprefix ./bonus/srcs/, $(addsuffix _bonus.o, $(FILENAME)))
+	$(RM) -rf mandatory/objs
+	$(RM) -rf bonus/objs
 
 fclean:
-	make -C $(LIBMLX_PATH) clean --silent
 	make -C $(LIBFT_PATH) fclean --silent
 	make -C $(LIBMATH_PATH) fclean --silent
-	$(RM) $(LIBMLX_PATH)/$(LIBMLX)
-	$(RM) $(addprefix ./mandatory/srcs/, $(addsuffix .o, $(FILENAME)))
-	$(RM) $(addprefix ./bonus/srcs/, $(addsuffix _bonus.o, $(FILENAME)))
+	$(RM) -rf mandatory/objs
+	$(RM) -rf bonus/objs
 	$(RM) $(MINIRT)
 
 re: 
@@ -93,7 +87,6 @@ endif
 
 library:
 	make -C $(LIBFT_PATH) --silent
-	make -C $(LIBMLX_PATH) --silent
 	make -C $(LIBMATH_PATH) --silent
 
 clean_test:
@@ -113,4 +106,8 @@ test_parse:
 get_filenames:
 	sh dev/scripts/get_filenames.sh
 
-.PHONY: library clean_test build_parse test_parse get_filenames
+image:
+	sh dev/scripts/get_img_and_log.sh
+
+
+.PHONY: library clean_test build_parse test_parse get_filenames image

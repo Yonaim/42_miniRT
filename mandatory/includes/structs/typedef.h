@@ -3,10 +3,6 @@
 
 # include "libmath.h"
 
-// mlx
-typedef struct s_image					t_image;
-typedef struct s_mlx					t_mlx;
-
 // scene
 typedef struct s_scene					t_scene;
 
@@ -48,6 +44,9 @@ typedef struct s_pdf					t_pdf;
 
 // color
 typedef t_vector3						t_color3;
+
+// error
+typedef enum e_error					t_error;
 
 typedef bool							(*t_scatter)(\
 													t_material *self, \

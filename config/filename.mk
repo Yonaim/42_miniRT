@@ -5,15 +5,9 @@ FILENAME		=		camera/init_camera\
 						object/cylinder\
 						object/disk\
 						object/light\
+						object/object_utils\
 						object/plane\
 						object/sphere\
-						parsing/add_to_object_list\
-						parsing/ft_atof\
-						parsing/parse_element_extra\
-						parsing/parse_element_solid\
-						parsing/parse_scene\
-						parsing/parse_value\
-						parsing/utils\
 						pdf/pdf\
 						ray/primary_ray\
 						ray/ray\
@@ -23,5 +17,8 @@ FILENAME		=		camera/init_camera\
 						shading/traced_color\
 						utils/color\
 						utils/error\
-						utils/mlx_utils\
-						main
+						world/world_generate\
+						world/world_operation\
+						construct_world\
+						main\
+						

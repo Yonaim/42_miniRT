@@ -15,7 +15,7 @@ static bool	scatter_metal(\
 		return (false);
 }
 
-t_material_metal	*create_metal(t_color3 albedo, double fuzz)
+t_material	*new_metal(t_color3 albedo, double fuzz)
 {
 	t_material_metal	*metal;
 
@@ -25,5 +25,5 @@ t_material_metal	*create_metal(t_color3 albedo, double fuzz)
 	metal->albedo = albedo;
 	metal->fuzz = fuzz;
 	metal->scatter = scatter_metal;
-	return (metal);
+	return ((t_material *)metal);
 }

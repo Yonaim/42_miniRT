@@ -13,7 +13,7 @@ static bool	scatter_lambertian(\
 	return (true);
 }
 
-t_material_lambertian	*create_lambertian(t_color3 albedo)
+t_material	*new_lambertian(t_color3 albedo)
 {
 	t_material_lambertian	*lambertian;
 
@@ -22,5 +22,5 @@ t_material_lambertian	*create_lambertian(t_color3 albedo)
 		return (NULL);
 	lambertian->albedo = albedo;
 	lambertian->scatter = scatter_lambertian;
-	return (lambertian);
+	return ((t_material *)lambertian);
 }

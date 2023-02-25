@@ -1,6 +1,6 @@
-#include "s_mlx.h"
-#include "camera.h"
+#include <math.h>
 #include "libmath.h"
+#include "s_camera.h"
 #include "constants.h"
 
 static void	init_camera_basis(t_camera *cam)
@@ -13,6 +13,7 @@ static void	init_camera_basis(t_camera *cam)
 static void	init_camera_viewport(t_viewport *viewport)
 {
 	viewport->aspect_ratio = (double)WINDOW_WIDTH / WINDOW_HEIGHT;
+	viewport->fov = FIELD_OF_VIEW;
 	viewport->width = 2 * tan(degree_to_radian(viewport->fov) / 2);
 	viewport->height = viewport->width / viewport->aspect_ratio;
 }
@@ -30,6 +31,8 @@ static void	init_camera_focus_plane(t_camera *cam, t_focus_plane *focus)
 
 void	init_camera(t_camera *cam)
 {
+	cam->origin = LOOK_FROM;
+	cam->base.dir = v3_sub(LOOK_FROM ,LOOK_AT);
 	init_camera_basis(cam);
 	init_camera_viewport(&cam->viewport);
 	init_camera_focus_plane(cam, &cam->focus);

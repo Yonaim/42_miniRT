@@ -7,10 +7,10 @@ else
 	-include $(DEPS)
 endif
 
-
 # build program
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) $^ -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LDLIBS)
+# 링크 한 다음에 헤더파일 include 해야함..
 
 # compile object files
 $(PART_PATH)/objs/camera/%.o : $(PART_PATH)/srcs/camera/%.c
@@ -43,6 +43,10 @@ $(PART_PATH)/objs/shading/%.o : $(PART_PATH)/srcs/shading/%.c
 
 $(PART_PATH)/objs/utils/%.o : $(PART_PATH)/srcs/utils/%.c
 	mkdir -p $(PART_PATH)/objs/utils
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+
+$(PART_PATH)/objs/world/%.o : $(PART_PATH)/srcs/world/%.c
+	mkdir -p $(PART_PATH)/objs/world
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 $(PART_PATH)/objs/%.o : $(PART_PATH)/srcs/%.c

@@ -24,8 +24,8 @@ t_color3	get_pixel_color(t_scene *scene, int x, int y)
 	t_color3	pixel_color;
 	int			i;
 
+	pixel_color = color3(0, 0, 0);
 	i = 0;
-	pixel_color = (t_color3)vector3(0, 0, 0);
 	while (i < SAMPLES_PER_PIXEL)
 	{
 		pixel_color = v3_add(pixel_color, sampled_color(scene, x, y));

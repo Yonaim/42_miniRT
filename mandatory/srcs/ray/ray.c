@@ -11,5 +11,8 @@ t_ray	ray(t_point3 origin, t_vector3 dir)
 
 t_point3	ray_at(t_ray *ray, double t)
 {
-	return ((t_point3)v3_add(ray->origin, v3_mul(ray->dir, t)));
+	t_point3	ray_at;
+
+	ray_at = (t_point3)v3_add(ray->origin, v3_mul(ray->dir, t));
+	return (ray_at);
 }
