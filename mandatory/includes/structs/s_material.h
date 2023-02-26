@@ -6,33 +6,40 @@
 
 struct s_material
 {
-	t_scatter	scatter;
-	t_texture	*texture;
+	t_scatter			scattered;
+	t_emit				emitted;
+	t_texture			*texture;
 };
 
 struct s_material_lambertian
 {
-	t_scatter	scatter;
-	t_texture	*albedo;
+	t_scatter			scattered;
+	t_emit				emitted;
+	t_texture			*albedo;
 };
 
 struct s_material_metal
 {
-	t_scatter	scatter;
-	t_color3	albedo;
-	double		fuzz;
+	t_scatter			scattered;
+	t_emit				emitted;
+	t_texture			*texture;
+	t_color3			albedo;
+	double				fuzz;
 };
 
 struct s_material_dielectric
 {
-	t_scatter	scatter;
-	double		refractive_idx;
+	t_scatter			scattered;
+	t_emit				emitted;
+	t_texture			*texture;
+	double				refractive_idx;
 };
 
 struct s_material_emmisive
 {
-	t_scatter	scatter;
-	t_color3	albedo;
+	t_scatter			scattered;
+	t_emit				emitted;
+	t_texture			*emit;
 // brightness 감안하여 값 구하기
 };
 
