@@ -1,16 +1,15 @@
+#include <math.h>
+#include <stdbool.h>
 
-#include "quadratic.h"
-
-t_quad_sol	solve_quadratic(double a, double half_b, double c)
+bool	solve_quadratic(double a, double b, double c, double root[2])
 {
-	t_quad_sol	quad_sol;
+	const double	half_b = b / 2;
+	const double	d =  half_b * half_b - a * c;
+	const double	sqrt_d = sqrt(d);
 
-	quad_sol.d = half_b * half_b - a * c;
-	if (quad_sol.d >= 0)
-	{
-		quad_sol.sqrt_d = sqrt(quad_sol.d);
-		quad_sol.sol1 = (-half_b - quad_sol.sqrt_d) / a;
-		quad_sol.sol2 = (-half_b + quad_sol.sqrt_d) / a;
-	}
-	return (quad_sol);
+	if (d < 0)
+		return (false);
+	root[0] = (-half_b - sqrt_d) / a;
+	root[1] = (-half_b + sqrt_d) / a;
+	return (true);
 }
