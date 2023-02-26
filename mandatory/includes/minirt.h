@@ -16,13 +16,17 @@
 enum e_scene_number
 {
 	SCENE0_MANY_BALLS,
-	SCENE1_TWO_CHECKER_BALLS
+	SCENE1_TWO_CHECKER_BALLS,
+	SCENE2_SQUARE_LIGHT,
+	SCENE3_CORNELL_BOX
 };
 
-typedef t_error	(*t_construct_scene)(t_world *world, t_camera *cam);
+typedef t_error	(*t_construct_scene)(t_scene *scene);
 
-t_error	construct_scene0(t_world *world, t_camera *cam);
-t_error	construct_scene1(t_world *world, t_camera *cam);
+t_error	construct_scene0(t_scene *scene);
+t_error	construct_scene1(t_scene *scene);
+t_error	construct_scene2(t_scene *scene);
+t_error	construct_scene3(t_scene *scene);
 
 
 #endif

@@ -1,5 +1,6 @@
 #include <stddef.h>
 #include "libmath.h"
+#include "s_scene.h"
 #include "s_material.h"
 #include "s_object.h"
 #include "s_world.h"
@@ -8,6 +9,7 @@
 #include "material.h"
 #include "texture.h"
 #include "object.h"
+#include "object_arr.h"
 #include "world.h"
 #include "typedef.h"
 
@@ -15,14 +17,13 @@ static t_error	add_ground_object(t_world *world);
 static t_error	add_small_spheres(t_world *world);
 static t_error	add_big_spheres(t_world *world);
 
-t_error	construct_scene0(t_world *world, t_camera *cam)
+t_error	construct_scene0(t_scene *scene)
 {
-	(void)cam;
-	if (add_ground_object(world) == ERROR)
+	if (add_ground_object(&(scene->world)) == ERROR)
 		return (ERROR);
-	if (add_small_spheres(world) == ERROR)
+	if (add_small_spheres(&(scene->world)) == ERROR)
 		return (ERROR);
-	if (add_big_spheres(world) == ERROR)
+	if (add_big_spheres(&(scene->world)) == ERROR)
 		return (ERROR);
 	return (ERROR_NONE);
 }
@@ -40,7 +41,7 @@ static t_error	add_ground_object(t_world *world)
 	ground = new_sphere(point3(0, -1000, 0), 1000, ground_material);
 	if (ground == NULL)
 		return (ERROR);
-	if (add_object(world, ground) == ERROR)
+	if (add_object(&world->objects, ground) == ERROR)
 		return (ERROR);
 	return (ERROR_NONE);
 }
@@ -60,7 +61,7 @@ static t_error	_add_lambertian_sp(t_world *world, t_point3 center)
 	sp = new_sphere(center, 0.2, material);
 	if (sp == NULL)
 		return (ERROR);
-	if (add_object(world, sp) == ERROR)
+	if (add_object(&world->objects, sp) == ERROR)
 		return (ERROR);
 	return (ERROR_NONE);
 }
@@ -80,7 +81,7 @@ static t_error	_add_metal_sp(t_world *world, t_point3 center)
 	sp = new_sphere(center, 0.2, material);
 	if (sp == NULL)
 		return (ERROR);
-	if (add_object(world, sp) == ERROR)
+	if (add_object(&world->objects, sp) == ERROR)
 		return (ERROR);
 	return (ERROR_NONE);
 }
@@ -95,7 +96,7 @@ static t_error	_add_dielectric_sp(t_world *world, t_point3 center)
 	sp = new_sphere(center, 0.2, material);
 	if (sp == NULL)
 		return (ERROR);
-	if (add_object(world, sp) == ERROR)
+	if (add_object(&world->objects, sp) == ERROR)
 		return (ERROR);
 	return (ERROR_NONE);
 }
@@ -148,19 +149,19 @@ static t_error	add_big_spheres(t_world *world)
 		return (ERROR);
 	if ((sp = new_sphere(point3(0, 1, 0), 1.0, m)) == NULL)
 		return (ERROR);
-    if (add_object(world, sp) == ERROR)
+    if (add_object(&world->objects, sp) == ERROR)
 		return (ERROR);
     if ((m = new_lambertian(new_solid(color3(0.4, 0.2, 0.1)))) == NULL)
 		return (ERROR);
 	if ((sp = new_sphere(point3(-4, 1, 0), 1.0, m)) == NULL)
 		return (ERROR);
-	if (add_object(world, sp) == ERROR)
+	if (add_object(&world->objects, sp) == ERROR)
 		return (ERROR);
 	if ((m = new_metal(color3(0.7, 0.6, 0.5), 0)) == NULL)
 		return (ERROR);
 	if ((sp = new_sphere(point3(4, 1, 0), 1.0, m)) == NULL)
 		return (ERROR);
-	if (add_object(world, sp) == ERROR)
+	if (add_object(&world->objects, sp) == ERROR)
 		return (ERROR);
 	return (ERROR_NONE);
 }

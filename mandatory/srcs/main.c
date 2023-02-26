@@ -20,6 +20,8 @@ static t_error	init_scene(t_scene *scene, int scene_num)
 	t_construct_scene	construct_scene[] = {
 	[SCENE0_MANY_BALLS] = construct_scene0,
 	[SCENE1_TWO_CHECKER_BALLS] = construct_scene1,
+	[SCENE2_SQUARE_LIGHT] = construct_scene2,
+	[SCENE3_CORNELL_BOX] = construct_scene3
 	};
 
 	scene->width = WINDOW_WIDTH;
@@ -27,7 +29,7 @@ static t_error	init_scene(t_scene *scene, int scene_num)
 	init_camera(&scene->cam);
 	if (init_world(&scene->world, INITIAL_WORLD_SIZE) == ERROR)
 		return (ERROR);
-	if (construct_scene[scene_num](&scene->world, &scene->cam) == ERROR)
+	if (construct_scene[scene_num](scene) == ERROR)
 		return (ERROR);
 	return (ERROR_NONE);
 }
