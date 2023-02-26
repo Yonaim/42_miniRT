@@ -17,4 +17,8 @@
 // constants
 # include "constants.h"
 
+// functions
+t_error	init_object_arr(t_object_arr *objects, int cap);
+void	flush_object_arr(t_object_arr *objects);
+
 #endif

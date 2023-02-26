@@ -19,6 +19,7 @@ typedef struct s_focus_plane			t_focus_plane;
 typedef struct s_camera					t_camera;
 
 // world
+typedef struct s_object_arr				t_object_arr;
 typedef struct s_world					t_world;
 
 // object
