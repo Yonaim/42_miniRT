@@ -1,9 +1,10 @@
 
 #include <limits.h>
+#include "random.h"
 
-static int	xorshift(void)
+int	xorshift(void)
 {
-	static int	seed = 1;
+	static int	seed = RANDOM_SEED;
 
 	seed ^= seed << 13;
 	seed ^= seed >> 17;
