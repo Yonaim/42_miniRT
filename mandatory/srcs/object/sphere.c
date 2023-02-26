@@ -15,3 +15,6 @@ t_object	*new_sphere(t_point3 pos, double radius, t_vector3 rgb)
 	new->material->albedo = v3_div(rgb, 255);
 	return ((t_object *)new);
 }
+
+bool		hit_sphere(t_object *self, r_ray *ray, \
+						t_hit_record_ *h_rec, double t_max);

@@ -15,3 +15,6 @@ t_object	*new_plane(t_point3 pos, t_vector3 normal, t_color3 rgb)
 	new->material->albedo = v3_div(rgb, 255);
 	return ((t_object *)new);
 }
+
+bool		hit_plane(t_object *self, r_ray *ray, \
+						t_hit_record *h_rec, double t_max);
