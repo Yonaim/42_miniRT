@@ -6,7 +6,7 @@
 // scene
 typedef struct s_scene					t_scene;
 
-// scatter record
+// scattered record
 typedef struct s_scatter_record			t_scatter_record;
 
 // ray
@@ -45,6 +45,7 @@ typedef struct s_material_emmisive		t_material_emmisive;
 typedef struct s_texture				t_texture;
 typedef struct s_texture_solid			t_texture_solid;
 typedef struct s_texture_checker		t_texture_checker;
+typedef struct s_texture_image			t_texture_image;
 
 // hit record
 typedef struct s_hit_record				t_hit_record;

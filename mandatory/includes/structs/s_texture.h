@@ -31,4 +31,14 @@ struct s_texture_checker
 	t_texture			*even;
 };
 
+struct s_texture_image
+{
+	t_get_texture_value	get_val;
+	t_destroy_texture	destroy;
+	unsigned char		*data;
+	int					width;
+	int					height;
+	int					bytes_per_scanline;		
+};
+
 #endif
