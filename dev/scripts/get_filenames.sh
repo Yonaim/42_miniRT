@@ -39,6 +39,14 @@ find *.c | cut -f 1 -d "." | xargs printf "utils/%s\\\\\n\t\t\t\t\t\t">> $FILE_P
 cd ../world
 find *.c | cut -f 1 -d "." | xargs printf "world/%s\\\\\n\t\t\t\t\t\t">> $FILE_PATH$FILE;
 
+# texture files
+cd ../texture
+find *.c | cut -f 1 -d "." | xargs printf "texture/%s\\\\\n\t\t\t\t\t\t">> $FILE_PATH$FILE;
+
+# scene files
+cd ../scene
+find *.c | cut -f 1 -d "." | xargs printf "scene/%s\\\\\n\t\t\t\t\t\t">> $FILE_PATH$FILE;
+
 # main file
 cd ..
 FILE_PATH="../../config/"

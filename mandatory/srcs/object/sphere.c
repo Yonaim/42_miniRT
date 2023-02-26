@@ -31,19 +31,17 @@ static bool	hit_sphere(\
 									v3_dot(oc, in_ray->dir), \
 									len_sqr_v3(oc) - sp->radius * sp->radius);
 	t_vector3		outward_normal;
-	double			root;
 
 	if (res.d < 0)
 		return (false);
-	root = res.sol1;
-	if (root < T_MINIMUM || root > t_max)
+	h_rec->t = res.sol1;
+	if (h_rec->t < T_MINIMUM || h_rec->t > t_max)
 	{
-		root = res.sol2;
-		if (root < T_MINIMUM || root > t_max)
+		h_rec->t = res.sol2;
+		if (h_rec->t < T_MINIMUM || h_rec->t > t_max)
 			return (false);
 	}
-	h_rec->t = root;
-	h_rec->p = ray_at(in_ray, root);
+	h_rec->p = ray_at(in_ray, h_rec->t);
 	h_rec->material = sp->material;
 	outward_normal = v3_div(v3_sub(h_rec->p, sp->center), sp->radius);
 	set_face_normal(h_rec, in_ray, outward_normal);

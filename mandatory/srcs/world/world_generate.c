@@ -26,6 +26,16 @@ t_world	*new_world(int cap)
 	return (new);
 }
 
+void	destroy_texture(t_texture *texture)
+{
+	if ((texture)->get_type() == TEXTURE_CHECKER)
+	{
+		destroy_texture(((t_texture_checker *)texture)->even);
+		destroy_texture(((t_texture_checker *)texture)->odd);
+	}
+	free(texture);
+}
+
 void	flush_world(t_world *world)
 {
 	int	i;
@@ -33,7 +43,9 @@ void	flush_world(t_world *world)
 	i = 0;
 	while (i < world->cnt)
 	{
+		destroy_texture(world->objects[i]->material->texture);
 		free(world->objects[i]->material);
+		free(world->objects[i]);
 		++i;
 	}
 	free(world->objects);

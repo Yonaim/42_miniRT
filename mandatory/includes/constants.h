@@ -17,17 +17,17 @@ enum e_error
 
 // window
 # define WINDOW_NAME			"meyun & yona's wonderful miniRT"
-// # define WINDOW_WIDTH			1920
-// # define WINDOW_HEIGHT			1080
-# define WINDOW_WIDTH			1200
-# define WINDOW_HEIGHT			800
+# define WINDOW_WIDTH			1920
+# define WINDOW_HEIGHT			1080
+// # define WINDOW_WIDTH			1200
+// # define WINDOW_HEIGHT			800
 
 // t range
 # define T_MINIMUM				0.001
 # define T_INFINITY 			INT_MAX
 
 // sampling
-# define SAMPLES_PER_PIXEL		15
+# define SAMPLES_PER_PIXEL		20
 
 // recursive depth
 # define MAX_DEPTH				50
@@ -39,6 +39,8 @@ enum e_error
 
 /** dev **/
 
+// scene
+# define SCENE_NUMBER			1
 // object
 # define MATERIAL_NUMBER		4
 # define OBJECT_NUMBER			5

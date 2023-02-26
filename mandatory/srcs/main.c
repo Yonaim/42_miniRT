@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-static t_error	init_scene(t_scene *scene);
+static t_error	init_scene(t_scene *scene, int scene_num);
 static void		render_scene(t_scene *scene);
 static void		flush_scene(t_scene *scene);
 
@@ -8,21 +8,26 @@ int	main(void)
 {
 	t_scene	scene;
 
-	if (init_scene(&scene) == ERROR)
+	if (init_scene(&scene, SCENE_NUMBER) == ERROR)
 		return (1);
 	render_scene(&scene);
 	flush_scene(&scene);
 	return (0);
 }
 
-static t_error	init_scene(t_scene *scene)
+static t_error	init_scene(t_scene *scene, int scene_num)
 {
+	t_construct_scene	construct_scene[] = {
+	[SCENE0_MANY_BALLS] = construct_scene0,
+	[SCENE1_TWO_CHECKER_BALLS] = construct_scene1,
+	};
+
 	scene->width = WINDOW_WIDTH;
 	scene->height = WINDOW_HEIGHT;
 	init_camera(&scene->cam);
 	if (init_world(&scene->world, INITIAL_WORLD_SIZE) == ERROR)
 		return (ERROR);
-	if (construct_world(&scene->world) == ERROR)
+	if (construct_scene[scene_num](&scene->world, &scene->cam) == ERROR)
 		return (ERROR);
 	return (ERROR_NONE);
 }

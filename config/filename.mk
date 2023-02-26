@@ -19,6 +19,9 @@ FILENAME		=		camera/init_camera\
 						utils/error\
 						world/world_generate\
 						world/world_operation\
-						construct_world\
+						texture/checker\
+						texture/solid\
+						scene/construct_scene0\
+						scene/construct_scene1\
 						main\
 						
