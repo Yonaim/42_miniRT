@@ -12,10 +12,10 @@ struct s_hit_record
 	t_point3	p;
 	t_vector3	normal;
 	t_material	*material;
+	bool		opposed;
 // surface coordinates of the ray-object hit point : u, v
 	double		u;
 	double		v;
-	bool		opposed;
 };
 
 #endif

@@ -49,6 +49,9 @@ $(PART_PATH)/objs/world/%.o : $(PART_PATH)/srcs/world/%.c
 	mkdir -p $(PART_PATH)/objs/world
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
+$(PART_PATH)/objs/texture/%.o : $(PART_PATH)/srcs/texture/%.c
+	mkdir -p $(PART_PATH)/objs/texture
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 $(PART_PATH)/objs/%.o : $(PART_PATH)/srcs/%.c
 	mkdir -p $(PART_PATH)/objs
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@

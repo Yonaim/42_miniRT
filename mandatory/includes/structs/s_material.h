@@ -1,17 +1,19 @@
 #ifndef S_MATERIAL_H
 # define S_MATERIAL_H
 
+# include "s_texture.h"
 # include "typedef.h"
 
 struct s_material
 {
 	t_scatter	scatter;
+	t_texture	*texture;
 };
 
 struct s_material_lambertian
 {
 	t_scatter	scatter;
-	t_color3	albedo;
+	t_texture	*albedo;
 };
 
 struct s_material_metal

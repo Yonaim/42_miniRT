@@ -36,6 +36,11 @@ typedef struct s_material_metal			t_material_metal;
 typedef struct s_material_dielectric	t_material_dielectric;
 typedef struct s_material_emmisive		t_material_emmisive;
 
+// texture
+typedef struct s_texture				t_texture;
+typedef struct s_texture_solid			t_texture_solid;
+typedef struct s_texture_checker		t_texture_checker;
+
 // hit record
 typedef struct s_hit_record				t_hit_record;
 
@@ -49,15 +54,23 @@ typedef t_vector3						t_color3;
 typedef enum e_error					t_error;
 
 typedef bool							(*t_scatter)(\
-													t_material *self, \
-													t_ray *in, \
-													t_hit_record *h_rec, \
-													t_scatter_record *s_rec);
+												t_material *self, \
+												t_ray *in, \
+												t_hit_record *h_rec, \
+												t_scatter_record *s_rec);
 
 typedef bool							(*t_hit)(\
 												t_object *self, \
 												t_ray *ray, \
 												t_hit_record *h_rec, \
 												double t_max);
+
+typedef t_color3						(*t_get_texture_value)(\
+												t_texture *texture, \
+												double u, \
+												double v, \
+												t_point3 p);
+
+typedef int								(*t_get_texture_type)(void);
 
 #endif

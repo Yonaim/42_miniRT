@@ -11,5 +11,6 @@
 # include "s_hit_record.h"
 # include "s_material.h"
 # include "ray.h"
+# include "texture.h"
 
 #endif
