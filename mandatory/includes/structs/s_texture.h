@@ -13,20 +13,20 @@ enum e_texture_type
 struct s_texture
 {
 	t_get_texture_value	get_val;
-	t_get_texture_type	get_type;
+	t_destroy_texture	destroy;
 };
 
 struct s_texture_solid
 {
 	t_get_texture_value	get_val;
-	t_get_texture_type	get_type;
+	t_destroy_texture	destroy;
 	t_color3			color;
 };
 
 struct s_texture_checker
 {
 	t_get_texture_value	get_val;
-	t_get_texture_type	get_type;
+	t_destroy_texture	destroy;
 	t_texture			*odd;
 	t_texture			*even;
 };

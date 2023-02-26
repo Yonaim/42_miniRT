@@ -13,51 +13,59 @@ enum	e_cylinder_disk_type
 
 struct s_object
 {
-	t_hit		hit;
-	t_material	*material;
+	t_hit				hit;
+	t_material			*material;
+	t_destroy_object	destroy;
 };
 
 struct s_object_point_light
 {
-	t_hit		hit;
-	t_material	*material;
-	t_point3	pos;
+	t_hit				hit;
+	t_material			*material;
+	t_destroy_object	destroy;
+	t_point3			pos;
 };
 
 struct s_object_sphere
 {
-	t_hit		hit;
-	t_material	*material;
-	t_point3	center;
-	double		radius;
+	t_hit				hit;
+	t_material			*material;
+	t_destroy_object	destroy;
+	t_point3			center;
+	double				radius;
 };
 
 struct s_object_disk
 {
-	t_hit		hit;
-	t_material	*material;
-	t_point3	center;
-	double		radius;
-	t_vector3	normal;
+	t_hit				hit;
+	t_material			*material;
+	t_destroy_object	destroy;
+	t_point3			center;
+	double				radius;
+	t_vector3			normal;
 };
 
 struct s_object_cylinder
 {
-	t_hit			hit;
-	t_material		*material;
-	t_point3		center;
-	double			radius;
-	double			height;
-	t_vector3		orient;
-	t_object_disk	disks[2];
+	t_hit				hit;
+	t_material			*material;
+	t_destroy_object	destroy;
+	t_point3			center;
+	double				radius;
+	double				height;
+	t_vector3			orient;
+	t_object_disk		disks[2];
 };
 
 struct s_object_plane
 {
-	t_hit		hit;
-	t_material	*material;
-	t_point3	point;
-	t_vector3	normal;
+	t_hit				hit;
+	t_material			*material;
+	t_destroy_object	destroy;
+	t_point3			point;
+	t_vector3			normal;
+};
+
 };
 
 #endif

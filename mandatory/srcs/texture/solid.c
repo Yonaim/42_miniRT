@@ -1,7 +1,7 @@
 #include "texture_internal.h"
 
 static t_color3	get_solid_val(t_texture *self, double u, double v, t_point3 p);
-static int		get_solid_type(void);
+static void		destroy_solid(t_texture *self);
 
 t_texture	*new_solid(t_color3 color)
 {
@@ -12,7 +12,7 @@ t_texture	*new_solid(t_color3 color)
 		return (NULL);
 	solid->color = color;
 	solid->get_val = get_solid_val;
-	solid->get_type = get_solid_type;
+	solid->destroy = destroy_solid;
 	return ((t_texture *)solid);
 }
 
@@ -26,7 +26,10 @@ static t_color3	get_solid_val(t_texture *self, double u, double v, t_point3 p)
 	return (solid->color);
 }
 
-static int	get_solid_type(void)
+static void	destroy_solid(t_texture *self)
 {
-	return (TEXTURE_SOLID);
+	t_texture_solid	*solid;
+
+	solid = (t_texture_solid *)self;
+	free(solid);
 }

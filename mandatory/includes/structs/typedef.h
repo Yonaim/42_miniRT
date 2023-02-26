@@ -78,6 +78,11 @@ typedef t_color3						(*t_get_texture_value)(\
 												double v, \
 												t_point3 p);
 
-typedef int								(*t_get_texture_type)(void);
+typedef void							(*t_destroy_object)(\
+												t_object *object);
+typedef void							(*t_destroy_material)(\
+												t_material *material);
+typedef void							(*t_destroy_texture)(\
+												t_texture *texture);
 
 #endif

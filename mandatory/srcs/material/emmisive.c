@@ -6,6 +6,8 @@ static bool		emmisive_scattered(\
 static t_color3	emmisive_emitted(\
 								t_material *self, \
 								double u, double v, t_point3 p);
+static void		destroy_emmisive(t_material *self);
+
 t_material	*new_emmisive(t_color3 color)
 {
 	t_material_emmisive	*emmisive;
@@ -38,4 +40,13 @@ static t_color3	emmisive_emitted(\
 	const t_color3	emitted = self->texture->get_val(self->texture, u, v, p);
 
 	return (emitted);
+}
+
+static void		destroy_emmisive(t_material *self)
+{
+	t_material_emmisive	*emmisive;
+
+	emmisive = (t_material_emmisive *)self;
+	emmisive->emit->destroy(emmisive->emit);
+	free(emmisive);
 }
