@@ -3,6 +3,7 @@
 
 # include <stdbool.h>
 # include <stddef.h>
+# include "s_object_arr.h"
 # include "typedef.h"
 
 enum	e_cylinder_disk_type
@@ -66,6 +67,50 @@ struct s_object_plane
 	t_vector3			normal;
 };
 
+struct s_object_xy_rectangle
+{
+	t_hit				hit;
+	t_material			*material;
+	t_destroy_object	destroy;
+	double				x0;
+	double				x1;
+	double				y0;
+	double				y1;
+	double				k;
+};
+
+struct s_object_xz_rectangle
+{
+	t_hit				hit;
+	t_material			*material;
+	t_destroy_object	destroy;
+	double				x0;
+	double				x1;
+	double				z0;
+	double				z1;
+	double				k;
+};
+
+struct s_object_yz_rectangle
+{
+	t_hit				hit;
+	t_material			*material;
+	t_destroy_object	destroy;
+	double				y0;
+	double				y1;
+	double				z0;
+	double				z1;
+	double				k;
+};
+
+struct s_object_box
+{	
+	t_hit				hit;
+	t_material			*material;
+	t_destroy_object	destroy;
+	t_point3			p_min;
+	t_point3			p_max;
+	t_object_arr		sides;
 };
 
 #endif
