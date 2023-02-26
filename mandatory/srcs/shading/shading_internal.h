@@ -3,6 +3,7 @@
 
 // standard library
 # include <stdbool.h>
+# include <math.h>
 
 // user defined library
 # include "libmath.h"

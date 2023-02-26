@@ -4,6 +4,8 @@
 // window
 # define __USE_MISC
 
+// standard library
+# include <math.h>
 // library
 # include "libft.h"
 # include "libmath.h"
