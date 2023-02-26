@@ -27,7 +27,7 @@ enum e_error
 # define T_INFINITY 			INT_MAX
 
 // sampling
-# define SAMPLES_PER_PIXEL		20
+# define SAMPLES_PER_PIXEL		400
 
 // recursive depth
 # define MAX_DEPTH				50
@@ -40,7 +40,7 @@ enum e_error
 /** dev **/
 
 // scene
-# define SCENE_NUMBER			1
+# define SCENE_NUMBER			3
 // object
 # define MATERIAL_NUMBER		4
 # define OBJECT_NUMBER			5
@@ -58,5 +58,11 @@ enum e_error
 
 // ground material
 # define GROUND_ALBEDO			(t_color3){0.5, 0.5, 0.5}
+
+// colors
+# define COLOR_RED				color3(0.65, 0.05, 0.05)
+# define COLOR_WHITE			color3(0.73, 0.73, 0.73)
+# define COLOR_GREEN			color3(0.12, 0.45, 0.15)
+# define COLOR_LIGHT			color3(15, 15, 15)
 
 #endif
