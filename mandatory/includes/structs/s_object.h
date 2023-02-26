@@ -5,12 +5,6 @@
 # include <stddef.h>
 # include "typedef.h"
 
-enum	e_cylinder_disk_type
-{
-	TOP,
-	BOTTOM
-};
-
 struct s_object
 {
 	t_hit					hit;
