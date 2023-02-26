@@ -29,6 +29,10 @@ typedef struct s_object_sphere			t_object_sphere;
 typedef struct s_object_disk			t_object_disk;
 typedef struct s_object_cylinder		t_object_cylinder;
 typedef struct s_object_plane			t_object_plane;
+typedef struct s_object_xy_rectangle	t_object_xy_rectangle;
+typedef struct s_object_xz_rectangle	t_object_xz_rectangle;
+typedef struct s_object_yz_rectangle	t_object_yz_rectangle;
+typedef struct s_object_box				t_object_box;
 
 // material
 typedef struct s_material				t_material;
