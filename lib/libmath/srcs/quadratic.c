@@ -1,16 +1,19 @@
 
-#include "quadratic.h"
+#include <stdbool.h>
+#include <math.h>
 
-t_quad_sol	solve_quadratic(double a, double half_b, double c)
+bool	solve_quadratic(double a, double half_b, double c, double root[2])
 {
-	t_quad_sol	quad_sol;
+	double	discr;
+	double	sqrt_discr;
 
-	quad_sol.d = half_b * half_b - a * c;
-	if (quad_sol.d >= 0)
+	discr = half_b * half_b - a * c;
+	if (discr >= 0)
 	{
-		quad_sol.sqrt_d = sqrt(quad_sol.d);
-		quad_sol.sol1 = (-half_b - quad_sol.sqrt_d) / a;
-		quad_sol.sol2 = (-half_b + quad_sol.sqrt_d) / a;
+		sqrt_discr = sqrt(discr);
+		root[0] = (-half_b - sqrt_discr) / a;
+		root[1] = (-half_b + sqrt_discr) / a;
+		return (true);
 	}
-	return (quad_sol);
+	return (false);
 }
