@@ -6,7 +6,7 @@ NAME			=	miniRT
 # compile 
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror -MMD -MP
-CFLAGS_SANITIZE	=	-fsanitize=address
+CFLAGS_SANITIZE	=	-fsanitize=address -g3
 CPPFLAGS		=	\
 					-I./$(LIB_PATH)/libmath/includes \
 					-I./$(LIB_PATH)/includes \
@@ -18,7 +18,7 @@ LDFLAGS			=	\
 LDLIBS			=	-lft -lmath -lm
 
 ifdef SANITIZE
-CFLAGS			+=	CFLAGS_SANITIZE
+CFLAGS			+=	$(CFLAGS_SANITIZE)
 endif
 
 # ********************************** LIBRARY ********************************* #
