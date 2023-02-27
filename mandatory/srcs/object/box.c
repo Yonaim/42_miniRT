@@ -4,8 +4,9 @@
 
 static bool		hit_box(\
 					t_object *self, \
-					t_ray *ray, t_hit_record *h_rec, double t_max);
-static void		get_box_uv(t_hit_record *record);
+					t_ray *ray, \
+					t_hit_record *h_rec, \
+					double t_max);
 static t_error	add_box_sides(t_object_box *box, t_material *material);
 static void		destroy_box(t_object *self);
 
@@ -31,39 +32,29 @@ t_object	*new_box(t_point3 p_min, t_point3 p_max, t_material *material)
 static bool	hit_box(\
 			t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max)
 {
-	const t_object_box	*cy = (t_object_box *)self;
+	t_object_box	*box = (t_object_box *)self;
 
-	(void)cy;
-	(void)ray;
-	(void)h_rec;
-	(void)t_max;
-	get_box_uv(h_rec);
-	return (true);
-}
-
-static void	get_box_uv(t_hit_record *record)
-{
-	(void)record;
+	return (hit_objects(&box->sides, ray, h_rec, t_max));
 }
 
 static t_error	add_box_sides(t_object_box *box, t_material *material)
 {
 	t_object		*object[6];
-	const double	intvl[3][2] = {{box->p_min.x, box->p_min.x}, \
-										{box->p_min.y, box->p_min.y}, \
-										{box->p_min.z, box->p_min.z}};
-	const double	const_k[6] = {box->p_max.z, box->p_min.z,\
-									box->p_max.y, box->p_min.y, \
-									box->p_max.x, box->p_min.x};
+	const double	intvl[3][2] = {{box->p_min.x, box->p_max.x}, \
+										{box->p_min.y, box->p_max.y}, \
+										{box->p_min.z, box->p_max.z}};
+	const double	const_k[6] = {box->p_min.x, box->p_max.x,\
+									box->p_min.y, box->p_max.y, \
+									box->p_min.z, box->p_max.z};
 	int				i;
 
 
-	object[0] = new_xy_rectangle(intvl[0], intvl[1], const_k[0], material);
-	object[1] = new_xy_rectangle(intvl[0], intvl[1], const_k[1], material);
-	object[2] = new_yz_rectangle(intvl[0], intvl[2], const_k[2], material);
-	object[3] = new_yz_rectangle(intvl[0], intvl[2], const_k[3], material);
-	object[4] = new_xz_rectangle(intvl[1], intvl[2], const_k[4], material);
-	object[5] = new_xz_rectangle(intvl[1], intvl[2], const_k[5], material);
+	object[0] = new_xy_rectangle(intvl[0], intvl[1], const_k[5], material);
+	object[1] = new_xy_rectangle(intvl[0], intvl[1], const_k[4], material);
+	object[2] = new_xz_rectangle(intvl[0], intvl[2], const_k[3], material);
+	object[3] = new_xz_rectangle(intvl[0], intvl[2], const_k[2], material);
+	object[4] = new_yz_rectangle(intvl[1], intvl[2], const_k[1], material);
+	object[5] = new_yz_rectangle(intvl[1], intvl[2], const_k[0], material);
 	i = 0;
 	while (i < 6)
 	{
@@ -88,6 +79,7 @@ static void	destroy_box(t_object *self)
 		free(box->sides.arr[i]);
 		i++;
 	}
+	free(box->sides.arr);
 	box->material->destroy(box->material);
 	free(box);
 }

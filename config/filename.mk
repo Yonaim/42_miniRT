@@ -31,5 +31,6 @@ FILENAME		=		camera/init_camera\
 						scene/construct_scene1\
 						scene/construct_scene2\
 						scene/construct_scene3\
+						scene/construct_scene4\
 						main\
 						

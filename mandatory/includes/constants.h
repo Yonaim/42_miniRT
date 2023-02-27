@@ -40,7 +40,7 @@ enum e_error
 /** dev **/
 
 // scene
-# define SCENE_NUMBER			3
+# define SCENE_NUMBER			4
 // object
 # define MATERIAL_NUMBER		4
 # define OBJECT_NUMBER			5

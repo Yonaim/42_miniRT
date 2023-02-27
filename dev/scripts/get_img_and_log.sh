@@ -10,6 +10,7 @@ while true
 do
 	if ! [ -f "$FILE" ];
 	then
+		echo $FILE;
 		break;
 	else
 		num=$(($num + 1));
@@ -23,6 +24,7 @@ while true
 do
 	if ! [ -f "$LOG_FILE" ];
 	then
+		echo $LOG_FILE;
 		break;
 	else
 		num=$(($num + 1));
@@ -32,4 +34,4 @@ do
 done
 
 make;
-./miniRT > $FILE 2> $LOG_FILE;
+./miniRT 2> $LOG_FILE > $FILE ;

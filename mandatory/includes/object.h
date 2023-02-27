@@ -18,5 +18,6 @@ t_object	*new_xz_rectangle(\
 t_object	*new_yz_rectangle(\
 						 const double y[2], const double z[2], const double k, \
 						t_material *material);
+t_object	*new_box(t_point3 p_min, t_point3 p_max, t_material *material);
 
 #endif

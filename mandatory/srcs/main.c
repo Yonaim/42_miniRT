@@ -21,7 +21,8 @@ static t_error	init_scene(t_scene *scene, int scene_num)
 	[SCENE0_MANY_BALLS] = construct_scene0,
 	[SCENE1_TWO_CHECKER_BALLS] = construct_scene1,
 	[SCENE2_SQUARE_LIGHT] = construct_scene2,
-	[SCENE3_CORNELL_BOX] = construct_scene3
+	[SCENE3_CORNELL_BOX] = construct_scene3,
+	[SCENE4_CORNELL_BOX_WITH_TWO_BLOCKS] = construct_scene4
 	};
 
 	scene->width = WINDOW_WIDTH;

@@ -4,6 +4,7 @@
 # include "typedef.h"
 # include "s_world.h"
 # include "s_camera.h"
+
 struct s_scene
 {
 	t_world		world;

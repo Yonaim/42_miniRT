@@ -1,4 +1,4 @@
-#include "world_internal.h"
+#include "object_arr_internal.h"
 
 t_error	init_object_arr(t_object_arr *objects, int cap)
 {
@@ -25,3 +25,4 @@ void	flush_object_arr(t_object_arr *objects)
 	objects->cap = 0;
 	objects->cnt = 0;
 }
+

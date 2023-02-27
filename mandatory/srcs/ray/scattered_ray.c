@@ -24,6 +24,6 @@ t_ray	diffused_ray(t_hit_record *rec)
 {
 	t_vector3	diffused;
 
-	diffused = diffused_vector(rec->normal);
+	diffused = diffused_vector(rec->onb);
 	return (ray(rec->p, diffused));
 }

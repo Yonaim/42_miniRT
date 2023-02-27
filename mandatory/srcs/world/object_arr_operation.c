@@ -1,4 +1,4 @@
-#include "world_internal.h"
+#include "object_arr_internal.h"
 
 static t_error	_grow_object_arr(t_object_arr *objects)
 {
@@ -23,4 +23,33 @@ t_error	add_object(t_object_arr *objects, t_object *object)
 	objects->arr[objects->cnt] = object;
 	objects->cnt++;
 	return (ERROR_NONE);
+}
+
+bool	hit_objects(\
+				t_object_arr *objects, \
+				t_ray *ray, \
+				t_hit_record *final_rec, \
+				double t_max)
+{
+	bool			is_hit;
+	double			closest_t;
+	t_hit_record	cur_rec;
+	t_object		*cur_obj;
+	int				i;
+
+	is_hit = false;
+	closest_t = t_max;
+	i = 0;
+	while (i < objects->cnt)
+	{
+		cur_obj = (t_object *)objects->arr[i];
+		if (cur_obj->hit(cur_obj, ray, &cur_rec, closest_t) == true)
+		{
+			is_hit = true;
+			*final_rec = cur_rec;
+			closest_t = cur_rec.t;
+		}
+		i++;
+	}
+	return (is_hit);
 }

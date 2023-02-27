@@ -34,12 +34,12 @@ t_vector3	refracted_vector(t_vector3 in, t_vector3 n, double idx_ratio)
 	return (refracted);
 }
 
-t_vector3	diffused_vector(t_vector3 n)
+t_vector3	diffused_vector(t_onb onb)
 {
 	t_vector3	diffused;
 
-	diffused = v3_add(n, v3_random_on_unit_sphere());
+	diffused = onb_local(onb, random_cosine_dir());
 	if (is_near_zero(diffused) == true)
-		diffused = n;
+		diffused = onb.w;
 	return (diffused);
 }

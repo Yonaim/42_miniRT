@@ -71,7 +71,7 @@ fclean:
 	make -C $(LIBMATH_PATH) fclean --silent
 	$(RM) -rf mandatory/objs
 	$(RM) -rf bonus/objs
-	$(RM) $(MINIRT)
+	$(RM) $(NAME)
 
 re: 
 	make fclean

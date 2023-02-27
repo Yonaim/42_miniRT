@@ -4,6 +4,7 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "vector3.h"
+# include "orthnormal_basis.h"
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
@@ -39,7 +40,7 @@ t_vector3	v3_random_in_unit_disk(void);
 t_vector3	v3_random_on_unit_disk(void);
 
 // discriminant
-bool	solve_quadratic(double a, double half_b, double c, double root[2]);
+bool		solve_quadratic(double a, double half_b, double c, double root[2]);
 
 // bounding
 double		clamp(double x, double min, double max);
@@ -50,5 +51,11 @@ double		degree_to_radian(double degrees);
 // random
 double		random_double(void);
 double		random_double_range(double min, double max);
+t_vector3	random_cosine_dir(void);
+
+// orthnormal basis
+t_onb		orthonormal_basis(t_vector3 n);
+t_vector3	onb_local(t_onb onb, t_vector3 v);
+
 
 #endif

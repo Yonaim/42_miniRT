@@ -1,8 +1,11 @@
 #ifndef MATERIAL_INTERNAL_H
 # define MATERIAL_INTERNAL_H
 
+# define __USE_MISC
+
 // standard library
 # include <stdbool.h>
+# include <math.h>
 # include <stdlib.h>
 
 // structure
