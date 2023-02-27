@@ -39,7 +39,7 @@ t_object	*new_sphere(t_point3 pos, double radius, t_vector3 rgb)
 		b = 2 * (dir * (O - C))
 		c = (O - C)^2 - r^2
 */
-bool		hit_sphere(t_object *self, r_ray *ray, \
+bool		hit_sphere(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
 	const t_object_sphere	*sp = (t_object_sp *)self;
@@ -60,7 +60,7 @@ bool		hit_sphere(t_object *self, r_ray *ray, \
 	h_rec->t = t;
 	h_rec->p = ray_at(ray, t);
 	h_rec->material = &sp->material;
-	set_face_normal(h_rec, in_ray, v3_normalize(v3_sub(h_rec->p, sp->center)));
+	set_face_normal(h_rec, ray, v3_normalize(v3_sub(h_rec->p, sp->center)));
 	return (true);	
 }
 
