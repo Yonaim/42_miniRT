@@ -71,7 +71,7 @@ static bool	hit_disk(t_object *self, t_ray *ray, \
 	double					t;
 	t_point3				p;
 
-	if (v3_dot(dk->normal, ray->dir) == 0)
+	if (v3_dot(dk->normal, ray->dir) < EPSILON)
 		return (false);
 	t = v3_dot(v3_sub(dk->center, ray->origin), dk->normal) \
 		/ v3_dot(dk->normal, ray->dir);
