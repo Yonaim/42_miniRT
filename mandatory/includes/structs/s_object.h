@@ -7,30 +7,33 @@
 
 struct s_object
 {
-	t_hit					hit;
-	t_material_lambertian	*material;
+	t_hit				hit;
+	t_destroy_object	destroy;
+	t_material			*material;
 };
 
 struct s_object_point_light
 {
 	t_hit				hit;
-	t_material_emmisive	*material;
+	t_destroy_object	destroy;
+	t_material			*material;
 	t_point3			pos;
 };
 
 struct s_object_sphere
 {
-	t_hit					hit;
-	t_material_lambertian	*material;
-	t_point3				center;
-	double					radius;
+	t_hit				hit;
+	t_destroy_object	destroy;
+	t_material			*material;
+	t_point3			center;
+	double				radius;
 };
 
 struct s_object_disk
 {
-	t_material			*material;
 	t_hit				hit;
 	t_destroy_object	destroy;
+	t_material			*material;
 	t_point3			center;
 	double				radius;
 	t_vector3			normal;
@@ -38,9 +41,9 @@ struct s_object_disk
 
 struct s_object_tube
 {
-	t_material			*material;
 	t_hit				hit;
 	t_destroy_object	destroy;
+	t_material			*material;
 	t_point3			center;
 	double				radius;
 	double				height;
@@ -49,18 +52,65 @@ struct s_object_tube
 
 struct s_object_cylinder
 {
-	t_material			*material;
 	t_hit				hit;
 	t_destroy_object	destroy;
+	t_material			*material;
 	t_object_list		faces;
 };
 
 struct s_object_plane
 {
-	t_hit					hit;
-	t_material_lambertian	*material;
-	t_point3				point;
-	t_vector3				normal;
+	t_hit				hit;
+	t_destroy_object	destroy;
+	t_material			*material;
+	t_point3			point;
+	t_vector3			normal;
+};
+
+struct s_object_xy_rectangle
+{
+	t_hit				hit;
+	t_destroy_object	destroy;
+	t_material			*material;
+	double				x0;
+	double				x1;
+	double				y0;
+	double				y1;
+	double				k;
+};
+
+struct s_object_xz_rectangle
+{
+	t_hit				hit;
+	t_destroy_object	destroy;
+	t_material			*material;
+	double				x0;
+	double				x1;
+	double				z0;
+	double				z1;
+	double				k;
+};
+
+struct s_object_yz_rectangle
+{
+	t_hit				hit;
+	t_destroy_object	destroy;
+	t_material			*material;
+	double				y0;
+	double				y1;
+	double				z0;
+	double				z1;
+	double				k;
+};
+
+struct s_object_box
+{	
+	t_hit				hit;
+	t_destroy_object	destroy;
+	t_material			*material;
+	t_point3			p_min;
+	t_point3			p_max;
+	t_object_list		faces;
 };
 
 #endif
