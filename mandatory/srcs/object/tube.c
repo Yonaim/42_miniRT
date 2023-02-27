@@ -13,14 +13,17 @@ t_object	*new_tube(t_info_object_tube *info)
 	if (!new)
 		return (NULL);
 	ft_memset(new, 0, sizeof(t_object_tube));
-	new->center = v3_sub(info->center, v3_mul(info->orient, info->height / 2));
-	new->radius = info->radius;
-	new->height = info->height;
-	new->orient = info->orient;
-	new->material = new_material(&info->material, &info->texture);
 	new->hit = hit_tube;
 	new->destroy = destroy_tube;
 	new->get_type = get_tube_type;
+	// new->center = v3_sub(info->center, v3_mul(info->orient, info->height / 2));
+	new->material = new_material(&info->material, &info->texture);
+	if (!new->material)
+		return (NULL);
+	new->center = info->center;
+	new->radius = info->radius;
+	new->height = info->height;
+	new->orient = info->orient;
 	return ((t_object *)new);
 }
 
