@@ -9,11 +9,15 @@
 
 // structures
 # include "s_world.h"
+# include "s_dynamic_arr.h"
 # include "s_object.h"
 # include "s_material.h"
 # include "s_texture.h"
 # include "s_hit_record.h"
 # include "typedef.h"
+
+// declaration
+# include "dynamic_arr.h"
 
 // constants
 # include "constants.h"

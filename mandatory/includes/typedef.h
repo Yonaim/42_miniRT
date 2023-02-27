@@ -30,8 +30,9 @@ typedef struct s_camera					t_camera;
 // world
 typedef struct s_world					t_world;
 
-// object array
-typedef struct s_object_arr				t_object_arr;
+// dynamic array
+typedef struct s_dynamic_arr			t_dynamic_arr;
+typedef struct s_dynamic_arr			t_object_arr;
 
 // object
 typedef struct s_object_list			t_object_list;

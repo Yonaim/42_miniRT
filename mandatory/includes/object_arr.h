@@ -4,7 +4,7 @@
 # include "typedef.h"
 
 int		init_object_arr(t_object_arr *objects, int cap);
-void	flush_object_arr(t_object_arr *objects);
+void	clear_object_arr(t_object_arr *objects);
 int		add_object(t_object_arr *objects, t_object *object);
 bool	hit_object_arr(\
 						t_object_arr *objects, t_ray *ray, \

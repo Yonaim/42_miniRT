@@ -2,10 +2,7 @@
 
 int	init_object_arr(t_object_arr *objects, int cap)
 {
-	objects->arr = malloc(sizeof(t_object *) * cap);
-	if (objects->arr == NULL)
+	if (init_dynamic_arr(objects, cap) == FAILURE)
 		return (FAILURE);
-	objects->cap = cap;
-	objects->cnt = 0;
 	return (SUCCESS);
 }
