@@ -97,7 +97,7 @@ struct s_info_object_disk
 {
 	t_point3		center;
 	double			radius;
-	t_vector3		orient;
+	t_vector3		normal;
 	t_info_material	material;
 	t_info_texture	texture;
 };
