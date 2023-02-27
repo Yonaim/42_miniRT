@@ -26,6 +26,7 @@ typedef struct s_camera					t_camera;
 typedef struct s_world					t_world;
 
 // object
+typedef struct s_object_list			t_object_list;
 typedef struct s_object					t_object;
 typedef struct s_object_point_light		t_object_point_light;
 typedef struct s_object_sphere			t_object_sphere;
