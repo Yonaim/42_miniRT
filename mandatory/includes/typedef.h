@@ -56,10 +56,17 @@ typedef bool							(*t_scatter)(\
 													t_hit_record *h_rec, \
 													t_scatter_record *s_rec);
 
-typedef bool							(*t_hit)(\
+typedef bool							(*t_hit_object)(\
 												t_object *self, \
 												t_ray *ray, \
 												t_hit_record *h_rec, \
 												double t_max);
+
+typedef void							(*t_destroy_object)(\
+												t_object *object);
+typedef void							(*t_destroy_material)(\
+												t_material *material);
+typedef void							(*t_destroy_texture)(\
+												t_texture *texture);
 
 #endif
