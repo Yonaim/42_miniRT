@@ -30,6 +30,8 @@ enum e_success_or_failure
 # define FOCAL_DISTANCE			10.0
 # define UP_VECTOR				(t_vector3){0, 1, 0}
 
+// object
+# define POINT_LIGHT_RADIUS		5
 /** dev **/
 
 // object
