@@ -1,12 +1,12 @@
 #include "dynamic_arr_internal.h"
 
-int	init_dynamic_arr(t_dynamic_arr *arr, int cap)
+int	init_dynamic_arr(t_dynamic_arr *darr, int cap)
 {
-	arr->data = malloc(sizeof(void*) * cap);
-	if (arr->data == NULL)
+	darr->data = malloc(sizeof(void *) * cap);
+	if (darr->data == NULL)
 		return (FAILURE);
-	arr->data = cap;
-	arr->data = 0;
+	darr->cap = cap;
+	darr->cnt = 0;
 	return (SUCCESS);
 }
 
