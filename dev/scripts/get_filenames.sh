@@ -19,6 +19,10 @@ find *.c | cut -f 1 -d "." | xargs printf "material/%s\\\\\n\t\t\t\t\t\t" >> $FI
 cd ../object
 find *.c | cut -f 1 -d "." | xargs printf "object/%s\\\\\n\t\t\t\t\t\t" >> $FILE_PATH$FILE;
 
+# object array
+cd ../object_array
+find *.c | cut -f 1 -d "." | xargs printf "object_array/%s\\\\\n\t\t\t\t\t\t" >> $FILE_PATH$FILE;
+
 # parsing files
 cd ../parsing
 find *.c | cut -f 1 -d "." | xargs printf "parsing/%s\\\\\n\t\t\t\t\t\t" >> $FILE_PATH$FILE;
@@ -27,13 +31,17 @@ find *.c | cut -f 1 -d "." | xargs printf "parsing/%s\\\\\n\t\t\t\t\t\t" >> $FIL
 cd ../pdf
 find *.c | cut -f 1 -d "." | xargs printf "pdf/%s\\\\\n\t\t\t\t\t\t" >> $FILE_PATH$FILE;
 
-# material files
+# ray files
 cd ../ray
 find *.c | cut -f 1 -d "." | xargs printf "ray/%s\\\\\n\t\t\t\t\t\t" >> $FILE_PATH$FILE;
 
-# shading files
-cd ../shading
-find *.c | cut -f 1 -d "." | xargs printf "shading/%s\\\\\n\t\t\t\t\t\t">> $FILE_PATH$FILE;
+# scene files
+cd ../scene
+find *.c | cut -f 1 -d "." | xargs printf "scene/%s\\\\\n\t\t\t\t\t\t">> $FILE_PATH$FILE;
+
+# texture files
+cd ../texture
+find *.c | cut -f 1 -d "." | xargs printf "texture/%s\\\\\n\t\t\t\t\t\t">> $FILE_PATH$FILE;
 
 # utils files
 cd ../utils

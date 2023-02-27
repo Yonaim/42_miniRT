@@ -63,7 +63,8 @@ VECTOR_FILE		=	v3_basic \
 OTHER_FILE		=	angle \
 					clamp \
 					quadratic \
-					random
+					random \
+					orthonormal_basis
 
 # file name(absolute path)
 VECTOR_OBJ		=	$(addprefix $(VECTOR_OBJ_PATH)/, $(addsuffix .o, $(VECTOR_FILE)))

@@ -25,6 +25,10 @@ $(PART_PATH)/objs/object/%.o : $(PART_PATH)/srcs/object/%.c
 	mkdir -p $(PART_PATH)/objs/object
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
+$(PART_PATH)/objs/object_array/%.o : $(PART_PATH)/srcs/object_array/%.c
+	mkdir -p $(PART_PATH)/objs/object_array
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+
 $(PART_PATH)/objs/parsing/%.o : $(PART_PATH)/srcs/parsing/%.c
 	mkdir -p $(PART_PATH)/objs/parsing
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
@@ -37,8 +41,12 @@ $(PART_PATH)/objs/ray/%.o : $(PART_PATH)/srcs/ray/%.c
 	mkdir -p $(PART_PATH)/objs/ray
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
-$(PART_PATH)/objs/shading/%.o : $(PART_PATH)/srcs/shading/%.c
-	mkdir -p $(PART_PATH)/objs/shading
+$(PART_PATH)/objs/scene/%.o : $(PART_PATH)/srcs/scene/%.c
+	mkdir -p $(PART_PATH)/objs/scene
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+
+$(PART_PATH)/objs/texture/%.o : $(PART_PATH)/srcs/texture/%.c
+	mkdir -p $(PART_PATH)/objs/texture
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 $(PART_PATH)/objs/utils/%.o : $(PART_PATH)/srcs/utils/%.c
