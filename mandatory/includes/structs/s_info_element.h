@@ -24,6 +24,8 @@ enum e_element_types
 	ELEMENT_LIGHT,
 	ELEMENT_PLANE,
 	ELEMENT_SPHERE,
+	ELEMENT_DISK,
+	ELEMENT_TUBE,
 	ELEMENT_CYLINDER,
 	ELEMENT_CONE,
 	ELEMENT_BOX,
@@ -115,6 +117,7 @@ struct s_info_object_cylinder
 	t_info_object_disk	disk[2];
 	t_info_object_tube	tube;
 	t_info_material		material;
+	t_info_texture		texture;
 };
 
 struct s_info_object_cone
