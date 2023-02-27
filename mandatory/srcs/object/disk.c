@@ -21,6 +21,10 @@ t_object	*new_disk(t_info_object_disk *dk_info)
 	new->center = dk_info->center;
 	new->radius = dk_info->radius;
 	new->normal = dk_info->normal;
+printf("disk info:\n");
+printf("center : %f %f %f\n", new->center.x, new->center.y, new->center.z);
+printf("radius : %f\n", new->radius);
+printf("normal : %f %f %f\n", new->normal.x, new->normal.y, new->normal.z);
 	return ((t_object *)new);
 }
 

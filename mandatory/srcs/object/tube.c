@@ -24,6 +24,11 @@ t_object	*new_tube(t_info_object_tube *info)
 	new->radius = info->radius;
 	new->height = info->height;
 	new->orient = info->orient;
+printf("tube info\n");
+printf("center : %lf, %lf, %lf\n", new->center.x, new->center.y, new->center.z);
+printf("orient : %lf, %lf, %lf\n", new->orient.x, new->orient.y, new->orient.z);
+printf("height : %lf\n", new->height);
+printf("radius : %lf\n", new->radius);
 	return ((t_object *)new);
 }
 
@@ -66,13 +71,26 @@ static int	get_tube_type(void)
 		c = CO^2 - (CO - ^h)^2 - r^2
 		(CO = O - C)
 */
-
-static void	set_tube_normal_vector(t_object_tube *tb, t_hit_record *h_rec)
+#include <stdlib.h>
+static void	tube_set_hit_record_normal(\
+				const t_object_tube *tb, t_hit_record *h_rec, t_ray *ray)
 {
-	const t_vector3	cp = v3_sub(h_rec->p, v3_sub(tb->center, \
-									v3_mul((tb->orient), tb->height / 2)));
+	const t_vector3	cp = v3_sub(\
+							h_rec->p, \
+							v3_sub(\
+								tb->center, \
+								v3_mul((tb->orient), tb->height / 2)));
 	
 	h_rec->normal = v3_sub(cp, v3_mul(tb->orient, v3_dot(tb->orient, cp)));
+	set_face_normal(h_rec, ray, h_rec->normal);
+// if (fabs(v3_normalize(ray->dir).y - (-1)) < EPSILON)
+// {
+// printf("ray direction: %lf %lf %lf\n", ray->dir.x, ray->dir.y, ray->dir.z);
+// printf("hit point: %lf, %lf, %lf\n", h_rec->p.x, h_rec->p.y, h_rec->p.z);
+// printf("tube orient: %lf %lf %lf\n", tb->orient.x, tb->orient.y, tb->orient.z);
+// printf("tube center: %lf %lf %lf\n", tb->center.x, tb->center.y, tb->center.z);
+// printf("normal vector: %lf %lf %lf\n", h_rec->normal.x, h_rec->normal.y, h_rec->normal.z);
+// }
 }
 
 static bool	hit_tube(t_object *self, t_ray *ray, \
@@ -81,7 +99,7 @@ static bool	hit_tube(t_object *self, t_ray *ray, \
 	const t_object_tube		*tb = (t_object_tube *)self;
 	const t_vector3			co = v3_sub(ray->origin, \
 									v3_sub(tb->center, \
-									v3_mul((tb->orient), tb->height / 2)));
+										v3_mul((tb->orient), tb->height / 2)));
 	const double			coeff[3] = {
 		len_sqr_v3(ray->dir) - len_sqr_v3(v3_sub(ray->dir, tb->orient)),
 		2 * (v3_dot(co, ray->dir) \
@@ -98,8 +116,7 @@ static bool	hit_tube(t_object *self, t_ray *ray, \
 	h_rec->t = t;
 	h_rec->p = ray_at(ray, t);
 	h_rec->material = tb->material;
-	set_tube_normal_vector(tb, h_rec);
-	set_face_normal(h_rec, ray, v3_cross(v3_sub(tb->center, h_rec->p), co));
+	tube_set_hit_record_normal(tb, h_rec, ray);
 	return (true);
 }
 // (dir)^2 = len_sqr_v3(ray->dir)	

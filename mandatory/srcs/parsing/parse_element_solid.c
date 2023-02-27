@@ -89,17 +89,21 @@ int	parse_element_cylinder(t_scene *scene, char *str)
 	cy_info.material.type = MATERIAL_LAMBERTIAN;
 	cy_info.texture.type = TEXTURE_SOLID;
 	cy_info.texture.rgb1 = rgb;
+	//tube
 	cy_info.tube.center = center;
 	cy_info.tube.height = height;
 	cy_info.tube.orient = orient;
 	cy_info.tube.radius = diameter / 2;
 	cy_info.tube.material = cy_info.material;
 	cy_info.tube.texture = cy_info.texture;
-	cy_info.disk[0].center = v3_sub(center, v3_mul(orient, v3_dot(orient, center)));
+	// disk
+	cy_info.disk[0].center = v3_sub(center, v3_mul(orient, height / 2));
+	cy_info.disk[0].radius = cy_info.tube.radius;
 	cy_info.disk[0].normal = orient;
 	cy_info.disk[0].material = cy_info.material;
 	cy_info.disk[0].texture = cy_info.texture;
-	cy_info.disk[1].center = v3_add(center, v3_mul(orient, v3_dot(orient, center)));
+	cy_info.disk[1].center = v3_add(center, v3_mul(orient, height / 2));
+	cy_info.disk[1].radius = cy_info.tube.radius;
 	cy_info.disk[1].normal = orient;
 	cy_info.disk[1].texture = cy_info.texture;
 	cy_info.disk[1].material = cy_info.material;
