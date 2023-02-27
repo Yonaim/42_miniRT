@@ -46,7 +46,7 @@ bool		hit_tube(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
 	const t_object_tube		*tb = (t_object_tube *)self;
-	const t_vector			oc = v_subtract(ray->origin, \
+	const t_vector3			oc = v_subtract(ray->origin, \
 									v3_sub(tb->center, \
 									v3_mul((tb->orient), tb->height / 2)));
 	const double			coeff[3] = {

@@ -43,7 +43,7 @@ bool		hit_sphere(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
 	const t_object_sphere	*sp = (t_object_sphere *)self;
-	const t_vector			oc = v_subtract(ray->origin, sp->center);
+	const t_vector3			oc = v_subtract(ray->origin, sp->center);
 	const double			coeff[3] = {
 		pow(len_v3(ray->dir), 2), 2 * (dir),
 		v3_dot(oc, ray->dir),

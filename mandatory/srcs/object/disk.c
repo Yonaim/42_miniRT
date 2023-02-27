@@ -1,6 +1,6 @@
 #include "s_object.h"
 
-t_object	*new_disk(t_point3 center, double radius, t_vector normal, t_color3 rgb);
+t_object	*new_disk(t_point3 center, double radius, t_vector3 normal, t_color3 rgb);
 
 /*
 	<Line-Disk intersection>
