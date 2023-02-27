@@ -1,51 +1,27 @@
+#!/bin/sh
 
-FILE_PATH="../../../config/"
+FILE_PATH="config/"
 FILE="filename.mk"
+DIR_PATH="mandatory/srcs/"
+DIRECTORIES="camera,\
+			material, \
+			object, \
+			dynamic_array, \
+			object_array, \
+			parsing, \
+			pdf, \
+			ray, \
+			scene, \
+			texture, \
+			utils"
 
-rm -f config/$FILE;
+rm -f "${FILE_PATH}${FILE}"
 
-# mandatory
-cd mandatory/srcs;
-# camera files
-cd camera;
 printf "FILENAME\t\t=\t\t" >> $FILE_PATH$FILE;
-find *.c | cut -f 1 -d "." | xargs printf "camera/%s\\\\\n\t\t\t\t\t\t" >> $FILE_PATH$FILE;
 
-# material files
-cd ../material;
-find *.c | cut -f 1 -d "." | xargs printf "material/%s\\\\\n\t\t\t\t\t\t" >> $FILE_PATH$FILE;
+for dir in $(echo "${DIRECTORIES}" | tr ',' ' '); do
+    find "${DIR_PATH}${dir}" -name '*.c' | xargs -I{} basename {} .c | \
+	xargs printf "${dir}/%s\\\\\n\t\t\t\t\t\t"  >> "${FILE_PATH}${FILE}"
+done
 
-# object files
-cd ../object
-find *.c | cut -f 1 -d "." | xargs printf "object/%s\\\\\n\t\t\t\t\t\t" >> $FILE_PATH$FILE;
-
-# object array
-cd ../object_array
-find *.c | cut -f 1 -d "." | xargs printf "object_array/%s\\\\\n\t\t\t\t\t\t" >> $FILE_PATH$FILE;
-
-# parsing files
-cd ../parsing
-find *.c | cut -f 1 -d "." | xargs printf "parsing/%s\\\\\n\t\t\t\t\t\t" >> $FILE_PATH$FILE;
-
-# pdf files
-cd ../pdf
-find *.c | cut -f 1 -d "." | xargs printf "pdf/%s\\\\\n\t\t\t\t\t\t" >> $FILE_PATH$FILE;
-
-# ray files
-cd ../ray
-find *.c | cut -f 1 -d "." | xargs printf "ray/%s\\\\\n\t\t\t\t\t\t" >> $FILE_PATH$FILE;
-
-# scene files
-cd ../scene
-find *.c | cut -f 1 -d "." | xargs printf "scene/%s\\\\\n\t\t\t\t\t\t">> $FILE_PATH$FILE;
-
-# texture files
-cd ../texture
-find *.c | cut -f 1 -d "." | xargs printf "texture/%s\\\\\n\t\t\t\t\t\t">> $FILE_PATH$FILE;
-
-# utils files
-cd ../utils
-find *.c | cut -f 1 -d "." | xargs printf "utils/%s\\\\\n\t\t\t\t\t\t">> $FILE_PATH$FILE;
-
-# main file
-printf "main\n" >> $FILE_PATH$FILE;
+printf "main\n\n" >> "${FILE_PATH}${FILE}"
