@@ -38,14 +38,18 @@ The solution of this equation is the case they intersect.
 
 -> t = (P0 - O) * n / (n * dir)
 (If there are countless solutions, it means that a line is contained in the plane.)
-(If a given ray is included in a plane, it is considered not hit)
+(If a given ray is contained in a plane, it is considered not hit)
 
 <Line-Disk intersection>
 
-Plane: (P - P0) * n = 0
-	(P: point on the plane)
-	(P0: known point that exist on a plane)
-	(n: normal vector of a plane)
+A disk can be thought of as a limited-area plane, given its center and radius.
+So intersection check the same as the plane, but further check the distance between the center and the radius.
+
+Disk: (P - C) * n = 0 (|P - C| <= r)
+	(P: point on the disk)
+	(C: center of the disk)
+	(n: normal vector of a disk)
+	(r: radius of the disk)
 
 Line: P(t) = o + t * dir
 	(P(t): point this line points to)
@@ -56,14 +60,11 @@ Line: P(t) = o + t * dir
 Combining these two equations yields an equation for t.
 The solution of this equation is the case they intersect.
 
--> t = (P0 - O) * n / (n * dir)
-(If there are countless solutions, it means that a line is contained in the plane.)
-(If a given ray is included in a plane, it is considered not hit)
+-> t = (C - O) * n / (n * dir) (|P - C| <= r)
+(If there are countless solutions, it means that a line is contained in the disk.)
+(If a given ray is contained in a disk, it is considered not hit)
 
-<Line-Cylinder intersection>
-
-The cylinder consists of a tube and two discs. 
-Line-Disk intersection already exists in another section, so look there.
+<Line-Tube intersection>
 
 Tube: (P - C)^2 - ((P - C) * ^h)) - r^2 = 0
 	(P: point on tube)
@@ -86,3 +87,8 @@ value of each coefficient:
 	b = 2 * (CO * dir - (CO * ^h)(dir * ^h))
 	c = CO^2 - (CO - ^h)^2 - r^2
 	(CO = O - C)
+
+<Line-Cylinder intersection>
+
+The cylinder consists of a tube and two discs. 
+Line-Tube intersection and Line-Disk intersection already exists in another section, so check there.

@@ -20,11 +20,16 @@ t_object	*new_cylinder(\
 	return ((t_object *)new);
 }
 
-bool	hit_cylinder(t_object *self, t_ray *ray, \
+/*
+	<Line-Cylinder intersection>
+
+	The cylinder consists of three faces, one tube and two disks.
+	Check the intersection of these faces and line.
+*/
+bool		hit_cylinder(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
-	(void)self;
-	(void)ray;
-	(void)t_max;
-	(void)
+	const t_object_cylinder	*cy = (t_object_cylinder *)self;
+
+	return (hit_object_list(cy->object_list, ray, h_rec, t_max));
 }
