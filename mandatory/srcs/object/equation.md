@@ -64,10 +64,7 @@ The solution of this equation is the case they intersect.
 (If there are countless solutions, it means that a line is contained in the disk.)
 (If a given ray is contained in a disk, it is considered not hit)
 
-<Line-Cylinder intersection>
-
-The cylinder consists of a tube and two discs. 
-Line-Disk intersection already exists in another section, only handle tubes here.
+<Line-Tube intersection>
 
 Tube: (P - C)^2 - ((P - C) * ^h)) - r^2 = 0
 	(P: point on tube)
@@ -90,3 +87,8 @@ value of each coefficient:
 	b = 2 * (CO * dir - (CO * ^h)(dir * ^h))
 	c = CO^2 - (CO - ^h)^2 - r^2
 	(CO = O - C)
+
+<Line-Cylinder intersection>
+
+The cylinder consists of a tube and two discs. 
+Line-Tube intersection and Line-Disk intersection already exists in another section, so check there.
