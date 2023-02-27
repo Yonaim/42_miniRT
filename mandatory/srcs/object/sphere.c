@@ -42,7 +42,7 @@ t_object	*new_sphere(t_point3 pos, double radius, t_vector3 rgb)
 bool		hit_sphere(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
-	const t_object_sphere	*sp = (t_object_sp *)self;
+	const t_object_sphere	*sp = (t_object_sphere *)self;
 	const t_vector			oc = v_subtract(ray->origin, sp->center);
 	const double			coeff[3] = {
 		pow(len_v3(ray->dir), 2), 2 * (dir),
@@ -56,7 +56,7 @@ bool		hit_sphere(t_object *self, t_ray *ray, \
 		return (false);
 	if (is_in_range(root[0], T_MINIMUN, t_max))
 		t = root[0];
-	else if (is_in_range(root[0], T_MINIMUN, t_max))
+	else if (is_in_range(root[1], T_MINIMUN, t_max))
 		t = root[1];
 	else
 		return (false);
