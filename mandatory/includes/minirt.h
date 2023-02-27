@@ -5,13 +5,12 @@
 // # include "s_scene.h"
 # include "constants.h"
 # include "typedef.h"
-# include "error.h"
+# include "handle_error.h"
 # include "s_mlx.h"
 # include "s_scene.h"
 # include "color.h"
 # include "camera.h"
 # include "mlx_utils.h"
-# include "shading.h"
 # include "scene.h"
 
 int	parse_scene(t_scene *scene, char *path);
