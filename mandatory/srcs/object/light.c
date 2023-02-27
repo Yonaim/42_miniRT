@@ -14,5 +14,5 @@ t_object	*new_light(t_point3 pos, double ratio, t_color3 rgb)
 	return ((t_object *)new);
 }
 
-bool		hit_light(t_object *self, r_ray *ray, \
+bool		hit_light(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max);

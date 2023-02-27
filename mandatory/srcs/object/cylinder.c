@@ -19,5 +19,5 @@ t_object	*new_cylinder(t_point3 pos, t_vector3 orient, \
 	return ((t_object *)new);
 }
 
-bool		hit_cylinder(t_object *self, r_ray *ray, \
+bool		hit_cylinder(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max);

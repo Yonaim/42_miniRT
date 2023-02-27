@@ -14,15 +14,15 @@ t_object	*new_disk(t_point3 center, double radius, t_vector normal, t_color3 rgb
 t_object	*new_light(t_point3 pos, double ratio, t_color3 rgb);
 
 // hit check
-bool		hit_sphere(t_object *self, r_ray *ray, \
+bool		hit_sphere(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max);
-bool		hit_cylinder(t_object *self, r_ray *ray, \
+bool		hit_cylinder(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max);
-bool		hit_plane(t_object *self, r_ray *ray, \
+bool		hit_plane(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max);
-bool		hit_disk(t_object *self, r_ray *ray, \
+bool		hit_disk(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max);
-bool		hit_light(t_object *self, r_ray *ray, \
+bool		hit_light(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max);
 
 #endif
