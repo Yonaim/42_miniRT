@@ -1,6 +1,7 @@
 #ifndef TEXTURE_H
 # define TEXTURE_H
 
+# include "s_info_element.h"
 # include "typedef.h"
 
 t_texture	*new_texture(t_info_texture *texture_info);
