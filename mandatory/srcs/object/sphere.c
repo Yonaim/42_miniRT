@@ -16,5 +16,59 @@ t_object	*new_sphere(t_point3 pos, double radius, t_vector3 rgb)
 	return ((t_object *)new);
 }
 
+/*
+	<Line-Sphere intersection>
+
+	Sphere: (P - C) * (P - C) = r^2
+		(P: point on the surface of the sphere)
+		(C: center of the Sphere)
+		(r: radius of the Sphere)
+
+	Line: P(t) = o + t * dir
+		(P(t): point this line points to)
+		(O: origin of line)
+		(dir: direction vector of line)
+		(t: scalar value of the direction vector)
+
+	Combining these two equations yields an equation for t.
+	The solution of this equation is the case they intersect.
+
+	-> a * t^2 + b * t + c = 0
+	value of each coefficient:
+		a = dir * dir
+		b = 2 * (dir * (O - C))
+		c = (O - C)^2 - r^2
+*/
 bool		hit_sphere(t_object *self, r_ray *ray, \
-						t_hit_record_ *h_rec, double t_max);
+						t_hit_record *h_rec, double t_max)
+{
+	const t_object_sphere	*sp = (t_object_sp *)self;
+	const t_vector			oc = v_subtract(ray->origin, sp->center);
+	double 					root[2];
+	double					t;
+	t_vector3				outward_normal;
+
+	if (solve_quadratic(pow(len_v3(ray->dir), 2), 2 * (dir)), \
+						v3_dot(oc, ray->dir), \
+						pow(len_v3(oc), 2) - pow(sp->radius, 2), root == false)
+		return (false);
+	if (is_in_range(root[0], T_MINIMUN, t_max))
+		t = root[0];
+	else if (is_in_range(root[0], T_MINIMUN, t_max))
+		t = root[1];
+	else
+		return (false);
+	h_rec->t = t;
+	h_rec->p = ray_at(ray, t);
+	h_rec->material = &sp->material;
+	set_face_normal(h_rec, in_ray, v3_normalize(v3_sub(h_rec->p, sp->center)));
+	return (true);	
+}
+
+static void	destroy_sphere(t_object *object)
+{
+	t_object_sphere	*sphere;
+
+	sphere = (t_object_sphere *)object;
+	free(sphere);
+}
