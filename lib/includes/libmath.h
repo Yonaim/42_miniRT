@@ -43,7 +43,8 @@ t_vector3	v3_random_on_unit_disk(void);
 bool		solve_quadratic(double a, double b, double c, double root[2]);
 bool		solve_quadratic_half_b(double a, double half_b, double c, double root[2]);
 
-// bounding
+// range
+bool		is_in_range(double n, double min, double max)
 double		clamp(double x, double min, double max);
 
 // trigonometry
