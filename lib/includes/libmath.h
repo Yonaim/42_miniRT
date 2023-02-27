@@ -4,6 +4,7 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "vector3.h"
+# include "orthonormal_basis.h"
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
@@ -52,5 +53,9 @@ double		degree_to_radian(double degrees);
 // random
 double		random_double(void);
 double		random_double_range(double min, double max);
+
+// orthonormal basis
+t_onb		orthonormal_basis(t_vector3 n);
+t_vector3	onb_local(t_onb onb, t_vector3 v);
 
 #endif
