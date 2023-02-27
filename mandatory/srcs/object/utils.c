@@ -8,7 +8,7 @@
  * the direction of the outward normal vector at the hit point and record it.
  * 
  * In hit record, these are recorded.
- * 	- whether or not it is opposed
+ * 	- whether or not it is opposed (= is ray from in front of face)
  * 	- the direction of the appropriate normal vector
 */
 void	set_face_normal(\
