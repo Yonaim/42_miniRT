@@ -16,7 +16,7 @@ LDFLAGS			=	\
 					-L./$(LIBFT_PATH) \
 					-L./$(LIBMLX_PATH) $(LIBMLX_FLAGS) \
 					-L./$(LIBMATH_PATH)
-LDLIBS			=	-lft -lmlx -lmath
+LDLIBS			=	-lft -lmlx -lmath -lm
 
 ifdef SANITIZE
 CFLAGS			+=	$(CFLAGS_SANITIZE)
