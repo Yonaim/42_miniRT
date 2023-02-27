@@ -44,12 +44,15 @@ bool		hit_sphere(t_object *self, t_ray *ray, \
 {
 	const t_object_sphere	*sp = (t_object_sp *)self;
 	const t_vector			oc = v_subtract(ray->origin, sp->center);
+	const double			coeff[3] = {
+		pow(len_v3(ray->dir), 2), 2 * (dir),
+		v3_dot(oc, ray->dir),
+		pow(len_v3(oc), 2) - pow(sp->radius, 2)
+	}
 	double 					root[2];
 	double					t;
 
-	if (solve_quadratic(pow(len_v3(ray->dir), 2), 2 * (dir)), \
-						v3_dot(oc, ray->dir), \
-						pow(len_v3(oc), 2) - pow(sp->radius, 2), root == false)
+	if (solve_quadratic(coeff[A], coeff[B], coeff[C], root == false))
 		return (false);
 	if (is_in_range(root[0], T_MINIMUN, t_max))
 		t = root[0];
