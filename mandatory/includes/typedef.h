@@ -26,6 +26,7 @@ typedef struct s_camera					t_camera;
 typedef struct s_world					t_world;
 
 // object
+typedef struct s_object_list			t_object_list;
 typedef struct s_object					t_object;
 typedef struct s_object_point_light		t_object_point_light;
 typedef struct s_object_sphere			t_object_sphere;
@@ -60,5 +61,12 @@ typedef bool							(*t_hit)(\
 												t_ray *ray, \
 												t_hit_record *h_rec, \
 												double t_max);
+
+typedef void							(*t_destroy_object)(\
+												t_object *object);
+typedef void							(*t_destroy_material)(\
+												t_material *material);
+typedef void							(*t_destroy_texture)(\
+												t_texture *texture);
 
 #endif
