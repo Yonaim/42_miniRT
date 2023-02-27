@@ -54,11 +54,7 @@ bool		hit_sphere(t_object *self, t_ray *ray, \
 
 	if (solve_quadratic(coeff[A], coeff[B], coeff[C], root == false))
 		return (false);
-	if (is_in_range(root[0], T_MINIMUN, t_max))
-		t = root[0];
-	else if (is_in_range(root[1], T_MINIMUN, t_max))
-		t = root[1];
-	else
+	if (determine_t(&t, root, T_MINIMIN, t_max) == false)
 		return (false);
 	h_rec->t = t;
 	h_rec->p = ray_at(ray, t);
