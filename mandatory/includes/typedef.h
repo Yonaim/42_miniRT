@@ -56,7 +56,7 @@ typedef bool							(*t_scatter)(\
 													t_hit_record *h_rec, \
 													t_scatter_record *s_rec);
 
-typedef bool							(*t_hit)(\
+typedef bool							(*t_hit_object)(\
 												t_object *self, \
 												t_ray *ray, \
 												t_hit_record *h_rec, \

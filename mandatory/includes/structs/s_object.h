@@ -7,14 +7,14 @@
 
 struct s_object
 {
-	t_hit				hit;
+	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_material			*material;
 };
 
 struct s_object_point_light
 {
-	t_hit				hit;
+	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_material			*material;
 	t_point3			pos;
@@ -22,7 +22,7 @@ struct s_object_point_light
 
 struct s_object_sphere
 {
-	t_hit				hit;
+	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_material			*material;
 	t_point3			center;
@@ -31,7 +31,7 @@ struct s_object_sphere
 
 struct s_object_disk
 {
-	t_hit				hit;
+	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_material			*material;
 	t_point3			center;
@@ -41,7 +41,7 @@ struct s_object_disk
 
 struct s_object_tube
 {
-	t_hit				hit;
+	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_material			*material;
 	t_point3			center;
@@ -52,7 +52,7 @@ struct s_object_tube
 
 struct s_object_cylinder
 {
-	t_hit				hit;
+	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_material			*material;
 	t_object_list		faces;
@@ -60,7 +60,7 @@ struct s_object_cylinder
 
 struct s_object_plane
 {
-	t_hit				hit;
+	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_material			*material;
 	t_point3			point;
@@ -69,7 +69,7 @@ struct s_object_plane
 
 struct s_object_xy_rectangle
 {
-	t_hit				hit;
+	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_material			*material;
 	double				x0;
@@ -81,7 +81,7 @@ struct s_object_xy_rectangle
 
 struct s_object_xz_rectangle
 {
-	t_hit				hit;
+	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_material			*material;
 	double				x0;
@@ -93,7 +93,7 @@ struct s_object_xz_rectangle
 
 struct s_object_yz_rectangle
 {
-	t_hit				hit;
+	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_material			*material;
 	double				y0;
@@ -105,7 +105,7 @@ struct s_object_yz_rectangle
 
 struct s_object_box
 {	
-	t_hit				hit;
+	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_material			*material;
 	t_point3			p_min;
