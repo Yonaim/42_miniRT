@@ -25,6 +25,9 @@ typedef struct s_camera					t_camera;
 // world
 typedef struct s_world					t_world;
 
+// object array
+typedef struct s_object_arr				t_object_arr;
+
 // object
 typedef struct s_object_list			t_object_list;
 typedef struct s_object					t_object;
@@ -33,6 +36,12 @@ typedef struct s_object_sphere			t_object_sphere;
 typedef struct s_object_disk			t_object_disk;
 typedef struct s_object_cylinder		t_object_cylinder;
 typedef struct s_object_plane			t_object_plane;
+
+// texture
+typedef struct s_texture				t_texture;
+typedef struct s_texture_solid			t_texture_solid;
+typedef struct s_texture_checker		t_texture_checker;
+typedef struct s_texture_image			t_texture_image;
 
 // material
 typedef struct s_material				t_material;
@@ -50,17 +59,40 @@ typedef struct s_pdf					t_pdf;
 // color
 typedef t_vector3						t_color3;
 
+// texture 
+typedef t_color3						(*t_get_texture_value)(\
+												t_texture *texture, \
+												double u, \
+												double v, \
+												t_point3 p);
+
+// material
 typedef bool							(*t_scatter)(\
 													t_material *self, \
 													t_ray *in, \
 													t_hit_record *h_rec, \
 													t_scatter_record *s_rec);
 
-typedef bool							(*t_hit)(\
+typedef t_color3						(*t_emit)(\
+												t_material *self, \
+												double u, \
+												double v, \
+												t_point3 p);
+
+// object
+typedef bool							(*t_hit_object)(\
 												t_object *self, \
 												t_ray *ray, \
 												t_hit_record *h_rec, \
 												double t_max);
+
+typedef int								(*t_get_object_type)(void);
+
+typedef double							(*t_scattering_pdf)(\
+												t_material *self,\
+												t_ray *in_ray, \
+												t_hit_record *h_rec, \
+												t_scatter_record *s_rec);
 
 typedef void							(*t_destroy_object)(\
 												t_object *object);
