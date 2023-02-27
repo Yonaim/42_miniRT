@@ -15,6 +15,6 @@ t_ray	primary_ray(t_camera *cam, double u, double v)
 	terminal_pt = v3_add(v3_add(cam->focus.bottom_left, \
 								v3_mul(cam->focus.horiz, u)), \
 						v3_mul(cam->focus.vert, v));
-	direction = v3_sub(terminal_pt, initial_pt);
+	direction = v3_normalize(v3_sub(terminal_pt, initial_pt));
 	return (ray(initial_pt, direction));
 }

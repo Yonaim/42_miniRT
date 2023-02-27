@@ -2,24 +2,25 @@
 
 static void	destroy_disk(t_object *object);
 static int	get_disk_type(void);
-static bool	hit_disk(t_object *self, t_ray *ray, \
-						t_hit_record *h_rec, double t_max);
+static bool	hit_disk(
+				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
 
-t_object	*new_disk(t_point3 center, double radius, \
-								t_vector3 normal, t_material *material)
+t_object	*new_disk(t_info_object_disk *dk_info)
 {
 	t_object_disk	*new;
 
 	new = malloc(sizeof(t_object_disk));
-	if (!new)
+	if (new == NULL)
 		return (NULL);
 	new->hit = hit_disk;
 	new->destroy = destroy_disk;
 	new->get_type = get_disk_type;
-	new->material = material;
-	new->center = center;
-	new->radius = radius;
-	new->normal = normal;
+	new->material = new_material(&dk_info->material, &dk_info->texture);
+	if (new->material == NULL)
+		return (NULL);
+	new->center = dk_info->center;
+	new->radius = dk_info->radius;
+	new->normal = dk_info->normal;
 	return ((t_object *)new);
 }
 
@@ -40,7 +41,8 @@ static int	get_disk_type(void)
 /*
 	<Line-Disk intersection>
 
-	A disk can be thought of as a limited-area plane, given its center and radius.
+	A disk can be thought of as a limited-area plane, 
+	given its center and radius.
 	So intersection check the same as the plane, 
 	but further check the distance between the center and the radius.
 
@@ -60,19 +62,21 @@ static int	get_disk_type(void)
 	The solution of this equation is the case they intersect.
 
 	-> t = (C - O) * n / (n * dir) (|P - C| <= r)
-	(If there are countless solutions, it means that a line is contained in the disk.)
+	(If there are countless solutions, it means that a line is contained 
+	in the disk.)
 	(If a given ray is contained in a disk, it is considered not hit)
 */
-static bool	hit_disk(t_object *self, t_ray *ray, \
-						t_hit_record *h_rec, double t_max)
+
+static bool	hit_disk(
+			t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max)
 {
 	const t_object_disk		*dk = (t_object_disk *)self;
 	double					t;
 	t_point3				p;
 
-	if (v3_dot(dk->normal, ray->dir) < EPSILON)
+	if (fabs(v3_dot(dk->normal, ray->dir)) < EPSILON)
 		return (false);
-	t = v3_dot(v3_sub(dk->center, ray->origin), dk->normal) \
+	t = v3_dot(v3_sub(dk->center, ray->origin), dk->normal)
 		/ v3_dot(dk->normal, ray->dir);
 	if (t < T_MINIMUM || t > t_max)
 		return (false);
@@ -83,5 +87,5 @@ static bool	hit_disk(t_object *self, t_ray *ray, \
 	h_rec->p = p;
 	h_rec->material = dk->material;
 	set_face_normal(h_rec, ray, dk->normal);
-	return (true);	
+	return (true);
 }

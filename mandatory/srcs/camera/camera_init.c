@@ -23,7 +23,6 @@ static void	init_camera_basis(t_camera *cam)
 	cam->basis.dir = v3_normalize(cam->basis.dir);
 	up_vector = determine_up_vector(cam->basis.dir);
 	cam->basis.right = v3_normalize(v3_cross(up_vector, cam->basis.dir));
-	// cam->basis.up = v3_cross(cam->basis.dir, cam->basis.right);
 	cam->basis.up = v3_cross(cam->basis.right, cam->basis.dir);
 }
 
@@ -40,8 +39,8 @@ static void	init_camera_focus_plane(t_camera *cam, t_focus_plane *focus)
 	focus->horiz = v3_mul(cam->basis.right, focus->dist * cam->viewport.width);
 	focus->vert = v3_mul(cam->basis.up, focus->dist * cam->viewport.height);
 	focus->bottom_left = \
-		v3_sub(\
-			v3_add(cam->origin, v3_mul(cam->basis.dir, -focus->dist)), \
+		v3_sub(
+			v3_add(cam->origin, v3_mul(cam->basis.dir, -focus->dist)),
 			v3_div(v3_add(focus->horiz, focus->vert), 2));
 }
 

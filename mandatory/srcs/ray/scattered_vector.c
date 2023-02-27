@@ -12,7 +12,7 @@ static double	reflectance(double cosine, double idx_ratio)
 t_vector3	reflected_vector(t_vector3 in, t_vector3 n)
 {
 	t_vector3	reflected;
-	
+
 	reflected = v3_sub(in, v3_mul(n, 2 * v3_dot(in, n)));
 	return (reflected);
 }

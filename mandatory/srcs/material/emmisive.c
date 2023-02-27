@@ -1,11 +1,10 @@
 #include "material_internal.h"
 
-static bool		emmisive_scattered(\
-							t_material *self, t_ray *in, \
-							t_hit_record *h_rec, t_scatter_record *s_rec);
-static t_color3	emmisive_emitted(\
-								t_material *self, \
-								double u, double v, t_point3 p);
+static bool		emmisive_scattered(
+					t_material *self, t_ray *in, 
+					t_hit_record *h_rec, t_scatter_record *s_rec);
+static t_color3	emmisive_emitted(
+					t_material *self, double u, double v, t_point3 p);
 static void		destroy_emmisive(t_material *self);
 
 t_material	*new_emmisive(t_color3 color)
@@ -22,9 +21,9 @@ t_material	*new_emmisive(t_color3 color)
 	return ((t_material *)emmisive);
 }
 
-static bool	emmisive_scattered(\
-							t_material *self, t_ray *in, \
-							t_hit_record *h_rec, t_scatter_record *s_rec)
+static bool	emmisive_scattered(
+			t_material *self, t_ray *in,
+			t_hit_record *h_rec, t_scatter_record *s_rec)
 {
 	(void)self;
 	(void)in;
@@ -33,9 +32,8 @@ static bool	emmisive_scattered(\
 	return (false);
 }
 
-static t_color3	emmisive_emitted(\
-								t_material *self, \
-								double u, double v, t_point3 p)
+static t_color3	emmisive_emitted(
+				t_material *self, double u, double v, t_point3 p)
 {
 	t_material_emmisive	*emmisive;
 	t_color3			emitted;

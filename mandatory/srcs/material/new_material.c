@@ -1,14 +1,12 @@
 #include "material_internal.h"
 #include "s_info_element.h"
 
-t_material	*new_material(\
-				t_info_material *material_info, t_info_texture *texture_info)
+t_material	*new_material(
+			t_info_material *material_info, t_info_texture *texture_info)
 {
 	t_texture	*texture;
 
 	texture = new_texture(texture_info);
-	if (!texture)
-		return (NULL);
 	if (material_info->type == MATERIAL_LAMBERTIAN)
 		return (new_lambertian(texture));
 	else if (material_info->type == MATERIAL_METAL)

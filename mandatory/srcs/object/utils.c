@@ -11,7 +11,7 @@
  * 	- whether or not it is opposed (= is ray from in front of face)
  * 	- the direction of the appropriate normal vector
 */
-void	set_face_normal(\
+void	set_face_normal(
 		t_hit_record *h_rec, t_ray *in_ray, t_vector3 outward_normal)
 {
 	if (v3_dot(in_ray->dir, outward_normal) < 0)

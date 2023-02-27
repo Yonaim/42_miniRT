@@ -2,6 +2,7 @@
 # define OBJECT_INTERNAL_H
 
 // standard library
+# include <stdlib.h>
 # include <math.h>
 // library
 # include "libft.h"
@@ -27,9 +28,15 @@ enum	e_equation_coefficient
 	C
 };
 
-void		set_face_normal(\
-			t_hit_record *h_rec, t_ray *in_ray, t_vector3 outward_normal);
+// Utils
+void		set_face_normal(
+				t_hit_record *h_rec, t_ray *in_ray, t_vector3 outward_normal);
 bool		determine_t(double *t, double root[2], double t_min, double t_max);
-t_object	*new_sphere(t_point3 center, double radius, t_material *material);
+
+// Constructor
+t_object	*new_sphere(t_info_object_sphere *sp_info);
+t_object	*new_tube(t_info_object_tube *tb_info);
+t_object	*new_disk(t_info_object_disk *dk_info);
+t_object	*new_cone_lateral(t_info_object_cone_lateral *lat_info);
 
 #endif

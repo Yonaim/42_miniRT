@@ -1,8 +1,8 @@
 #include "object_arr_internal.h"
 
-bool	hit_object_arr_except_point_light(\
-						t_object_arr *objects, t_ray *in_ray, \
-						t_hit_record *final_rec, double t_max)
+bool	hit_object_arr_except_point_light(
+		t_object_arr *objects, t_ray *in_ray,
+		t_hit_record *final_rec, double t_max)
 {
 	bool			is_hit;
 	double			closest_t;
@@ -28,9 +28,9 @@ bool	hit_object_arr_except_point_light(\
 	return (is_hit);
 }
 
-bool	hit_object_arr(\
-				t_object_arr *objects, t_ray *in_ray, \
-				t_hit_record *final_rec, double t_max)
+bool	hit_object_arr(
+		t_object_arr *objects, t_ray *in_ray,
+		t_hit_record *final_rec, double t_max)
 {
 	bool			is_hit;
 	double			closest_t;

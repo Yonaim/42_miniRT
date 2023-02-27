@@ -15,6 +15,12 @@ static int	_grow_dynamic_arr(t_dynamic_arr *darr)
 	return (SUCCESS);
 }
 
+/**
+ * The push_back_dynamic_arr function adds an element to the end of the array 
+ * stored in the t_dynamic_arr structure pointed to by the darr argument.
+ * If the array is full, it increases its capacity by calling _grow_dynamic_arr
+ * function internally.
+*/
 int	push_back_dynamic_arr(t_dynamic_arr *darr, void *data)
 {
 	if (darr->cnt == darr->cap

@@ -8,15 +8,10 @@ CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror -MMD -MP
 CFLAGS_SANITIZE	=	-fsanitize=address -g3
 CPPFLAGS		=	\
-					-I./$(LIB_PATH)/includes \
-					-I./$(LIB_PATH)/libmath/includes \
 					-I./$(PART_PATH)/includes \
 					-I./$(PART_PATH)/includes/structs
-LDFLAGS			=	\
-					-L./$(LIBFT_PATH) \
-					-L./$(LIBMLX_PATH) $(LIBMLX_FLAGS) \
-					-L./$(LIBMATH_PATH)
-LDLIBS			=	-lft -lmlx -lmath -lm
+LDFLAGS			=	
+LDLIBS			=	-lm
 
 ifdef SANITIZE
 CFLAGS			+=	$(CFLAGS_SANITIZE)
@@ -25,7 +20,7 @@ endif
 # ********************************** LIBRARY ********************************* #
 
 # libft, libmlx, libmath
-include 			config/library.mk
+include 		config/library.mk
 
 # ********************************** miniRT ********************************* #
 
@@ -46,7 +41,20 @@ OBJS			=	$(addprefix ./$(PART_PATH)/objs/, $(addsuffix $(PART_SUFFIX).o, $(FILEN
 DEPS			=	$(OBJS:.o=.d)
 
 # build
-include				config/build.mk
+# dependency rule
+ifeq ($(MAKECMDGOALS), fclean)
+else ifeq ($(MAKECMDGOALS), clean)
+else
+	-include $(DEPS)
+endif
+
+# build program
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ $(LDLIBS) $(LDFLAGS)
+
+$(PART_PATH)/objs/%.o : $(PART_PATH)/srcs/%.c
+	mkdir -p $(@D)
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 # ******************************* BASIC RULES ******************************** #
 
@@ -67,17 +75,17 @@ clean:
 	make -C $(LIBFT_PATH) clean --silent
 	make -C $(LIBMLX_PATH) clean --silent
 	make -C $(LIBMATH_PATH) clean --silent
-	$(RM) $(addprefix ./mandatory/srcs/, $(addsuffix .o, $(FILENAME)))
-	$(RM) $(addprefix ./bonus/srcs/, $(addsuffix _bonus.o, $(FILENAME)))
+	$(RM) -rf mandatory/objs
+	$(RM) -rf bonus/objs
 
 fclean:
 	make -C $(LIBMLX_PATH) clean --silent
 	make -C $(LIBFT_PATH) fclean --silent
 	make -C $(LIBMATH_PATH) fclean --silent
 	$(RM) $(LIBMLX_PATH)/$(LIBMLX)
-	$(RM) $(addprefix ./mandatory/srcs/, $(addsuffix .o, $(FILENAME)))
-	$(RM) $(addprefix ./bonus/srcs/, $(addsuffix _bonus.o, $(FILENAME)))
-	$(RM) $(MINIRT)
+	$(RM) -rf mandatory/objs
+	$(RM) -rf bonus/objs
+	$(RM) $(NAME)
 
 re: 
 	make fclean
@@ -91,26 +99,4 @@ ifdef DEBUG
 LLDB	=	lldb
 endif
 
-library:
-	make -C $(LIBFT_PATH) --silent
-	make -C $(LIBMLX_PATH) --silent
-	make -C $(LIBMATH_PATH) --silent
-
-clean_test:
-	rm ./test_parse_exe
-
-build_parse: ./mandatory/srcs/parsing/*.c ./mandatory/srcs/object/*.c
-	make library
-	$(CC) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -g \
-	./mandatory/srcs/parsing/*.c \
-	./mandatory/srcs/object/*.c \
-	-o ./test_parse_exe
-
-test_parse:
-	make build_parse
-	$(LLDB) ./test_parse_exe ./sample.rt
-
-get_filenames:
-	sh dev/scripts/get_filenames.sh
-
-.PHONY: library clean_test build_parse test_parse get_filenames
+include				config/debug_rule.mk
