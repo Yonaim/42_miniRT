@@ -28,22 +28,31 @@ struct s_object_sphere
 
 struct s_object_disk
 {
-	t_hit					hit;
-	t_material_lambertian	*material;
-	t_point3				center;
-	double					radius;
-	t_vector3				normal;
+	t_material			*material;
+	t_hit				hit;
+	t_destroy_object	destroy;
+	t_point3			center;
+	double				radius;
+	t_vector3			normal;
+};
+
+struct s_object_tube
+{
+	t_material			*material;
+	t_hit				hit;
+	t_destroy_object	destroy;
+	t_point3			center;
+	double				radius;
+	double				height;
+	t_vector3			orient;
 };
 
 struct s_object_cylinder
 {
-	t_hit					hit;
-	t_material_lambertian	*material;
-	t_point3				center;
-	double					radius;
-	double					height;
-	t_vector3				orient;
-	t_object_disk			disks[2];
+	t_material			*material;
+	t_hit				hit;
+	t_destroy_object	destroy;
+	t_object_list		faces;
 };
 
 struct s_object_plane
