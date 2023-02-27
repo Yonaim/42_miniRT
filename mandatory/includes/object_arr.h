@@ -11,5 +11,8 @@ bool	hit_objects(\
 				t_ray *ray, \
 				t_hit_record *final_rec, \
 				double t_max);
+bool	hit_non_point_lights(\
+						t_object_arr *objects, t_ray *in_ray, \
+						t_hit_record *final_rec, double t_max);
 
 #endif
