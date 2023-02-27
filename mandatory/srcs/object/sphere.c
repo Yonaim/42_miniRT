@@ -46,7 +46,6 @@ bool		hit_sphere(t_object *self, r_ray *ray, \
 	const t_vector			oc = v_subtract(ray->origin, sp->center);
 	double 					root[2];
 	double					t;
-	t_vector3				outward_normal;
 
 	if (solve_quadratic(pow(len_v3(ray->dir), 2), 2 * (dir)), \
 						v3_dot(oc, ray->dir), \
