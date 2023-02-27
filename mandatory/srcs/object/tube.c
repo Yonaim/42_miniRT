@@ -64,14 +64,12 @@ static int	get_tube_type(void)
 		(CO = O - C)
 */
 
-static void	get_tube_normal_vector(\
-				t_object_tube *tb, t_hit_record *h_rec, t_ray *ray)
+static void	set_tube_normal_vector(t_object_tube *tb, t_hit_record *h_rec)
 {
 	const t_vector3	cp = v3_sub(h_rec->p, v3_sub(tb->center, \
 									v3_mul((tb->orient), tb->height / 2)));
-	// h_rec->normal = v3_mul(, v3_dot(tube->orient, *co));/
-	(void)cp;
-	(void)ray;
+	
+	h_rec->normal = v3_sub(cp, v3_mul(tb->orient, v3_dot(tb->orient, cp)));
 }
 
 static bool	hit_tube(t_object *self, t_ray *ray, \
@@ -97,7 +95,7 @@ static bool	hit_tube(t_object *self, t_ray *ray, \
 	h_rec->t = t;
 	h_rec->p = ray_at(ray, t);
 	h_rec->material = tb->material;
-	get_tube_normal_vector((t_object_tube *)tb, h_rec, ray);
+	set_tube_normal_vector(tb, h_rec);
 	set_face_normal(h_rec, ray, v3_cross(v3_sub(tb->center, h_rec->p), co));
 	return (true);
 }
