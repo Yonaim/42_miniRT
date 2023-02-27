@@ -20,6 +20,7 @@ enum e_success_or_failure
 
 // sampling
 # define SAMPLES_PER_PIXEL		10
+# define PUT_IMG_TERM			10
 
 // recursive depth
 # define MAX_DEPTH				50
