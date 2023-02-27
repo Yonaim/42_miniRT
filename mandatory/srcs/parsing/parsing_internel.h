@@ -4,15 +4,22 @@
 
 # include "libft.h"
 # include "constants.h"
+
+// structure definition
 # include "s_scene.h"
 # include "s_object.h"
 # include "s_dynamic_arr.h"
 # include "s_material.h"
 # include "s_texture.h"
+# include "s_info_element.h"
+
+// declaration
 # include "object.h"
 # include "object_arr.h"
 # include "material.h"
 # include "texture.h"
+
+// standard library
 # include <stdio.h>
 # include <fcntl.h>
 

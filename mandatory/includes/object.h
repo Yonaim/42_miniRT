@@ -6,10 +6,9 @@
 
 // constructor
 t_object	*new_sphere(t_point3 center, double radius, t_material *material);
-t_object	*new_cylinder(t_object_tube *tube, t_object_disk *disk[2]);
+t_object	*new_cylinder(t_info_object_cylinder *cy_info);
 t_object	*new_plane(t_point3 pos, t_vector3 normal, t_color3 rgb);
-t_object	*new_disk(t_point3 center, double radius, \
-								t_vector3 normal, t_material *material);
+t_object	*new_disk(t_info_object_disk *dk_info);
 t_object	*new_tube(t_object_disk *disk, t_vector3 orient, \
 							double height, t_material *material);
 t_object	*new_point_light(t_point3 pos, double ratio, t_color3 rgb);
