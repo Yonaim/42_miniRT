@@ -1,6 +1,5 @@
 #include "constants.h"
 #include "s_mlx.h"
-#include "mlx_utils.h"
 #include "color.h"
 
 static void	init_image(t_mlx *mlx, t_image *img);
