@@ -1,3 +1,4 @@
+#include <math.h>
 #include "s_mlx.h"
 #include "camera.h"
 #include "libmath.h"

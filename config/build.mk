@@ -10,7 +10,7 @@ endif
 
 # build program
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) $^ -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $^ -o $@ $(LDLIBS)
 
 # compile object files
 $(PART_PATH)/objs/camera/%.o : $(PART_PATH)/srcs/camera/%.c

@@ -1,13 +1,13 @@
 #include "shading_internal.h"
 
-static t_color3	sampled_color(t_scene *scene, int x, int y)
+t_color3	sampled_color(t_scene *scene, int x, int y)
 {
 	t_ray	ray;
 	double	u;
 	double	v;
 
-	u = (x + random_double()) / (scene->width - 1);
-	v = (y + random_double()) / (scene->height - 1);
+	u = (x + random_double()) / (scene->img->width - 1);
+	v = (y + random_double()) / (scene->img->height - 1);
 	ray = primary_ray(&scene->cam, u, v);
 	return (traced_color(&ray, &scene->world, MAX_DEPTH));
 }
