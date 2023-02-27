@@ -5,7 +5,14 @@ static int	get_cylinder_type(void);
 static bool	hit_cylinder(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max);
 
-t_object	*new_cylinder(t_object_tube *tube, t_object_disk *disk[2])
+// DISCUSS 1: 메모리 할당 실패 시 내부에서 할당 성공한 것을 free하고 NULL을 반환할지 
+//          아니면 어차피 외부에서 handle_error 함수를 호출하면 바로 종료되니까
+//          그냥 NULL을 반환할지 결정
+//          일단 현재는 그냥 NULL을 반환하도록 작성됨
+// DISCUSS 2: 현재는 object를 생성하는 함수를 호출한 이후에 바로 NULL 가드를 해줌
+//            나중에 한번에 OR 논리 연산자로 NULL가드를 해줄지(For 가독성)
+//            그냥 생성자를 호출한 바로 그 다음에 NULL가드를 해줄지(For 논리)
+t_object	*new_cylinder(t_info_object_cylinder *cy_info)
 {
 	t_object_cylinder	*new;
 
@@ -15,9 +22,17 @@ t_object	*new_cylinder(t_object_tube *tube, t_object_disk *disk[2])
 	new->hit = hit_cylinder;
 	new->destroy = destroy_cylinder;
 	new->get_type = get_cylinder_type;
-	new->faces.data[0] = (t_object *)tube;
-	new->faces.data[1] = (t_object *)disk[0];
-	new->faces.data[2] = (t_object *)disk[1];
+	if (init_object_arr(&new->faces, 3) == NULL)
+		return (NULL);
+	new->faces.data[0] = new_tube(&cy_info->tube);
+	if (!new->faces.data[0])
+		return (NULL);
+	new->faces.data[1] = new_disk(&cy_info->disk[0]);
+	if (!new->faces.data[1])
+		return (NULL);
+	new->faces.data[2] = new_disk(&cy_info->disk[1]);
+	if (!new->faces.data[2])
+		return (NULL);
 	return ((t_object *)new);
 }
 
