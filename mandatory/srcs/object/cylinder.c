@@ -32,6 +32,3 @@ bool		hit_cylinder(t_object *self, t_ray *ray, \
 
 	return (hit_object_list(cy->object_list, ray, h_rec, t_max));
 }
-
-bool	hit_object_list(t_object_list *objects, t_ray *ray, \
-						t_hit_record *final_rec, double t_max)
