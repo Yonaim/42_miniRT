@@ -29,7 +29,7 @@ static void	destroy_cone(t_object *object)
 
 	co = (t_object_cone *)object;
 	co->material->destroy(co->material);
-	flush_object_arr(&co->faces);
+	clear_object_arr(&co->faces);
 	free(co);
 }
 
