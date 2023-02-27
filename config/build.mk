@@ -7,14 +7,17 @@ else
 	-include $(DEPS)
 endif
 
-
 # build program
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $^ -o $@ $(LDLIBS)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ $(LDLIBS) $(LDFLAGS)
 
 # compile object files
 $(PART_PATH)/objs/camera/%.o : $(PART_PATH)/srcs/camera/%.c
 	mkdir -p $(PART_PATH)/objs/camera
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+
+$(PART_PATH)/objs/dynamic_array/%.o : $(PART_PATH)/srcs/dynamic_array/%.c
+	mkdir -p $(PART_PATH)/objs/dynamic_array
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 $(PART_PATH)/objs/material/%.o : $(PART_PATH)/srcs/material/%.c
