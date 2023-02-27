@@ -68,11 +68,12 @@ int	parse_element_sphere(t_scene *scene, char *str)
 
 int	parse_element_cylinder(t_scene *scene, char *str)
 {
-	t_point3	center;
-	t_vector3	orient;
-	double		diameter;
-	double		height;
-	t_vector3	rgb;
+	t_info_object_cylinder	cy_info;
+	t_point3				center;
+	t_vector3				orient;
+	double					diameter;
+	double					height;
+	t_vector3				rgb;
 
 	(void)scene;
 	skip_until_next_value(&str);
@@ -85,9 +86,26 @@ int	parse_element_cylinder(t_scene *scene, char *str)
 		return (FAILURE);
 	if (!is_vec3_in_range(orient, -1, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
-	// if (add_object(&scene->world.objects,
-	// 	new_cylinder(center, orient, diameter / 2, height, rgb)) == FAILURE)
-		// return (FAILURE);
+	cy_info.material.type = MATERIAL_LAMBERTIAN;
+	cy_info.texture.type = TEXTURE_SOLID;
+	cy_info.texture.rgb1 = rgb;
+	cy_info.tube.center = center;
+	cy_info.tube.height = height;
+	cy_info.tube.orient = orient;
+	cy_info.tube.radius = diameter / 2;
+	cy_info.tube.material = cy_info.material;
+	cy_info.tube.texture = cy_info.texture;
+	cy_info.disk[0].center = v3_sub(center, v3_mul(orient, v3_dot(orient, center)));
+	cy_info.disk[0].normal = orient;
+	cy_info.disk[0].material = cy_info.material;
+	cy_info.disk[0].texture = cy_info.texture;
+	cy_info.disk[1].center = v3_add(center, v3_mul(orient, v3_dot(orient, center)));
+	cy_info.disk[1].normal = orient;
+	cy_info.disk[1].texture = cy_info.texture;
+	cy_info.disk[1].material = cy_info.material;
+	if (add_object(&scene->world.objects,
+					new_cylinder(&cy_info)) == FAILURE)
+		return (FAILURE);
 	(void)height;
 	(void)diameter;
 	(void)center;
