@@ -6,7 +6,9 @@
 # include "constants.h"
 # include "s_scene.h"
 # include "s_object.h"
+# include "s_object_arr.h"
 # include "object.h"
+# include "object_arr.h"
 # include <stdio.h>
 # include <fcntl.h>
 
