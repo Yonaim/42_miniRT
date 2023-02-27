@@ -88,5 +88,8 @@ int	parse_element_cylinder(t_scene *scene, char *str)
 	// if (add_object(&scene->world.objects,
 	// 	new_cylinder(center, orient, diameter / 2, height, rgb)) == FAILURE)
 		// return (FAILURE);
+	(void)height;
+	(void)diameter;
+	(void)center;
 	return (SUCCESS);
 }

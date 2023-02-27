@@ -8,7 +8,6 @@ static bool	hit_tube(t_object *self, t_ray *ray, \
 t_object	*new_tube(t_info_object_tube *info)
 {
 	t_object_tube	*new;
-	t_texture		*texture;
 
 	new = malloc(sizeof(t_object_tube));
 	if (!new)
@@ -18,7 +17,7 @@ t_object	*new_tube(t_info_object_tube *info)
 	new->radius = info->radius;
 	new->height = info->height;
 	new->orient = info->orient;
-	new->material = new_material(&info->material);
+	new->material = new_material(&info->material, &info->texture);
 	new->hit = hit_tube;
 	new->destroy = destroy_tube;
 	new->get_type = get_tube_type;
@@ -66,11 +65,13 @@ static int	get_tube_type(void)
 */
 
 static void	get_tube_normal_vector(\
-				t_object_tube *tube, t_hit_record *h_rec, t_ray *ray)
+				t_object_tube *tb, t_hit_record *h_rec, t_ray *ray)
 {
 	const t_vector3	cp = v3_sub(h_rec->p, v3_sub(tb->center, \
 									v3_mul((tb->orient), tb->height / 2)));
-	h_rec->normal = v3_mul(, v3_dot(tube->orient, *co));
+	// h_rec->normal = v3_mul(, v3_dot(tube->orient, *co));/
+	(void)cp;
+	(void)ray;
 }
 
 static bool	hit_tube(t_object *self, t_ray *ray, \
@@ -96,7 +97,7 @@ static bool	hit_tube(t_object *self, t_ray *ray, \
 	h_rec->t = t;
 	h_rec->p = ray_at(ray, t);
 	h_rec->material = tb->material;
-	get_tube_normal_vector(&h_rec, ray, &co);
+	get_tube_normal_vector((t_object_tube *)tb, h_rec, ray);
 	set_face_normal(h_rec, ray, v3_cross(v3_sub(tb->center, h_rec->p), co));
 	return (true);
 }

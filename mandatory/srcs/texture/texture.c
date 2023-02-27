@@ -3,8 +3,6 @@
 
 t_texture	*new_texture(t_info_texture *texture_info)
 {
-	t_texture	*new;
-
 	if (texture_info->type == TEXTURE_SOLID)
 	{
 		return (new_solid(texture_info->rgb1));

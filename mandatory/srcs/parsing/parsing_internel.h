@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-enum e_element_types
+enum e_parsing_element_types
 {
 	NONE,
 	AMBIENT,
