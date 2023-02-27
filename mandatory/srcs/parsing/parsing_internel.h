@@ -6,7 +6,7 @@
 # include "constants.h"
 # include "s_scene.h"
 # include "s_object.h"
-# include "s_object_arr.h"
+# include "s_dynamic_arr.h"
 # include "s_material.h"
 # include "s_texture.h"
 # include "object.h"
