@@ -6,7 +6,7 @@
 
 struct s_world
 {
-	t_list			*object_list;
+	t_object_list	*objects;
 	t_color3		background_color;
 };
 
