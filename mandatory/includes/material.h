@@ -5,8 +5,9 @@
 # include "s_scatter_record.h"
 # include "typedef.h"
 
-t_material_dielectric	*new_dielectric(double refractive_idx);
-t_material_lambertian	*new_lambertian(t_color3 albedo);
-t_material_metal		*new_metal(t_color3 albedo, double fuzz);
+t_material	*new_lambertian(t_texture *texture);
+t_material	*new_dielectric(double refractive_idx);
+t_material	*new_metal(t_color3 albedo, double fuzz);
+t_material	*new_emmisive(t_color3 color);
 
 #endif

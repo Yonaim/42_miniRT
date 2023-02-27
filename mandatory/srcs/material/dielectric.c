@@ -1,9 +1,31 @@
 
 #include "material_internal.h"
 
-static bool	scatter_dielectric(\
-							t_material *self, t_ray *in, \
-							t_hit_record *h_rec, t_scatter_record *s_rec)
+static bool		dielectric_scattered(\
+								t_material *self, t_ray *in, \
+								t_hit_record *h_rec, t_scatter_record *s_rec);
+static t_color3	dielectric_emitted(\
+								t_material *self, \
+								double u, double v, t_point3 p);
+static void		destroy_dielectric(t_material *self);
+
+t_material	*new_dielectric(double refractive_idx)
+{
+	t_material_dielectric	*dielectric;
+
+	dielectric = malloc(sizeof(t_material_dielectric));
+	if (!dielectric)
+		return (NULL);
+	dielectric->refractive_idx = refractive_idx;
+	dielectric->scattered = dielectric_scattered;
+	dielectric->emitted = dielectric_emitted;
+	dielectric->destroy = destroy_dielectric;
+	return ((t_material *)dielectric);
+}
+
+static bool	dielectric_scattered(\
+								t_material *self, t_ray *in, \
+								t_hit_record *h_rec, t_scatter_record *s_rec)
 {
 	const t_material_dielectric	*dielectric = (t_material_dielectric *)self;
 	double						refractive_idx_ratio;
@@ -17,14 +39,22 @@ static bool	scatter_dielectric(\
 	return (true);
 }
 
-t_material_dielectric	*new_dielectric(double refractive_idx)
+static t_color3	dielectric_emitted(\
+								t_material *self, \
+								double u, double v, t_point3 p)
+{
+	(void)self;
+	(void)u;
+	(void)v;
+	(void)p;
+	return (color3(0, 0, 0));
+}
+
+static void		destroy_dielectric(t_material *self)
 {
 	t_material_dielectric	*dielectric;
 
-	dielectric = malloc(sizeof(t_material_dielectric));
-	if (!dielectric)
-		return (NULL);
-	dielectric->refractive_idx = refractive_idx;
-	dielectric->scatter = scatter_dielectric;
-	return (dielectric);
+	dielectric = (t_material_dielectric *)self;
+	dielectric->texture->destroy(dielectric->texture);
+	free(dielectric);
 }
