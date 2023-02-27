@@ -2,7 +2,7 @@
 # define S_WORLD_H
 
 # include "typedef.h"
-# include "s_object_arr.h"
+# include "s_dynamic_arr.h"
 
 struct s_world
 {
