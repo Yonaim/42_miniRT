@@ -6,4 +6,7 @@
 # include "s_object.h"
 # include "s_material.h"
 
+void	set_face_normal(\
+		t_hit_record *h_rec, t_ray *in_ray, t_vector3 outward_normal);
+
 #endif
