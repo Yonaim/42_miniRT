@@ -15,9 +15,9 @@ t_object	*new_cylinder(t_object_tube *tube, t_object_disk *disk[2])
 	new->hit = hit_cylinder;
 	new->destroy = destroy_cylinder;
 	new->get_type = get_cylinder_type;
-	new->faces.arr[0] = tube;
-	new->faces.arr[1] = disk[0];
-	new->faces.arr[2] = disk[1];
+	new->faces.arr[0] = (t_object *)tube;
+	new->faces.arr[1] = (t_object *)disk[0];
+	new->faces.arr[2] = (t_object *)disk[1];
 	return ((t_object *)new);
 }
 
