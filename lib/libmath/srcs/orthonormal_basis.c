@@ -1,7 +1,7 @@
 #include <math.h>
 #include "orthonormal_basis.h"
 
-t_onb	orthonormal_basis(t_vector3 n)
+t_onb	build_orthonormal_basis_from_w(t_vector3 n)
 {
 	t_onb		onb;
 	t_vector3	unit;

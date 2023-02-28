@@ -56,7 +56,7 @@ double		random_double(void);
 double		random_double_range(double min, double max);
 
 // orthonormal basis
-t_onb		orthonormal_basis(t_vector3 n);
+t_onb		build_orthonormal_basis_from_w(t_vector3 n);
 t_vector3	onb_local(t_onb onb, t_vector3 v);
 
 #endif
