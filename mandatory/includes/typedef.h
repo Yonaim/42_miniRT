@@ -100,7 +100,7 @@ typedef double							(*t_scattering_pdf)(\
 												t_material *self,\
 												t_ray *in_ray, \
 												t_hit_record *h_rec, \
-												t_scatter_record *s_rec);
+												t_ray *scattered_ray);
 
 typedef void							(*t_destroy_object)(\
 												t_object *object);
