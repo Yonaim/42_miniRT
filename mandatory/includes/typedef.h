@@ -34,6 +34,7 @@ typedef struct s_object					t_object;
 typedef struct s_object_point_light		t_object_point_light;
 typedef struct s_object_sphere			t_object_sphere;
 typedef struct s_object_disk			t_object_disk;
+typedef struct s_object_tube			t_object_tube;
 typedef struct s_object_cylinder		t_object_cylinder;
 typedef struct s_object_plane			t_object_plane;
 
