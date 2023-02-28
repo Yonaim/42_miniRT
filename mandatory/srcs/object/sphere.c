@@ -1,5 +1,10 @@
 #include "object_internal.h"
 
+static void	destroy_sphere(t_object *object);
+static int	get_sphere_type(void);
+static bool	hit_sphere(t_object *self, t_ray *ray, \
+						t_hit_record *h_rec, double t_max);
+
 t_object	*new_sphere(t_point3 center, double radius, t_material *material)
 {
 	t_object_sphere	*new;
@@ -11,7 +16,24 @@ t_object	*new_sphere(t_point3 center, double radius, t_material *material)
 	new->center = center;
 	new->radius = radius;
 	new->material = material;
+	new->hit = hit_sphere;
+	new->destroy = destroy_sphere;
+	new->get_type = get_sphere_type;
 	return ((t_object *)new);
+}
+
+static void	destroy_sphere(t_object *object)
+{
+	t_object_sphere	*sphere;
+
+	sphere = (t_object_sphere *)object;
+	sphere->material->destroy(sphere->material);
+	free(sphere);
+}
+
+static int	get_sphere_type(void)
+{
+	return (OBJECT_SPHERE);
 }
 
 /*
@@ -37,22 +59,22 @@ t_object	*new_sphere(t_point3 center, double radius, t_material *material)
 		b = 2 * (dir * (O - C))
 		c = (O - C)^2 - r^2
 */
-bool		hit_sphere(t_object *self, t_ray *ray, \
+static bool		hit_sphere(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
 	const t_object_sphere	*sp = (t_object_sphere *)self;
-	const t_vector3			oc = v_subtract(ray->origin, sp->center);
+	const t_vector3			oc = v3_sub(ray->origin, sp->center);
 	const double			coeff[3] = {
-		pow(len_v3(ray->dir), 2), 2 * (dir),
-		v3_dot(oc, ray->dir),
-		pow(len_v3(oc), 2) - pow(sp->radius, 2)
-	}
+		len_sqr_v3(ray->dir),
+		v3_dot(ray->dir, oc),
+		len_sqr_v3(oc) - pow(sp->radius, 2)
+	};
 	double 					root[2];
 	double					t;
 
 	if (solve_quadratic(coeff[A], coeff[B], coeff[C], root == false))
 		return (false);
-	if (determine_t(&t, root, T_MINIMIN, t_max) == false)
+	if (determine_t(&t, root, T_MINIMUM, t_max) == false)
 		return (false);
 	h_rec->t = t;
 	h_rec->p = ray_at(ray, t);
@@ -60,11 +82,8 @@ bool		hit_sphere(t_object *self, t_ray *ray, \
 	set_face_normal(h_rec, ray, v3_normalize(v3_sub(h_rec->p, sp->center)));
 	return (true);	
 }
-
-static void	destroy_sphere(t_object *object)
-{
-	t_object_sphere	*sphere;
-
-	sphere = (t_object_sphere *)object;
-	free(sphere);
-}
+// dir * dir = len_sqr_v3(ray->dir)
+// dir * (O - C) = v3_dot(ray->dir, oc)
+// (O - C)^2 - r^2 = len_sqr_v3(oc) - pow(sp->radius, 2)
+	// (O - C)^2 = len_sqr_v3(oc)
+	// r^2 = pow(sp->radius, 2)
