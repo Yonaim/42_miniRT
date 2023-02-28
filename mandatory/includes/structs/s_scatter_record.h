@@ -10,7 +10,7 @@ struct s_scatter_record
 {
 	bool		is_specular;
 	t_ray		scattered;
-	t_color3	attenuation;
+	t_color3	albedo;
 	t_ray		specular_ray;
 	double		pdf_val;
 	// t_pdf		*pdf;

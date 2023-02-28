@@ -18,11 +18,11 @@ t_material	*new_lambertian(t_texture *texture)
 	lambertian = malloc(sizeof(t_material_lambertian));
 	if (!lambertian)
 		return (NULL);
-	lambertian->albedo = texture;
 	lambertian->scattered = lambertian_scattered;
 	lambertian->emitted = lambertian_emitted;
 	lambertian->destroy = destroy_lambertian;
 	lambertian->s_pdf = get_scattering_pdf;
+	lambertian->albedo = texture;
 	return ((t_material *)lambertian);
 }
 
@@ -31,13 +31,12 @@ static bool	lambertian_scattered(
 			t_hit_record *h_rec, t_scatter_record *s_rec)
 {
 	const t_material_lambertian	*lambertian = (t_material_lambertian *)self;
-	t_texture_solid				*solid;
+	const t_texture_solid		*solid = (t_texture_solid *)lambertian->albedo;
 
 	(void)in;
 	h_rec->onb = orthonormal_basis(h_rec->normal);
 	s_rec->scattered = diffused_ray(h_rec);
-	solid = (t_texture_solid *)lambertian->albedo;
-	s_rec->attenuation = solid->get_val((t_texture *)solid, \
+	s_rec->albedo = solid->get_val((t_texture *)solid, \
 										h_rec->u, h_rec->v, h_rec->p);
 	s_rec->pdf_val = v3_dot(h_rec->onb.w, s_rec->scattered.dir) / M_PI;
 	return (true);

@@ -29,7 +29,7 @@ static bool	dielectric_scattered(
 	const t_material_dielectric	*dielectric = (t_material_dielectric *)self;
 	double						refractive_idx_ratio;
 
-	s_rec->attenuation = color3(1, 1, 1);
+	s_rec->albedo = color3(1, 1, 1);
 	if (h_rec->opposed == true)
 		refractive_idx_ratio = 1 / dielectric->refractive_idx;
 	else

@@ -30,6 +30,6 @@ t_color3	traced_color(t_ray *in_ray, t_world *world, int depth)
 		return (emitted);
 	summed = v3_comp_wise(\
 						traced_color(&s_rec.scattered, world, depth + 1), \
-						s_rec.attenuation);
+						s_rec.albedo);
 	return (v3_add(summed, emitted));
 }

@@ -30,7 +30,7 @@ static bool	metal_scattered(
 	const t_material_metal	*metal = (t_material_metal *)self;
 
 	s_rec->scattered = reflected_ray(in->dir, h_rec, metal->fuzz);
-	s_rec->attenuation = metal->albedo;
+	s_rec->albedo = metal->albedo;
 	if (v3_dot(s_rec->scattered.dir, h_rec->normal) > 0)
 		return (true);
 	else
