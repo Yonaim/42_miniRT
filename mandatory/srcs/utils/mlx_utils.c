@@ -1,3 +1,5 @@
+#include <mlx.h>
+#include "libft.h"
 #include "constants.h"
 #include "s_mlx.h"
 #include "color.h"
@@ -33,6 +35,8 @@ void	put_pixel_to_image(t_image *img, int x, int y, t_color3 color)
 
 void	init_mlx(t_mlx *mlx, t_image *img)
 {
+	img->width = WINDOW_WIDTH;
+	img->height = WINDOW_HEIGHT;
 	mlx->conn = mlx_init();
 	mlx->win = mlx_new_window(mlx->conn, img->width, img->height, WINDOW_NAME);
 	init_image(mlx, img);
@@ -40,8 +44,6 @@ void	init_mlx(t_mlx *mlx, t_image *img)
 
 static void	init_image(t_mlx *mlx, t_image *img)
 {
-	img->width = WINDOW_WIDTH;
-	img->height = WINDOW_HEIGHT;
 	img->obj = mlx_new_image(mlx->conn, img->width, img->height);
 	img->data = mlx_get_data_addr(img->obj, &img->bits_per_pixel, \
 							&img->bytes_per_line, &img->endian);
