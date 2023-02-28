@@ -19,18 +19,18 @@ int	parse_element_ambient(t_scene *scene, char *str)
 int	parse_element_camera(t_scene *scene, char *str)
 {
 	t_point3	origin;
-	t_vector3	dir;
+	t_vector3	orient;
 	int			fov;
 
 	origin = parse_vector3(&str);
-	dir = parse_vector3(&str);
+	orient = parse_vector3(&str);
 	fov = parse_integer(&str);
 	if (*str != '\n' && *str != '\0')
 		return (FAILURE);
-	if (!is_vec3_in_range(dir, -1, 1) || !is_num_in_range(fov, 0, 180))
+	if (!is_vec3_in_range(orient, -1, 1) || !is_num_in_range(fov, 0, 180))
 		return (FAILURE);
 	scene->cam.origin = origin;
-	scene->cam.base.dir = dir;
+	scene->cam.base.dir = v3_mul(orient, -1);
 	scene->cam.viewport.fov = fov;
 	return (SUCCESS);
 }
