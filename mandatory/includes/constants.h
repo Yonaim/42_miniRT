@@ -19,8 +19,8 @@ enum e_success_or_failure
 # define T_INFINITY 				INT_MAX
 
 // sampling
-# define SAMPLES_PER_PIXEL			10
-# define PUT_IMG_TERM				10
+# define SAMPLES_PER_PIXEL			100
+# define PUT_IMG_TERM				5
 
 // recursive depth
 # define MAX_DEPTH					50
@@ -35,6 +35,10 @@ enum e_success_or_failure
 
 // object array
 # define INITIAL_OBJECT_ARR_SIZE	10
+
+// light
+# define MAX_BRIGHTNESS				20
+
 /** dev **/
 
 // object
