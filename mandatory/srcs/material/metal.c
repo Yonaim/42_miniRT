@@ -4,8 +4,7 @@
 static bool		metal_scattered(
 					t_material *self, t_ray *in,
 					t_hit_record *h_rec, t_scatter_record *s_rec);
-static t_color3	metal_emitted(
-					t_material *self, double u, double v, t_point3 p);
+static t_color3	metal_emitted(t_material *self, t_hit_record *h_rec);
 static void		destroy_metal(t_material *self);
 
 t_material	*new_metal(t_color3 rgb, double fuzz)
@@ -37,13 +36,10 @@ static bool	metal_scattered(
 		return (false);
 }
 
-static t_color3	metal_emitted(
-				t_material *self, double u, double v, t_point3 p)
+static t_color3	metal_emitted(t_material *self, t_hit_record *h_rec)
 {
 	(void)self;
-	(void)u;
-	(void)v;
-	(void)p;
+	(void)h_rec;
 	return (color3(0, 0, 0));
 }
 

@@ -83,9 +83,7 @@ typedef bool							(*t_scatter)(\
 
 typedef t_color3						(*t_emit)(\
 												t_material *self, \
-												double u, \
-												double v, \
-												t_point3 p);
+												t_hit_record *h_rec);
 
 // object
 typedef bool							(*t_hit_object)(\

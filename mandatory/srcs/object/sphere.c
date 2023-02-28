@@ -4,6 +4,7 @@ static void	destroy_sphere(t_object *object);
 static int	get_sphere_type(void);
 static bool	hit_sphere(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
+static void	get_sphere_uv(t_hit_record *record);
 
 t_object	*new_sphere(t_info_object_sphere *sp_info)
 {
@@ -80,6 +81,7 @@ static bool	hit_sphere(
 	h_rec->t = t;
 	h_rec->p = ray_at(ray, t);
 	h_rec->material = sp->material;
+	get_sphere_uv(h_rec);
 	set_face_normal(h_rec, ray, v3_normalize(v3_sub(h_rec->p, sp->center)));
 	return (true);
 }
@@ -88,3 +90,12 @@ static bool	hit_sphere(
 // (O - C)^2 - r^2 = len_sqr_v3(oc) - pow(sp->radius, 2)
 	// (O - C)^2 = len_sqr_v3(oc)
 	// r^2 = pow(sp->radius, 2)
+
+static void	get_sphere_uv(t_hit_record *record)
+{
+	const double	theta = acos(-record->p.y);
+	const double	phi = atan2(-record->p.z, record->p.x) + M_PI;
+
+	record->u = phi / (2 * M_PI);
+	record->v = theta / M_PI;
+}

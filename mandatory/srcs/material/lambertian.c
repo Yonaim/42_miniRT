@@ -4,12 +4,11 @@
 static bool		lambertian_scattered(
 					t_material *self, t_ray *in, 
 					t_hit_record *h_rec, t_scatter_record *s_rec);
-static t_color3	lambertian_emitted(
-					t_material *self, double u, double v, t_point3 p);
+static t_color3	lambertian_emitted(t_material *self, t_hit_record *h_rec);
 static void		destroy_lambertian(t_material *self);
-static double	get_scattering_pdf(
-					t_material *self, t_ray *in_ray, 
-					t_hit_record *h_rec, t_scatter_record *s_rec);
+static double	get_lambertian_scattering_pdf(
+					t_material *self,
+					t_ray *in_ray, t_hit_record *h_rec, t_ray *scattered_ray);
 
 t_material	*new_lambertian(t_texture *texture)
 {
@@ -21,7 +20,7 @@ t_material	*new_lambertian(t_texture *texture)
 	lambertian->scattered = lambertian_scattered;
 	lambertian->emitted = lambertian_emitted;
 	lambertian->destroy = destroy_lambertian;
-	lambertian->s_pdf = get_scattering_pdf;
+	lambertian->s_pdf = get_lambertian_scattering_pdf;
 	lambertian->albedo = texture;
 	return ((t_material *)lambertian);
 }
@@ -34,7 +33,7 @@ static bool	lambertian_scattered(
 	const t_texture_solid		*solid = (t_texture_solid *)lambertian->albedo;
 
 	(void)in;
-	h_rec->onb = orthonormal_basis(h_rec->normal);
+	h_rec->onb = build_orthonormal_basis_from_w(h_rec->normal);
 	s_rec->scattered = diffused_ray(h_rec);
 	s_rec->albedo = solid->get_val((t_texture *)solid, \
 										h_rec->u, h_rec->v, h_rec->p);
@@ -42,13 +41,10 @@ static bool	lambertian_scattered(
 	return (true);
 }
 
-static t_color3	lambertian_emitted(
-				t_material *self, double u, double v, t_point3 p)
+static t_color3	lambertian_emitted(t_material *self, t_hit_record *h_rec)
 {
 	(void)self;
-	(void)u;
-	(void)v;
-	(void)p;
+	(void)h_rec;
 	return (color3(0, 0, 0));
 }
 
@@ -61,12 +57,12 @@ static void	destroy_lambertian(t_material *self)
 	free(lambertian);
 }
 
-static double	get_scattering_pdf(
-				t_material *self, t_ray *in_ray,
-				t_hit_record *h_rec, t_scatter_record *s_rec)
+static double	get_lambertian_scattering_pdf(
+				t_material *self,
+				t_ray *in_ray, t_hit_record *h_rec, t_ray *scattered_ray)
 {
 	const double	cosine = v3_dot(h_rec->normal, \
-								v3_normalize(s_rec->scattered.dir));
+								v3_normalize(scattered_ray->dir));
 
 	(void)self;
 	(void)in_ray;

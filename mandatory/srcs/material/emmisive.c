@@ -3,8 +3,7 @@
 static bool		emmisive_scattered(
 					t_material *self, t_ray *in, 
 					t_hit_record *h_rec, t_scatter_record *s_rec);
-static t_color3	emmisive_emitted(
-					t_material *self, double u, double v, t_point3 p);
+static t_color3	emmisive_emitted(t_material *self, t_hit_record *h_rec);
 static void		destroy_emmisive(t_material *self);
 
 t_material	*new_emmisive(t_color3 color)
@@ -32,21 +31,27 @@ static bool	emmisive_scattered(
 	return (false);
 }
 
-static t_color3	emmisive_emitted(
-				t_material *self, double u, double v, t_point3 p)
+/**
+ * For the emissive object, only the front surface of the object emits light 
+ * and the interior does not emit light.
+*/
+static t_color3	emmisive_emitted(t_material *self, t_hit_record *h_rec)
 {
 	t_material_emmisive	*emmisive;
 	t_color3			emitted;
 
 	emmisive = (t_material_emmisive *)self;
-	emitted = emmisive->emit->get_val(emmisive->emit, u, v, p);
+	if (h_rec->opposed == false)
+		return (color3(0, 0, 0));
+	emitted = emmisive->emit->get_val(\
+								emmisive->emit, h_rec->u, h_rec->v, h_rec->p);
 	return (emitted);
 }
 
 static void	destroy_emmisive(t_material *self)
 {
 	t_material_emmisive	*emmisive;
-
+	
 	emmisive = (t_material_emmisive *)self;
 	emmisive->emit->destroy(emmisive->emit);
 	free(emmisive);
