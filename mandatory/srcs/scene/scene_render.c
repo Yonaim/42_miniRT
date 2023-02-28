@@ -64,14 +64,14 @@ int	render_scene(void *minirt)
 	if (render_stat->is_done == true)
 		return (SUCCESS);
 	i = 0;
-	while (i < PUT_IMG_TERM)
+	while (i < PUT_IMG_TERM && render_stat->layer_cnt < SAMPLES_PER_PIXEL)
 	{
 		render_one_layer(scene, render_stat->layer_cnt);
 		render_stat->layer_cnt++;
 		i++;
 	}
 	printf("%d : rendering...\n", render_stat->layer_cnt);
-	if (render_stat->layer_cnt >= SAMPLES_PER_PIXEL)
+	if (render_stat->layer_cnt == SAMPLES_PER_PIXEL)
 	{
 		apply_gamma_correction(&mlx->img);
 		render_stat->is_done = true;
