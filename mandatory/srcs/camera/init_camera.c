@@ -4,11 +4,26 @@
 #include "libmath.h"
 #include "constants.h"
 
+t_vector3	determine_up_vector(t_vector3 v)
+{
+	t_vector3	up_vector;
+
+	up_vector = v3_normalize(v);
+	if (fabs(v.z) > 0.9)
+		up_vector = vector3(0, 1, 0);
+	else
+		up_vector = vector3(0, 0, 1);
+	return (up_vector);
+}
+
 static void	init_camera_basis(t_camera *cam)
 {
-	cam->base.dir = v3_normalize(cam->base.dir);
-	cam->base.right = v3_normalize(v3_cross(UP_VECTOR, cam->base.dir));
-	cam->base.up = v3_cross(cam->base.dir, cam->base.right);
+	t_vector3	up_vector;
+
+	cam->basis.dir = v3_normalize(cam->basis.dir);
+	up_vector = determine_up_vector(cam->basis.dir);
+	cam->basis.right = v3_normalize(v3_cross(up_vector, cam->basis.dir));
+	cam->basis.up = v3_cross(cam->basis.dir, cam->basis.right);
 }
 
 static void	init_camera_viewport(t_viewport *viewport)
@@ -21,11 +36,11 @@ static void	init_camera_viewport(t_viewport *viewport)
 static void	init_camera_focus_plane(t_camera *cam, t_focus_plane *focus)
 {
 	focus->dist = FOCAL_DISTANCE;
-	focus->horiz = v3_mul(cam->base.right, focus->dist * cam->viewport.width);
-	focus->vert = v3_mul(cam->base.up, focus->dist * cam->viewport.height);
+	focus->horiz = v3_mul(cam->basis.right, focus->dist * cam->viewport.width);
+	focus->vert = v3_mul(cam->basis.up, focus->dist * cam->viewport.height);
 	focus->bottom_left = \
 		v3_sub(\
-			v3_add(cam->origin, v3_mul(cam->base.dir, -focus->dist)), \
+			v3_add(cam->origin, v3_mul(cam->basis.dir, -focus->dist)), \
 			v3_div(v3_add(focus->horiz, focus->vert), 2));
 }
 
