@@ -23,6 +23,8 @@
 # include "camera.h"
 # include "object_arr.h"
 # include "color.h"
+# include "parsing.h"
+# include "dynamic_arr.h"
 
 void		gamma_correction(t_color3 *color);
 t_color3	traced_color(t_ray *in_ray, t_world *world, int depth);

@@ -15,7 +15,7 @@ t_object	*new_cone_lateral(t_info_object_cone_lateral *lat_info)
 	new->hit = hit_cone_lateral;
 	new->destroy = destroy_cone_lateral;
 	new->get_type = get_cone_lateral_type;
-	new->material = new_material(&lat_info->material, &lat_info->texture);
+	new->material = new_material(&lat_info->material);
 	if (new->material == NULL)
 		return (NULL);
 	new->center = lat_info->center;

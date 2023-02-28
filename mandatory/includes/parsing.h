@@ -3,6 +3,6 @@
 
 # include "typedef.h"
 
-int	parse_scene(t_scene *scene, char *path);
+int	parse_scene(t_scene *scene, int fd);
 
 #endif

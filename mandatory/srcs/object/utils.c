@@ -28,11 +28,19 @@ void	set_face_normal(
 
 bool	determine_t(double *t, double root[2], double t_min, double t_max)
 {
-	if (is_in_range(root[0], t_min, t_max))
+	if (is_num_in_range(root[0], t_min, t_max))
 		*t = root[0];
-	else if (is_in_range(root[1], t_min, t_max))
+	else if (is_num_in_range(root[1], t_min, t_max))
 		*t = root[1];
 	else
 		return (false);
 	return (true);
+}
+
+void	swap_double_value(double *num1, double *num2)
+{
+	const double	tmp = *num1;
+
+	*num1 = *num2;
+	*num2 = tmp;
 }

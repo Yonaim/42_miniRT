@@ -15,7 +15,7 @@ t_object	*new_plane(t_info_object_plane *pl_info)
 	new->hit = hit_plane;
 	new->destroy = destroy_plane;
 	new->get_type = get_plane_type;
-	new->material = new_material(&pl_info->material, &pl_info->texture);
+	new->material = new_material(&pl_info->material);
 	if (new->material == NULL)
 		return (NULL);
 	new->point = pl_info->point;

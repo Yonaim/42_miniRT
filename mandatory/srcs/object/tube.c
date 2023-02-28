@@ -16,7 +16,7 @@ t_object	*new_tube(t_info_object_tube *info)
 	new->hit = hit_tube;
 	new->destroy = destroy_tube;
 	new->get_type = get_tube_type;
-	new->material = new_material(&info->material, &info->texture);
+	new->material = new_material(&info->material);
 	if (new->material == NULL)
 		return (NULL);
 	new->center = v3_sub(info->center, v3_mul(info->orient, info->height / 2));

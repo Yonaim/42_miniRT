@@ -8,14 +8,14 @@ static t_color3	metal_emitted(
 					t_material *self, double u, double v, t_point3 p);
 static void		destroy_metal(t_material *self);
 
-t_material	*new_metal(t_color3 rgb, double fuzz)
+t_material	*new_metal(t_texture *texture, double fuzz)
 {
 	t_material_metal	*metal;
 
 	metal = malloc(sizeof(t_material_metal));
 	if (!metal)
 		return (NULL);
-	metal->albedo = v3_div(rgb, 256);
+	metal->albedo = texture;
 	metal->fuzz = fuzz;
 	metal->scattered = metal_scattered;
 	metal->emitted = metal_emitted;
@@ -30,7 +30,8 @@ static bool	metal_scattered(
 	const t_material_metal	*metal = (t_material_metal *)self;
 
 	s_rec->scattered = reflected_ray(in->dir, h_rec, metal->fuzz);
-	s_rec->attenuation = metal->albedo;
+	s_rec->attenuation = metal->albedo->get_val(\
+								metal->albedo, h_rec->u, h_rec->v, h_rec->p);
 	if (v3_dot(s_rec->scattered.dir, h_rec->normal) > 0)
 		return (true);
 	else

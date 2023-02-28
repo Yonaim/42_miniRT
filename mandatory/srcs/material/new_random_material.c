@@ -21,30 +21,26 @@ static t_material	*random_lambertian(void)
 {
 	t_color3	color;
 	t_texture	*texture;
-	t_material	*material;
 
 	color = v3_random(0, 255.999);
 	texture = new_solid(color);
-	material = new_lambertian(texture);
-	return (material);
+	return (new_lambertian(texture));
 }
 
 static t_material	*random_metal(void)
 {
-	t_color3	color;
-	double		fuzz;
-	t_material	*material;
+	t_info_texture	info_texture;
+	t_texture		*texture;
+	double			fuzz;
 
-	color = v3_random(150, 255.9);
+	info_texture.type = TEXTURE_SOLID;
+	info_texture.rgb1 = v3_random(150, 255.9);
+	texture = new_texture(&info_texture);
 	fuzz = random_double_range(0, 0.5);
-	material = new_metal(color, fuzz);
-	return (material);
+	return (new_metal(texture, fuzz));
 }
 
 static t_material	*random_dielectric(void)
 {
-	t_material	*material;
-
-	material = new_dielectric(1.5);
-	return (material);
+	return (new_dielectric(1.5));
 }
