@@ -4,6 +4,7 @@ static void	destroy_cone_lateral(t_object *object);
 static int	get_cone_lateral_type(void);
 bool		hit_cone_lateral(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
+static bool	is_cone_lateral_light(t_object *object);
 
 t_object	*new_cone_lateral(t_info_object_cone_lateral *lat_info)
 {
@@ -15,6 +16,7 @@ t_object	*new_cone_lateral(t_info_object_cone_lateral *lat_info)
 	new->hit = hit_cone_lateral;
 	new->destroy = destroy_cone_lateral;
 	new->get_type = get_cone_lateral_type;
+	new->is_light = is_cone_lateral_light;
 	new->material = new_material(&lat_info->material, &lat_info->texture);
 	if (new->material == NULL)
 		return (NULL);
@@ -41,4 +43,13 @@ static void	destroy_cone_lateral(t_object *object)
 static int	get_cone_lateral_type(void)
 {
 	return (OBJECT_CONE_LATERAL);
+}
+
+static bool	is_cone_lateral_light(t_object *object)
+{
+	const t_object_cone_lateral	*lat = (t_object_cone_lateral *)object;
+
+	if (lat->material->get_type == MATERIAL_EMMISIVE)
+		return (true);
+	return (false);
 }

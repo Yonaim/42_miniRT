@@ -4,6 +4,7 @@ static void	destroy_cone(t_object *object);
 static int	get_cone_type(void);
 static bool	hit_cone(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
+static bool	is_cone_light(t_object *object);
 
 t_object	*new_cone(t_info_object_cone *co_info)
 {
@@ -15,6 +16,7 @@ t_object	*new_cone(t_info_object_cone *co_info)
 	new->hit = hit_cone;
 	new->destroy = destroy_cone;
 	new->get_type = get_cone_type;
+	new->is_light = is_cone_light;
 	if (init_object_arr(&new->faces, 2) == FAILURE)
 		return (NULL);
 	if (add_object(&new->faces, new_cone_lateral(&co_info->lateral)) == FAILURE
@@ -50,4 +52,13 @@ static bool	hit_cone(
 
 	co = (t_object_cone *)self;
 	return (hit_object_arr(&co->faces, ray, h_rec, t_max));
+}
+
+static bool	is_cone_light(t_object *object)
+{
+	const t_object_cone	*co = (t_object_cone *)object;
+
+	if (co->faces.data[0]->is_light == true)
+		return (true);
+	return (false);
 }

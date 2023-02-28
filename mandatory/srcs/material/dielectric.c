@@ -6,6 +6,7 @@ static bool		dielectric_scattered(
 					t_hit_record *h_rec, t_scatter_record *s_rec);
 static t_color3	dielectric_emitted(t_material *self, t_hit_record *h_rec);
 static void		destroy_dielectric(t_material *self);
+static int		get_dielectric_type(void);
 
 t_material	*new_dielectric(double refractive_idx)
 {
@@ -14,10 +15,11 @@ t_material	*new_dielectric(double refractive_idx)
 	dielectric = malloc(sizeof(t_material_dielectric));
 	if (!dielectric)
 		return (NULL);
-	dielectric->refractive_idx = refractive_idx;
-	dielectric->scattered = dielectric_scattered;
-	dielectric->emitted = dielectric_emitted;
 	dielectric->destroy = destroy_dielectric;
+	dielectric->emitted = dielectric_emitted;
+	dielectric->scattered = dielectric_scattered;
+	dielectric->get_type = get_dielectric_type;
+	dielectric->refractive_idx = refractive_idx;
 	return ((t_material *)dielectric);
 }
 
@@ -50,4 +52,9 @@ static void	destroy_dielectric(t_material *self)
 
 	dielectric = (t_material_dielectric *)self;
 	free(dielectric);
+}
+
+static int	get_dielectric_type(void)
+{
+	return (MATERIAL_DIELECTRIC);
 }

@@ -5,6 +5,7 @@ static bool		emmisive_scattered(
 					t_hit_record *h_rec, t_scatter_record *s_rec);
 static t_color3	emmisive_emitted(t_material *self, t_hit_record *h_rec);
 static void		destroy_emmisive(t_material *self);
+static int		get_emmisive_type(void);
 
 t_material	*new_emmisive(t_color3 color)
 {
@@ -13,10 +14,11 @@ t_material	*new_emmisive(t_color3 color)
 	emmisive = malloc(sizeof(t_material_emmisive));
 	if (!emmisive)
 		return (NULL);
-	emmisive->emit = new_solid(color);
-	emmisive->scattered = emmisive_scattered;
-	emmisive->emitted = emmisive_emitted;
 	emmisive->destroy = destroy_emmisive;
+	emmisive->emitted = emmisive_emitted;
+	emmisive->scattered = emmisive_scattered;
+	emmisive->get_type = get_emmisive_type;
+	emmisive->emit = new_solid(color);
 	return ((t_material *)emmisive);
 }
 
@@ -56,3 +58,9 @@ static void	destroy_emmisive(t_material *self)
 	emmisive->emit->destroy(emmisive->emit);
 	free(emmisive);
 }
+
+static int	get_emmisive_type(void)
+{
+	return (MATERIAL_EMMISIVE);
+}
+ 

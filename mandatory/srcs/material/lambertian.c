@@ -2,7 +2,7 @@
 #include "material_internal.h"
 
 static bool		lambertian_scattered(
-					t_material *self, t_ray *in, 
+					t_material *self, t_ray *in,
 					t_hit_record *h_rec, t_scatter_record *s_rec);
 static t_color3	lambertian_emitted(t_material *self, t_hit_record *h_rec);
 static void		destroy_lambertian(t_material *self);
@@ -21,6 +21,7 @@ t_material	*new_lambertian(t_texture *texture)
 	lambertian->emitted = lambertian_emitted;
 	lambertian->destroy = destroy_lambertian;
 	lambertian->s_pdf = get_lambertian_scattering_pdf;
+	lambertian->get_type = get_lambertian_type;
 	lambertian->albedo = texture;
 	return ((t_material *)lambertian);
 }
@@ -70,4 +71,9 @@ static double	get_lambertian_scattering_pdf(
 		return (0);
 	else
 		return (cosine / M_PI);
+}
+
+static int	get_lambertian_type(void)
+{
+	return (MATERIAL_LAMBERTIAN);
 }

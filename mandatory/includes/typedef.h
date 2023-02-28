@@ -94,6 +94,18 @@ typedef bool							(*t_hit_object)(\
 
 typedef int								(*t_get_object_type)(void);
 
+typedef bool							(*t_is_light)(t_object *self);
+
+typedef double							(*t_get_object_pdf_value)(\
+												t_object *self, \
+												t_vector3 origin);
+
+typedef t_vector3						(*t_get_random_vec_to_object)(\
+												t_vector3 origin);
+
+// material
+typedef int								(*t_get_material_type)(void);
+
 typedef double							(*t_scattering_pdf)(\
 												t_material *self,\
 												t_ray *in_ray, \
