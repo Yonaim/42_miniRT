@@ -15,8 +15,10 @@ t_color3	get_pixel_color(t_image *img, int x, int y)
 	if (x > img->width || y > img->height || x < 0 || y < 0)
 		return (color3(0, 0, 0));
 	offset = (y * img->bytes_per_line) + (x * (img->bits_per_pixel / 8));
+	if (offset <= 0 || offset > (img->width * img->height) * 4)
+		return (color3(0, 0, 0));
 	dst = &img->data[offset];
-	return (rgb_to_color3((unsigned int)(*dst)));
+	return (rgb_to_color3(*(unsigned int *)dst));
 }
 
 void	put_pixel_to_image(t_image *img, int x, int y, t_color3 color)
