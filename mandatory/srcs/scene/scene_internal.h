@@ -8,6 +8,7 @@
 # include "handle_error.h"
 # include "typedef.h"
 // structures
+# include "s_minirt.h"
 # include "s_scene.h"
 # include "s_mlx.h"
 # include "s_hit_record.h"
@@ -21,6 +22,7 @@
 # include "parsing.h"
 # include "camera.h"
 # include "object_arr.h"
+# include "color.h"
 
 t_color3	sampled_color(t_scene *scene, int x, int y);
 

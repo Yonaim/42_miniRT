@@ -1,4 +1,6 @@
 #include "scene_internal.h"
+#include <stdio.h>
+
 
 void	render_one_layer(t_scene *scene, int layer_cnt)
 {
@@ -47,23 +49,32 @@ void	apply_gamma_correction(t_image *img)
 	}
 }
 
-void	render_scene(t_mlx *mlx, t_scene *scene)
+int	render_scene(void *minirt)
 {
-	int			sample_cnt;
-	int			term;
+	t_mlx			*mlx;
+	t_scene			*scene;
+	t_render_status	*render_stat;
+	int				i;
 
-	sample_cnt = 0;
-	while (sample_cnt < SAMPLES_PER_PIXEL)
+	mlx = &((t_minirt *)minirt)->mlx;
+	scene = &((t_minirt *)minirt)->scene;
+	render_stat = &((t_minirt *)minirt)->status;
+	if (render_stat->is_done == true)
+		return (SUCCESS);
+	i = 0;
+	while (i < PUT_IMG_TERM)
 	{
-		term = 0;
-		while (sample_cnt < SAMPLES_PER_PIXEL && term < PUT_IMG_TERM)
-		{
-			render_one_layer(scene, sample_cnt);
-			sample_cnt++;
-			term++;
-		}
-		mlx_put_image_to_window(mlx->conn, mlx->win, mlx->img.obj, 0, 0);
+		render_one_layer(scene, render_stat->layer_cnt);
+		render_stat->layer_cnt++;
+		i++;
 	}
-	apply_gamma_correction(&mlx->img);
+	printf("%d : rendering...\n", render_stat->layer_cnt);
+	if (render_stat->layer_cnt >= SAMPLES_PER_PIXEL)
+	{
+		apply_gamma_correction(&mlx->img);
+		render_stat->is_done = true;
+		printf("rendering done!\n");
+	}
 	mlx_put_image_to_window(mlx->conn, mlx->win, mlx->img.obj, 0, 0);
+	return (SUCCESS);
 }
