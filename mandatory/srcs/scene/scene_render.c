@@ -16,8 +16,10 @@ void	render_one_layer(t_scene *scene, int layer_cnt)
 		while (y < scene->img->height)
 		{
 			new_color = sampled_color(scene, x, y);
-			old_color = v3_mul(get_pixel_color(scene->img, x, y), layer_cnt);
-			new_color = v3_div(v3_add(old_color, new_color), (layer_cnt + 1));
+			old_color = get_pixel_color(scene->img, x, y);
+			new_color = v3_div(\
+							v3_add(v3_mul(old_color, layer_cnt), new_color), \
+							(layer_cnt + 1));
 			put_pixel_to_image(scene->img, x, y, new_color);
 			y++;
 		}
