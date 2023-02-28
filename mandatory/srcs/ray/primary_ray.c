@@ -9,8 +9,8 @@ t_ray	primary_ray(t_camera *cam, double u, double v)
 	t_vector3	direction;
 
 	random_dist = v3_mul(v3_random_in_unit_disk(), cam->lens_radius);
-	offset = v3_add(v3_mul(cam->base.right, random_dist.x), \
-					v3_mul(cam->base.up, random_dist.y));
+	offset = v3_add(v3_mul(cam->basis.right, random_dist.x), \
+					v3_mul(cam->basis.up, random_dist.y));
 	initial_pt = v3_add(cam->origin, offset);
 	terminal_pt = v3_add(v3_add(cam->focus.bottom_left, \
 								v3_mul(cam->focus.horiz, u)), \
