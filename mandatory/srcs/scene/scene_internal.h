@@ -1,6 +1,9 @@
 #ifndef SCENE_INTERNAL_H
 # define SCENE_INTERNAL_H
 
+// standard library
+# include <math.h>
+// extra
 # include "constants.h"
 # include "handle_error.h"
 # include "typedef.h"
@@ -15,6 +18,9 @@
 // prototypes
 # include "mlx_utils.h"
 # include "ray.h"
+# include "parsing.h"
+# include "camera.h"
+# include "object_arr.h"
 
 t_color3	sampled_color(t_scene *scene, int x, int y);
 
