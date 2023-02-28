@@ -61,7 +61,7 @@ VECTOR_FILE		=	v3_basic \
 					v3_product \
 					v3_random
 OTHER_FILE		=	angle \
-					clamp \
+					range \
 					quadratic \
 					random \
 					orthonormal_basis
