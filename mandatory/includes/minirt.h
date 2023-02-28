@@ -6,6 +6,7 @@
 # include "constants.h"
 # include "typedef.h"
 # include "handle_error.h"
+# include "s_minirt.h"
 # include "s_mlx.h"
 # include "s_scene.h"
 # include "color.h"
