@@ -4,6 +4,8 @@ t_object	*new_cylinder(t_object_tube *tube, t_object_disk *disk[2])
 {
 	t_object_cylinder	*new;
 
+	(void)tube;
+	(void)disk;
 	new = malloc(sizeof(t_object_cylinder));
 	if (!new)
 		return (NULL);
@@ -21,7 +23,8 @@ t_object	*new_cylinder(t_object_tube *tube, t_object_disk *disk[2])
 bool		hit_cylinder(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
-	const t_object_cylinder	*cy = (t_object_cylinder *)self;
-
-	return (hit_object_list(cy->object_list, ray, h_rec, t_max));
+	t_object_cylinder	*cy;
+	
+	cy = (t_object_cylinder *)self;
+	return (hit_object_arr(&cy->faces, ray, h_rec, t_max));
 }

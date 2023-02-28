@@ -59,7 +59,7 @@ bool		hit_tube(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
 	const t_object_tube		*tb = (t_object_tube *)self;
-	const t_vector3			oc = v_subtract(ray->origin, \
+	const t_vector3			oc = v3_sub(ray->origin, \
 									v3_sub(tb->center, \
 									v3_mul((tb->orient), tb->height / 2)));
 	const double			coeff[3] = {
@@ -67,17 +67,17 @@ bool		hit_tube(t_object *self, t_ray *ray, \
 		2 * (v3_dot(oc, ray->dir) \
 				- v3_dot(oc, tb->orient) * v3_dot(ray->dir, tb->orient)),
 		len_sqr_v3(oc) - len_sqr_v3(v3_sub(oc, tb->orient)) - pow(tb->radius, 2)
-	}
+	};
 	double 					root[2];
 	double					t;
 
-	if (solve_quadratic(coeff[A], coeff[B], coeff[C], root == false))
+	if (solve_quadratic(coeff[A], coeff[B], coeff[C], root) == false)
 		return (false);
-	if (determine_t(&t, root, T_MINIMIN, t_max) == false)
+	if (determine_t(&t, root, T_MINIMUM, t_max) == false)
 		return (false);
 	h_rec->t = t;
 	h_rec->p = ray_at(ray, t);
-	h_rec->material = &tb->material;
+	h_rec->material = tb->material;
 	set_face_normal(h_rec, ray, v3_cross(v3_sub(tb->center, h_rec->p), oc));
 	return (true);
 }

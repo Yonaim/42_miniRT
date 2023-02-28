@@ -10,6 +10,7 @@
 # include "s_material.h"
 # include "s_hit_record.h"
 # include "s_object.h"
+# include "s_object_arr.h"
 # include "s_ray.h"
 # include "constants.h"
 # include "typedef.h"
@@ -17,6 +18,7 @@
 # include "ray.h"
 # include "texture.h"
 # include "material.h"
+# include "object_arr.h"
 
 enum	e_equation_coefficient
 {

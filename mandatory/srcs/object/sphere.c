@@ -33,7 +33,7 @@ static void	destroy_sphere(t_object *object)
 
 static int	get_sphere_type(void)
 {
-	return (OBJECT_SPHERE);
+return (OBJECT_SPHERE);
 }
 
 /*
@@ -72,13 +72,13 @@ static bool		hit_sphere(t_object *self, t_ray *ray, \
 	double 					root[2];
 	double					t;
 
-	if (solve_quadratic(coeff[A], coeff[B], coeff[C], root == false))
+	if (solve_quadratic(coeff[A], coeff[B], coeff[C], root) == false)
 		return (false);
 	if (determine_t(&t, root, T_MINIMUM, t_max) == false)
 		return (false);
 	h_rec->t = t;
 	h_rec->p = ray_at(ray, t);
-	h_rec->material = &sp->material;
+	h_rec->material = sp->material;
 	set_face_normal(h_rec, ray, v3_normalize(v3_sub(h_rec->p, sp->center)));
 	return (true);	
 }

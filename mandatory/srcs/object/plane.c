@@ -44,12 +44,13 @@ bool		hit_plane(t_object *self, t_ray *ray, \
 
 	if (v3_dot(pl->normal, ray->dir) == 0)
 		return (false);
-	t = v3_div(\
-			v3_dot(v3_sub(pl->point, ray->origin), pl->normal), \
-			v3_dot(pl->normal, r->ray));
+	t = v3_dot(v3_sub(pl->point, ray->origin), pl->normal) \
+		/ v3_dot(pl->normal, ray->dir);
+	if (t < T_MINIMUM || t > t_max)
+		return (false);
 	h_rec->t = t;
 	h_rec->p = ray_at(ray, t);
-	h_rec->material = &pl->material;
+	h_rec->material = pl->material;
 	set_face_normal(h_rec, ray, pl->normal);
 	return (true);	
 }
