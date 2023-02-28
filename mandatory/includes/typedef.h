@@ -3,6 +3,10 @@
 
 # include "libmath.h"
 
+// minirt
+typedef struct s_render_status			t_render_status;
+typedef struct s_minirt					t_minirt;
+
 // mlx
 typedef struct s_image					t_image;
 typedef struct s_mlx					t_mlx;
