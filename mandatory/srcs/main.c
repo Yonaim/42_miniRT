@@ -13,5 +13,6 @@ int	main(int argc, char *argv[])
 	flush_scene(&scene);
 	// esc, red button 관련 hook 함수 추가
 	// mlx_put_image_to_window(mlx.conn, mlx.win, mlx.img.obj, 0, 0);
+	mlx_loop(mlx.conn);
 	return (0);
 }
