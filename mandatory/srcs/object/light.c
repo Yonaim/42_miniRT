@@ -11,7 +11,10 @@ t_object	*new_light(t_point3 pos, double ratio, t_color3 rgb)
 		return (NULL);
 	ft_memset(new, 0, sizeof(t_object_point_light));
 	new->pos = pos;
-	new->material = new_emmisive(v3_mul(rgb, ratio / 256));
+	new->material = new_emmisive(\
+							v3_mul(\
+								v3_div(rgb, 256), \
+								ratio * MAX_BRIGHTNESS));
 	new->get_type = get_light_type;
 	if (new->material == NULL)
 		return (NULL);
