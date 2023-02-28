@@ -1,6 +1,19 @@
 #include "s_object.h"
 
-t_object	*new_disk(t_point3 center, double radius, t_vector3 normal, t_color3 rgb);
+t_object	*new_disk(t_point3 center, double radius, \
+								t_vector3 normal, t_material *material)
+{
+	t_object_disk	*new;
+
+	new = malloc(sizeof(t_object_disk));
+	if (!new)
+		return (NULL);
+	ft_memset(new, 0, sizeof(t_object_disk));
+	new->center = center;
+	new->radius = radius;
+	new->material = material;
+	return ((t_object *)new);
+}
 
 /*
 	<Line-Disk intersection>

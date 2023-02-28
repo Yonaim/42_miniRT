@@ -1,8 +1,21 @@
 #include "object_internal.h"
 
-t_object	*new_tube(t_point3 center, t_vector3 orient, \
-							double radius, double height, t_color3 rgb);
+t_object	*new_tube(t_object_disk *disk, t_vector3 orient, \
+							double height, t_material *material)
+{
+	t_object_tube	*new;
 
+	new = malloc(sizeof(t_object_tube));
+	if (!new)
+		return (NULL);
+	ft_memset(new, 0, sizeof(t_object_tube));
+	new->center = disk->center;
+	new->radius = disk->radius;
+	new->orient = orient;
+	new->height = height;
+	new->material = material;
+	return ((t_object *)new);
+}
 /*
 	<Line-Tube intersection>
 
