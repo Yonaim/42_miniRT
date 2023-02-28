@@ -2,7 +2,7 @@
 
 static void	destroy_tube(t_object *object);
 static int	get_tube_type(void);
-bool		hit_tube(t_object *self, t_ray *ray, \
+static bool	hit_tube(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max);
 
 t_object	*new_tube(t_object_disk *disk, t_vector3 orient, \
