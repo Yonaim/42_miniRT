@@ -31,5 +31,9 @@ t_color3	traced_color(t_ray *in_ray, t_world *world, int depth)
 	summed = v3_comp_wise(\
 						traced_color(&s_rec.scattered, world, depth + 1), \
 						s_rec.albedo);
+	summed = v3_mul(summed,
+					h_rec.material->s_pdf(
+						h_rec.material, in_ray, &h_rec, &s_rec.scattered)
+					/ s_rec.pdf_val);
 	return (v3_add(summed, emitted));
 }
