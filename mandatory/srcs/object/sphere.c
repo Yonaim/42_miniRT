@@ -12,13 +12,12 @@ t_object	*new_sphere(t_point3 center, double radius, t_material *material)
 	new = malloc(sizeof(t_object_sphere));
 	if (!new)
 		return (NULL);
-	ft_memset(new, 0, sizeof(t_object_sphere));
-	new->center = center;
-	new->radius = radius;
-	new->material = material;
 	new->hit = hit_sphere;
 	new->destroy = destroy_sphere;
 	new->get_type = get_sphere_type;
+	new->material = material;
+	new->center = center;
+	new->radius = radius;
 	return ((t_object *)new);
 }
 

@@ -12,18 +12,14 @@ t_object	*new_light(t_point3 pos, double ratio, t_color3 rgb)
 	new = malloc(sizeof(t_object_point_light));
 	if (!new)
 		return (NULL);
-	ft_memset(new, 0, sizeof(t_object_point_light));
-	new->material = new_emmisive(v3_mul(\
-										v3_div(rgb, 256), \
-										ratio * MAX_BRIGHTNESS));
-	if (new->material == NULL)
-		return (NULL);
-	new->sphere = new_sphere(pos, POINT_LIGHT_RADIUS, new->material);
-	if (new->sphere == NULL)
-		return (NULL);
-	new->destroy = destroy_light;
 	new->hit = hit_light;
+	new->destroy = destroy_light;
 	new->get_type = get_light_type;
+	new->material = new_emmisive(v3_mul(v3_div(rgb, 256), \
+										ratio * MAX_BRIGHTNESS));
+	new->sphere = new_sphere(pos, POINT_LIGHT_RADIUS, new->material);
+	if (new->material == NULL || new->sphere == NULL)
+		return (NULL);
 	return ((t_object *)new);
 }
 

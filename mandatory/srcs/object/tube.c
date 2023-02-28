@@ -14,11 +14,14 @@ t_object	*new_tube(t_object_disk *disk, t_vector3 orient, \
 	if (!new)
 		return (NULL);
 	ft_memset(new, 0, sizeof(t_object_tube));
+	new->hit = hit_tube;
+	new->destroy = destroy_tube;
+	new->get_type = get_tube_type;
+	new->material = material;
 	new->center = disk->center;
 	new->radius = disk->radius;
-	new->orient = orient;
 	new->height = height;
-	new->material = material;
+	new->orient = orient;
 	return ((t_object *)new);
 }
 

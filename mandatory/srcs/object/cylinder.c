@@ -9,13 +9,15 @@ t_object	*new_cylinder(t_object_tube *tube, t_object_disk *disk[2])
 {
 	t_object_cylinder	*new;
 
-	(void)tube;
-	(void)disk;
 	new = malloc(sizeof(t_object_cylinder));
 	if (!new)
 		return (NULL);
-	ft_memset(new, 0, sizeof(t_object_cylinder));
-	// new->faces
+	new->hit = hit_cylinder;
+	new->destroy = destroy_cylinder;
+	new->get_type = get_cylinder_type;
+	new->faces.arr[0] = tube;
+	new->faces.arr[1] = disk[0];
+	new->faces.arr[2] = disk[1];
 	return ((t_object *)new);
 }
 

@@ -12,10 +12,12 @@ t_object	*new_plane(t_point3 point, t_vector3 normal, t_material *material)
 	new = malloc(sizeof(t_object_plane));
 	if (!new)
 		return (NULL);
-	ft_memset(new, 0, sizeof(t_object_plane));
+	new->hit = hit_plane;
+	new->destroy = destroy_plane;
+	new->get_type = get_plane_type;
+	new->material = material;
 	new->point = point;
 	new->normal = normal;
-	new->material = material;
 	return ((t_object *)new);
 }
 

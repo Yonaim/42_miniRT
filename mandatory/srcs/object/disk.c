@@ -10,14 +10,16 @@ t_object	*new_disk(t_point3 center, double radius, \
 {
 	t_object_disk	*new;
 
-	(void)normal;
 	new = malloc(sizeof(t_object_disk));
 	if (!new)
 		return (NULL);
-	ft_memset(new, 0, sizeof(t_object_disk));
+	new->hit = hit_disk;
+	new->destroy = destroy_disk;
+	new->get_type = get_disk_type;
+	new->material = material;
 	new->center = center;
 	new->radius = radius;
-	new->material = material;
+	new->normal = normal;
 	return ((t_object *)new);
 }
 
