@@ -9,6 +9,8 @@ static void		destroy_lambertian(t_material *self);
 static double	get_lambertian_scattering_pdf(
 					t_material *self,
 					t_ray *in_ray, t_hit_record *h_rec, t_ray *scattered_ray);
+static int		get_lambertian_type(void);
+
 
 t_material	*new_lambertian(t_texture *texture)
 {
