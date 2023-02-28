@@ -11,7 +11,7 @@ int	add_object(t_object_arr *objects, t_object *object)
 
 int	add_object_to_world(t_world *world, t_object *object)
 {
-	if (object->is_light == true
+	if (object->is_light(object) == true
 		&& push_back_dynamic_arr(&world->lights, object) == FAILURE)
 		return (FAILURE);
 	if (push_back_dynamic_arr(&world->objects, object) == FAILURE)
