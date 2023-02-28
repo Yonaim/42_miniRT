@@ -6,6 +6,8 @@
 
 struct s_world
 {
+	t_object_arr	lights;
+
 	t_object_arr	objects;
 	t_color3		background_color;
 };
