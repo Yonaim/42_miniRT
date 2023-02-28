@@ -12,28 +12,27 @@ t_object	*new_sphere(t_point3 center, double radius, t_material *material)
 	new = malloc(sizeof(t_object_sphere));
 	if (!new)
 		return (NULL);
-	ft_memset(new, 0, sizeof(t_object_sphere));
-	new->center = center;
-	new->radius = radius;
-	new->material = material;
 	new->hit = hit_sphere;
 	new->destroy = destroy_sphere;
 	new->get_type = get_sphere_type;
+	new->material = material;
+	new->center = center;
+	new->radius = radius;
 	return ((t_object *)new);
 }
 
 static void	destroy_sphere(t_object *object)
 {
-	t_object_sphere	*sphere;
+	t_object_sphere	*sp;
 
-	sphere = (t_object_sphere *)object;
-	sphere->material->destroy(sphere->material);
-	free(sphere);
+	sp = (t_object_sphere *)object;
+	sp->material->destroy(sp->material);
+	free(sp);
 }
 
 static int	get_sphere_type(void)
 {
-return (OBJECT_SPHERE);
+	return (OBJECT_SPHERE);
 }
 
 /*
@@ -59,7 +58,7 @@ return (OBJECT_SPHERE);
 		b = 2 * (dir * (O - C))
 		c = (O - C)^2 - r^2
 */
-static bool		hit_sphere(t_object *self, t_ray *ray, \
+static bool	hit_sphere(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
 	const t_object_sphere	*sp = (t_object_sphere *)self;

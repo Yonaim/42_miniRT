@@ -1,5 +1,10 @@
 #include "object_internal.h"
 
+static void	destroy_tube(t_object *object);
+static int	get_tube_type(void);
+bool		hit_tube(t_object *self, t_ray *ray, \
+						t_hit_record *h_rec, double t_max);
+
 t_object	*new_tube(t_object_disk *disk, t_vector3 orient, \
 							double height, t_material *material)
 {
@@ -9,13 +14,31 @@ t_object	*new_tube(t_object_disk *disk, t_vector3 orient, \
 	if (!new)
 		return (NULL);
 	ft_memset(new, 0, sizeof(t_object_tube));
+	new->hit = hit_tube;
+	new->destroy = destroy_tube;
+	new->get_type = get_tube_type;
+	new->material = material;
 	new->center = disk->center;
 	new->radius = disk->radius;
-	new->orient = orient;
 	new->height = height;
-	new->material = material;
+	new->orient = orient;
 	return ((t_object *)new);
 }
+
+static void	destroy_tube(t_object *object)
+{
+	t_object_tube	*tube;
+
+	tube = (t_object_tube *)object;
+	tube->material->destroy(tube->material);
+	free(tube);
+}
+
+static int	get_tube_type(void)
+{
+	return (OBJECT_TUBE);
+}
+
 /*
 	<Line-Tube intersection>
 
@@ -41,21 +64,7 @@ t_object	*new_tube(t_object_disk *disk, t_vector3 orient, \
 		c = CO^2 - (CO - ^h)^2 - r^2
 		(CO = O - C)
 */
-
-// (dir)^2 = len_sqr_v3(ray->dir)	
-// ^h = tb->orient
-// (dir - ^h)^2 = len_sqr_v3(v3_sub(ray->dir, tb->orient))
-// CO * dir = v3_dot(oc, ray->dir)
-// CO * ^h = v3_dot(oc, tb->orient)
-// (dir * ^h) = v3_dot(ray->dir, tb->orient)
-// CO^2 = len_sqr_v3(oc)
-// (CO - ^h)^2 = len_sqr_v3(v3_sub(oc, tb->orient))
-// r^2 = pow(tb->radius, 2)
-
-// hit point의 노멀 벡터
-	// -> 이 노멀 벡터는 '원기둥 중심-P 벡터' 그리고 '원기둥 중심-P의 단면적 중심(oc)' 외적으로 구한다.
-	// (두 벡터의 방향이 완전히 같거나 다른 경우, 외적 결과가 0이지만 유효한 원기둥이므로 그런 경우는 발생하지 않는다.)
-bool		hit_tube(t_object *self, t_ray *ray, \
+static bool	hit_tube(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
 	const t_object_tube		*tb = (t_object_tube *)self;
@@ -81,3 +90,16 @@ bool		hit_tube(t_object *self, t_ray *ray, \
 	set_face_normal(h_rec, ray, v3_cross(v3_sub(tb->center, h_rec->p), oc));
 	return (true);
 }
+// (dir)^2 = len_sqr_v3(ray->dir)	
+// ^h = tb->orient
+// (dir - ^h)^2 = len_sqr_v3(v3_sub(ray->dir, tb->orient))
+// CO * dir = v3_dot(oc, ray->dir)
+// CO * ^h = v3_dot(oc, tb->orient)
+// (dir * ^h) = v3_dot(ray->dir, tb->orient)
+// CO^2 = len_sqr_v3(oc)
+// (CO - ^h)^2 = len_sqr_v3(v3_sub(oc, tb->orient))
+// r^2 = pow(tb->radius, 2)
+
+// hit point의 노멀 벡터
+	// -> 이 노멀 벡터는 '원기둥 중심-P 벡터' 그리고 '원기둥 중심-P의 단면적 중심(oc)' 외적으로 구한다.
+	// (두 벡터의 방향이 완전히 같거나 다른 경우, 외적 결과가 0이지만 유효한 원기둥이므로 그런 경우는 발생하지 않는다.)
