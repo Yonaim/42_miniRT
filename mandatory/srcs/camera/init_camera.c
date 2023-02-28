@@ -4,11 +4,11 @@
 #include "libmath.h"
 #include "constants.h"
 
-t_vector3	determine_up_vector(t_vector3 v)
+static t_vector3	determine_up_vector(t_vector3 v)
 {
 	t_vector3	up_vector;
 
-	up_vector = v3_normalize(v);
+	v = v3_normalize(v);
 	if (fabs(v.z) > 0.9)
 		up_vector = vector3(0, 1, 0);
 	else
