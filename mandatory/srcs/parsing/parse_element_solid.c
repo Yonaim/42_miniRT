@@ -43,6 +43,8 @@ int	parse_element_sphere(t_scene *scene, char *str)
 {
 	t_point3	pos;
 	double		diameter;
+	t_texture	*texture;
+	t_material	*material;
 	t_vector3	rgb;
 
 	pos = parse_vector3(&str);
@@ -52,8 +54,10 @@ int	parse_element_sphere(t_scene *scene, char *str)
 		return (FAILURE);
 	if (!is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
+	texture = new_solid(v3_div(rgb, 256));
+	material = new_lambertian(texture);
 	if (add_object(&scene->world.objects, \
-							new_sphere(pos, diameter / 2, rgb)) == FAILURE)
+							new_sphere(pos, diameter / 2, material)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -65,7 +69,8 @@ int	parse_element_cylinder(t_scene *scene, char *str)
 	double		diameter;
 	double		height;
 	t_vector3	rgb;
-
+	
+	(void)scene;
 	skip_char(&str, ' ');
 	center = parse_vector3(&str);
 	orient = parse_vector3(&str);
@@ -76,8 +81,8 @@ int	parse_element_cylinder(t_scene *scene, char *str)
 		return (FAILURE);
 	if (!is_vec3_in_range(orient, -1, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
-	if (add_object(&scene->world.objects, \
-		new_cylinder(center, orient, diameter / 2, height, rgb)) == FAILURE)
-		return (FAILURE);
+	// if (add_object(&scene->world.objects,
+	// 	new_cylinder(center, orient, diameter / 2, height, rgb)) == FAILURE)
+		// return (FAILURE);
 	return (SUCCESS);
 }
