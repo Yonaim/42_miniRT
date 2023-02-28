@@ -1,6 +1,6 @@
 #include "object_arr_internal.h"
-
-bool	hit_non_point_lights(\
+#include <stdio.h>
+bool	hit_object_arr_except_point_light(\
 						t_object_arr *objects, t_ray *in_ray, \
 						t_hit_record *final_rec, double t_max)
 {
@@ -29,7 +29,7 @@ bool	hit_non_point_lights(\
 	return (is_hit);
 }
 
-bool	hit_objects(\
+bool	hit_object_arr(\
 				t_object_arr *objects, t_ray *in_ray, \
 				t_hit_record *final_rec, double t_max)
 {
