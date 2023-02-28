@@ -31,7 +31,7 @@ int	parse_element_camera(t_scene *scene, char *str)
 	if (!is_vec3_in_range(orient, -1, 1) || !is_num_in_range(fov, 0, 180))
 		return (FAILURE);
 	scene->cam.origin = origin;
-	scene->cam.base.dir = v3_mul(orient, -1);
+	scene->cam.basis.dir = v3_mul(orient, -1);
 	scene->cam.viewport.fov = fov;
 	return (SUCCESS);
 }

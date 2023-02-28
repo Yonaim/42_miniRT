@@ -2,6 +2,7 @@
 # define TYPEDEF_H
 
 # include "libmath.h"
+#include <stdio.h>
 
 // minirt
 typedef struct s_render_status			t_render_status;
@@ -22,7 +23,7 @@ typedef struct s_ray					t_ray;
 
 // camera
 typedef struct s_viewport				t_viewport;
-typedef struct s_base_vector			t_base_vector;
+typedef struct s_basis_vector			t_basis_vector;
 typedef struct s_focus_plane			t_focus_plane;
 typedef struct s_camera					t_camera;
 

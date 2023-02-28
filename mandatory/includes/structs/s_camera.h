@@ -12,7 +12,7 @@ struct s_viewport
 	double			fov;
 };
 
-struct s_base_vector
+struct s_basis_vector
 {
 	t_vector3		dir;
 	t_vector3		up;
@@ -32,7 +32,7 @@ struct s_camera
 	t_viewport		viewport;
 	t_point3		origin;
 	double			lens_radius;
-	t_base_vector	base;
+	t_basis_vector	basis;
 	t_focus_plane	focus;
 };
 
