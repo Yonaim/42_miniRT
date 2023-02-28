@@ -58,8 +58,10 @@ static bool	hit_cylinder(
 static bool	is_cylinder_light(t_object *object)
 {
 	const t_object_cylinder	*cy = (t_object_cylinder *)object;
+	t_object				*face;
 
-	if (cy->faces.data[0]->is_light == true)
+	face = (t_object *)(cy->faces.data[0]);
+	if (face->is_light(face) == true)
 		return (true);
 	return (false);
 }

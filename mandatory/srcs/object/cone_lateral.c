@@ -49,7 +49,7 @@ static bool	is_cone_lateral_light(t_object *object)
 {
 	const t_object_cone_lateral	*lat = (t_object_cone_lateral *)object;
 
-	if (lat->material->get_type == MATERIAL_EMMISIVE)
+	if (lat->material->get_type() == MATERIAL_EMMISIVE)
 		return (true);
 	return (false);
 }

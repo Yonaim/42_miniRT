@@ -57,8 +57,10 @@ static bool	hit_cone(
 static bool	is_cone_light(t_object *object)
 {
 	const t_object_cone	*co = (t_object_cone *)object;
+	t_object			*face;
 
-	if (co->faces.data[0]->is_light == true)
+	face = (t_object *)(co->faces.data[0]);
+	if (face->is_light(face) == true)
 		return (true);
 	return (false);
 }
