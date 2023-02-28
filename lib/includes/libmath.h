@@ -38,6 +38,7 @@ t_vector3	v3_random_in_unit_sphere(void);
 t_vector3	v3_random_on_unit_sphere(void);
 t_vector3	v3_random_in_unit_disk(void);
 t_vector3	v3_random_on_unit_disk(void);
+t_vector3	v3_random_cosine_direction(void);
 
 // discriminant
 bool		solve_quadratic(double a, double b, double c, double root[2]);
