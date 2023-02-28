@@ -34,7 +34,7 @@ struct s_object_point_light
 	t_destroy_object	destroy;
 	t_get_object_type	get_type;
 	t_material			*material;
-	t_point3			pos;
+	t_object			*sphere;
 };
 
 struct s_object_sphere
