@@ -1,4 +1,9 @@
-#include "object_internal.h"
+ #include "object_internal.h"
+
+static void	destroy_plane(t_object *object);
+static int	get_plane_type(void);
+static bool	hit_plane(t_object *self, t_ray *ray, \
+						t_hit_record *h_rec, double t_max);
 
 t_object	*new_plane(t_point3 point, t_vector3 normal, t_material *material)
 {
@@ -12,6 +17,20 @@ t_object	*new_plane(t_point3 point, t_vector3 normal, t_material *material)
 	new->normal = normal;
 	new->material = material;
 	return ((t_object *)new);
+}
+
+static void	destroy_plane(t_object *object)
+{
+	t_object_plane	*pl;
+
+	pl = (t_object_plane *)object;
+	pl->material->destroy(pl->material);
+	free(pl);
+}
+
+static int	get_plane_type(void)
+{
+	return (OBJECT_PLANE);
 }
 
 /*
@@ -36,7 +55,7 @@ t_object	*new_plane(t_point3 point, t_vector3 normal, t_material *material)
 	it means that a line is contained in the plane.)
 	(If a given ray is contained in a plane, it is considered not hit)
 */
-bool		hit_plane(t_object *self, t_ray *ray, \
+static bool	hit_plane(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
 	const t_object_plane	*pl = (t_object_plane *)self;

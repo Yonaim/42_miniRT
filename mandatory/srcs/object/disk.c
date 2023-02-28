@@ -1,5 +1,10 @@
 #include "object_internal.h"
 
+static void	destroy_disk(t_object *object);
+static int	get_disk_type(void);
+static bool	hit_disk(t_object *self, t_ray *ray, \
+						t_hit_record *h_rec, double t_max);
+
 t_object	*new_disk(t_point3 center, double radius, \
 								t_vector3 normal, t_material *material)
 {
@@ -14,6 +19,20 @@ t_object	*new_disk(t_point3 center, double radius, \
 	new->radius = radius;
 	new->material = material;
 	return ((t_object *)new);
+}
+
+static void	destroy_disk(t_object *object)
+{
+	t_object_disk	*dk;
+
+	dk = (t_object_disk *)object;
+	dk->material->destroy(dk->material);
+	free(dk);
+}
+
+static int	get_disk_type(void)
+{
+	return (OBJECT_DISK);
 }
 
 /*
@@ -42,8 +61,7 @@ t_object	*new_disk(t_point3 center, double radius, \
 	(If there are countless solutions, it means that a line is contained in the disk.)
 	(If a given ray is contained in a disk, it is considered not hit)
 */
-
-bool		hit_disk(t_object *self, t_ray *ray, \
+static bool	hit_disk(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
 	const t_object_disk		*dk = (t_object_disk *)self;
