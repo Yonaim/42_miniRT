@@ -22,6 +22,7 @@ int	parse_element_camera(t_scene *scene, char *str)
 	t_vector3	orient;
 	int			fov;
 
+	skip_until_next_value(&str);
 	origin = parse_vector3(&str);
 	orient = parse_vector3(&str);
 	fov = parse_integer(&str);

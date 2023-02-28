@@ -6,6 +6,7 @@ int	parse_element_light(t_scene *scene, char *str)
 	double		ratio;
 	t_vector3	rgb;
 
+	skip_until_next_value(&str);
 	pos = parse_vector3(&str);
 	ratio = parse_double(&str);
 	rgb = vector3(255, 255, 255);
@@ -26,6 +27,7 @@ int	parse_element_plane(t_scene *scene, char *str)
 	t_vector3	normal;
 	t_vector3	rgb;
 
+	skip_until_next_value(&str);
 	pos = parse_vector3(&str);
 	normal = parse_vector3(&str);
 	rgb = parse_vector3(&str);
@@ -47,6 +49,7 @@ int	parse_element_sphere(t_scene *scene, char *str)
 	t_material	*material;
 	t_vector3	rgb;
 
+	skip_until_next_value(&str);
 	pos = parse_vector3(&str);
 	diameter = parse_double(&str);
 	rgb = parse_vector3(&str);
@@ -71,7 +74,7 @@ int	parse_element_cylinder(t_scene *scene, char *str)
 	t_vector3	rgb;
 	
 	(void)scene;
-	skip_char(&str, ' ');
+	skip_until_next_value(&str);
 	center = parse_vector3(&str);
 	orient = parse_vector3(&str);
 	diameter = parse_double(&str);
