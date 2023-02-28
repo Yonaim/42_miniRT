@@ -49,7 +49,6 @@ void	apply_gamma_correction(t_image *img)
 
 void	render_scene(t_mlx *mlx, t_scene *scene)
 {
-	t_color3	sample_color;
 	int			sample_cnt;
 	int			term;
 
