@@ -4,10 +4,6 @@ static bool	hit_world(\
 					t_object_arr *objects, t_ray *in_ray, \
 					t_hit_record *h_rec, int depth)
 {
-	// (void)objects;
-	// (void)in_ray;
-	// (void)h_rec;
-	// (void)depth;
 	if (depth == 0)
 		return (hit_object_arr_except_point_light(\
 										objects, in_ray, h_rec, T_INFINITY));
