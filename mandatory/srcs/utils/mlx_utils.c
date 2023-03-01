@@ -36,7 +36,9 @@ void	init_mlx(t_mlx *mlx)
 	img->obj = mlx_new_image(mlx->conn, img->width, img->height);
 	img->data = mlx_get_data_addr(img->obj, &img->bits_per_pixel, \
 							&img->bytes_per_line, &img->endian);
-	img->buff = ft_calloc(img->height * img->width, sizeof(char));
+	img->tmp_data = ft_calloc(img->height * img->width, sizeof(t_color3));
+	if (img->tmp_data == NULL)
+		handle_error(ERRMSG_MALLOC_FAILED);
 	img->data_size = img->bytes_per_line * img->height;
 	ft_memset(img->data, 0, img->width * img->height * img->bits_per_pixel / 8);
 }
