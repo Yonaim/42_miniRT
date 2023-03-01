@@ -6,6 +6,7 @@
 
 typedef struct s_info_ambient_light			t_info_ambient_light;
 typedef struct s_info_camera				t_info_camera;
+typedef struct s_info_material				t_info_material;
 typedef struct s_info_object_point_light	t_info_object_point_light;
 typedef struct s_info_object_sphere			t_info_object_sphere;
 typedef struct s_info_object_disk			t_info_object_disk;
@@ -30,6 +31,16 @@ struct s_info_camera
 	int			fov;
 };
 
+struct s_info_material
+{
+	int			material_type;
+	int			texture_type;
+	t_color3	rgb1;
+	t_color3	rgb2;
+	double		fuzz;
+	double		refractive_idx;
+};
+
 struct s_info_object_point_light
 {
 	t_point3	pos;
@@ -41,88 +52,56 @@ struct s_info_object_point_light
 
 struct s_info_object_sphere
 {
-	t_point3	center;
-	double		radius;
-	int			material_type;
-	int			texture_type;
-	t_color3	rgb1;
-	t_color3	rgb2;
-	double		fuzz;
-	double		refractive_idx;
+	t_point3		center;
+	double			radius;
+	t_info_material	material;
 };
 
 struct s_info_object_disk
 {
-	t_point3	center;
-	double		radius;
-	t_vector3	orient;
-	int			material_type;
-	int			texture_type;
-	t_color3	rgb1;
-	t_color3	rgb2;
-	double		fuzz;
-	double		refractive_idx;
+	t_point3		center;
+	double			radius;
+	t_vector3		orient;
+	t_info_material	material;
 };
 
 struct s_info_object_tube
 {
-	t_point3	center;
-	double		radius;
-	t_vector3	orient;
-	double		height;
-	int			material_type;
-	int			texture_type;
-	t_color3	rgb1;
-	t_color3	rgb2;
-	double		fuzz;
-	double		refractive_idx;
+	t_point3		center;
+	double			radius;
+	t_vector3		orient;
+	double			height;
+	t_info_material	material;
 };
 
 struct s_info_object_cylinder
 {
 	t_info_object_disk	disk[2];
 	t_info_object_tube	tube;
-	int					material_type;
-	int					texture_type;
-	t_color3			rgb;
+	t_info_material		material;
 };
 
 struct s_info_object_cone
 {
-	t_point3	center;
-	double		radius;
-	double		height;
-	t_vector3	orient;
-	int			material_type;
-	int			texture_type;
-	t_color3	rgb1;
-	t_color3	rgb2;
-	double		fuzz;
-	double		refractive_idx;
+	t_point3		center;
+	double			radius;
+	double			height;
+	t_vector3		orient;
+	t_info_material	material;
 };
 
 struct s_info_object_plane
 {
-	t_point3	point;
-	t_vector3	normal;
-	int			material_type;
-	int			texture_type;
-	t_color3	rgb1;
-	t_color3	rgb2;
-	double		fuzz;
-	double		refractive_idx;
+	t_point3		point;
+	t_vector3		normal;
+	t_info_material	material;
 };
 
 struct s_info_object_box
 {	
-	t_point3	p_end1;
-	t_point3	p_end2;
-	int			material_type;
-	int			texture_type;
-	t_color3	rgb1;
-	t_color3	rgb2;
-	double		fuzz;
-	double		refractive_idx;
+	t_point3		p_end1;
+	t_point3		p_end2;
+	t_info_material	material;
 };
 
 #endif
