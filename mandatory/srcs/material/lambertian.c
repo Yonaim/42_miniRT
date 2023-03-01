@@ -55,7 +55,7 @@ static t_color3	lambertian_emitted(\
 	return (color3(0, 0, 0));
 }
 
-static void		destroy_lambertian(t_material *self)
+static void	destroy_lambertian(t_material *self)
 {
 	t_material_lambertian	*lambertian;
 
@@ -71,7 +71,7 @@ static double	get_scattering_pdf(\
 	const double	cosine = v3_dot(\
 									h_rec->normal, \
 									v3_normalize(s_rec->scattered.dir));
-	
+
 	(void)self;
 	(void)in_ray;
 	if (cosine < 0)

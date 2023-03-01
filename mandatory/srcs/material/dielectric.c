@@ -50,11 +50,10 @@ static t_color3	dielectric_emitted(\
 	return (color3(0, 0, 0));
 }
 
-static void		destroy_dielectric(t_material *self)
+static void	destroy_dielectric(t_material *self)
 {
 	t_material_dielectric	*dielectric;
 
 	dielectric = (t_material_dielectric *)self;
-	dielectric->texture->destroy(dielectric->texture);
 	free(dielectric);
 }

@@ -37,12 +37,15 @@ static t_color3	emmisive_emitted(\
 								t_material *self, \
 								double u, double v, t_point3 p)
 {
-	const t_color3	emitted = self->texture->get_val(self->texture, u, v, p);
+	t_material_emmisive	*emmisive;
+	t_color3			emitted;
 
+	emmisive = (t_material_emmisive *)self;
+	emitted = emmisive->emit->get_val(emmisive->emit, u, v, p);
 	return (emitted);
 }
 
-static void		destroy_emmisive(t_material *self)
+static void	destroy_emmisive(t_material *self)
 {
 	t_material_emmisive	*emmisive;
 
