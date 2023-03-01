@@ -45,7 +45,10 @@ struct s_info_object_sphere
 	double		radius;
 	int			material_type;
 	int			texture_type;
-	t_color3	rgb;
+	t_color3	rgb1;
+	t_color3	rgb2;
+	double		fuzz;
+	double		refractive_idx;
 };
 
 struct s_info_object_disk
@@ -55,7 +58,10 @@ struct s_info_object_disk
 	t_vector3	orient;
 	int			material_type;
 	int			texture_type;
-	t_color3	rgb;
+	t_color3	rgb1;
+	t_color3	rgb2;
+	double		fuzz;
+	double		refractive_idx;
 };
 
 struct s_info_object_tube
@@ -66,7 +72,10 @@ struct s_info_object_tube
 	double		height;
 	int			material_type;
 	int			texture_type;
-	t_color3	rgb;
+	t_color3	rgb1;
+	t_color3	rgb2;
+	double		fuzz;
+	double		refractive_idx;
 };
 
 struct s_info_object_cylinder
@@ -86,7 +95,10 @@ struct s_info_object_cone
 	t_vector3	orient;
 	int			material_type;
 	int			texture_type;
-	t_color3	rgb;
+	t_color3	rgb1;
+	t_color3	rgb2;
+	double		fuzz;
+	double		refractive_idx;
 };
 
 struct s_info_object_plane
@@ -95,7 +107,10 @@ struct s_info_object_plane
 	t_vector3	normal;
 	int			material_type;
 	int			texture_type;
-	t_color3	rgb;
+	t_color3	rgb1;
+	t_color3	rgb2;
+	double		fuzz;
+	double		refractive_idx;
 };
 
 struct s_info_object_box
@@ -104,7 +119,10 @@ struct s_info_object_box
 	t_point3	p_end2;
 	int			material_type;
 	int			texture_type;
-	t_color3	rgb;
+	t_color3	rgb1;
+	t_color3	rgb2;
+	double		fuzz;
+	double		refractive_idx;
 };
 
 #endif
