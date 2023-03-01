@@ -156,8 +156,8 @@ struct s_object_box
 	t_destroy_object	destroy;
 	t_get_object_type	get_type;
 	t_material			*material;
-	t_point3			p_min;
-	t_point3			p_max;
+	t_point3			p_end1;
+	t_point3			p_end2;
 	t_object_arr		faces;
 };
 
