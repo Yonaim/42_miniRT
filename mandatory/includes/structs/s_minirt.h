@@ -9,7 +9,6 @@ struct s_minirt
 {
 	t_mlx		mlx;
 	t_scene		scene;
-	int			layer_cnt;
 };
 
 #endif

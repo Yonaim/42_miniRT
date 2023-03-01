@@ -37,25 +37,24 @@ void	render_one_layer(t_scene *scene, int layer_cnt)
 
 int	render_scene(void *minirt)
 {
-	t_mlx		*mlx;
-	t_scene		*scene;
-	int			*layer_cnt;
-	int			i;
+	t_mlx			*mlx;
+	t_scene			*scene;
+	static int		layer_cnt;
+	int				i;
 
 	mlx = &((t_minirt *)minirt)->mlx;
 	scene = &((t_minirt *)minirt)->scene;
-	layer_cnt = &((t_minirt *)minirt)->layer_cnt;
-	if ((*layer_cnt) == SAMPLES_PER_PIXEL)
+	if (layer_cnt == SAMPLES_PER_PIXEL)
 		return (SUCCESS);
 	i = 0;
-	while (i < PUT_IMG_TERM && (*layer_cnt) < SAMPLES_PER_PIXEL)
+	while (i < PUT_IMG_TERM && layer_cnt < SAMPLES_PER_PIXEL)
 	{
-		render_one_layer(scene, (*layer_cnt));
-		(*layer_cnt)++;
+		render_one_layer(scene, layer_cnt);
+		layer_cnt++;
 		i++;
 	}
-	printf("%d : rendering...\n", (*layer_cnt));
-	if ((*layer_cnt) == SAMPLES_PER_PIXEL)
+	printf("%d : rendering...\n", layer_cnt);
+	if (layer_cnt == SAMPLES_PER_PIXEL)
 		printf("rendering done!\n");
 	mlx_put_image_to_window(mlx->conn, mlx->win, mlx->img.obj, 0, 0);
 	return (SUCCESS);
