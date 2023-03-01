@@ -79,6 +79,26 @@ struct s_object_cylinder
 	t_object_arr		faces;
 };
 
+struct s_object_cone_lateral
+{
+	t_hit_object		hit;
+	t_destroy_object	destroy;
+	t_get_object_type	get_type;
+	t_material			*material;
+	t_point3			center;
+	double				radius;
+	double				height;
+};
+
+struct s_object_cone
+{
+	t_hit_object		hit;
+	t_destroy_object	destroy;
+	t_get_object_type	get_type;
+	t_material			*material;
+	t_object_arr		faces;
+};
+
 struct s_object_plane
 {
 	t_hit_object		hit;
