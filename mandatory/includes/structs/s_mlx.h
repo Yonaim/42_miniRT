@@ -7,6 +7,7 @@ struct s_image
 {
 	void	*obj;
 	char	*data;
+	char	*buff;
 	int		data_size;
 	int		width;
 	int		height;
