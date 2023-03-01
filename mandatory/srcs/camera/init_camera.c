@@ -23,7 +23,8 @@ static void	init_camera_basis(t_camera *cam)
 	cam->basis.dir = v3_normalize(cam->basis.dir);
 	up_vector = determine_up_vector(cam->basis.dir);
 	cam->basis.right = v3_normalize(v3_cross(up_vector, cam->basis.dir));
-	cam->basis.up = v3_cross(cam->basis.dir, cam->basis.right);
+	// cam->basis.up = v3_cross(cam->basis.dir, cam->basis.right);
+	cam->basis.up = v3_cross(cam->basis.right, cam->basis.dir);
 }
 
 static void	init_camera_viewport(t_viewport *viewport)
