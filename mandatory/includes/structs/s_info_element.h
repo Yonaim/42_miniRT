@@ -60,7 +60,7 @@ struct s_info_object_disk
 
 struct s_info_object_tube
 {
-	t_point3	bottom_center;
+	t_point3	center;
 	double		radius;
 	t_vector3	orient;
 	double		height;
