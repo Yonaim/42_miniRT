@@ -5,23 +5,23 @@ static int	get_tube_type(void);
 static bool	hit_tube(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max);
 
-t_object	*new_tube(t_object_disk *disk, t_vector3 orient, \
-							double height, t_material *material)
+t_object	*new_tube(t_info_object_tube *info)
 {
 	t_object_tube	*new;
+	t_texture		*texture;
 
 	new = malloc(sizeof(t_object_tube));
 	if (!new)
 		return (NULL);
 	ft_memset(new, 0, sizeof(t_object_tube));
+	new->center = v3_sub(info->center, v3_mul(info->orient, info->height / 2));
+	new->radius = info->radius;
+	new->height = info->height;
+	new->orient = info->orient;
+	new->material = new_material(&info->material);
 	new->hit = hit_tube;
 	new->destroy = destroy_tube;
 	new->get_type = get_tube_type;
-	new->material = material;
-	new->center = disk->center;
-	new->radius = disk->radius;
-	new->height = height;
-	new->orient = orient;
 	return ((t_object *)new);
 }
 
@@ -64,20 +64,29 @@ static int	get_tube_type(void)
 		c = CO^2 - (CO - ^h)^2 - r^2
 		(CO = O - C)
 */
+
+static void	get_tube_normal_vector(\
+				t_object_tube *tube, t_hit_record *h_rec, t_ray *ray)
+{
+	const t_vector3	cp = v3_sub(h_rec->p, v3_sub(tb->center, \
+									v3_mul((tb->orient), tb->height / 2)));
+	h_rec->normal = v3_mul(, v3_dot(tube->orient, *co));
+}
+
 static bool	hit_tube(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
 	const t_object_tube		*tb = (t_object_tube *)self;
-	const t_vector3			oc = v3_sub(ray->origin, \
+	const t_vector3			co = v3_sub(ray->origin, \
 									v3_sub(tb->center, \
 									v3_mul((tb->orient), tb->height / 2)));
 	const double			coeff[3] = {
 		len_sqr_v3(ray->dir) - len_sqr_v3(v3_sub(ray->dir, tb->orient)),
-		2 * (v3_dot(oc, ray->dir) \
-				- v3_dot(oc, tb->orient) * v3_dot(ray->dir, tb->orient)),
-		len_sqr_v3(oc) - len_sqr_v3(v3_sub(oc, tb->orient)) - pow(tb->radius, 2)
+		2 * (v3_dot(co, ray->dir) \
+				- v3_dot(co, tb->orient) * v3_dot(ray->dir, tb->orient)),
+		len_sqr_v3(co) - len_sqr_v3(v3_sub(co, tb->orient)) - pow(tb->radius, 2)
 	};
-	double 					root[2];
+	double					root[2];
 	double					t;
 
 	if (solve_quadratic(coeff[A], coeff[B], coeff[C], root) == false)
@@ -87,7 +96,8 @@ static bool	hit_tube(t_object *self, t_ray *ray, \
 	h_rec->t = t;
 	h_rec->p = ray_at(ray, t);
 	h_rec->material = tb->material;
-	set_face_normal(h_rec, ray, v3_cross(v3_sub(tb->center, h_rec->p), oc));
+	get_tube_normal_vector(&h_rec, ray, &co);
+	set_face_normal(h_rec, ray, v3_cross(v3_sub(tb->center, h_rec->p), co));
 	return (true);
 }
 // (dir)^2 = len_sqr_v3(ray->dir)	
