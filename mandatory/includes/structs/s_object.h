@@ -13,6 +13,8 @@ enum e_object_type
 	OBJECT_DISK,
 	OBJECT_TUBE,
 	OBJECT_CYLINDER,
+	OBJECT_CONE_LATERAL_AREA,
+	OBJECT_CONE,
 	OBJECT_PLANE,
 	OBJECT_XY_RECTANGLE,
 	OBJECT_XZ_RECTANGLE,
@@ -119,7 +121,7 @@ struct s_object_xy_rectangle
 	double				x1;
 	double				y0;
 	double				y1;
-	double				k;
+	double				z;
 };
 
 struct s_object_xz_rectangle
@@ -132,7 +134,7 @@ struct s_object_xz_rectangle
 	double				x1;
 	double				z0;
 	double				z1;
-	double				k;
+	double				y;
 };
 
 struct s_object_yz_rectangle
@@ -145,7 +147,7 @@ struct s_object_yz_rectangle
 	double				y1;
 	double				z0;
 	double				z1;
-	double				k;
+	double				x;
 };
 
 struct s_object_box
