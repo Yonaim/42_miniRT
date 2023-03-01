@@ -1,3 +1,4 @@
+
 #ifndef CONSTANTS_H
 # define CONSTANTS_H
 
@@ -34,7 +35,7 @@ enum e_success_or_failure
 # define POINT_LIGHT_RADIUS			5
 
 // object array
-# define INITIAL_OBJECT_ARR_SIZE	10
+# define INITIAL_OBJ_ARR_SIZE	10
 
 // light
 # define MAX_BRIGHTNESS				20
