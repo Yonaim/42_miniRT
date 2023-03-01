@@ -62,13 +62,13 @@ static bool	hit_sphere(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
 	const t_object_sphere	*sp = (t_object_sphere *)self;
-	const t_vector3			oc = v3_sub(ray->origin, sp->center);
+	const t_vector3			co = v3_sub(ray->origin, sp->center);
 	const double			coeff[3] = {
 		len_sqr_v3(ray->dir),
-		v3_dot(ray->dir, oc),
-		len_sqr_v3(oc) - pow(sp->radius, 2)
+		v3_dot(ray->dir, co),
+		len_sqr_v3(co) - pow(sp->radius, 2)
 	};
-	double 					root[2];
+	double					root[2];
 	double					t;
 
 	if (solve_quadratic_half_b(coeff[A], coeff[B], coeff[C], root) == false)
