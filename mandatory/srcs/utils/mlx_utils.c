@@ -23,21 +23,6 @@ void	put_pixel_to_image(t_image *img, t_color3 *color, int x, int y)
 	}
 }
 
-void	update_buff_pixel_color(t_image *img, int x, int y, t_color3 color)
-{
-	char	*dst;
-	int		offset;
-
-	if (x > img->width || y > img->height || x < 0 || y < 0)
-		return ;
-	offset = (y * img->bytes_per_line) + (x * (img->bits_per_pixel / 8));
-	if (0 <= offset && offset < (img->width * img->height) * 4)
-	{
-		dst = &img->buff[offset];
-		*(unsigned int *)dst = color3_to_rgb(color);
-	}
-}
-
 void	init_mlx(t_mlx *mlx)
 {
 	t_image	*img;
