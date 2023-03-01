@@ -13,6 +13,8 @@ enum e_object_type
 	OBJECT_DISK,
 	OBJECT_TUBE,
 	OBJECT_CYLINDER,
+	OBJECT_CONE_LATERAL,
+	OBJECT_CONE,
 	OBJECT_PLANE,
 	OBJECT_XY_RECTANGLE,
 	OBJECT_XZ_RECTANGLE,
@@ -79,6 +81,26 @@ struct s_object_cylinder
 	t_object_arr		faces;
 };
 
+struct s_object_cone_lateral
+{
+	t_hit_object		hit;
+	t_destroy_object	destroy;
+	t_get_object_type	get_type;
+	t_material			*material;
+	t_point3			center;
+	double				radius;
+	double				height;
+};
+
+struct s_object_cone
+{
+	t_hit_object		hit;
+	t_destroy_object	destroy;
+	t_get_object_type	get_type;
+	t_material			*material;
+	t_object_arr		faces;
+};
+
 struct s_object_plane
 {
 	t_hit_object		hit;
@@ -99,7 +121,7 @@ struct s_object_xy_rectangle
 	double				x1;
 	double				y0;
 	double				y1;
-	double				k;
+	double				z;
 };
 
 struct s_object_xz_rectangle
@@ -112,7 +134,7 @@ struct s_object_xz_rectangle
 	double				x1;
 	double				z0;
 	double				z1;
-	double				k;
+	double				y;
 };
 
 struct s_object_yz_rectangle
@@ -125,7 +147,7 @@ struct s_object_yz_rectangle
 	double				y1;
 	double				z0;
 	double				z1;
-	double				k;
+	double				x;
 };
 
 struct s_object_box
@@ -134,8 +156,8 @@ struct s_object_box
 	t_destroy_object	destroy;
 	t_get_object_type	get_type;
 	t_material			*material;
-	t_point3			p_min;
-	t_point3			p_max;
+	t_point3			p_end1;
+	t_point3			p_end2;
 	t_object_arr		faces;
 };
 
