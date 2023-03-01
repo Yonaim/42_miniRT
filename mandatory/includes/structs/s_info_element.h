@@ -6,6 +6,7 @@
 
 typedef struct s_info_ambient_light			t_info_ambient_light;
 typedef struct s_info_camera				t_info_camera;
+typedef struct s_info_texture				t_info_texture;
 typedef struct s_info_material				t_info_material;
 typedef struct s_info_object_point_light	t_info_object_point_light;
 typedef struct s_info_object_sphere			t_info_object_sphere;
@@ -62,20 +63,23 @@ struct s_info_camera
 
 struct s_info_material
 {
-	int			material_type;
-	int			texture_type;
-	t_color3	rgb1;
-	t_color3	rgb2;
+	int			type;
+	t_color3	rgb;
 	double		fuzz;
 	double		refractive_idx;
+};
+
+struct s_info_texture
+{
+	int			type;
+	t_color3	rgb1;
+	t_color3	rgb2;
 };
 
 struct s_info_object_point_light
 {
 	t_point3	pos;
 	double		brightness;
-	int			material_type;
-	int			texture_type;
 	t_color3	rgb;
 };
 
@@ -84,6 +88,7 @@ struct s_info_object_sphere
 	t_point3		center;
 	double			radius;
 	t_info_material	material;
+	t_info_texture	texture;
 };
 
 struct s_info_object_disk
@@ -92,6 +97,7 @@ struct s_info_object_disk
 	double			radius;
 	t_vector3		orient;
 	t_info_material	material;
+	t_info_texture	texture;
 };
 
 struct s_info_object_tube
@@ -101,6 +107,7 @@ struct s_info_object_tube
 	t_vector3		orient;
 	double			height;
 	t_info_material	material;
+	t_info_texture	texture;
 };
 
 struct s_info_object_cylinder
@@ -117,6 +124,7 @@ struct s_info_object_cone
 	double			height;
 	t_vector3		orient;
 	t_info_material	material;
+	t_info_texture	texture;
 };
 
 struct s_info_object_plane
@@ -124,6 +132,7 @@ struct s_info_object_plane
 	t_point3		point;
 	t_vector3		normal;
 	t_info_material	material;
+	t_info_texture	texture;
 };
 
 struct s_info_object_box
@@ -131,6 +140,7 @@ struct s_info_object_box
 	t_point3		p_end1;
 	t_point3		p_end2;
 	t_info_material	material;
+	t_info_texture	texture;
 };
 
 #endif
