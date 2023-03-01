@@ -49,11 +49,10 @@ static t_color3	metal_emitted(\
 	return (color3(0, 0, 0));
 }
 
-static void		destroy_metal(t_material *self)
+static void	destroy_metal(t_material *self)
 {
 	t_material_metal	*metal;
 
 	metal = (t_material_metal *)self;
-	metal->texture->destroy(metal->texture);
 	free(metal);
 }
