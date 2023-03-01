@@ -8,11 +8,9 @@
 # define EVENT_DESTROY		17
 # define KEY_ESC 			53
 
-t_color3	get_pixel_color(t_image *img, char *data, int x, int y);
-void		put_pixel_to_image(t_image *img, int x, int y, t_color3 color);
-void		update_buff_pixel_color(t_image *img, int x, int y, t_color3 color);
-void		init_mlx(t_mlx *mlx);
-int			destroy_hook(void *minirt);
-int			keypress_hook(int keycode, void *minirt);
+void	put_pixel_to_image(t_image *img, t_color3 *color, int x, int y);
+void	init_mlx(t_mlx *mlx);
+int		destroy_hook(void *minirt);
+int		keypress_hook(int keycode, void *minirt);
 
 #endif
