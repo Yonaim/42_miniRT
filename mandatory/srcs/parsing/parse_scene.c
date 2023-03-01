@@ -45,7 +45,7 @@ static int	parse_element_info(t_scene *scene, char *str, int elem_exist[])
 	const t_parse_element	parse_func[] = {
 	[AMBIENT] = parse_element_ambient,
 	[CAMERA] = parse_element_camera,
-	[LIGHT] = parse_element_light,
+	[LIGHT] = parse_element_point_light,
 	[PLANE] = parse_element_plane,
 	[SPHERE] = parse_element_sphere,
 	[CYLINDER] = parse_element_cylinder

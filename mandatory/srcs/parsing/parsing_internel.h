@@ -41,7 +41,7 @@ typedef int	(*t_parse_element)(t_scene *scene, char *str);
 // parse element
 int			parse_element_ambient(t_scene *scene, char *str);
 int			parse_element_camera(t_scene *scene, char *str);
-int			parse_element_light(t_scene *scene, char *str);
+int			parse_element_point_light(t_scene *scene, char *str);
 int			parse_element_plane(t_scene *scene, char *str);
 int			parse_element_sphere(t_scene *scene, char *str);
 int			parse_element_cylinder(t_scene *scene, char *str);
