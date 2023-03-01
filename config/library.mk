@@ -5,8 +5,8 @@ LIB_PATH		= lib
 LIBMLX			= libmlx.a
 
 LIBMLX_PATH		= $(LIB_PATH)/libmlx
-# LIBMLX_FLAGS	= -framework OpenGL -framework AppKit
-LIBMLX_FLAGS	= -lXext -lX11 -lm -lz
+LIBMLX_FLAGS	= -framework OpenGL -framework AppKit
+# LIBMLX_FLAGS	= -lXext -lX11 -lm -lz
 $(MLX):
 	make -C $(LIBMLX_PATH)
 
