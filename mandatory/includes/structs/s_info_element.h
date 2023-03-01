@@ -16,6 +16,35 @@ typedef struct s_info_object_cone			t_info_object_cone;
 typedef struct s_info_object_plane			t_info_object_plane;
 typedef struct s_info_object_box			t_info_object_box;
 
+enum e_element_types
+{
+	ELEMENT_AMBIENT,
+	ELEMENT_CAMERA,
+	ELEMENT_LIGHT,
+	ELEMENT_PLANE,
+	ELEMENT_SPHERE,
+	ELEMENT_CYLINDER,
+	ELEMENT_CONE,
+	ELEMENT_BOX,
+	ELEMENT_NONE
+};
+
+enum e_material_types
+{
+	MATERIAL_LAMBERTIAL,
+	MATERIAL_METAL,
+	MATERIAL_DIELECTRIC,
+	MATERIAL_EMMISIVE,
+	MATERIAL_RANDOM
+};
+
+enum e_texture_types
+{
+	TEXTURE_SOLID,
+	TEXTURE_CHECKER,
+	TEXTURE_IMAGE
+};
+
 struct s_info_ambient_light
 {
 	double		brightness;
