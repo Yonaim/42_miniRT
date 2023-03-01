@@ -3,17 +3,19 @@ FILENAME		=		camera/init_camera\
 						material/emmisive\
 						material/lambertian\
 						material/metal\
+						object/cone\
+						object/cone_lateral_area\
 						object/cylinder\
 						object/disk\
-						object/light_after\
-						object/light_pre\
+						object/light\
 						object/plane\
-						object/point_light\
 						object/sphere\
+						object/tube\
 						object/utils\
+						object_array/flush_object_array\
+						object_array/init_object_arr\
 						object_array/object_arr_add\
-						object_array/object_arr_generate\
-						object_array/object_array_hit\
+						object_array/object_arr_hit\
 						parsing/ft_atof\
 						parsing/parse_element_extra\
 						parsing/parse_element_solid\
@@ -32,6 +34,6 @@ FILENAME		=		camera/init_camera\
 						texture/checker\
 						texture/solid\
 						utils/color\
-						utils/error\
+						utils/handle_error\
 						utils/mlx_utils\
 						main

@@ -2,14 +2,20 @@
 <우리의 파일 형식 규칙>
 
 - Ambient light, Camera, Light는 subject를 따른다.
-- Solid element의 경우 '<도형식별자> <고유 정보> [material] [texture]'와 같은 형식으로 들어온다.
+- Solid element의 경우 '<element_identifier> <고유 정보> [material] [texture]'와 같은 형식으로 들어온다.
 	ex) sp 0,0,20 20 l s 255,0,0
-	- 도형식별자:
-		- sp (sphere)
-		- pl (plane)
-		- cy (cylinder)
-		- co (cone)
-		- bo (box)
+
+	- element_identifier
+		- 외부(?)식별자
+			- C (camera)
+			- A (ambient light)
+			- L (point light)
+		- 도형식별자:
+			- sp (sphere)
+			- pl (plane)
+			- cy (cylinder)
+			- co (cone)
+			- bo (box)
 	- material: 
 		- l (lambertian) (default)
 		- m (metal)

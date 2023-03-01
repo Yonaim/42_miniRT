@@ -1,5 +1,11 @@
 #include "parsing_internel.h"
 
+void	skip_spaces(char **str)
+{
+	while (**str == ' ' || **str == '\t')
+		(*str)++;
+}
+
 void	skip_char(char **str, char c)
 {
 	while (**str == c)

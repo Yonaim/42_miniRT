@@ -75,13 +75,11 @@ int	parse_scene(t_scene *scene, char *path)
 	line = get_next_line(fd);
 	while (line)
 	{
-		printf("try parse one line\n");
 		if (is_empty_string(line))
 			continue ;
 		if (parse_element_info(scene, line, elem_exist) == FAILURE)
 			return (FAILURE);
 		line = get_next_line(fd);
-		printf("complete one line parsing...\n");
 	}
 	if (!elem_exist[AMBIENT] || !elem_exist[CAMERA] || !elem_exist[LIGHT])
 		return (FAILURE);
