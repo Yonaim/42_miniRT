@@ -6,22 +6,9 @@
 #include "mlx_utils.h"
 #include "scene.h"
 #include "color.h"
+#include "handle_error.h"
 
-t_color3	get_pixel_color(t_image *img, char *data, int x, int y)
-{
-	char		*dst;
-	int			offset;
-
-	if (x > img->width || y > img->height || x < 0 || y < 0)
-		return (color3(0, 0, 0));
-	offset = (y * img->bytes_per_line) + (x * (img->bits_per_pixel / 8));
-	if (offset <= 0 || offset > (img->width * img->height) * 4)
-		return (color3(0, 0, 0));
-	dst = &data[offset];
-	return (rgb_to_color3(*(unsigned int *)dst));
-}
-
-void	put_pixel_to_image(t_image *img, int x, int y, t_color3 color)
+void	put_pixel_to_image(t_image *img, t_color3 *color, int x, int y)
 {
 	char	*dst;
 	int		offset;
