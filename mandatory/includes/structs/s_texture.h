@@ -31,7 +31,7 @@ struct s_texture_image
 	unsigned char		*data;
 	int					width;
 	int					height;
-	int					bytes_per_scanline;		
+	int					bytes_per_scanline;
 };
 
 #endif

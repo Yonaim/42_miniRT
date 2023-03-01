@@ -42,4 +42,3 @@ void	init_mlx(t_mlx *mlx)
 	img->data_size = img->bytes_per_line * img->height;
 	ft_memset(img->data, 0, img->width * img->height * img->bits_per_pixel / 8);
 }
-
