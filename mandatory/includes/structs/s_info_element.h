@@ -8,7 +8,7 @@ typedef struct s_info_ambient_light			t_info_ambient_light;
 typedef struct s_info_camera				t_info_camera;
 typedef struct s_info_object_point_light	t_info_object_point_light;
 typedef struct s_info_object_sphere			t_info_object_sphere;
-typedef struct s_info_object_disk			t_info_obejct_disk;
+typedef struct s_info_object_disk			t_info_object_disk;
 typedef struct s_info_object_tube			t_info_object_tube;
 typedef struct s_info_object_cylinder		t_info_object_cylinder;
 typedef struct s_info_object_cone			t_info_object_cone;
