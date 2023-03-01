@@ -8,6 +8,8 @@ typedef struct s_info_ambient_light			t_info_ambient_light;
 typedef struct s_info_camera				t_info_camera;
 typedef struct s_info_object_point_light	t_info_object_point_light;
 typedef struct s_info_object_sphere			t_info_object_sphere;
+typedef struct s_info_object_disk			t_info_obejct_disk;
+typedef struct s_info_object_tube			t_info_object_tube;
 typedef struct s_info_object_cylinder		t_info_object_cylinder;
 typedef struct s_info_object_cone			t_info_object_cone;
 typedef struct s_info_object_plane			t_info_object_plane;
@@ -46,15 +48,34 @@ struct s_info_object_sphere
 	t_color3	rgb;
 };
 
-struct s_info_object_cylinder
+struct s_info_object_disk
 {
 	t_point3	center;
 	double		radius;
-	double		height;
 	t_vector3	orient;
 	int			material_type;
 	int			texture_type;
 	t_color3	rgb;
+};
+
+struct s_info_object_tube
+{
+	t_point3	bottom_center;
+	double		radius;
+	t_vector3	orient;
+	double		height;
+	int			material_type;
+	int			texture_type;
+	t_color3	rgb;
+};
+
+struct s_info_object_cylinder
+{
+	t_info_object_disk	disk[2];
+	t_info_object_tube	tube;
+	int					material_type;
+	int					texture_type;
+	t_color3			rgb;
 };
 
 struct s_info_object_cone
