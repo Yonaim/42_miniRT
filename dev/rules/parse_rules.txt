@@ -15,6 +15,9 @@
 		- m (metal)
 		- d (dielectric)
 		- e (emmisive)
+		- rand (random)
+			- texture도 포함하여 랜덤으로 값을 설정한다.
+			- 뒤에 다른 값이 나오면 바로 에러 처리
 	- texture:
 		- s (solid) (default)
 			: s(r,g,b) (r, g, b 각각은 0 ~ 255 사이의 값을 가짐)
