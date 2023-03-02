@@ -46,7 +46,20 @@ OBJS			=	$(addprefix ./$(PART_PATH)/objs/, $(addsuffix $(PART_SUFFIX).o, $(FILEN
 DEPS			=	$(OBJS:.o=.d)
 
 # build
-include				config/build.mk
+# dependency rule
+ifeq ($(MAKECMDGOALS), fclean)
+else ifeq ($(MAKECMDGOALS), clean)
+else
+	-include $(DEPS)
+endif
+
+# build program
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ $(LDLIBS) $(LDFLAGS)
+
+$(PART_PATH)/objs/%.o : $(PART_PATH)/srcs/%.c
+	mkdir -p $(@D)
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 # ******************************* BASIC RULES ******************************** #
 
