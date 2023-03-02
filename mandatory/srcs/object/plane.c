@@ -5,7 +5,7 @@ static int	get_plane_type(void);
 static bool	hit_plane(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max);
 
-t_object	*new_plane(t_point3 point, t_vector3 normal, t_material *material)
+t_object	*new_plane(t_info_object_plane *pl_info)
 {
 	t_object_plane	*new;
 
@@ -15,9 +15,11 @@ t_object	*new_plane(t_point3 point, t_vector3 normal, t_material *material)
 	new->hit = hit_plane;
 	new->destroy = destroy_plane;
 	new->get_type = get_plane_type;
-	new->material = material;
-	new->point = point;
-	new->normal = normal;
+	new->material = new_material(&pl_info->material, &pl_info->texture);
+	if (!new->material)
+		return (NULL);
+	new->point = pl_info->point;
+	new->normal = pl_info->normal;
 	return ((t_object *)new);
 }
 
