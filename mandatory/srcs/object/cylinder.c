@@ -1,4 +1,4 @@
-# include "object_internal.h"
+#include "object_internal.h"
 
 static void	destroy_cylinder(t_object *object);
 static int	get_cylinder_type(void);
@@ -53,7 +53,7 @@ static bool	hit_cylinder(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
 	t_object_cylinder	*cy;
-	
+
 	cy = (t_object_cylinder *)self;
 	return (hit_object_arr(&cy->faces, ray, h_rec, t_max));
 }
