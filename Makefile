@@ -8,15 +8,10 @@ CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror -MMD -MP
 CFLAGS_SANITIZE	=	-fsanitize=address -g3
 CPPFLAGS		=	\
-					-I./$(LIB_PATH)/includes \
-					-I./$(LIB_PATH)/libmath/includes \
 					-I./$(PART_PATH)/includes \
 					-I./$(PART_PATH)/includes/structs
-LDFLAGS			=	\
-					-L./$(LIBFT_PATH) \
-					-L./$(LIBMLX_PATH) $(LIBMLX_FLAGS) \
-					-L./$(LIBMATH_PATH)
-LDLIBS			=	-lft -lmlx -lmath -lm
+LDFLAGS			=	
+LDLIBS			=	-lm
 
 ifdef SANITIZE
 CFLAGS			+=	$(CFLAGS_SANITIZE)
