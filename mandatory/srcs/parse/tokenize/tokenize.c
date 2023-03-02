@@ -1,12 +1,39 @@
 #include "parse_internal.h"
 
-static int	count_tokens(const char *line)
+static t_token	*extract_word_token(char **line)
 {
-	int	cnt;
-	int	type;
-	int	str_len;
+	t_token		*token;
+	const int	len = length_of_word(*line);
 
-	cnt = 0;
+	token = malloc(sizeof(t_token));
+	if (!token)
+		return (NULL);
+	token->type = TOKEN_WORD;
+	token->str = ft_substr(*line, 0, len);
+	if (!token->str)
+		return (NULL);
+	*line += len;
+	return (token);
+}
+
+static t_token	*extract_non_word_token(char **line, int token_type)
+{
+	t_token	*token;
+
+	token = malloc(sizeof(t_token));
+	if (!token)
+		return (NULL);
+	token->type = token_type;
+	token->str = NULL;
+	*line += 1;
+	return (token);
+}
+
+int	extract_tokens(char *line, t_token_arr *tokens)
+{
+	t_token	*token;
+	int		type;
+
 	while (*line)
 	{
 		while (is_space(*line) == true)
@@ -15,104 +42,51 @@ static int	count_tokens(const char *line)
 		if (type == TOKEN_NONE)
 			break ;
 		else if (type == TOKEN_WORD)
-			str_len = length_of_word(line);
+			token = extract_word_token(&line);
 		else
-			str_len = 1;
-		line += str_len;
-		cnt++;
-	}
-	return (cnt);
-}
-
-static int	extract_word_token(t_token *token, char **line)
-{
-	const int	len = length_of_word(*line);
-
-	token->type = TOKEN_WORD;
-	token->str = ft_substr(*line, 0, len);
-	if (token->str == NULL)
-		return (FAILURE);
-	*line += len;
-	return (SUCCESS);
-}
-
-static void	extract_non_word_token(t_token *token, char **line, int token_type)
-{
-	token->type = token_type;
-	token->str = NULL;
-	*line += 1;
-}
-
-static int	extract_tokens(char *line, t_token *tokens, int token_cnt)
-{
-	int	type;
-	int	i;
-
-	i = 0;
-	while (i < token_cnt)
-	{
-		while (is_space(*line) == true)
-			line++;
-		type = get_token_type(line);
-		if (type == TOKEN_NONE)
-			break ;
-		else if (type == TOKEN_WORD)
-		{
-			if (extract_word_token(&tokens[i], &line) == FAILURE)
-				return (FAILURE);
-		}
-		else
-			extract_non_word_token(&tokens[i], &line, type);
-		i++;
-	}
-	tokens[token_cnt].type = TOKEN_NONE;
-	return (SUCCESS);
-}
-
-int	determine_word_tokens_type(t_token *tokens, int token_cnt)
-{
-	int	i;
-
-	while (i < token_cnt)
-	{
-		if (tokens[i].type == TOKEN_WORD)
-		{
-			if (is_number_str(tokens[i].str))
-				tokens[i].type = TOKEN_NUMBER;
-			else if (is_identifier_str(tokens[i].str))
-				tokens[i].type = TOKEN_IDENTIFIER;
-			else
-				return (FAILURE);
-		}
-		i++;
+			token = extract_non_word_token(&line, type);
+		push_back_dynamic_arr(tokens, (void *)token);
 	}
 	return (SUCCESS);
 }
 
-t_token	*tokenize(char *line)
-{
-	t_token	*tokens;
-	int		token_cnt;
+// int	determine_word_tokens_type(t_token_arr *tokens)
+// {
+// 	int	i;
 
-	token_cnt = count_tokens(line);
-	tokens = malloc(sizeof(t_token) * (token_cnt + 1));
-	if (tokens == NULL)
-		return (NULL);
-	if (extract_tokens(line, tokens, token_cnt) == FAILURE)
-		return (NULL);
-	if (determine_word_tokens_type(tokens, token_cnt) == FAILURE)
+// 	while (i < token_cnt)
+// 	{
+// 		if (tokens[i].type == TOKEN_WORD)
+// 		{
+// 			if (is_number_str(tokens[i].str))
+// 				tokens[i].type = TOKEN_NUMBER;
+// 			else if (is_identifier_str(tokens[i].str))
+// 				tokens[i].type = TOKEN_IDENTIFIER;
+// 			else
+// 				return (FAILURE);
+// 		}
+// 		i++;
+// 	}
+// 	return (SUCCESS);
+// }
+
+t_token_arr	*tokenize(char *line)
+{
+	t_token_arr	*tokens;
+
+	tokens = new_dynamic_arr(INITIAL_OBJECT_ARR_SIZE);
+	if (extract_tokens(line, tokens) == FAILURE)
 		return (NULL);
 	return (tokens);
 }
 
-int main()
-{
-	// t_token *tokens = tokenize("aa bb cc  ,#,,");
-	// int i = 0;
-	// while (tokens[i].type != TOKEN_NONE)
-	// {
-	// 	printf("token type: %d ", tokens[i].type);
-	// 	printf("token str: %s\n", tokens[i].str);
-	// 	i++;
-	// }
-}
+// int main()
+// {
+// 	t_token_arr *tokens = tokenize("aa bb cc  ,#,,");
+// 	for (int i = 0; i < tokens->cnt; i++)
+// 	{
+// 		t_token *token = (t_token *)tokens->data[i];
+// 		printf("token type: %d ", token->type);
+// 		printf("token str: %s\n", token->str);
+// 	}
+// }
