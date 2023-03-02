@@ -2,6 +2,7 @@
 # define OBJECT_INTERNAL_H
 
 // standard library
+# include <stdlib.h>
 # include <math.h>
 // library
 # include "libft.h"
