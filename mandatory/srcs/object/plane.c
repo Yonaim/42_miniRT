@@ -63,7 +63,7 @@ static bool	hit_plane(t_object *self, t_ray *ray, \
 	const t_object_plane	*pl = (t_object_plane *)self;
 	double					t;
 
-	if (v3_dot(pl->normal, ray->dir) == 0)
+	if (fabs(v3_dot(pl->normal, ray->dir)) < EPSILON)
 		return (false);
 	t = v3_dot(v3_sub(pl->point, ray->origin), pl->normal) \
 		/ v3_dot(pl->normal, ray->dir);
