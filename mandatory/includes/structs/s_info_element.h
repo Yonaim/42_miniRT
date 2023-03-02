@@ -43,6 +43,7 @@ enum e_material_types
 
 enum e_texture_types
 {
+	TEXTURE_NONE,
 	TEXTURE_SOLID,
 	TEXTURE_CHECKER,
 	TEXTURE_IMAGE
