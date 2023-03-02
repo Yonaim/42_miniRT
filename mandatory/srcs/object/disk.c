@@ -21,10 +21,6 @@ t_object	*new_disk(t_info_object_disk *dk_info)
 	new->center = dk_info->center;
 	new->radius = dk_info->radius;
 	new->normal = dk_info->normal;
-printf("disk info:\n");
-printf("center : %f %f %f\n", new->center.x, new->center.y, new->center.z);
-printf("radius : %f\n", new->radius);
-printf("normal : %f %f %f\n", new->normal.x, new->normal.y, new->normal.z);
 	return ((t_object *)new);
 }
 
@@ -45,7 +41,8 @@ static int	get_disk_type(void)
 /*
 	<Line-Disk intersection>
 
-	A disk can be thought of as a limited-area plane, given its center and radius.
+	A disk can be thought of as a limited-area plane, 
+	given its center and radius.
 	So intersection check the same as the plane, 
 	but further check the distance between the center and the radius.
 
@@ -65,9 +62,11 @@ static int	get_disk_type(void)
 	The solution of this equation is the case they intersect.
 
 	-> t = (C - O) * n / (n * dir) (|P - C| <= r)
-	(If there are countless solutions, it means that a line is contained in the disk.)
+	(If there are countless solutions, it means that a line is contained 
+	in the disk.)
 	(If a given ray is contained in a disk, it is considered not hit)
 */
+
 static bool	hit_disk(t_object *self, t_ray *ray, \
 						t_hit_record *h_rec, double t_max)
 {
@@ -77,7 +76,7 @@ static bool	hit_disk(t_object *self, t_ray *ray, \
 
 	if (fabs(v3_dot(dk->normal, ray->dir)) < EPSILON)
 		return (false);
-	t = v3_dot(v3_sub(dk->center, ray->origin), dk->normal) \
+	t = v3_dot(v3_sub(dk->center, ray->origin), dk->normal)
 		/ v3_dot(dk->normal, ray->dir);
 	if (t < T_MINIMUM || t > t_max)
 		return (false);
@@ -88,5 +87,5 @@ static bool	hit_disk(t_object *self, t_ray *ray, \
 	h_rec->p = p;
 	h_rec->material = dk->material;
 	set_face_normal(h_rec, ray, dk->normal);
-	return (true);	
+	return (true);
 }
