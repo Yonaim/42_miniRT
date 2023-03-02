@@ -19,25 +19,25 @@ t_material	*new_random_material(void)
 
 static t_material	*random_lambertian(void)
 {
-	t_color3	albedo;
+	t_color3	color;
 	t_texture	*texture;
 	t_material	*material;
 
-	albedo = v3_random(0, 1);
-	texture = new_solid(albedo);
+	color = v3_random(0, 255.999);
+	texture = new_solid(color);
 	material = new_lambertian(texture);
 	return (material);
 }
 
 static t_material	*random_metal(void)
 {
-	t_color3	albedo;
+	t_color3	color;
 	double		fuzz;
 	t_material	*material;
 
-	albedo = v3_random(0.5, 1);
+	color = v3_random(150, 255.9);
 	fuzz = random_double_range(0, 0.5);
-	material = new_metal(albedo, fuzz);
+	material = new_metal(color, fuzz);
 	return (material);
 }
 
