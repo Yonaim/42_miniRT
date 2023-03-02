@@ -75,5 +75,5 @@ static bool	hit_plane(t_object *self, t_ray *ray, \
 	h_rec->p = ray_at(ray, t);
 	h_rec->material = pl->material;
 	set_face_normal(h_rec, ray, pl->normal);
-	return (true);	
+	return (true);
 }
