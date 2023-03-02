@@ -10,8 +10,8 @@ t_material	*new_material(\
 				t_info_material *material_info, t_info_texture *texture_info);
 t_material	*new_lambertian(t_texture *texture);
 t_material	*new_dielectric(double refractive_idx);
-t_material	*new_metal(t_color3 albedo, double fuzz);
-t_material	*new_emmisive(t_color3 color);
+t_material	*new_metal(t_color3 rgb, double fuzz);
+t_material	*new_emmisive(t_color3 rgb);
 t_material	*new_random_material(void);
 
 #endif
