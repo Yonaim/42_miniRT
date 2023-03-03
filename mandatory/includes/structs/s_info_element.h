@@ -15,6 +15,7 @@ typedef struct s_info_object_box			t_info_object_box;
 
 enum e_element_types
 {
+	// ELEMENT_NONE,
 	ELEMENT_AMBIENT,
 	ELEMENT_CAMERA,
 	ELEMENT_LIGHT,
@@ -23,20 +24,21 @@ enum e_element_types
 	ELEMENT_CYLINDER,
 	ELEMENT_CONE,
 	ELEMENT_BOX,
-	ELEMENT_NONE
 };
 
 enum e_material_types
 {
+	// MATERIAL_NONE,
 	MATERIAL_LAMBERTIAL,
 	MATERIAL_METAL,
 	MATERIAL_DIELECTRIC,
 	MATERIAL_EMMISIVE,
-	MATERIAL_RANDOM
+	MATERIAL_RANDOM,
 };
 
 enum e_texture_types
 {
+	// TEXTURE_NONE,
 	TEXTURE_SOLID,
 	TEXTURE_CHECKER,
 	TEXTURE_IMAGE
