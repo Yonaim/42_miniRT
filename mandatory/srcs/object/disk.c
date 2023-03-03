@@ -2,21 +2,21 @@
 
 static void	destroy_disk(t_object *object);
 static int	get_disk_type(void);
-static bool	hit_disk(t_object *self, t_ray *ray, \
-						t_hit_record *h_rec, double t_max);
+static bool	hit_disk(
+				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
 
 t_object	*new_disk(t_info_object_disk *dk_info)
 {
 	t_object_disk	*new;
 
 	new = malloc(sizeof(t_object_disk));
-	if (!new)
+	if (new == NULL)
 		return (NULL);
 	new->hit = hit_disk;
 	new->destroy = destroy_disk;
 	new->get_type = get_disk_type;
 	new->material = new_material(&dk_info->material, &dk_info->texture);
-	if (!new->material)
+	if (new->material == NULL)
 		return (NULL);
 	new->center = dk_info->center;
 	new->radius = dk_info->radius;
@@ -67,8 +67,8 @@ static int	get_disk_type(void)
 	(If a given ray is contained in a disk, it is considered not hit)
 */
 
-static bool	hit_disk(t_object *self, t_ray *ray, \
-						t_hit_record *h_rec, double t_max)
+static bool	hit_disk(
+			t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max)
 {
 	const t_object_disk		*dk = (t_object_disk *)self;
 	double					t;
