@@ -16,17 +16,17 @@ t_object	*new_cone(t_info_object_cone *co_info);
 t_object	*new_cone_lateral(t_info_object_cone_lateral *lat_info);
 
 // hit check
-bool		hit_sphere(t_object *self, t_ray *ray, \
-						t_hit_record *h_rec, double t_max);
-bool		hit_cylinder(t_object *self, t_ray *ray, \
-						t_hit_record *h_rec, double t_max);
-bool		hit_tube(t_object *self, t_ray *ray, \
-						t_hit_record *h_rec, double t_max);
-bool		hit_plane(t_object *self, t_ray *ray, \
-						t_hit_record *h_rec, double t_max);
-bool		hit_disk(t_object *self, t_ray *ray, \
-						t_hit_record *h_rec, double t_max);
-bool		hit_point_light(t_object *self, t_ray *ray, \
-						t_hit_record *h_rec, double t_max);
+bool		hit_sphere(
+				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
+bool		hit_cylinder(
+				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
+bool		hit_tube(
+				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
+bool		hit_plane(
+				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
+bool		hit_disk(
+				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
+bool		hit_point_light(
+				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
 
 #endif
