@@ -33,7 +33,6 @@ static void	destroy_cylinder(t_object *object)
 	t_object_cylinder	*cy;
 
 	cy = (t_object_cylinder *)object;
-	cy->material->destroy(cy->material);
 	clear_object_arr(&cy->faces);
 	free(cy);
 }
