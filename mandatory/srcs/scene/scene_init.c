@@ -8,7 +8,4 @@ void	init_scene(t_scene *scene, t_image *img, char *path)
 		handle_error(ERRMSG_PARSE);
 	scene->img = img;
 	init_camera(&scene->cam);
-printf("cam info: \n");
-printf("position: %f %f %f\n", \
-		scene->cam.origin.x, scene->cam.origin.y, scene->cam.origin.z);
 }
