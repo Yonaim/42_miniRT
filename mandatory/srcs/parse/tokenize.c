@@ -29,7 +29,7 @@ static t_token	*extract_non_word_token(char **line, int token_type)
 	return (token);
 }
 
-int	extract_tokens(char *line, t_token_arr *tokens)
+static int	extract_tokens(char *line, t_token_arr *tokens)
 {
 	t_token	*token;
 	int		type;
@@ -50,7 +50,7 @@ int	extract_tokens(char *line, t_token_arr *tokens)
 	return (SUCCESS);
 }
 
-int	determine_word_tokens_type(t_token_arr *tokens)
+static int	determine_word_tokens_type(t_token_arr *tokens)
 {
 	t_token	*token;
 	int		i;
