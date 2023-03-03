@@ -1,8 +1,6 @@
 #ifndef RAY_H
 # define RAY_H
 
-// # include "s_camera.h"
-// # include "s_ray.h"
 # include "typedef.h"
 
 // ray constructor
@@ -20,8 +18,8 @@ t_vector3	refracted_vector(t_vector3 i, t_vector3 n, double idx_ratio);
 
 // scattered rays
 t_ray		reflected_ray(t_vector3 in_dir, t_hit_record *rec, double fuzz);
-t_ray		refracted_ray(\
-			t_vector3 in_dir, t_hit_record *rec, double idx_ratio);
+t_ray		refracted_ray(
+				t_vector3 in_dir, t_hit_record *rec, double idx_ratio);
 t_ray		diffused_ray(t_hit_record *rec);
 
 #endif
