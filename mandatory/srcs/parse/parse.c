@@ -37,7 +37,7 @@ static int	add_element(int type, t_token_arr *tokens)
 	[ELEMENT_CONE] = get_info_cone,
 	[ELEMENT_BOX] = get_info_box,
 	};
-	const t_info			elem_info = get_info_elem[type](tokens);
+	const t_info			*elem_info = get_info_elem[type](tokens);
 
 	if (elem_info == NULL)
 		return (FAILURE);
@@ -49,7 +49,6 @@ static bool	is_must_be_one_element_type(int type)
 	const int	must_be_one[] = {
 		ELEMENT_AMBIENT,
 		ELEMENT_CAMERA,
-		ELEMENT_LIGHT,
 		ELEMENT_NONE
 	};
 	int			i;
