@@ -9,7 +9,7 @@
 */
 int	init_dynamic_arr(t_dynamic_arr *darr, int cap)
 {
-	darr->data = malloc(sizeof(void *) * cap);
+	darr->data = calloc(cap, sizeof(void *));
 	if (darr->data == NULL)
 		return (FAILURE);
 	darr->cap = cap;
