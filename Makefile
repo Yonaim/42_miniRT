@@ -75,17 +75,17 @@ clean:
 	make -C $(LIBFT_PATH) clean --silent
 	make -C $(LIBMLX_PATH) clean --silent
 	make -C $(LIBMATH_PATH) clean --silent
-	$(RM) $(addprefix ./mandatory/srcs/, $(addsuffix .o, $(FILENAME)))
-	$(RM) $(addprefix ./bonus/srcs/, $(addsuffix _bonus.o, $(FILENAME)))
+	$(RM) -rf mandatory/objs
+	$(RM) -rf bonus/objs
 
 fclean:
 	make -C $(LIBMLX_PATH) clean --silent
 	make -C $(LIBFT_PATH) fclean --silent
 	make -C $(LIBMATH_PATH) fclean --silent
 	$(RM) $(LIBMLX_PATH)/$(LIBMLX)
-	$(RM) $(addprefix ./mandatory/srcs/, $(addsuffix .o, $(FILENAME)))
-	$(RM) $(addprefix ./bonus/srcs/, $(addsuffix _bonus.o, $(FILENAME)))
-	$(RM) $(MINIRT)
+	$(RM) -rf mandatory/objs
+	$(RM) -rf bonus/objs
+	$(RM) $(NAME)
 
 re: 
 	make fclean
