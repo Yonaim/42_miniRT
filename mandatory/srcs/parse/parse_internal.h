@@ -62,6 +62,20 @@ typedef t_info			*(*t_get_info_element)(t_token *tokens);
 typedef int				(*t_get_identifier_type)(const char *s);
 typedef	bool	 		(*t_is_element_line)(t_token *tokens);
 
+enum e_factor_type
+{
+	FACTOR_IDENTIFIER_ELEMENT,
+	FACTOR_IDENTIFIER_MATERIAL,
+	FACTOR_IDENTIFIER_TEXTURE,
+	FACTOR_NUMBER
+};
+
+struct s_factor
+{
+	int type;
+	int	value;
+};
+
 t_token_arr	*tokenize(char *line);
 int			get_token_type(const char *input);
 int			length_of_word(const char *line);
