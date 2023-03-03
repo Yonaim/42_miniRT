@@ -2,6 +2,7 @@
 # define OBJECT_H
 
 # include "s_object.h"
+# include "s_info_element.h"
 # include "s_hit_record.h"
 
 // constructor
