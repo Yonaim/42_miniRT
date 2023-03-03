@@ -50,39 +50,48 @@ int	extract_tokens(char *line, t_token_arr *tokens)
 	return (SUCCESS);
 }
 
-// int	determine_word_tokens_type(t_token_arr *tokens)
-// {
-// 	int	i;
+int	determine_word_tokens_type(t_token_arr *tokens)
+{
+	t_token	*token;
+	int		i;
 
-// 	while (i < token_cnt)
-// 	{
-// 		if (tokens[i].type == TOKEN_WORD)
-// 		{
-// 			if (is_number_str(tokens[i].str))
-// 				tokens[i].type = TOKEN_NUMBER;
-// 			else if (is_identifier_str(tokens[i].str))
-// 				tokens[i].type = TOKEN_IDENTIFIER;
-// 			else
-// 				return (FAILURE);
-// 		}
-// 		i++;
-// 	}
-// 	return (SUCCESS);
-// }
+	i = 0;
+	while (i < tokens->cnt)
+	{
+		token = (t_token *)tokens->data[i];
+		if (token->type == TOKEN_WORD)
+		{
+			if (is_number_str(token->str) == true)
+				token->type = TOKEN_NUMBER;
+			else if (is_identifier_str(token->str) == true)
+				token->type = TOKEN_IDENTIFIER;
+			else
+				return (FAILURE);
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
 
 t_token_arr	*tokenize(char *line)
 {
 	t_token_arr	*tokens;
 
 	tokens = new_dynamic_arr(INITIAL_OBJECT_ARR_SIZE);
-	if (extract_tokens(line, tokens) == FAILURE)
+	if ((extract_tokens(line, tokens) == FAILURE
+		|| idetermine_word_tokens_type(tokens) == FAILURE))
+	{
+		destroy_dynamic_arr(tokens);
 		return (NULL);
+	}
 	return (tokens);
 }
 
 // int main()
 // {
-// 	t_token_arr *tokens = tokenize("aa bb cc  ,#,,");
+// 	t_token_arr *tokens = tokenize(", ,,pl ");
+// 	if (tokens == NULL)
+// 		return (0);
 // 	for (int i = 0; i < tokens->cnt; i++)
 // 	{
 // 		t_token *token = (t_token *)tokens->data[i];
