@@ -36,3 +36,11 @@ bool	determine_t(double *t, double root[2], double t_min, double t_max)
 		return (false);
 	return (true);
 }
+
+void	swap_double_value(double *num1, double *num2)
+{
+	const double	tmp = *num1;
+
+	*num1 = *num2;
+	*num2 = tmp;
+}
