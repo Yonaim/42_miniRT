@@ -48,4 +48,3 @@ static t_material	*random_dielectric(void)
 	material = new_dielectric(1.5);
 	return (material);
 }
-
