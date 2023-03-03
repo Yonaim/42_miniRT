@@ -2,13 +2,13 @@
 #include "material_internal.h"
 
 static bool		lambertian_scattered(
-					t_material *self, t_ray *in, 
+					t_material *self, t_ray *in,
 					t_hit_record *h_rec, t_scatter_record *s_rec);
 static t_color3	lambertian_emitted(
 					t_material *self, double u, double v, t_point3 p);
 static void		destroy_lambertian(t_material *self);
 static double	get_scattering_pdf(
-					t_material *self, t_ray *in_ray, 
+					t_material *self, t_ray *in_ray,
 					t_hit_record *h_rec, t_scatter_record *s_rec);
 
 t_material	*new_lambertian(t_texture *texture)
