@@ -13,6 +13,7 @@ typedef struct s_info_object_sphere			t_info_object_sphere;
 typedef struct s_info_object_disk			t_info_object_disk;
 typedef struct s_info_object_tube			t_info_object_tube;
 typedef struct s_info_object_cylinder		t_info_object_cylinder;
+typedef struct s_info_object_cone_lateral	t_info_object_cone_lateral;
 typedef struct s_info_object_cone			t_info_object_cone;
 typedef struct s_info_object_plane			t_info_object_plane;
 typedef struct s_info_object_box			t_info_object_box;
@@ -121,7 +122,7 @@ struct s_info_object_cylinder
 	t_info_texture		texture;
 };
 
-struct s_info_object_cone
+struct s_info_object_cone_lateral
 {
 	t_point3		center;
 	double			radius;
@@ -129,6 +130,13 @@ struct s_info_object_cone
 	t_vector3		orient;
 	t_info_material	material;
 	t_info_texture	texture;
+};
+struct s_info_object_cone
+{
+	t_info_object_cone_lateral	lateral;
+	t_info_object_disk			disk;
+	t_info_material				material;
+	t_info_texture				texture;
 };
 
 struct s_info_object_plane
