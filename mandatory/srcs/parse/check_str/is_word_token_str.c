@@ -3,18 +3,18 @@
 
 bool	is_identifier_str(char *s)
 {
-	const t_get_identifier_type	get_identifier_type_func[] = {
-	get_element_type,
-	get_material_type,
-	get_texture_type,
-	NULL
+	const t_get_identifier_type	get_identifier_type[] = {
+		get_element_type,
+		get_material_type,
+		get_texture_type,
+		NULL
 	};
 	int							i;
 
 	i = 0;
-	while (get_identifier_type_func[i])
+	while (get_identifier_type[i])
 	{
-		if (get_identifier_type_func[i](s) != -1)
+		if (get_identifier_type[i](s) != -1)
 			return (true);
 		i++;
 	}
