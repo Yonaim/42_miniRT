@@ -18,7 +18,7 @@ t_ray	refracted_ray(t_vector3 in_dir, t_hit_record *rec, double idx_ratio)
 	t_vector3		refracted;
 
 	refracted = refracted_vector(unit_in_dir, rec->normal, idx_ratio);
-	refracted = v3_normalize(refracted);	
+	refracted = v3_normalize(refracted);
 	return (ray(rec->p, refracted));
 }
 
