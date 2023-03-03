@@ -1,8 +1,8 @@
 #include "material_internal.h"
 #include "s_info_element.h"
 
-t_material	*new_material(\
-				t_info_material *material_info, t_info_texture *texture_info)
+t_material	*new_material(
+			t_info_material *material_info, t_info_texture *texture_info)
 {
 	t_texture	*texture;
 
