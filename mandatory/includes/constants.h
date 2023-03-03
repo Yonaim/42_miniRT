@@ -37,10 +37,10 @@ enum e_success_or_failure
 # define POINT_LIGHT_RADIUS			5
 
 // object array
-# define INITIAL_OBJ_ARR_SIZE	10
+# define INITIAL_OBJ_ARR_SIZE		10
 
 // light
-# define MAX_BRIGHTNESS				10
+// # define MAX_BRIGHTNESS				1
 
 /** dev **/
 
