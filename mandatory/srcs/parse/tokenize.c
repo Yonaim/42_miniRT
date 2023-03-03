@@ -86,16 +86,3 @@ t_token_arr	*tokenize(char *line)
 	}
 	return (tokens);
 }
-
-// int main()
-// {
-// 	t_token_arr *tokens = tokenize(", ,,pl ");
-// 	if (tokens == NULL)
-// 		return (0);
-// 	for (int i = 0; i < tokens->cnt; i++)
-// 	{
-// 		t_token *token = (t_token *)tokens->data[i];
-// 		printf("token type: %d ", token->type);
-// 		printf("token str: %s\n", token->str);
-// 	}
-// }
