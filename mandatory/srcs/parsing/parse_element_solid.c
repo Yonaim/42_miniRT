@@ -1,22 +1,28 @@
 #include "parsing_internel.h"
 
+/*
+	- 현재: orient/normal vector가 -1과 1 범위 내에 있는지 확인하는 조건문만 있음
+	- TODO: 
+		- orient/normal vector normalize된 건지 확인하는 조건문 추가할 것
+		- 위의 조건문을 추가 시 기존의 범위 확인 조건문은 필요없을 것으로 보임
+		- 대상: plane, cylinder, cone
+*/
 int	parse_element_point_light(t_scene *scene, char *str)
 {
 	t_point3	pos;
-	double		ratio;
+	double		brightness;
 	t_vector3	rgb;
 
 	skip_until_next_value(&str);
 	pos = parse_vector3(&str);
-	ratio = parse_double(&str);
-	rgb = vector3(255, 255, 255);
+	brightness = parse_double(&str);
 	rgb = parse_vector3(&str);
 	if (*str != '\n')
 		return (FAILURE);
-	if (!is_num_in_range(ratio, 0, 1) || !is_vec3_in_range(rgb, 0, 255))
+	if (!is_num_in_range(brightness, 0, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
-	if (add_object(&scene->world.objects, \
-							new_point_light(pos, ratio, rgb)) == FAILURE)
+	if (build_element_point_light(
+			&scene->world.objects, &pos, &brightness, &rgb) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -35,8 +41,8 @@ int	parse_element_plane(t_scene *scene, char *str)
 		return (FAILURE);
 	if (!is_vec3_in_range(normal, -1, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
-	if (add_object(&scene->world.objects, \
-							new_plane(pos, normal, rgb)) == FAILURE)
+	if (build_element_plane(
+			&scene->world.objects, &pos, &normal, &rgb) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -45,8 +51,6 @@ int	parse_element_sphere(t_scene *scene, char *str)
 {
 	t_point3	pos;
 	double		diameter;
-	// t_texture	*texture;
-	t_material	*material;
 	t_vector3	rgb;
 
 	skip_until_next_value(&str);
@@ -57,61 +61,52 @@ int	parse_element_sphere(t_scene *scene, char *str)
 		return (FAILURE);
 	if (!is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
-	// texture = new_solid(v3_div(rgb, 256));
-	// material = new_lambertian(texture);
-	material = new_random_material();
-	if (add_object(&scene->world.objects, \
-							new_sphere(pos, diameter / 2, material)) == FAILURE)
+	if (build_element_sphere(
+			&scene->world.objects, &pos, &diameter, &rgb) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
 
 int	parse_element_cylinder(t_scene *scene, char *str)
 {
-	t_info_object_cylinder	cy_info;
-	t_point3				center;
-	t_vector3				orient;
-	double					diameter;
-	double					height;
-	t_vector3				rgb;
+	t_parsing_info_object_cylinder	cy_parsing_info;
 
-	(void)scene;
 	skip_until_next_value(&str);
-	center = parse_vector3(&str);
-	orient = parse_vector3(&str);
-	diameter = parse_double(&str);
-	height = parse_double(&str);
-	rgb = parse_vector3(&str);
+	cy_parsing_info.center = parse_vector3(&str);
+	cy_parsing_info.orient = parse_vector3(&str);
+	cy_parsing_info.diameter = parse_double(&str);
+	cy_parsing_info.height = parse_double(&str);
+	cy_parsing_info.rgb = parse_vector3(&str);
 	if (*str != '\n' && *str != '\0')
 		return (FAILURE);
-	if (!is_vec3_in_range(orient, -1, 1) || !is_vec3_in_range(rgb, 0, 255))
+	if (!is_vec3_in_range(cy_parsing_info.orient, -1, 1)
+		|| !is_vec3_in_range(cy_parsing_info.rgb, 0, 255))
 		return (FAILURE);
-	cy_info.material.type = MATERIAL_LAMBERTIAN;
-	cy_info.texture.type = TEXTURE_SOLID;
-	cy_info.texture.rgb1 = rgb;
-	//tube
-	cy_info.tube.center = center;
-	cy_info.tube.height = height;
-	cy_info.tube.orient = orient;
-	cy_info.tube.radius = diameter / 2;
-	cy_info.tube.material = cy_info.material;
-	cy_info.tube.texture = cy_info.texture;
-	// disk
-	cy_info.disk[0].center = v3_sub(center, v3_mul(orient, height / 2));
-	cy_info.disk[0].radius = cy_info.tube.radius;
-	cy_info.disk[0].normal = orient;
-	cy_info.disk[0].material = cy_info.material;
-	cy_info.disk[0].texture = cy_info.texture;
-	cy_info.disk[1].center = v3_add(center, v3_mul(orient, height / 2));
-	cy_info.disk[1].radius = cy_info.tube.radius;
-	cy_info.disk[1].normal = orient;
-	cy_info.disk[1].texture = cy_info.texture;
-	cy_info.disk[1].material = cy_info.material;
-	if (add_object(&scene->world.objects,
-					new_cylinder(&cy_info)) == FAILURE)
+	cy_parsing_info.orient = v3_normalize(cy_parsing_info.orient);
+	if (build_element_cylinder(
+			&scene->world.objects, &cy_parsing_info) == FAILURE)
 		return (FAILURE);
-	(void)height;
-	(void)diameter;
-	(void)center;
+	return (SUCCESS);
+}
+
+int	parse_element_cone(t_scene *scene, char *str)
+{
+	t_parsing_info_object_cone	co_parsing_info;
+
+	skip_until_next_value(&str);
+	co_parsing_info.center = parse_vector3(&str);
+	co_parsing_info.orient = parse_vector3(&str);
+	co_parsing_info.diameter = parse_double(&str);
+	co_parsing_info.height = parse_double(&str);
+	co_parsing_info.rgb = parse_vector3(&str);
+	if (*str != '\n' && *str != '\0')
+		return (FAILURE);
+	if (!is_vec3_in_range(co_parsing_info.orient, -1, 1)
+		|| !is_vec3_in_range(co_parsing_info.rgb, 0, 255))
+		return (FAILURE);
+	co_parsing_info.orient = v3_normalize(co_parsing_info.orient);
+	if (build_element_cone(
+			&scene->world.objects, &co_parsing_info) == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
 }

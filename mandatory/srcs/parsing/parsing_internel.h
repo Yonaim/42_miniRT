@@ -23,6 +23,8 @@
 # include <stdio.h>
 # include <fcntl.h>
 
+# define ELEMENT_COUNT	8
+
 enum e_parsing_element_types
 {
 	NONE,
@@ -31,7 +33,8 @@ enum e_parsing_element_types
 	LIGHT,
 	PLANE,
 	SPHERE,
-	CYLINDER	
+	CYLINDER,
+	CONE
 };
 
 enum e_rgb
@@ -41,9 +44,29 @@ enum e_rgb
 	B
 };
 
-# define ELEMENT_COUNT	7
+typedef struct s_parsing_info_object_cylinder	t_parsing_info_object_cylinder;
+typedef struct s_parsing_info_object_cone		t_parsing_info_object_cone;
 
-typedef int	(*t_parse_element)(t_scene *scene, char *str);
+struct s_parsing_info_object_cylinder
+{
+	t_point3	center;
+	t_vector3	orient;
+	double		diameter;
+	double		height;
+	t_vector3	rgb;
+};
+
+struct s_parsing_info_object_cone
+{
+	t_point3	center;
+	t_vector3	orient;
+	double		diameter;
+	double		height;
+	t_vector3	rgb;
+};
+
+typedef int										(*t_parse_element)(
+													t_scene *scene, char *str);
 
 // parse element
 int			parse_element_ambient(t_scene *scene, char *str);
@@ -52,6 +75,24 @@ int			parse_element_point_light(t_scene *scene, char *str);
 int			parse_element_plane(t_scene *scene, char *str);
 int			parse_element_sphere(t_scene *scene, char *str);
 int			parse_element_cylinder(t_scene *scene, char *str);
+int			parse_element_cone(t_scene *scene, char *str);
+
+// build
+int			build_element_cone(
+				t_object_arr *objects,
+				t_parsing_info_object_cone *co_parsing_info);
+int			build_element_cylinder(
+				t_object_arr *objects,
+				t_parsing_info_object_cylinder *cy_parsing_info);
+int			build_element_point_light(
+				t_object_arr *objects,
+				t_point3 *pos, double *brightness, t_vector3 *rgb);
+int			build_element_plane(
+				t_object_arr *objects,
+				t_point3 *pos, t_vector3 *normal, t_vector3 *rgb);
+int			build_element_sphere(
+				t_object_arr *objects,
+				t_point3 *pos, double *diameter, t_vector3 *rgb);
 
 // parse value
 int			parse_integer(char **str);
@@ -69,8 +110,5 @@ bool		is_vec3_in_range(t_vector3 vec3, double min, double max);
 
 // atof
 double		ft_atof(char *str);
-
-// list
-int			add_to_object_list(t_list **object_list, t_object *new_object);
 
 #endif

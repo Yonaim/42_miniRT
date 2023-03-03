@@ -37,6 +37,8 @@ static int	get_element_type(char *str)
 		return (SPHERE);
 	else if (*str == 'c' && *(str + 1) == 'y')
 		return (CYLINDER);
+	else if (*str == 'c' && *(str + 1) == 'o')
+		return (CONE);
 	return (NONE);
 }
 
@@ -48,7 +50,8 @@ static int	parse_element_info(t_scene *scene, char *str, int elem_exist[])
 	[LIGHT] = parse_element_point_light,
 	[PLANE] = parse_element_plane,
 	[SPHERE] = parse_element_sphere,
-	[CYLINDER] = parse_element_cylinder
+	[CYLINDER] = parse_element_cylinder,
+	[CONE] = parse_element_cone
 	};
 	const int				elem_type = get_element_type(str);
 
@@ -75,13 +78,11 @@ int	parse_scene(t_scene *scene, char *path)
 	line = get_next_line(fd);
 	while (line)
 	{
-		printf("try parse one line\n");
 		if (is_empty_string(line))
 			continue ;
 		if (parse_element_info(scene, line, elem_exist) == FAILURE)
 			return (FAILURE);
 		line = get_next_line(fd);
-		printf("complete one line parsing...\n");
 	}
 	if (!elem_exist[AMBIENT] || !elem_exist[CAMERA] || !elem_exist[LIGHT])
 		return (FAILURE);

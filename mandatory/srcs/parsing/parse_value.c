@@ -34,7 +34,7 @@ t_vector3	parse_vector3(char **str)
 	skip_non_char(str, ',');
 	(*str)++;
 	v.z = ft_atof(*str);
-	while (**str != ' ' && **str != '\n')
+	while (**str != ' ' && **str != '\n' && **str != '\0')
 		(*str)++;
 	return (v);
 }
