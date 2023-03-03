@@ -12,4 +12,5 @@ void	clear_object_arr(t_object_arr *objects)
 		cur_obj->destroy(cur_obj);
 		++i;
 	}
+	free(objects->data);
 }
