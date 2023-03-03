@@ -23,7 +23,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-# define ELEMENT_COUNT	8
+# define ELEMENT_COUNT	9
 
 enum e_parsing_element_types
 {
@@ -34,7 +34,8 @@ enum e_parsing_element_types
 	PLANE,
 	SPHERE,
 	CYLINDER,
-	CONE
+	CONE,
+	BOX
 };
 
 enum e_rgb
@@ -65,6 +66,7 @@ struct s_parsing_info_object_cone
 	t_vector3	rgb;
 };
 
+
 typedef int										(*t_parse_element)(
 													t_scene *scene, char *str);
 
@@ -76,6 +78,7 @@ int			parse_element_plane(t_scene *scene, char *str);
 int			parse_element_sphere(t_scene *scene, char *str);
 int			parse_element_cylinder(t_scene *scene, char *str);
 int			parse_element_cone(t_scene *scene, char *str);
+int			parse_element_box(t_scene *scene, char *str);
 
 // build
 int			build_element_cone(
@@ -93,7 +96,9 @@ int			build_element_plane(
 int			build_element_sphere(
 				t_object_arr *objects,
 				t_point3 *pos, double *diameter, t_vector3 *rgb);
-
+int			build_element_box(
+				t_object_arr *objects,
+				t_point3 *p_end1, t_point3 *p_end2, t_vector3 *rgb);
 // parse value
 int			parse_integer(char **str);
 double		parse_double(char **str);

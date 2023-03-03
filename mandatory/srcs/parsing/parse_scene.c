@@ -39,6 +39,8 @@ static int	get_element_type(char *str)
 		return (CYLINDER);
 	else if (*str == 'c' && *(str + 1) == 'o')
 		return (CONE);
+	else if (*str == 'b' && *(str + 1) == 'o')
+		return (BOX);
 	return (NONE);
 }
 
@@ -51,7 +53,8 @@ static int	parse_element_info(t_scene *scene, char *str, int elem_exist[])
 	[PLANE] = parse_element_plane,
 	[SPHERE] = parse_element_sphere,
 	[CYLINDER] = parse_element_cylinder,
-	[CONE] = parse_element_cone
+	[CONE] = parse_element_cone,
+	[BOX] = parse_element_box
 	};
 	const int				elem_type = get_element_type(str);
 

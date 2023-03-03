@@ -16,6 +16,9 @@ typedef struct s_info_object_cylinder		t_info_object_cylinder;
 typedef struct s_info_object_cone_lateral	t_info_object_cone_lateral;
 typedef struct s_info_object_cone			t_info_object_cone;
 typedef struct s_info_object_plane			t_info_object_plane;
+typedef struct s_info_object_xy_rectangle	t_info_object_xy_rectangle;
+typedef struct s_info_object_xz_rectangle	t_info_object_xz_rectangle;
+typedef struct s_info_object_yz_rectangle	t_info_object_yz_rectangle;
 typedef struct s_info_object_box			t_info_object_box;
 
 enum e_element_types
@@ -147,12 +150,46 @@ struct s_info_object_plane
 	t_info_texture	texture;
 };
 
-struct s_info_object_box
-{	
-	t_point3		p_end1;
-	t_point3		p_end2;
+struct s_info_object_xy_rectangle
+{
+	double			x1;
+	double			x2;
+	double			y1;
+	double			y2;
+	double			z;
 	t_info_material	material;
 	t_info_texture	texture;
+};
+
+struct s_info_object_xz_rectangle
+{
+	double			x1;
+	double			x2;
+	double			z1;
+	double			z2;
+	double			y;
+	t_info_material	material;
+	t_info_texture	texture;
+};
+
+struct s_info_object_yz_rectangle
+{
+	double			y1;
+	double			y2;
+	double			z1;
+	double			z2;
+	double			x;
+	t_info_material	material;
+	t_info_texture	texture;
+};
+
+struct s_info_object_box
+{
+	t_info_object_xy_rectangle	xy_rectangle[2];
+	t_info_object_xz_rectangle	xz_rectangle[2];
+	t_info_object_yz_rectangle	yz_rectangle[2];
+	t_info_material				material;
+	t_info_texture				texture;
 };
 
 #endif
