@@ -1,7 +1,7 @@
 #include "parse_internal.h"
 #include <string.h>
 
-static int	match_element_line_format(t_token *tokens)
+static int	match_element_line_format(t_token_arr *tokens)
 {
 	const t_is_element_line	is_element_line[] = {
 	[ELEMENT_CAMERA] = is_camera_line,
