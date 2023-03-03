@@ -39,7 +39,7 @@ enum e_rgb
 
 # define IDENTIFIER_ELEMENT_CAMERA		"C"
 # define IDENTIFIER_ELEMENT_AMBIENT		"A"
-# define IDENTIFIER_ELEMENT_LIGHT		"L"
+# define IDENTIFIER_ELEMENT_LIGHT		"ptl"
 # define IDENTIFIER_ELEMENT_SPHERE		"sp"
 # define IDENTIFIER_ELEMENT_PLANE		"pl"
 # define IDENTIFIER_ELEMENT_CYLINDER	"cy"
@@ -58,7 +58,7 @@ enum e_rgb
 
 typedef t_dynamic_arr	t_token_arr;
 
-typedef t_info			(*t_get_info_element)(t_token *tokens);
+typedef t_info			*(*t_get_info_element)(t_token *tokens);
 typedef int				(*t_get_identifier_type)(const char *s);
 typedef	bool	 		(*t_is_element_line)(t_token *tokens);
 
@@ -71,14 +71,14 @@ int			get_element_type(const char *str);
 int			get_material_type(const char *str);
 int			get_texture_type(const char *str);
 
-t_info		get_info_ambient(t_token *tokens);
-t_info		get_info_camera(t_token *tokens);
-t_info		get_info_light(t_token *tokens);
-t_info		get_info_plane(t_token *tokens);
-t_info		get_info_sphere(t_token *tokens);
-t_info		get_info_cylinder(t_token *tokens);
-t_info		get_info_cone(t_token *tokens);
-t_info		get_info_box(t_token *tokens);
+t_info		*get_info_ambient(t_token_arr *tokens);
+t_info		*get_info_camera(t_token_arr *tokens);
+t_info		*get_info_light(t_token_arr *tokens);
+t_info		*get_info_plane(t_token_arr *tokens);
+t_info		*get_info_sphere(t_token_arr *tokens);
+t_info		*get_info_cylinder(t_token_arr *tokens);
+t_info		*get_info_cone(t_token_arr *tokens);
+t_info		*get_info_box(t_token_arr *tokens);
 
 bool		is_ambient_line(t_token_arr *tokens);
 bool		is_camera_line(t_token_arr *tokens);

@@ -4,6 +4,7 @@
 # include "typedef.h"
 # include "color.h"
 
+typedef struct s_info						t_info;
 typedef struct s_info_ambient_light			t_info_ambient_light;
 typedef struct s_info_camera				t_info_camera;
 typedef struct s_info_object_point_light	t_info_object_point_light;
@@ -15,7 +16,6 @@ typedef struct s_info_object_box			t_info_object_box;
 
 enum e_element_types
 {
-	// ELEMENT_NONE,
 	ELEMENT_AMBIENT,
 	ELEMENT_CAMERA,
 	ELEMENT_LIGHT,
@@ -24,24 +24,33 @@ enum e_element_types
 	ELEMENT_CYLINDER,
 	ELEMENT_CONE,
 	ELEMENT_BOX,
+	ELEMENT_NONE,
 };
 
 enum e_material_types
 {
-	// MATERIAL_NONE,
 	MATERIAL_LAMBERTIAL,
 	MATERIAL_METAL,
 	MATERIAL_DIELECTRIC,
 	MATERIAL_EMMISIVE,
 	MATERIAL_RANDOM,
+	MATERIAL_NONE,
 };
 
 enum e_texture_types
 {
-	// TEXTURE_NONE,
 	TEXTURE_SOLID,
 	TEXTURE_CHECKER,
-	TEXTURE_IMAGE
+	TEXTURE_IMAGE,
+	TEXTURE_NONE,
+};
+
+# define ELEMENT_TYPE_COUNT		ELEMENT_NONE
+# define TEXTURE_TYPE_COUNT		TEXTURE_NONE
+# define MATERIAL_TYPE_COUNT	MATERIAL_NONE
+
+struct s_info
+{
 };
 
 struct s_info_ambient_light
