@@ -27,6 +27,6 @@ void	clear_dynamic_arr(t_dynamic_arr *arr)
 */
 void	destroy_dynamic_arr(t_dynamic_arr *arr)
 {
-	flush_dynamic_arr(arr);
+	clear_dynamic_arr(arr);
 	free(arr);
 }
