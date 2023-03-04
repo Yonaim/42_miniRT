@@ -5,17 +5,19 @@ bool	is_space(const char c)
 	return (c == ' ' || c == '\t');
 }
 
-int	get_token_type(const char *input)
+int	get_token_type(const char *str)
 {
-	if (*input == ',')
+	if (*str == ',')
 		return (TOKEN_COMMA);
-	else if (*input == '(')
+	else if (*str == '(')
 		return (TOKEN_LPAREN);
-	else if (*input == ')')
+	else if (*str == ')')
 		return (TOKEN_RPAREN);
-	else if (*input == '#')
+	else if (*str == '|')
+		return (TOKEN_PIPE);
+	else if (*str == '#')
 		return (TOKEN_HASH);
-	else if (*input == '\0')
+	else if (*str == '\0')
 		return (TOKEN_NONE);
 	else
 		return (TOKEN_WORD);
