@@ -37,45 +37,33 @@ enum e_rgb
 	B
 };
 
-# define IDENTIFIER_ELEMENT_CAMERA		"C"
-# define IDENTIFIER_ELEMENT_AMBIENT		"A"
-# define IDENTIFIER_ELEMENT_LIGHT		"ptl"
-# define IDENTIFIER_ELEMENT_SPHERE		"sp"
-# define IDENTIFIER_ELEMENT_PLANE		"pl"
-# define IDENTIFIER_ELEMENT_CYLINDER	"cy"
-# define IDENTIFIER_ELEMENT_CONE		"co"
-# define IDENTIFIER_ELEMENT_BOX			"bo"
+# define IDENTIFIER_ELEMENT_CAMERA			"C"
+# define IDENTIFIER_ELEMENT_AMBIENT			"A"
+# define IDENTIFIER_ELEMENT_LIGHT			"ptl"
+# define IDENTIFIER_ELEMENT_SPHERE			"sp"
+# define IDENTIFIER_ELEMENT_PLANE			"pl"
+# define IDENTIFIER_ELEMENT_CYLINDER		"cy"
+# define IDENTIFIER_ELEMENT_CONE			"co"
+# define IDENTIFIER_ELEMENT_BOX				"bo"
+# define IDENTIFIER_ELEMENT_DISK			"di"
+# define IDENTIFIER_ELEMENT_TUBE			"tu"
+# define IDENTIFIER_ELEMENT_CONE_LATERAL	"cl"
 
-# define IDENTIFIER_MATERIAL_LAMBERTIAL	"lam"
-# define IDENTIFIER_MATERIAL_METAL		"met"
-# define IDENTIFIER_MATERIAL_DIELECTRIC	"die"
-# define IDENTIFIER_MATERIAL_EMMISIVE	"emm"
-# define IDENTIFIER_MATERIAL_RANDOM		"rand"
+# define IDENTIFIER_MATERIAL_LAMBERTIAL		"lam"
+# define IDENTIFIER_MATERIAL_METAL			"met"
+# define IDENTIFIER_MATERIAL_DIELECTRIC		"die"
+# define IDENTIFIER_MATERIAL_EMMISIVE		"emm"
+# define IDENTIFIER_MATERIAL_RANDOM			"rand"
 
-# define IDENTIFIER_TEXTURE_SOLID		"sol"
-# define IDENTIFIER_TEXTURE_CHECKER		"che"
-# define IDENTIFIER_TEXTURE_IMAGE		"img"
+# define IDENTIFIER_TEXTURE_SOLID			"sol"
+# define IDENTIFIER_TEXTURE_CHECKER			"che"
+# define IDENTIFIER_TEXTURE_IMAGE			"img"
 
 typedef t_dynamic_arr	t_token_arr;
 
 typedef t_info			*(*t_get_info_element)(const t_token_arr *tokens);
 typedef int				(*t_get_identifier_type)(const char *s);
 typedef	bool	 		(*t_is_element_line)(const t_token_arr *tokens);
-
-enum e_factor_type
-{
-	FACTOR_IDENTIFIER_ELEMENT,
-	FACTOR_IDENTIFIER_MATERIAL,
-	FACTOR_IDENTIFIER_TEXTURE,
-	FACTOR_NUMBER,
-	FACTOR_VECTOR3
-};
-
-struct s_factor
-{
-	int type;
-	int	value;
-};
 
 t_token_arr	*tokenize(char *line);
 int			get_token_type(const char *str);
@@ -113,6 +101,8 @@ bool		is_identifier_str(char *s);
 bool		is_must_be_one_element_type(int type);
 bool		is_must_be_elements_exist(bool elem_exist[]);
 t_token		*nth_token(const t_token_arr *tokens, int nth);
+double		ft_atof(char *str);
+
 t_vector3	parse_vector3(const t_token_arr *tokens, int *offset);
 double		parse_number(const t_token_arr *tokens, int *offset);
 
