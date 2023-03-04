@@ -18,14 +18,15 @@ static t_token	*extract_word_token(char **line)
 
 static t_token	*extract_non_word_token(char **line, int token_type)
 {
-	t_token	*token;
+	t_token		*token;
+	const int	len = (token_type != TOKEN_NONE);
 
 	token = malloc(sizeof(t_token));
 	if (!token)
 		return (NULL);
 	token->type = token_type;
 	token->str = NULL;
-	*line += 1;
+	*line += len;
 	return (token);
 }
 
@@ -50,7 +51,7 @@ static int	extract_tokens(char *line, t_token_arr *tokens)
 	return (SUCCESS);
 }
 
-static int	match_word_tokens_type(t_token_arr *tokens)
+static void	match_word_tokens_type(t_token_arr *tokens)
 {
 	t_token	*token;
 	int		i;
@@ -69,12 +70,9 @@ static int	match_word_tokens_type(t_token_arr *tokens)
 				token->type = TOKEN_IDENTIFIER_MATERIAL;
 			else if (get_texture_type(token->str) != -1)
 				token->type = TOKEN_IDENTIFIER_TEXTURE;
-			else
-				return (FAILURE);
 		}
 		i++;
 	}
-	return (SUCCESS);
 }
 
 t_token_arr	*tokenize(char *line)
@@ -82,11 +80,11 @@ t_token_arr	*tokenize(char *line)
 	t_token_arr	*tokens;
 
 	tokens = new_dynamic_arr(INITIAL_OBJECT_ARR_SIZE);
-	if ((extract_tokens(line, tokens) == FAILURE
-		|| match_word_tokens_type(tokens) == FAILURE))
+	if (extract_tokens(line, tokens) == FAILURE)
 	{
 		destroy_dynamic_arr(tokens);
 		return (NULL);
 	}
+	match_word_tokens_type(tokens);
 	return (tokens);
 }
