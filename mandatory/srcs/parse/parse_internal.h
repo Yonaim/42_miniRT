@@ -46,15 +46,15 @@ enum e_rgb
 # define IDENTIFIER_ELEMENT_CONE		"co"
 # define IDENTIFIER_ELEMENT_BOX			"bo"
 
-# define IDENTIFIER_MATERIAL_LAMBERTIAL	"l"
-# define IDENTIFIER_MATERIAL_METAL		"m"
-# define IDENTIFIER_MATERIAL_DIELECTRIC	"d"
-# define IDENTIFIER_MATERIAL_EMMISIVE	"e"
+# define IDENTIFIER_MATERIAL_LAMBERTIAL	"lam"
+# define IDENTIFIER_MATERIAL_METAL		"met"
+# define IDENTIFIER_MATERIAL_DIELECTRIC	"die"
+# define IDENTIFIER_MATERIAL_EMMISIVE	"emm"
 # define IDENTIFIER_MATERIAL_RANDOM		"rand"
 
-# define IDENTIFIER_TEXTURE_SOLID		"s"
-# define IDENTIFIER_TEXTURE_CHECKER		"c"
-# define IDENTIFIER_TEXTURE_IMAGE		"i"
+# define IDENTIFIER_TEXTURE_SOLID		"sol"
+# define IDENTIFIER_TEXTURE_CHECKER		"che"
+# define IDENTIFIER_TEXTURE_IMAGE		"img"
 
 typedef t_dynamic_arr	t_token_arr;
 
@@ -105,12 +105,13 @@ bool		is_cone_line(const t_token_arr *tokens);
 bool		is_box_line(const t_token_arr *tokens);
 
 bool		is_valid_formatted_line(const char *elem_id, bool is_solid_elem, \
-									const int *form, const t_token_arr *tokens);
+									const t_token_arr *tokens, const int *form);
 bool		is_space(char c);
 bool		is_number_str(char *s);
 bool		is_identifier_str(char *s);
 
 bool		is_must_be_one_element_type(int type);
 bool		is_must_be_elements_exist(bool elem_exist[]);
+t_token		*nth_token(const t_token_arr *tokens, int nth);
 
 #endif
