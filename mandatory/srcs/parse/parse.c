@@ -84,6 +84,10 @@ static int	parse_line(t_scene *scene, char *line, bool elem_exist[])
 
 	if (tokens == NULL)
 		return (FAILURE);
+	if (((t_token *)tokens->data[0])->type == TOKEN_HASH)
+		return (SUCCESS);
+		// 맨 처음 토큰이 해쉬(#)일 경우 주석으로 간주
+		// 이후 is_valid_formatted_line에서 해쉬 토큰 관련 검사를 제대로 수행할 경우 빼도 됨
 	type = match_element_line_format(tokens);
 	if (type == -1)
 		return (FAILURE);
