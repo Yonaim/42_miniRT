@@ -16,15 +16,15 @@ static t_token	*extract_word_token(char **line)
 	return (token);
 }
 
-static t_token	*extract_non_word_token(char **line, int token_type)
+static t_token	*extract_non_word_token(char **line, int type)
 {
 	t_token		*token;
-	const int	len = (token_type != TOKEN_NONE);
+	const int	len = (type != TOKEN_NONE);
 
 	token = malloc(sizeof(t_token));
 	if (!token)
 		return (NULL);
-	token->type = token_type;
+	token->type = type;
 	token->str = NULL;
 	*line += len;
 	return (token);
