@@ -67,7 +67,8 @@ enum e_factor_type
 	FACTOR_IDENTIFIER_ELEMENT,
 	FACTOR_IDENTIFIER_MATERIAL,
 	FACTOR_IDENTIFIER_TEXTURE,
-	FACTOR_NUMBER
+	FACTOR_NUMBER,
+	FACTOR_VECTOR3
 };
 
 struct s_factor
@@ -103,8 +104,8 @@ bool		is_cylinder_line(t_token_arr *tokens);
 bool		is_cone_line(t_token_arr *tokens);
 bool		is_box_line(t_token_arr *tokens);
 
-bool		is_valid_formatted_line(char *identifier, \
-								int *form, t_token_arr *tokens);
+bool		is_valid_formatted_line(char *elem_id, bool is_solid_elem, \
+									int *form, t_token_arr *tokens);
 bool		is_space(char c);
 bool		is_number_str(char *s);
 bool		is_identifier_str(char *s);
