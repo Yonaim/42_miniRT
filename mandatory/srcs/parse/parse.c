@@ -1,7 +1,7 @@
 #include "parse_internal.h"
 #include <string.h>
 
-static int	match_element_line_format(t_token_arr *tokens)
+static int	match_element_line_format(const t_token_arr *tokens)
 {
 	const t_is_element_line	is_element_line[] = {
 	[ELEMENT_CAMERA] = is_camera_line,
@@ -25,55 +25,25 @@ static int	match_element_line_format(t_token_arr *tokens)
 	return (-1);
 }
 
-static int	add_element(int type, t_token_arr *tokens)
+static int	add_element(int type, const t_token_arr *tokens)
 {
-	const t_get_info_element get_info_elem[] = {
-	[ELEMENT_CAMERA] = get_info_camera,
-	[ELEMENT_AMBIENT] = get_info_ambient,
-	[ELEMENT_LIGHT] = get_info_light,
-	[ELEMENT_SPHERE] = get_info_sphere,
-	[ELEMENT_PLANE] = get_info_plane,
-	[ELEMENT_CYLINDER] = get_info_cylinder,
-	[ELEMENT_CONE] = get_info_cone,
-	[ELEMENT_BOX] = get_info_box,
-	};
-	const t_info			*elem_info = get_info_elem[type](tokens);
+	// const t_get_info_element get_info_elem[] = {
+	// [ELEMENT_CAMERA] = get_info_camera,
+	// [ELEMENT_AMBIENT] = get_info_ambient,
+	// [ELEMENT_LIGHT] = get_info_light,
+	// [ELEMENT_SPHERE] = get_info_sphere,
+	// [ELEMENT_PLANE] = get_info_plane,
+	// [ELEMENT_CYLINDER] = get_info_cylinder,
+	// [ELEMENT_CONE] = get_info_cone,
+	// [ELEMENT_BOX] = get_info_box,
+	// };
+	// const t_info			*elem_info = get_info_elem[type](tokens);
 
-	if (elem_info == NULL)
-		return (FAILURE);
+	// if (elem_info == NULL)
+	// 	return (FAILURE);
+	type++;
+	tokens++;
 	return (SUCCESS);
-}
-
-static bool	is_must_be_one_element_type(int type)
-{
-	const int	must_be_one[] = {
-		ELEMENT_AMBIENT,
-		ELEMENT_CAMERA,
-		ELEMENT_NONE
-	};
-	int			i;
-
-	while (must_be_one[i] != ELEMENT_NONE)
-	{
-		if (type == must_be_one[i])
-			return (true);
-		i++;
-	}
-	return (false);
-}
-
-static bool	is_must_be_elements_exist(int elem_exist[])
-{
-	int	i;
-
-	while (i < ELEMENT_TYPE_COUNT)
-	{
-		if (is_must_be_one_element_type(i) == true \
-			&& elem_exist[i] == 0)
-			return (false);
-		i++;
-	}
-	return (true);
 }
 
 static int	parse_line(t_scene *scene, char *line, bool elem_exist[])
@@ -82,6 +52,7 @@ static int	parse_line(t_scene *scene, char *line, bool elem_exist[])
 	const t_token_arr		*tokens = tokenize(line);
 	int						type;
 
+scene++;
 	if (tokens == NULL)
 		return (FAILURE);
 	if (((t_token *)tokens->data[0])->type == TOKEN_HASH)
