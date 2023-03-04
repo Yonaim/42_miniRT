@@ -46,7 +46,8 @@ bool		solve_quadratic_half_b(\
 							double a, double half_b, double c, double root[2]);
 
 // range
-bool		is_in_range(double n, double min, double max);
+bool		is_num_in_range(double n, double min, double max);
+bool		is_vec3_in_range(t_vector3 v, double min, double max);
 double		clamp(double x, double min, double max);
 
 // trigonometry
