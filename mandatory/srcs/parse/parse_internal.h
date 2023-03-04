@@ -113,5 +113,8 @@ bool		is_identifier_str(char *s);
 bool		is_must_be_one_element_type(int type);
 bool		is_must_be_elements_exist(bool elem_exist[]);
 t_token		*nth_token(const t_token_arr *tokens, int nth);
+t_vector3	parse_vector3(const t_token_arr *tokens, int *offset);
+double		parse_number(const t_token_arr *tokens, int *offset);
+
 
 #endif
