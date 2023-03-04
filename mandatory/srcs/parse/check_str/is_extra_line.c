@@ -10,40 +10,50 @@
 bool	is_ambient_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER_ELEMENT,
+		TOKEN_IDENTIFIER_ELEMENT, TOKEN_PIPE,
 		TOKEN_NUMBER,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
 		TOKEN_NONE
 	};
 
 	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_AMBIENT, 0, \
-									format, tokens) == true);
+									tokens, format) == true);
 }
 
 bool	is_camera_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER_ELEMENT,
+		TOKEN_IDENTIFIER_ELEMENT, TOKEN_PIPE,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
 		TOKEN_NUMBER,
 		TOKEN_NONE
 	};
 
 	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_CAMERA, 0, \
-									format, tokens) == true);
+									tokens, format) == true);
 }
 
 bool	is_light_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER_ELEMENT,
+		TOKEN_IDENTIFIER_ELEMENT, TOKEN_PIPE,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
 		TOKEN_NUMBER,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
 		TOKEN_NONE
 	};
 
 	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_LIGHT, 0, \
-									format, tokens) == true);
+									tokens, format) == true);
 }

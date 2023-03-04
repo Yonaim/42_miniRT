@@ -15,73 +15,98 @@
 bool	is_plane_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER_ELEMENT,
+		TOKEN_IDENTIFIER_ELEMENT, TOKEN_PIPE,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
 		TOKEN_NONE
 	};
 
-	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_PLANE, 0, \
-									format, tokens) == true);
+	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_PLANE, 1, \
+									tokens, format) == true);
 }
 
 bool	is_sphere_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER_ELEMENT,
+		TOKEN_IDENTIFIER_ELEMENT, TOKEN_PIPE,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
 		TOKEN_NUMBER,
-		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NONE
 	};
 
-	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_SPHERE, 0, \
-									format, tokens) == true);
+	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_SPHERE, 1, \
+									tokens, format) == true);
 }
 
 bool	is_cylinder_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER_ELEMENT,
+		TOKEN_IDENTIFIER_ELEMENT, TOKEN_PIPE,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
 		TOKEN_NUMBER,
 		TOKEN_NUMBER,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
 		TOKEN_NONE
 	};
 
-	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_CYLINDER, 0, \
-									format, tokens) == true);
+	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_CYLINDER, 1, \
+									tokens, format) == true);
 }
 
 bool	is_cone_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER_ELEMENT,
+		TOKEN_IDENTIFIER_ELEMENT, TOKEN_PIPE,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
 		TOKEN_NUMBER,
 		TOKEN_NUMBER,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
 		TOKEN_NONE
 	};
 
-	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_CONE, 0, \
-									format, tokens) == true);
+	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_CONE, 1, \
+									tokens, format) == true);
 }
 
 bool	is_box_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER_ELEMENT,
+		TOKEN_IDENTIFIER_ELEMENT, TOKEN_PIPE,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
+		TOKEN_LPAREN,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
 		TOKEN_NONE
 	};
 
-	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_BOX, 0, \
-									format, tokens) == true);
+	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_BOX, 1, \
+									tokens, format) == true);
 }
