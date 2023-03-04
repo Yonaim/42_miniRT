@@ -23,6 +23,7 @@ t_vector3	v3_div(t_vector3 v, double t);
 double		len_v3(t_vector3 v);
 double		len_sqr_v3(t_vector3 v);
 bool		is_near_zero(t_vector3 v);
+bool		is_len_near_one(t_vector3 v);
 
 // v3_normalize
 t_vector3	v3_normalize(t_vector3 v);
