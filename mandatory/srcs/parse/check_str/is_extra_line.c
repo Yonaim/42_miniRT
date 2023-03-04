@@ -10,7 +10,7 @@
 bool	is_ambient_line(t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER,
+		TOKEN_IDENTIFIER_ELEMENT,
 		TOKEN_NUMBER,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NONE
@@ -23,7 +23,7 @@ bool	is_ambient_line(t_token_arr *tokens)
 bool	is_camera_line(t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER,
+		TOKEN_IDENTIFIER_ELEMENT,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NUMBER,
@@ -37,7 +37,7 @@ bool	is_camera_line(t_token_arr *tokens)
 bool	is_light_line(t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER,
+		TOKEN_IDENTIFIER_ELEMENT,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NUMBER,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,

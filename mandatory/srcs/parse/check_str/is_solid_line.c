@@ -7,12 +7,15 @@
 	cy 50.0,0.0,20.6 0,0,1.0 14.2 21.42 10,0,255
 	cn 50.0,0.0,20.6 0,0,1.0 14.2 21.42 10,0,255
 	bo 30,0,0 0,20,10 255,255,255
+
+	Solid element의 경우, '<element> <고유 정보> [material] [texture]'
+	ex) sp 0,0,20 20 l s 255,0,0
 */
 
 bool	is_plane_line(t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER,
+		TOKEN_IDENTIFIER_ELEMENT,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
@@ -26,7 +29,7 @@ bool	is_plane_line(t_token_arr *tokens)
 bool	is_sphere_line(t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER,
+		TOKEN_IDENTIFIER_ELEMENT,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NUMBER,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
@@ -40,7 +43,7 @@ bool	is_sphere_line(t_token_arr *tokens)
 bool	is_cylinder_line(t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER,
+		TOKEN_IDENTIFIER_ELEMENT,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NUMBER,
@@ -56,7 +59,7 @@ bool	is_cylinder_line(t_token_arr *tokens)
 bool	is_cone_line(t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER,
+		TOKEN_IDENTIFIER_ELEMENT,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NUMBER,
@@ -72,7 +75,7 @@ bool	is_cone_line(t_token_arr *tokens)
 bool	is_box_line(t_token_arr *tokens)
 {
 	const int	format[] = {
-		TOKEN_IDENTIFIER,
+		TOKEN_IDENTIFIER_ELEMENT,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
 		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
