@@ -1,12 +1,19 @@
 
 <우리의 파일 형식 규칙>
 
-- Ambient light, Camera, Light는 subject를 따른다.
-- Solid element의 경우 '<elem_id> <고유 정보> [material] [texture]'와 같은 형식으로 들어온다.
-	ex) sp | (0,0,20) 20 | (255, 0, 0)
-		sp | (0,0,20) 20 | lam sol (255, 0, 0)
+- Ambient light, Camera, Light는 subject를 따르되 '|'와 소괄호를 활용한다.
+	ex) A | 0.2 (255, 255, 255)
+		C | (-50, 0, 20) (0, 0, 0) 70
+		L | (-40, 0, 30) 0.7 (255, 255, 255)
 
-	- elem_id (대문자로 이루어진 것은 꼭 1개만 존재해야 함)
+- Solid element의 경우 '<elem_id> | <고유 정보> [material 및 texture]'와 같은 형식으로 들어온다.
+	- material 및 texture가 없는 경우
+		ex) sp | (0, 0, 20) 20 | (255, 0, 0)
+	- material 및 texture가 있는 경우
+		ex) sp | (0, 0, 20) 20 | lam sol (255, 0, 0)
+
+- 식별자 종류
+	- element (대문자로 이루어진 것은 꼭 1개만 존재해야 함)
 		- C (camera)
 		- A (ambient light)
 		- ptl (point light)
