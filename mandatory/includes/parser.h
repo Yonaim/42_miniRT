@@ -46,15 +46,15 @@ enum e_rgb
 # define IDETIFIER_ELEMENT_CONE			"co"
 # define IDETIFIER_ELEMENT_BOX			"bo"
 
-# define IDETIFIER_MATERIAL_LAMBERTIAL	"l"
-# define IDETIFIER_MATERIAL_METAL		"m"
-# define IDETIFIER_MATERIAL_DIELECTRIC	"d"
-# define IDETIFIER_MATERIAL_EMMISIVE	"e"
+# define IDETIFIER_MATERIAL_LAMBERTIAL	"lam"
+# define IDETIFIER_MATERIAL_METAL		"met"
+# define IDETIFIER_MATERIAL_DIELECTRIC	"die"
+# define IDETIFIER_MATERIAL_EMMISIVE	"emm"
 # define IDETIFIER_MATERIAL_RANDOM		"rand"
 
-# define IDETIFIER_TEXTURE_SOLID		"s"
-# define IDETIFIER_TEXTURE_CHECKER		"c"
-# define IDETIFIER_TEXTURE_IMAGE		"i"
+# define IDETIFIER_TEXTURE_SOLID		"sol"
+# define IDETIFIER_TEXTURE_CHECKER		"che"
+# define IDETIFIER_TEXTURE_IMAGE		"img"
 
 typedef int	(*t_get_info)(t_token *tokens, void *info);
 
