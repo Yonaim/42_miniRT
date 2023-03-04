@@ -78,7 +78,7 @@ struct s_factor
 };
 
 t_token_arr	*tokenize(char *line);
-int			get_token_type(const char *input);
+int			get_token_type(const char *str);
 int			length_of_word(const char *line);
 int			length_of_number(const char *line);
 
