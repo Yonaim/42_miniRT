@@ -12,7 +12,7 @@
 	ex) sp 0,0,20 20 l s 255,0,0
 */
 
-bool	is_plane_line(t_token_arr *tokens)
+bool	is_plane_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
 		TOKEN_IDENTIFIER_ELEMENT,
@@ -22,11 +22,11 @@ bool	is_plane_line(t_token_arr *tokens)
 		TOKEN_NONE
 	};
 
-	return (is_formatted_line(IDENTIFIER_ELEMENT_PLANE, \
-									tokens, format) == true);
+	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_PLANE, 0, \
+									format, tokens) == true);
 }
 
-bool	is_sphere_line(t_token_arr *tokens)
+bool	is_sphere_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
 		TOKEN_IDENTIFIER_ELEMENT,
@@ -36,11 +36,11 @@ bool	is_sphere_line(t_token_arr *tokens)
 		TOKEN_NONE
 	};
 
-	return (is_formatted_line(IDENTIFIER_ELEMENT_SPHERE, \
-									tokens, format) == true);
+	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_SPHERE, 0, \
+									format, tokens) == true);
 }
 
-bool	is_cylinder_line(t_token_arr *tokens)
+bool	is_cylinder_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
 		TOKEN_IDENTIFIER_ELEMENT,
@@ -52,11 +52,11 @@ bool	is_cylinder_line(t_token_arr *tokens)
 		TOKEN_NONE
 	};
 
-	return (is_formatted_line(IDENTIFIER_ELEMENT_CYLINDER, \
-									tokens, format) == true);
+	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_CYLINDER, 0, \
+									format, tokens) == true);
 }
 
-bool	is_cone_line(t_token_arr *tokens)
+bool	is_cone_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
 		TOKEN_IDENTIFIER_ELEMENT,
@@ -68,11 +68,11 @@ bool	is_cone_line(t_token_arr *tokens)
 		TOKEN_NONE
 	};
 
-	return (is_formatted_line(IDENTIFIER_ELEMENT_CONE, \
-									tokens, format) == true);
+	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_CONE, 0, \
+									format, tokens) == true);
 }
 
-bool	is_box_line(t_token_arr *tokens)
+bool	is_box_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
 		TOKEN_IDENTIFIER_ELEMENT,
@@ -82,6 +82,6 @@ bool	is_box_line(t_token_arr *tokens)
 		TOKEN_NONE
 	};
 
-	return (is_formatted_line(IDENTIFIER_ELEMENT_BOX, \
-									tokens, format) == true);
+	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_BOX, 0, \
+									format, tokens) == true);
 }

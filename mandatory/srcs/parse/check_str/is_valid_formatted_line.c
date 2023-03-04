@@ -2,7 +2,7 @@
 #include "parse_internal.h"
 #include <string.h>
 
-t_token	*nth_token(t_token_arr *tokens, int nth)
+t_token	*nth_token(const t_token_arr *tokens, int nth)
 {
 	t_token *token;
 
@@ -10,7 +10,7 @@ t_token	*nth_token(t_token_arr *tokens, int nth)
 	return (token);
 }
 
-static bool	is_valid_material_specified(t_token_arr *tokens, int offset)
+static bool	is_valid_material_specified(const t_token_arr *tokens, int offset)
 {
 	if (nth_token(tokens, offset)->type != TOKEN_IDENTIFIER_MATERIAL)
 		return (false);
@@ -29,16 +29,15 @@ static bool	is_valid_material_specified(t_token_arr *tokens, int offset)
 		if (nth_token(tokens, offset + 8)->type != TOKEN_NONE)
 			return (false);
 	}
-	else
-		return (true);
+	return (true);
 }
 
-bool	is_valid_formatted_line(char *elem_id, bool is_solid_elem, \
-									int *form, t_token_arr *tokens)
+bool	is_valid_formatted_line(const char *elem_id, bool is_solid_elem, \
+									const int *form, const t_token_arr *tokens)
 {
 	int	i;
 
-	if (strcmp(elem_id, (nth_token(tokens, 0)->str) != 0))
+	if (strcmp(elem_id, (nth_token(tokens, 0)->str)) != 0)
 		return (false);
 	i = 0;
 	while (i < tokens->cnt && form[i] != TOKEN_NONE)

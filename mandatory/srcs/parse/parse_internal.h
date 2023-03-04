@@ -58,9 +58,9 @@ enum e_rgb
 
 typedef t_dynamic_arr	t_token_arr;
 
-typedef t_info			*(*t_get_info_element)(t_token *tokens);
+typedef t_info			*(*t_get_info_element)(const t_token_arr *tokens);
 typedef int				(*t_get_identifier_type)(const char *s);
-typedef	bool	 		(*t_is_element_line)(t_token *tokens);
+typedef	bool	 		(*t_is_element_line)(const t_token_arr *tokens);
 
 enum e_factor_type
 {
@@ -86,28 +86,31 @@ int			get_element_type(const char *str);
 int			get_material_type(const char *str);
 int			get_texture_type(const char *str);
 
-t_info		*get_info_ambient(t_token_arr *tokens);
-t_info		*get_info_camera(t_token_arr *tokens);
-t_info		*get_info_light(t_token_arr *tokens);
-t_info		*get_info_plane(t_token_arr *tokens);
-t_info		*get_info_sphere(t_token_arr *tokens);
-t_info		*get_info_cylinder(t_token_arr *tokens);
-t_info		*get_info_cone(t_token_arr *tokens);
-t_info		*get_info_box(t_token_arr *tokens);
+t_info		*get_info_ambient(const t_token_arr *tokens);
+t_info		*get_info_camera(const t_token_arr *tokens);
+t_info		*get_info_light(const t_token_arr *tokens);
+t_info		*get_info_plane(const t_token_arr *tokens);
+t_info		*get_info_sphere(const t_token_arr *tokens);
+t_info		*get_info_cylinder(const t_token_arr *tokens);
+t_info		*get_info_cone(const t_token_arr *tokens);
+t_info		*get_info_box(const t_token_arr *tokens);
 
-bool		is_ambient_line(t_token_arr *tokens);
-bool		is_camera_line(t_token_arr *tokens);
-bool		is_light_line(t_token_arr *tokens);
-bool		is_plane_line(t_token_arr *tokens);
-bool		is_sphere_line(t_token_arr *tokens);
-bool		is_cylinder_line(t_token_arr *tokens);
-bool		is_cone_line(t_token_arr *tokens);
-bool		is_box_line(t_token_arr *tokens);
+bool		is_ambient_line(const t_token_arr *tokens);
+bool		is_camera_line(const t_token_arr *tokens);
+bool		is_light_line(const t_token_arr *tokens);
+bool		is_plane_line(const t_token_arr *tokens);
+bool		is_sphere_line(const t_token_arr *tokens);
+bool		is_cylinder_line(const t_token_arr *tokens);
+bool		is_cone_line(const t_token_arr *tokens);
+bool		is_box_line(const t_token_arr *tokens);
 
-bool		is_valid_formatted_line(char *elem_id, bool is_solid_elem, \
-									int *form, t_token_arr *tokens);
+bool		is_valid_formatted_line(const char *elem_id, bool is_solid_elem, \
+									const int *form, const t_token_arr *tokens);
 bool		is_space(char c);
 bool		is_number_str(char *s);
 bool		is_identifier_str(char *s);
+
+bool		is_must_be_one_element_type(int type);
+bool		is_must_be_elements_exist(bool elem_exist[]);
 
 #endif
