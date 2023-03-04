@@ -50,7 +50,7 @@ static int	extract_tokens(char *line, t_token_arr *tokens)
 	return (SUCCESS);
 }
 
-static int	determine_word_tokens_type(t_token_arr *tokens)
+static int	match_word_tokens_type(t_token_arr *tokens)
 {
 	t_token	*token;
 	int		i;
@@ -63,8 +63,12 @@ static int	determine_word_tokens_type(t_token_arr *tokens)
 		{
 			if (is_number_str(token->str) == true)
 				token->type = TOKEN_NUMBER;
-			else if (is_identifier_str(token->str) == true)
-				token->type = TOKEN_IDENTIFIER;
+			else if (get_element_type(token->str) != -1)
+				token->type = TOKEN_IDENTIFIER_ELEMENT;
+			else if (get_material_type(token->str) != -1)
+				token->type = TOKEN_IDENTIFIER_MATERIAL;
+			else if (get_texture_type(token->str) != -1)
+				token->type = TOKEN_IDENTIFIER_TEXTURE;
 			else
 				return (FAILURE);
 		}
@@ -79,7 +83,7 @@ t_token_arr	*tokenize(char *line)
 
 	tokens = new_dynamic_arr(INITIAL_OBJECT_ARR_SIZE);
 	if ((extract_tokens(line, tokens) == FAILURE
-		|| idetermine_word_tokens_type(tokens) == FAILURE))
+		|| match_word_tokens_type(tokens) == FAILURE))
 	{
 		destroy_dynamic_arr(tokens);
 		return (NULL);
