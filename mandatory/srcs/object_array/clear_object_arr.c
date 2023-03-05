@@ -14,3 +14,8 @@ void	clear_object_arr(t_object_arr *objects)
 	}
 	free(objects->data);
 }
+
+void	clear_world(t_world *world)
+{
+	clear_object_arr(&world->objects);
+}

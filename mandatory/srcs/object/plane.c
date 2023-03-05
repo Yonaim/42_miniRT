@@ -4,6 +4,7 @@ static void	destroy_plane(t_object *object);
 static int	get_plane_type(void);
 static bool	hit_plane(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
+static bool	is_plane_light(t_object *object);
 
 t_object	*new_plane(t_info_object_plane *pl_info)
 {
@@ -15,6 +16,7 @@ t_object	*new_plane(t_info_object_plane *pl_info)
 	new->hit = hit_plane;
 	new->destroy = destroy_plane;
 	new->get_type = get_plane_type;
+	new->is_light = is_plane_light;
 	new->material = new_material(&pl_info->material, &pl_info->texture);
 	if (new->material == NULL)
 		return (NULL);
@@ -76,4 +78,13 @@ static bool	hit_plane(
 	h_rec->material = pl->material;
 	set_face_normal(h_rec, ray, pl->normal);
 	return (true);
+}
+
+static bool	is_plane_light(t_object *object)
+{
+	const t_object_plane	*pl = (t_object_plane *)object;
+
+	if (pl->material->get_type() == MATERIAL_EMMISIVE)
+		return (true);
+	return (false);
 }

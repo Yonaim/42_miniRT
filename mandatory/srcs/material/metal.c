@@ -7,6 +7,7 @@ static bool		metal_scattered(
 static t_color3	metal_emitted(
 					t_material *self, double u, double v, t_point3 p);
 static void		destroy_metal(t_material *self);
+static int		get_metal_type(void);
 
 t_material	*new_metal(t_color3 rgb, double fuzz)
 {
@@ -15,11 +16,12 @@ t_material	*new_metal(t_color3 rgb, double fuzz)
 	metal = malloc(sizeof(t_material_metal));
 	if (!metal)
 		return (NULL);
-	metal->albedo = v3_div(rgb, 256);
-	metal->fuzz = fuzz;
-	metal->scattered = metal_scattered;
-	metal->emitted = metal_emitted;
 	metal->destroy = destroy_metal;
+	metal->emitted = metal_emitted;
+	metal->scattered = metal_scattered;
+	metal->get_type = get_metal_type;
+	metal->fuzz = fuzz;
+	metal->albedo = v3_div(rgb, 256);
 	return ((t_material *)metal);
 }
 
@@ -53,4 +55,9 @@ static void	destroy_metal(t_material *self)
 
 	metal = (t_material_metal *)self;
 	free(metal);
+}
+
+static int	get_metal_type(void)
+{
+	return (MATERIAL_METAL);
 }

@@ -4,6 +4,7 @@ static void	destroy_cylinder(t_object *object);
 static int	get_cylinder_type(void);
 static bool	hit_cylinder(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
+static bool	is_cylinder_light(t_object *object);
 
 t_object	*new_cylinder(t_info_object_cylinder *cy_info)
 {
@@ -15,6 +16,7 @@ t_object	*new_cylinder(t_info_object_cylinder *cy_info)
 	new->hit = hit_cylinder;
 	new->destroy = destroy_cylinder;
 	new->get_type = get_cylinder_type;
+	new->is_light = is_cylinder_light;
 	if (init_object_arr(&new->faces, 3) == FAILURE)
 		return (NULL);
 	if (add_object(&new->faces, new_tube(&cy_info->tube)) == FAILURE
@@ -51,4 +53,13 @@ static bool	hit_cylinder(
 
 	cy = (t_object_cylinder *)self;
 	return (hit_object_arr(&cy->faces, ray, h_rec, t_max));
+}
+
+static bool	is_cylinder_light(t_object *object)
+{
+	const t_object_cylinder	*cy = (t_object_cylinder *)object;
+
+	if (cy->faces.data[0]->is_light == true)
+		return (true);
+	return (false);
 }

@@ -4,6 +4,7 @@ static void	destroy_point_light(t_object *self);
 static int	get_point_light_type(void);
 static bool	hit_point_light(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
+static bool	is_point_light(t_object *object);
 
 t_object	*new_point_light(t_info_object_point_light *ptl_info)
 {
@@ -16,6 +17,7 @@ t_object	*new_point_light(t_info_object_point_light *ptl_info)
 	new->hit = hit_point_light;
 	new->destroy = destroy_point_light;
 	new->get_type = get_point_light_type;
+	new->is_light = is_point_light;
 	sp_info.center = ptl_info->pos;
 	sp_info.radius = POINT_LIGHT_RADIUS;
 	sp_info.material.type = MATERIAL_EMMISIVE;
@@ -47,4 +49,10 @@ static bool	hit_point_light(
 
 	spherical_ptl = ((t_object_point_light *)self)->sphere;
 	return (spherical_ptl->hit(spherical_ptl, ray, h_rec, t_max));
+}
+
+static bool	is_point_light(t_object *object)
+{
+	(void)object;
+	return (true);
 }

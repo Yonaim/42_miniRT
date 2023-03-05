@@ -4,6 +4,7 @@ static void	destroy_sphere(t_object *object);
 static int	get_sphere_type(void);
 static bool	hit_sphere(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
+static bool	is_sphere_light(t_object *object);
 
 t_object	*new_sphere(t_info_object_sphere *sp_info)
 {
@@ -15,6 +16,7 @@ t_object	*new_sphere(t_info_object_sphere *sp_info)
 	new->hit = hit_sphere;
 	new->destroy = destroy_sphere;
 	new->get_type = get_sphere_type;
+	new->is_light = is_sphere_light;
 	new->material = new_material(&sp_info->material, &sp_info->texture);
 	if (new->material == NULL)
 		return (NULL);
@@ -88,3 +90,12 @@ static bool	hit_sphere(
 // (O - C)^2 - r^2 = len_sqr_v3(oc) - pow(sp->radius, 2)
 	// (O - C)^2 = len_sqr_v3(oc)
 	// r^2 = pow(sp->radius, 2)
+
+static bool	is_sphere_light(t_object *object)
+{
+	const t_object_sphere	*sp = (t_object_sphere *)object;
+
+	if (sp->material->get_type() == MATERIAL_EMMISIVE)
+		return (true);
+	return (false);
+}
