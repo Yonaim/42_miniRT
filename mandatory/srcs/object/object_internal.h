@@ -10,7 +10,6 @@
 # include "s_material.h"
 # include "s_hit_record.h"
 # include "s_object.h"
-# include "s_object_arr.h"
 # include "s_ray.h"
 # include "constants.h"
 # include "typedef.h"
