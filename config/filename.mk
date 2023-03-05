@@ -2,27 +2,34 @@ FILENAME		=		camera/camera_init\
 						material/dielectric\
 						material/emmisive\
 						material/lambertian\
-						material/material\
 						material/metal\
-						material/random_material\
+						material/new_material\
+						material/new_random_material\
+						object/box\
 						object/cone\
 						object/cone_lateral\
+						object/cone_lateral_hit\
 						object/cylinder\
 						object/disk\
 						object/plane\
+						object/point_light\
 						object/sphere\
 						object/tube\
+						object/tube_hit\
 						object/utils\
-						object_array/flush_object_array\
+						object/xy_rectangle\
+						object/xz_rectangle\
+						object/yz_rectangle\
+						dynamic_array/destroy_dynamic_arr\
+						dynamic_array/new_dynamic_arr\
+						dynamic_array/push_back_dynamic_arr\
+						object_array/add_object\
+						object_array/clear_object_arr\
+						object_array/hit_object_arr\
 						object_array/init_object_arr\
-						object_array/object_arr_add\
-						object_array/object_arr_hit\
-						parsing/ft_atof\
-						parsing/parse_element_extra\
-						parsing/parse_element_solid\
+						parsing/build_element_box\
+						parsing/parse_element_box\
 						parsing/parse_scene\
-						parsing/parse_value\
-						parsing/utils\
 						pdf/pdf\
 						ray/primary_ray\
 						ray/ray\
@@ -39,6 +46,7 @@ FILENAME		=		camera/camera_init\
 						texture/texture\
 						utils/color\
 						utils/handle_error\
+						utils/mlx_hook\
 						utils/mlx_utils\
 						main
 
