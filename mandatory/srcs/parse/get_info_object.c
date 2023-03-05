@@ -1,16 +1,5 @@
 #include "parse_internal.h"
 
-bool	is_color3_in_255(const t_color3 *c)
-{
-	return (is_vec3_in_range(*c, 0, 255));
-}
-
-bool	is_normalized_vec3(const t_vector3 *v)
-{
-	return (is_vec3_in_range(*v, 0, 1) == true \
-		&& is_len_near_one(*v) == true);
-}
-
 /*
 	(example)
 
@@ -36,7 +25,7 @@ t_info_material get_info_material(const t_token_arr *tokens, int offset)
 	{
 		m_info.type = get_material_type(nth_token(tokens, offset)->str);
 		offset++;
-		m_info.texture.type = get_material_type(nth_token(tokens, offset)->str);
+		m_info.texture.type = get_texture_type(nth_token(tokens, offset)->str);
 		offset++;
 	}
 	else
@@ -44,8 +33,29 @@ t_info_material get_info_material(const t_token_arr *tokens, int offset)
 		m_info.type = DEFAULT_MATERIAL;
 		m_info.texture.type = DEFAULT_TEXTURE;
 	}	
-	m_info.texture.rgb1 = parse_vector3(tokens, offset);
+	m_info.texture.rgb1 = parse_vector3(tokens, &offset);
 	return (m_info);
+}
+
+t_info		*get_info_point_light(const t_token_arr *tokens)
+{
+	t_info_object_point_light	*info;
+	int							offset;
+	
+	info = malloc(sizeof(t_info_object_point_light));
+	if (info == NULL)
+		return (NULL);
+	offset = 2;
+	info->pos = parse_vector3(tokens, &offset);
+	info->brightness = parse_number(tokens, &offset);
+	info->rgb = parse_vector3(tokens, &offset);
+	if (is_num_in_range(info->brightness, 0, 1) == false \
+		|| is_vec3_in_range(info->rgb, 0, 255) == false)
+	{
+		free(info);
+		return (NULL);
+	}
+	return ((t_info *)info);
 }
 
 t_info		*get_info_plane(const t_token_arr *tokens)
@@ -56,9 +66,9 @@ t_info		*get_info_plane(const t_token_arr *tokens)
 	info = malloc(sizeof(t_info_object_plane));
 	if (info == NULL)
 		return (NULL);
-	offset = 3;
-	info->point = parse_vector3(tokens, offset);
-	info->normal = parse_vector3(tokens, offset);
+	offset = 2;
+	info->point = parse_vector3(tokens, &offset);
+	info->normal = parse_vector3(tokens, &offset);
 	info->material = get_info_material(tokens, offset);
 	if (is_normalized_vec3(&info->normal) == false \
 		|| is_color3_in_255(&info->material.rgb) == false)
@@ -77,9 +87,9 @@ t_info		*get_info_sphere(const t_token_arr *tokens)
 	info = malloc(sizeof(t_info_object_sphere));
 	if (info == NULL)
 		return (NULL);
-	offset = 3;
-	info->center = parse_vector3(tokens, offset);
-	info->radius = parse_number(tokens, offset) / 2;
+	offset = 2;
+	info->center = parse_vector3(tokens, &offset);
+	info->radius = parse_number(tokens, &offset) / 2;
 	info->material = get_info_material(tokens, offset);
 	if (is_color3_in_255(&info->material.rgb) == false)
 	{
@@ -97,10 +107,10 @@ t_info		*get_info_disk(const t_token_arr *tokens)
 	info = malloc(sizeof(t_info_object_disk));
 	if (info == NULL)
 		return (NULL);
-	offset = 3;
-	info->center = parse_vector3(tokens, offset);
-	info->normal = parse_vector3(tokens, offset);
-	info->radius = parse_number(tokens, offset) / 2;
+	offset = 2;
+	info->center = parse_vector3(tokens, &offset);
+	info->normal = parse_vector3(tokens, &offset);
+	info->radius = parse_number(tokens, &offset) / 2;
 	while (nth_token(tokens, offset)->type == TOKEN_NUMBER)
 		offset++;
 	info->material = get_info_material(tokens, offset);
@@ -121,11 +131,11 @@ t_info		*get_info_tube(const t_token_arr *tokens)
 	info = malloc(sizeof(t_info_object_tube));
 	if (info == NULL)
 		return (NULL);
-	offset = 3;
-	info->center = parse_vector3(tokens, offset);
-	info->orient = parse_vector3(tokens, offset);
-	info->radius = parse_number(tokens, offset) / 2;
-	info->height = parse_number(tokens, offset);
+	offset = 2;
+	info->center = parse_vector3(tokens, &offset);
+	info->orient = parse_vector3(tokens, &offset);
+	info->radius = parse_number(tokens, &offset) / 2;
+	info->height = parse_number(tokens, &offset);
 	info->material = get_info_material(tokens, offset);
 	if (is_normalized_vec3(&info->orient) == false \
 		|| is_color3_in_255(&info->material.rgb) == false)
@@ -150,7 +160,6 @@ t_info		*get_info_cylinder(const t_token_arr *tokens)
 	ft_memcpy(&cy_info->disk[0], di_info, sizeof(t_info_object_disk));
 	ft_memcpy(&cy_info->disk[1], di_info, sizeof(t_info_object_disk));
 	ft_memcpy(&cy_info->tube, tu_info, sizeof(t_info_object_tube));
-	ft_memcpy(&cy_info->material, &tu_info->material, sizeof(t_info_object_tube));
 	cy_info->disk[0].center = v3_sub(tu_info->center, \
 								v3_mul(tu_info->orient, tu_info->height / 2));
 	cy_info->disk[1].center = v3_add(tu_info->center, \
@@ -168,11 +177,11 @@ t_info		*get_info_cone_lateral(const t_token_arr *tokens)
 	info = malloc(sizeof(t_info_object_cone_lateral));
 	if (info == NULL)
 		return (NULL);
-	offset = 3;
-	info->center = parse_vector3(tokens, offset);
-	info->orient = parse_vector3(tokens, offset);
-	info->radius = parse_number(tokens, offset) / 2;
-	info->height = parse_number(tokens, offset);
+	offset = 2;
+	info->center = parse_vector3(tokens, &offset);
+	info->orient = parse_vector3(tokens, &offset);
+	info->radius = parse_number(tokens, &offset) / 2;
+	info->height = parse_number(tokens, &offset);
 	info->material = get_info_material(tokens, offset);
 	if (is_normalized_vec3(&info->orient) == false \
 		|| is_color3_in_255(&info->material.rgb) == false)
@@ -196,8 +205,6 @@ t_info		*get_info_cone(const t_token_arr *tokens)
 		return (NULL);
 	ft_memcpy(&co_info->disk, di_info, sizeof(t_info_object_disk));
 	ft_memcpy(&co_info->lateral, cl_info, sizeof(t_info_object_cone_lateral));
-	ft_memcpy(&co_info->material, &cl_info->material, \
-									sizeof(t_info_object_cone_lateral));
 	free(di_info);
 	free(cl_info);
 	return ((t_info *)co_info);
@@ -211,9 +218,9 @@ t_info		*get_info_box(const t_token_arr *tokens)
 	info = malloc(sizeof(t_info_object_box));
 	if (info == NULL)
 		return (NULL);
-	offset = 3;
-	info->p_end1 = parse_vector3(tokens, offset);
-	info->p_end2 = parse_vector3(tokens, offset);
+	offset = 2;
+	info->p_end1 = parse_vector3(tokens, &offset);
+	info->p_end2 = parse_vector3(tokens, &offset);
 	info->material = get_info_material(tokens, offset);
 	if (is_vec3_in_range(info->material.rgb, 0, 255) == false)
 	{
