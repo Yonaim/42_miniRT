@@ -5,7 +5,7 @@ static int		get_box_type(void);
 static bool		hit_box(
 					t_object *self, t_ray *ray,
 					t_hit_record *h_rec, double t_max);
-static int		add_box_faces(t_object_box *box, t_info_object_box *bo_info);
+int				add_box_faces(t_object_box *box, t_info_object_box *bo_info);
 
 t_object	*new_box(t_info_object_box *bo_info)
 {
@@ -31,21 +31,6 @@ static bool	hit_box(
 
 	box = (t_object_box *)self;
 	return (hit_object_arr(&box->faces, ray, h_rec, t_max));
-}
-
-static int	add_box_faces(t_object_box *box, t_info_object_box *bo_info)
-{
-	t_object	*objects[6];
-
-	objects[0] = new_xy_rectangle(&bo_info->xy_rectangle[0]);
-	objects[1] = new_xy_rectangle(&bo_info->xy_rectangle[1]);
-	objects[2] = new_xz_rectangle(&bo_info->xz_rectangle[0]);
-	objects[3] = new_xz_rectangle(&bo_info->xz_rectangle[1]);
-	objects[4] = new_yz_rectangle(&bo_info->yz_rectangle[0]);
-	objects[5] = new_yz_rectangle(&bo_info->yz_rectangle[1]);
-	if (add_n_objects(&box->faces, objects, 6) == FAILURE)
-		return (FAILURE);
-	return (SUCCESS);
 }
 
 static void	destroy_box(t_object *self)
