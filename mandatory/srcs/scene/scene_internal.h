@@ -22,7 +22,9 @@
 # include "parsing.h"
 # include "camera.h"
 # include "object_arr.h"
+# include "object_arr_internal.h"
 # include "color.h"
+# include "parsing.h"
 
 t_color3	sampled_color(t_scene *scene, int x, int y);
 
