@@ -6,6 +6,7 @@
 int		init_object_arr(t_object_arr *objects, int cap);
 void	clear_object_arr(t_object_arr *objects);
 int		add_object(t_object_arr *objects, t_object *object);
+int		add_n_objects(t_object_arr *object_arr, t_object **objects, int n);
 bool	hit_object_arr(
 			t_object_arr *objects, t_ray *ray,
 			t_hit_record *final_rec, double t_max);

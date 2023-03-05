@@ -4,6 +4,26 @@
 # include "typedef.h"
 # include "color.h"
 
+<<<<<<< HEAD
+typedef struct s_info_ambient_light			t_info_ambient_light;
+typedef struct s_info_camera				t_info_camera;
+typedef struct s_info_texture				t_info_texture;
+typedef struct s_info_material				t_info_material;
+typedef struct s_info_object_point_light	t_info_object_point_light;
+typedef struct s_info_object_sphere			t_info_object_sphere;
+typedef struct s_info_object_disk			t_info_object_disk;
+typedef struct s_info_object_tube			t_info_object_tube;
+typedef struct s_info_object_cylinder		t_info_object_cylinder;
+typedef struct s_info_object_cone_lateral	t_info_object_cone_lateral;
+typedef struct s_info_object_cone			t_info_object_cone;
+typedef struct s_info_object_plane			t_info_object_plane;
+typedef struct s_info_object_xy_rectangle	t_info_object_xy_rectangle;
+typedef struct s_info_object_xz_rectangle	t_info_object_xz_rectangle;
+typedef struct s_info_object_yz_rectangle	t_info_object_yz_rectangle;
+typedef struct s_info_object_box			t_info_object_box;
+
+=======
+>>>>>>> 3915947b798a0c770df2b5962eade23368e234ea
 enum e_element_types
 {
 	ELEMENT_AMBIENT,
@@ -137,11 +157,43 @@ struct s_info_object_plane
 	t_info_material	material;
 };
 
+struct s_info_object_xy_rectangle
+{
+	double			x1;
+	double			x2;
+	double			y1;
+	double			y2;
+	double			z;
+	t_info_material	material;
+	t_info_texture	texture;
+};
+
+struct s_info_object_xz_rectangle
+{
+	double			x1;
+	double			x2;
+	double			z1;
+	double			z2;
+	double			y;
+	t_info_material	material;
+	t_info_texture	texture;
+};
+
+struct s_info_object_yz_rectangle
+{
+	double			y1;
+	double			y2;
+	double			z1;
+	double			z2;
+	double			x;
+};
+
 struct s_info_object_box
 {
 	t_point3		p_end1;
 	t_point3		p_end2;
 	t_info_material	material;
 };
+
 
 #endif

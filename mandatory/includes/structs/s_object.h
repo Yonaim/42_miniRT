@@ -117,10 +117,10 @@ struct s_object_xy_rectangle
 	t_destroy_object	destroy;
 	t_get_object_type	get_type;
 	t_material			*material;
-	double				x0;
 	double				x1;
-	double				y0;
+	double				x2;
 	double				y1;
+	double				y2;
 	double				z;
 };
 
@@ -130,10 +130,10 @@ struct s_object_xz_rectangle
 	t_destroy_object	destroy;
 	t_get_object_type	get_type;
 	t_material			*material;
-	double				x0;
 	double				x1;
-	double				z0;
+	double				x2;
 	double				z1;
+	double				z2;
 	double				y;
 };
 
@@ -143,10 +143,10 @@ struct s_object_yz_rectangle
 	t_destroy_object	destroy;
 	t_get_object_type	get_type;
 	t_material			*material;
-	double				y0;
 	double				y1;
-	double				z0;
+	double				y2;
 	double				z1;
+	double				z2;
 	double				x;
 };
 
@@ -155,7 +155,6 @@ struct s_object_box
 	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_get_object_type	get_type;
-	t_material			*material;
 	t_point3			p_end1;
 	t_point3			p_end2;
 	t_object_arr		faces;
