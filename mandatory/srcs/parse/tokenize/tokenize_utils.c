@@ -1,4 +1,4 @@
-#include "parse_internal.h"
+#include "../parse_internal.h"
 
 bool	is_space(const char c)
 {

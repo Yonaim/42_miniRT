@@ -1,9 +1,6 @@
-#include "parse_internal.h"
+#include "../parse_internal.h"
 
-int	build_ambient(t_info *info, t_scene *scene);
-int	build_camera(t_info *info, t_scene *scene);
-
-int	build_ambient(t_info *info, t_scene *scene)
+int	put_ambient_to_scene(t_info *info, t_scene *scene)
 {
 	const t_info_ambient_light *amb = (t_info_ambient_light *)info; 
 	
@@ -11,7 +8,7 @@ int	build_ambient(t_info *info, t_scene *scene)
 	return (1);
 }
 
-int	build_camera(t_info *info, t_scene *scene)
+int	put_camera_to_scene(t_info *info, t_scene *scene)
 {
 	const t_info_camera *cam = (t_info_camera *)info; 
 	

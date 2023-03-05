@@ -1,4 +1,4 @@
-#include "parse_internal.h"
+#include "../parse_internal.h"
 
 /*
 	(example)
@@ -16,7 +16,6 @@ t_info		*get_info_ambient(const t_token_arr *tokens)
 	if (info == NULL)
 		return (NULL);
 	offset = 2;
-
 	info->brightness = parse_number(tokens, &offset);
 	info->rgb = parse_vector3(tokens, &offset);
 	if (is_num_in_range(info->brightness, 0, 1) == false \

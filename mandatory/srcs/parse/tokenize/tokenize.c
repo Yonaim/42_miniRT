@@ -1,4 +1,4 @@
-#include "parse_internal.h"
+#include "../parse_internal.h"
 
 static t_token	*extract_word_token(char **line)
 {
