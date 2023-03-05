@@ -3,14 +3,14 @@
 static t_color3	get_solid_val(t_texture *self, double u, double v, t_point3 p);
 static void		destroy_solid(t_texture *self);
 
-t_texture	*new_solid(t_color3 color)
+t_texture	*new_solid(t_color3 rgb)
 {
 	t_texture_solid	*solid;
 
 	solid = malloc(sizeof(t_texture_solid));
 	if (!solid)
 		return (NULL);
-	solid->color = color;
+	solid->color = v3_div(rgb, 256);
 	solid->get_val = get_solid_val;
 	solid->destroy = destroy_solid;
 	return ((t_texture *)solid);

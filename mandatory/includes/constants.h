@@ -1,3 +1,4 @@
+
 #ifndef CONSTANTS_H
 # define CONSTANTS_H
 
@@ -11,8 +12,10 @@ enum e_success_or_failure
 
 // window
 # define WINDOW_NAME				"meyun & yona's wonderful miniRT"
-# define WINDOW_WIDTH				1920
-# define WINDOW_HEIGHT				1080
+// # define WINDOW_WIDTH				1920
+// # define WINDOW_HEIGHT				1080
+# define WINDOW_WIDTH				1200
+# define WINDOW_HEIGHT				800
 
 // t range
 # define T_MINIMUM					0.001
@@ -38,7 +41,7 @@ enum e_success_or_failure
 # define INITIAL_INFO_ARR_SIZE		10
 
 // light
-# define MAX_BRIGHTNESS				20
+// # define MAX_BRIGHTNESS				1
 
 /** dev **/
 

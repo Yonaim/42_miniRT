@@ -8,9 +8,9 @@ void	clear_object_arr(t_object_arr *objects)
 	i = 0;
 	while (i < objects->cnt)
 	{
-		cur_obj = (t_object *)objects->data[i];
+		cur_obj = (t_object *)(objects->data[i]);
 		cur_obj->destroy(cur_obj);
 		++i;
 	}
-	free(objects);
+	free(objects->data);
 }

@@ -4,7 +4,7 @@
 # include <stdbool.h>
 # include <stddef.h>
 # include "typedef.h"
-// # include "s_object_arr.h"
+# include "s_dynamic_arr.h"
 
 enum e_object_type
 {
@@ -27,7 +27,6 @@ struct s_object
 	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_get_object_type	get_type;
-	t_material			*material;
 };
 
 struct s_object_point_light
@@ -35,7 +34,6 @@ struct s_object_point_light
 	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_get_object_type	get_type;
-	t_material			*material;
 	t_object			*sphere;
 };
 
@@ -77,7 +75,6 @@ struct s_object_cylinder
 	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_get_object_type	get_type;
-	t_material			*material;
 	t_object_arr		faces;
 };
 
@@ -88,8 +85,12 @@ struct s_object_cone_lateral
 	t_get_object_type	get_type;
 	t_material			*material;
 	t_point3			center;
+	t_point3			apex;
+	t_vector3			orient;
+	t_vector3			opposite_orient;
 	double				radius;
 	double				height;
+	double				const_m;
 };
 
 struct s_object_cone
@@ -97,7 +98,6 @@ struct s_object_cone
 	t_hit_object		hit;
 	t_destroy_object	destroy;
 	t_get_object_type	get_type;
-	t_material			*material;
 	t_object_arr		faces;
 };
 

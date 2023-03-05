@@ -1,22 +1,21 @@
 
 #include "material_internal.h"
 
-static bool		metal_scattered(\
-						t_material *self, t_ray *in, \
-						t_hit_record *h_rec, t_scatter_record *s_rec);
-static t_color3	metal_emitted(\
-								t_material *self, \
-								double u, double v, t_point3 p);
+static bool		metal_scattered(
+					t_material *self, t_ray *in,
+					t_hit_record *h_rec, t_scatter_record *s_rec);
+static t_color3	metal_emitted(
+					t_material *self, double u, double v, t_point3 p);
 static void		destroy_metal(t_material *self);
 
-t_material	*new_metal(t_color3 albedo, double fuzz)
+t_material	*new_metal(t_color3 rgb, double fuzz)
 {
 	t_material_metal	*metal;
 
 	metal = malloc(sizeof(t_material_metal));
 	if (!metal)
 		return (NULL);
-	metal->albedo = albedo;
+	metal->albedo = v3_div(rgb, 256);
 	metal->fuzz = fuzz;
 	metal->scattered = metal_scattered;
 	metal->emitted = metal_emitted;
@@ -24,9 +23,9 @@ t_material	*new_metal(t_color3 albedo, double fuzz)
 	return ((t_material *)metal);
 }
 
-static bool	metal_scattered(\
-						t_material *self, t_ray *in, \
-						t_hit_record *h_rec, t_scatter_record *s_rec)
+static bool	metal_scattered(
+			t_material *self, t_ray *in,
+			t_hit_record *h_rec, t_scatter_record *s_rec)
 {
 	const t_material_metal	*metal = (t_material_metal *)self;
 
@@ -38,9 +37,8 @@ static bool	metal_scattered(\
 		return (false);
 }
 
-static t_color3	metal_emitted(\
-								t_material *self, \
-								double u, double v, t_point3 p)
+static t_color3	metal_emitted(
+				t_material *self, double u, double v, t_point3 p)
 {
 	(void)self;
 	(void)u;

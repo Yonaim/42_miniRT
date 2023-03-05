@@ -4,8 +4,6 @@ static void	init_renderer(t_minirt *minirt, char *path)
 {
 	init_mlx(&minirt->mlx);
 	init_scene(&minirt->scene, &minirt->mlx.img, path);
-	minirt->status.is_done = false;
-	minirt->status.layer_cnt = 0;
 }
 
 int	main(int argc, char *argv[])

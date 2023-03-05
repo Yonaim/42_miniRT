@@ -53,7 +53,6 @@ typedef struct s_dynamic_arr			t_token_arr;
 typedef struct s_dynamic_arr			t_info_arr;
 
 // object
-typedef struct s_object_list			t_object_list;
 typedef struct s_object					t_object;
 typedef struct s_object_point_light		t_object_point_light;
 typedef struct s_object_sphere			t_object_sphere;
@@ -61,6 +60,8 @@ typedef struct s_object_disk			t_object_disk;
 typedef struct s_object_tube			t_object_tube;
 typedef struct s_object_cylinder		t_object_cylinder;
 typedef struct s_object_plane			t_object_plane;
+typedef struct s_object_cone_lateral	t_object_cone_lateral;
+typedef struct s_object_cone			t_object_cone;
 
 // texture
 typedef struct s_texture				t_texture;

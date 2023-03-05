@@ -26,15 +26,16 @@
 		- tu (tube)
 		- cl (cone lateral)
 	- material: 
-		- lam (lambertian) (default)
-		- met (metal)
-		- die (dielectric)
-		- emm (emmisive)
-		- ran (random)
+		- l (lambertian) (default) : rgb(t_vector3), texture o
+		- m (metal) : rgb(t_vector3), fuzz(double), texture x
+		- d (dielectric) : refractive_idx(double), texture x
+		- e (emmisive) : texture o
+		- rand (random)
 			- texture도 포함하여 랜덤으로 값을 설정한다.
 			- 뒤에 다른 값이 나오면 바로 에러 처리
 	- texture:
-		- sol (solid) (default)
+		- material이 lambertian, emmisive가 아닌 경우 texture를 가지지 않는다.
+		- s (solid) (default)
 			: s(r,g,b) (r, g, b 각각은 0 ~ 255 사이의 값을 가짐)
 		- che (checker)
 			: c((odd texture), (even texture))

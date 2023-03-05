@@ -1,13 +1,14 @@
-FILENAME		=		camera/init_camera\
+FILENAME		=		camera/camera_init\
 						material/dielectric\
 						material/emmisive\
 						material/lambertian\
+						material/material\
 						material/metal\
+						material/random_material\
 						object/cone\
-						object/cone_lateral_area\
+						object/cone_lateral\
 						object/cylinder\
 						object/disk\
-						object/light\
 						object/plane\
 						object/sphere\
 						object/tube\
@@ -27,13 +28,17 @@ FILENAME		=		camera/init_camera\
 						ray/ray\
 						ray/scattered_ray\
 						ray/scattered_vector\
+						scene/gamma_correction\
+						scene/manage_color\
 						scene/scene_flush\
 						scene/scene_init\
 						scene/scene_render\
 						scene/shading\
 						texture/checker\
 						texture/solid\
+						texture/texture\
 						utils/color\
 						utils/handle_error\
 						utils/mlx_utils\
 						main
+
