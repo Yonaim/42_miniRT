@@ -93,18 +93,18 @@ bool		is_cone_line(const t_token_arr *tokens);
 bool		is_cone_lateral_line(const t_token_arr *tokens);
 bool		is_box_line(const t_token_arr *tokens);
 
-int			build_ambient(t_info *info, t_scene *scene);
-int			build_camera(t_info *info, t_scene *scene);
+int			put_ambient_to_scene(t_info *info, t_scene *scene);
+int			put_camera_to_scene(t_info *info, t_scene *scene);
 
-int			build_object_point_light(t_info *info, t_scene *scene);
-int			build_object_sphere(t_info *info, t_scene *scene);
-int			build_object_disk(t_info *info, t_scene *scene);
-int			build_object_tube(t_info *info, t_scene *scene);
-int			build_object_cylinder(t_info *info, t_scene *scene);
-int			build_object_cone_lateral(t_info *info, t_scene *scene);
-int			build_object_cone(t_info *info, t_scene *scene);
-int			build_object_plane(t_info *info, t_scene *scene);
-int			build_object_box(t_info *info, t_scene *scene);
+int			put_point_light_to_scene(t_info *info, t_scene *scene);
+int			put_sphere_to_scene(t_info *info, t_scene *scene);
+int			put_disk_to_scene(t_info *info, t_scene *scene);
+int			put_tube_to_scene(t_info *info, t_scene *scene);
+int			put_cylinder_to_scene(t_info *info, t_scene *scene);
+int			put_cone_lateral_to_scene(t_info *info, t_scene *scene);
+int			put_cone_to_scene(t_info *info, t_scene *scene);
+int			put_plane_to_scene(t_info *info, t_scene *scene);
+int			put_box_to_scene(t_info *info, t_scene *scene);
 
 bool		is_valid_formatted_line(const char *elem_id, bool is_solid_elem, \
 									const t_token_arr *tokens, const int *form);
