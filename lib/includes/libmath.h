@@ -23,6 +23,7 @@ t_vector3	v3_div(t_vector3 v, double t);
 double		len_v3(t_vector3 v);
 double		len_sqr_v3(t_vector3 v);
 bool		is_near_zero(t_vector3 v);
+bool		is_len_near_one(t_vector3 v);
 
 // v3_normalize
 t_vector3	v3_normalize(t_vector3 v);
@@ -45,7 +46,8 @@ bool		solve_quadratic_half_b(\
 							double a, double half_b, double c, double root[2]);
 
 // range
-bool		is_in_range(double n, double min, double max);
+bool		is_num_in_range(double n, double min, double max);
+bool		is_vec3_in_range(t_vector3 v, double min, double max);
 double		clamp(double x, double min, double max);
 
 // trigonometry

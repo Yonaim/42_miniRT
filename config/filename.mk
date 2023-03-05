@@ -10,18 +10,13 @@ FILENAME		=		camera/camera_init\
 						object/cylinder\
 						object/disk\
 						object/plane\
-						object/point_light\
 						object/sphere\
 						object/tube\
-						object/tube_hit\
 						object/utils\
-						dynamic_array/darr_destroy\
-						dynamic_array/darr_new\
-						dynamic_array/darr_push_back\
+						object_array/flush_object_array\
+						object_array/init_object_arr\
 						object_array/object_arr_add\
-						object_array/object_arr_clear\
 						object_array/object_arr_hit\
-						object_array/object_arr_init\
 						parsing/ft_atof\
 						parsing/parse_element_extra\
 						parsing/parse_element_solid\
@@ -44,7 +39,6 @@ FILENAME		=		camera/camera_init\
 						texture/texture\
 						utils/color\
 						utils/handle_error\
-						utils/mlx_hook\
 						utils/mlx_utils\
 						main
 

@@ -15,6 +15,22 @@ typedef struct s_mlx					t_mlx;
 // scene
 typedef struct s_scene					t_scene;
 
+// info
+typedef struct s_info						t_info;
+typedef struct s_info_ambient_light			t_info_ambient_light;
+typedef struct s_info_camera				t_info_camera;
+typedef struct s_info_texture				t_info_texture;
+typedef struct s_info_material				t_info_material;
+typedef struct s_info_object_point_light	t_info_object_point_light;
+typedef struct s_info_object_sphere			t_info_object_sphere;
+typedef struct s_info_object_disk			t_info_object_disk;
+typedef struct s_info_object_tube			t_info_object_tube;
+typedef struct s_info_object_cylinder		t_info_object_cylinder;
+typedef struct s_info_object_cone_lateral	t_info_object_cone_lateral;
+typedef struct s_info_object_cone			t_info_object_cone;
+typedef struct s_info_object_plane			t_info_object_plane;
+typedef struct s_info_object_box			t_info_object_box;
+
 // scatter record
 typedef struct s_scatter_record			t_scatter_record;
 
@@ -33,6 +49,8 @@ typedef struct s_world					t_world;
 // dynamic array
 typedef struct s_dynamic_arr			t_dynamic_arr;
 typedef struct s_dynamic_arr			t_object_arr;
+typedef struct s_dynamic_arr			t_token_arr;
+typedef struct s_dynamic_arr			t_info_arr;
 
 // object
 typedef struct s_object					t_object;
@@ -112,5 +130,12 @@ typedef void							(*t_destroy_material)(\
 												t_material *material);
 typedef void							(*t_destroy_texture)(\
 												t_texture *texture);
+
+typedef t_info							*(*t_get_info_element)(const t_token_arr *tokens);
+typedef int								(*t_get_identifier_type)(const char *s);
+typedef	bool	 						(*t_is_element_line)(const t_token_arr *tokens);
+typedef	int								(*t_build_element)(t_info *info, t_scene *scene);
+
+
 
 #endif

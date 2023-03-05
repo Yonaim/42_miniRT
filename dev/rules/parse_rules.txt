@@ -1,15 +1,30 @@
 
 <우리의 파일 형식 규칙>
 
-- Ambient light, Camera, Light는 subject를 따른다.
-- Solid element의 경우 '<도형식별자> <고유 정보> [material] [texture]'와 같은 형식으로 들어온다.
-	ex) sp 0,0,20 20 l s 255,0,0
-	- 도형식별자:
+- Ambient light, Camera, Light는 subject를 따르되 '|'와 소괄호를 활용한다.
+	ex) A | 0.2 (255, 255, 255)
+		C | (-50, 0, 20) (0, 0, 0) 70
+		L | (-40, 0, 30) 0.7 (255, 255, 255)
+
+- Solid element의 경우 '<elem_id> | <고유 정보> [material 및 texture]'와 같은 형식으로 들어온다.
+	- material 및 texture가 없는 경우
+		ex) sp | (0, 0, 20) 20 | (255, 0, 0)
+	- material 및 texture가 있는 경우
+		ex) sp | (0, 0, 20) 20 | lam sol (255, 0, 0)
+
+- 식별자 종류
+	- element (대문자로 이루어진 것은 꼭 1개만 존재해야 함)
+		- C (camera)
+		- A (ambient light)
+		- ptl (point light)
 		- sp (sphere)
 		- pl (plane)
 		- cy (cylinder)
 		- co (cone)
 		- bo (box)
+		- di (disk)
+		- tu (tube)
+		- cl (cone lateral)
 	- material: 
 		- l (lambertian) (default) : rgb(t_vector3), texture o
 		- m (metal) : rgb(t_vector3), fuzz(double), texture x
@@ -22,15 +37,38 @@
 		- material이 lambertian, emmisive가 아닌 경우 texture를 가지지 않는다.
 		- s (solid) (default)
 			: s(r,g,b) (r, g, b 각각은 0 ~ 255 사이의 값을 가짐)
-		- c (checker)
+		- che (checker)
 			: c((odd texture), (even texture))
 				(재귀적으로 texture를 가짐)
 				(일단은 texture 대신 rgb 컬러값을 받으며, 추후 수정 예정)
-		- i (image)
+		- img (image)
 			: i(image_path)
-- #으로 시작하는 경우 주석이다.
 
-<subject의 파일 형식 규칙>
+- #으로 시작하는 경우 주석이다. (중간에 #이 나오는 것은 안됨. 꼭 해당 라인이 #으로 시작해야함)
+
+
+A | 0.2 (255, 255, 255)
+C | (-50, 0, 20) (0, 0, 0) 70
+L | (-40, 0, 30) 0.7 (255, 255, 255)
+pl | (0,0,0) (0,1.0,0) | (255,0,225) 
+sp | (0,0,20) 20 | (255,0,0)
+bo | (30,0,0) (0,20,10) | (255,255,255)
+
+di | (50.0,0.0,20.6) (0.0,0.0,1.0) 10 | (10,0,255)
+tu | (50.0,0.0,20.6) (0.0,0.0,1.0) 10 24 | (10,0,255)
+cy | (50.0,0.0,20.6) (0.0,0.0,1.0) 10 21.42 | (10,0,255)
+
+cl | (50.0,0.0,20.6) (0.0,0.0,1.0) 10 20 | (10,0,255)
+co | (50.0,0.0,20.6) (0.0,0.0,1.0) 14.2 21.42 | (10,0,255)
+
+
+Solid element
+- material 및 texture가 없는 경우
+	ex) sp | (0, 0, 20) 20 | (255, 0, 0)
+- material 및 texture가 있는 경우
+	ex) sp | (0, 0, 20) 20 | lam sol (255, 0, 0)
+
+<subject의 파일 형식 규칙> (mandatory)
 
 - Each type of element can be separated by one or more line break(s).
 - Each type of information from an element can be separated by one or more
@@ -45,8 +83,8 @@ C -50,0,20 0,0,0 70
 L -40,0,30 0.7 255,255,255
 pl 0,0,0 0,1.0,0 255,0,225
 sp 0,0,20 20 255,0,0
-cy 50.0,0.0,20.6 0,0,1.0 14.2 21.42 10,0,255
-cn 50.0,0.0,20.6 0,0,1.0 14.2 21.42 10,0,255
+cy 50.0,0.0,20.6 0.0,0.0,1.0 14.2 21.42 10,0,255
+cn 50.0,0.0,20.6 0.0,0.0,1.0 14.2 21.42 10,0,255
 ---------- 새로 추가 ---------
 bo 30,0,0 0,20,10 255,255,255
 (p_end1, p_end2, rgb)
