@@ -66,31 +66,31 @@ int	parse_line(char *line, t_info *info, int *type)
 	return (SUCCESS);
 }
 
-int	build_using_info(t_info *info, t_scene *scene, int type)
+int	put_element_to_scene(t_info *info, t_scene *scene, int type)
 {
-	const t_build_element	build_element[] = {
-	[ELEMENT_AMBIENT] = build_ambient,
-	[ELEMENT_CAMERA] = build_camera,
-	[ELEMENT_LIGHT] = build_object_point_light,
-	[ELEMENT_PLANE] = build_object_plane,
-	[ELEMENT_SPHERE] = build_object_sphere,
-	[ELEMENT_DISK] = build_object_disk,
-	[ELEMENT_TUBE] = build_object_tube,
-	[ELEMENT_CYLINDER] = build_object_cylinder,
-	[ELEMENT_CONE_LATERAL] = build_object_cone_lateral,
-	[ELEMENT_CONE] = build_object_cone,
-	[ELEMENT_BOX] = build_object_box,
+	const t_put_element	put_to_scene[] = {
+	[ELEMENT_AMBIENT] = put_ambient_to_scene,
+	[ELEMENT_CAMERA] = put_camera_to_scene,
+	[ELEMENT_LIGHT] = put_point_light_to_scene,
+	[ELEMENT_PLANE] = put_plane_to_scene,
+	[ELEMENT_SPHERE] = put_sphere_to_scene,
+	[ELEMENT_DISK] = put_disk_to_scene,
+	[ELEMENT_TUBE] = put_tube_to_scene,
+	[ELEMENT_CYLINDER] = put_cylinder_to_scene,
+	[ELEMENT_CONE_LATERAL] = put_cone_lateral_to_scene,
+	[ELEMENT_CONE] = put_cone_to_scene,
+	[ELEMENT_BOX] = put_box_to_scene,
 	[ELEMENT_NONE] = NULL
 	};
 
-	return (build_element[type](info, scene));
+	return (put_to_scene[type](info, scene));
 }
 
 int	parse_scene(t_scene *scene, int fd)
 {
 	char		*line;
 	int			type;
-	t_info		*info;
+	t_info		info;
 	int			nth;
 	bool		exist[ELEMENT_TYPE_COUNT];
 
@@ -99,14 +99,14 @@ int	parse_scene(t_scene *scene, int fd)
 	nth = 1;
 	while (line)
 	{
-		if (parse_line(line, info, &type) == FAILURE)
+		if (parse_line(line, &info, &type) == FAILURE)
 		{
 			printf("Error: parse %dth line failed\n", nth);
 			exit(1); // handle_error 함수 호출하여 에러 처리하도록 수정
 		}
 		if (is_must_be_one_element_type(type) && exist[type] == true)
 			handle_error("Error: duplicated declaration");
-		build_using_info(info, scene, type);
+		put_element_to_scene(&info, scene, type);
 		exist[type] = true;
 		line = get_next_line(fd);
 		nth++;
