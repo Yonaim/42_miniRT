@@ -1,5 +1,5 @@
 
-#include "parse_internal.h"
+#include "../parse_internal.h"
 #include <string.h>
 
 static bool	is_valid_material_specified(const t_token_arr *tokens, int offset)
