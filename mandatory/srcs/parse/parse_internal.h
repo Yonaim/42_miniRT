@@ -23,6 +23,7 @@
 # include "ray.h"
 # include "parsing.h"
 # include "camera.h"
+# include "object.h"
 # include "object_arr.h"
 # include "color.h"
 # include "dynamic_arr.h"
@@ -59,12 +60,6 @@ enum e_rgb
 # define IDENTIFIER_TEXTURE_CHECKER			"che"
 # define IDENTIFIER_TEXTURE_IMAGE			"img"
 
-typedef t_dynamic_arr	t_token_arr;
-
-typedef t_info			*(*t_get_info_element)(const t_token_arr *tokens);
-typedef int				(*t_get_identifier_type)(const char *s);
-typedef	bool	 		(*t_is_element_line)(const t_token_arr *tokens);
-
 t_token_arr	*tokenize(char *line);
 int			get_token_type(const char *str);
 int			length_of_word(const char *line);
@@ -76,21 +71,40 @@ int			get_texture_type(const char *str);
 
 t_info		*get_info_ambient(const t_token_arr *tokens);
 t_info		*get_info_camera(const t_token_arr *tokens);
-t_info		*get_info_light(const t_token_arr *tokens);
+t_info		*get_info_point_light(const t_token_arr *tokens);
 t_info		*get_info_plane(const t_token_arr *tokens);
 t_info		*get_info_sphere(const t_token_arr *tokens);
+t_info		*get_info_tube(const t_token_arr *tokens);
+t_info		*get_info_disk(const t_token_arr *tokens);
 t_info		*get_info_cylinder(const t_token_arr *tokens);
 t_info		*get_info_cone(const t_token_arr *tokens);
+t_info		*get_info_cone_lateral(const t_token_arr *tokens);
 t_info		*get_info_box(const t_token_arr *tokens);
 
 bool		is_ambient_line(const t_token_arr *tokens);
 bool		is_camera_line(const t_token_arr *tokens);
-bool		is_light_line(const t_token_arr *tokens);
+bool		is_point_light_line(const t_token_arr *tokens);
 bool		is_plane_line(const t_token_arr *tokens);
 bool		is_sphere_line(const t_token_arr *tokens);
+bool		is_tube_line(const t_token_arr *tokens);
+bool		is_disk_line(const t_token_arr *tokens);
 bool		is_cylinder_line(const t_token_arr *tokens);
 bool		is_cone_line(const t_token_arr *tokens);
+bool		is_cone_lateral_line(const t_token_arr *tokens);
 bool		is_box_line(const t_token_arr *tokens);
+
+int			build_ambient(t_info *info, t_scene *scene);
+int			build_camera(t_info *info, t_scene *scene);
+
+int			build_object_point_light(t_info *info, t_scene *scene);
+int			build_object_sphere(t_info *info, t_scene *scene);
+int			build_object_disk(t_info *info, t_scene *scene);
+int			build_object_tube(t_info *info, t_scene *scene);
+int			build_object_cylinder(t_info *info, t_scene *scene);
+int			build_object_cone_lateral(t_info *info, t_scene *scene);
+int			build_object_cone(t_info *info, t_scene *scene);
+int			build_object_plane(t_info *info, t_scene *scene);
+int			build_object_box(t_info *info, t_scene *scene);
 
 bool		is_valid_formatted_line(const char *elem_id, bool is_solid_elem, \
 									const t_token_arr *tokens, const int *form);
@@ -105,6 +119,9 @@ double		ft_atof(char *str);
 
 t_vector3	parse_vector3(const t_token_arr *tokens, int *offset);
 double		parse_number(const t_token_arr *tokens, int *offset);
+
+bool		is_color3_in_255(const t_color3 *c);
+bool		is_normalized_vec3(const t_vector3 *v);
 
 
 #endif
