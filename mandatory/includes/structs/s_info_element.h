@@ -4,21 +4,6 @@
 # include "typedef.h"
 # include "color.h"
 
-typedef struct s_info						t_info;
-typedef struct s_info_ambient_light			t_info_ambient_light;
-typedef struct s_info_camera				t_info_camera;
-typedef struct s_info_texture				t_info_texture;
-typedef struct s_info_material				t_info_material;
-typedef struct s_info_object_point_light	t_info_object_point_light;
-typedef struct s_info_object_sphere			t_info_object_sphere;
-typedef struct s_info_object_disk			t_info_object_disk;
-typedef struct s_info_object_tube			t_info_object_tube;
-typedef struct s_info_object_cylinder		t_info_object_cylinder;
-typedef struct s_info_object_cone_lateral	t_info_object_cone_lateral;
-typedef struct s_info_object_cone			t_info_object_cone;
-typedef struct s_info_object_plane			t_info_object_plane;
-typedef struct s_info_object_box			t_info_object_box;
-
 enum e_element_types
 {
 	ELEMENT_AMBIENT,
@@ -29,12 +14,11 @@ enum e_element_types
 	ELEMENT_DISK,
 	ELEMENT_TUBE,
 	ELEMENT_CYLINDER,
-	ELEMENT_CONE,
 	ELEMENT_CONE_LATERAL,
+	ELEMENT_CONE,
 	ELEMENT_BOX,
 	ELEMENT_NONE
 };
-
 
 enum e_material_types
 {
@@ -129,7 +113,6 @@ struct s_info_object_cylinder
 {
 	t_info_object_disk	disk[2];
 	t_info_object_tube	tube;
-	t_info_material		material;
 };
 
 struct s_info_object_cone_lateral
@@ -145,7 +128,6 @@ struct s_info_object_cone
 {
 	t_info_object_disk			disk;
 	t_info_object_cone_lateral	lateral;
-	t_info_material				material;
 };
 
 struct s_info_object_plane
@@ -156,7 +138,7 @@ struct s_info_object_plane
 };
 
 struct s_info_object_box
-{	
+{
 	t_point3		p_end1;
 	t_point3		p_end2;
 	t_info_material	material;
