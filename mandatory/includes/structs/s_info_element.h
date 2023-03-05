@@ -137,6 +137,22 @@ struct s_info_object_plane
 	t_info_material	material;
 };
 
+enum e_axis_aligned_type
+{
+	XY,
+	XZ,
+	YZ
+};
+
+struct s_info_object_rectangle
+{
+	int				type;
+	double			range_1[2];
+	double			range_2[2];
+	double			const_k;
+	t_info_material	material;
+};
+
 struct s_info_object_xy_rectangle
 {
 	double			x1;
@@ -145,7 +161,6 @@ struct s_info_object_xy_rectangle
 	double			y2;
 	double			z;
 	t_info_material	material;
-	t_info_texture	texture;
 };
 
 struct s_info_object_xz_rectangle
@@ -156,7 +171,6 @@ struct s_info_object_xz_rectangle
 	double			z2;
 	double			y;
 	t_info_material	material;
-	t_info_texture	texture;
 };
 
 struct s_info_object_yz_rectangle
@@ -166,6 +180,7 @@ struct s_info_object_yz_rectangle
 	double			z1;
 	double			z2;
 	double			x;
+	t_info_material	material;
 };
 
 struct s_info_object_box
