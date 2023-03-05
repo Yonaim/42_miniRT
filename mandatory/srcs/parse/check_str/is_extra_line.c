@@ -40,7 +40,7 @@ bool	is_camera_line(const t_token_arr *tokens)
 									tokens, format) == true);
 }
 
-bool	is_light_line(const t_token_arr *tokens)
+bool	is_point_light_line(const t_token_arr *tokens)
 {
 	const int	format[] = {
 		TOKEN_IDENTIFIER_ELEMENT, TOKEN_PIPE,
