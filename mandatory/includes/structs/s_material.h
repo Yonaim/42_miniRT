@@ -26,7 +26,7 @@ struct s_material_metal
 	t_emit				emitted;
 	t_destroy_material	destroy;
 	t_scattering_pdf	s_pdf;
-	t_color3			albedo;
+	t_texture			*albedo;
 	double				fuzz;
 };
 
