@@ -16,7 +16,7 @@ t_object	*new_xz_rectangle(t_info_object_xz_rectangle *xz_rec_info)
 	new->destroy = destroy_xz_rectangle;
 	new->get_type = get_xz_rectangle_type;
 	new->hit = hit_xz_rectangle;
-	new->material = new_material(&xz_rec_info->material, &xz_rec_info->texture);
+	new->material = new_material(&xz_rec_info->material);
 	if (new->material == NULL)
 		return (NULL);
 	if (xz_rec_info->x1 > xz_rec_info->x2)

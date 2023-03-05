@@ -17,7 +17,7 @@ t_object	*new_xy_rectangle(t_info_object_xy_rectangle *xy_rec_info)
 	new->destroy = destroy_xy_rectangle;
 	new->get_type = get_xy_rectangle_type;
 	new->hit = hit_xy_rectangle;
-	new->material = new_material(&xy_rec_info->material, &xy_rec_info->texture);
+	new->material = new_material(&xy_rec_info->material);
 	if (new->material == NULL)
 		return (NULL);
 	if (xy_rec_info->x1 > xy_rec_info->x2)
