@@ -15,7 +15,7 @@ t_object	*new_sphere(t_info_object_sphere *sp_info)
 	new->hit = hit_sphere;
 	new->destroy = destroy_sphere;
 	new->get_type = get_sphere_type;
-	new->material = new_material(&sp_info->material, &sp_info->texture);
+	new->material = new_material(&sp_info->material);
 	if (new->material == NULL)
 		return (NULL);
 	new->center = sp_info->center;

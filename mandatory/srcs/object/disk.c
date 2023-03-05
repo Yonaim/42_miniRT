@@ -15,7 +15,7 @@ t_object	*new_disk(t_info_object_disk *dk_info)
 	new->hit = hit_disk;
 	new->destroy = destroy_disk;
 	new->get_type = get_disk_type;
-	new->material = new_material(&dk_info->material, &dk_info->texture);
+	new->material = new_material(&dk_info->material);
 	if (new->material == NULL)
 		return (NULL);
 	new->center = dk_info->center;
