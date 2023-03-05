@@ -29,7 +29,12 @@ typedef struct s_info_object_cylinder		t_info_object_cylinder;
 typedef struct s_info_object_cone_lateral	t_info_object_cone_lateral;
 typedef struct s_info_object_cone			t_info_object_cone;
 typedef struct s_info_object_plane			t_info_object_plane;
+typedef struct s_info_object_rectangle		t_info_object_rectangle;
+typedef struct s_info_object_xy_rectangle	t_info_object_xy_rectangle;
+typedef struct s_info_object_xz_rectangle	t_info_object_xz_rectangle;
+typedef struct s_info_object_yz_rectangle	t_info_object_yz_rectangle;
 typedef struct s_info_object_box			t_info_object_box;
+
 
 // scatter record
 typedef struct s_scatter_record			t_scatter_record;
@@ -134,7 +139,7 @@ typedef void							(*t_destroy_texture)(\
 typedef t_info							*(*t_get_info_element)(const t_token_arr *tokens);
 typedef int								(*t_get_identifier_type)(const char *s);
 typedef	bool	 						(*t_is_element_line)(const t_token_arr *tokens);
-typedef	int								(*t_build_element)(t_info *info, t_scene *scene);
+typedef	int								(*t_put_element)(t_info *info, t_scene *scene);
 
 
 
