@@ -50,7 +50,7 @@ t_info		*get_info_point_light(const t_token_arr *tokens)
 	info->brightness = parse_number(tokens, &offset);
 	info->rgb = parse_vector3(tokens, &offset);
 	if (is_num_in_range(info->brightness, 0, 1) == false \
-		|| is_color3_in_255(&info->rgb) == false == false)
+		|| is_color3_in_255(&info->rgb) == false)
 	{
 		free(info);
 		return (NULL);
