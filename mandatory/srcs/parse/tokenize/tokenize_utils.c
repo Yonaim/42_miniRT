@@ -10,8 +10,9 @@ int	length_of_word(const char *line)
 	int	len;
 
 	len = 0;
-	while (is_space(line[len]) == false && \
-			get_token_type(&line[len]) == TOKEN_WORD)
+	while (is_space(line[len]) == false \
+			&& line[len] != '\n' \
+			&& get_token_type(&line[len]) == TOKEN_WORD)
 		len++;
 	return (len);
 }
