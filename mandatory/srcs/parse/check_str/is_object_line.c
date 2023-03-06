@@ -26,7 +26,7 @@ bool	is_plane_line(const t_token_arr *tokens)
 	};
 
 	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_PLANE, 1, \
-									tokens, format) == true);
+									tokens, format));
 }
 
 bool	is_sphere_line(const t_token_arr *tokens)
@@ -41,7 +41,7 @@ bool	is_sphere_line(const t_token_arr *tokens)
 	};
 
 	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_SPHERE, 1, \
-									tokens, format) == true);
+									tokens, format));
 }
 
 bool	is_tube_line(const t_token_arr *tokens)
@@ -60,7 +60,7 @@ bool	is_tube_line(const t_token_arr *tokens)
 	};
 
 	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_TUBE, 1, \
-									tokens, format) == true);
+									tokens, format));
 }
 
 bool	is_disk_line(const t_token_arr *tokens)
@@ -78,7 +78,7 @@ bool	is_disk_line(const t_token_arr *tokens)
 	};
 
 	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_DISK, 1, \
-									tokens, format) == true);
+									tokens, format));
 }
 
 bool	is_cylinder_line(const t_token_arr *tokens)
@@ -97,7 +97,7 @@ bool	is_cylinder_line(const t_token_arr *tokens)
 	};
 
 	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_CYLINDER, 1, \
-									tokens, format) == true);
+									tokens, format));
 }
 
 bool	is_cone_lateral_line(const t_token_arr *tokens)
@@ -116,7 +116,7 @@ bool	is_cone_lateral_line(const t_token_arr *tokens)
 	};
 
 	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_CONE_LATERAL, 1, \
-									tokens, format) == true);	
+									tokens, format));	
 }
 
 bool	is_cone_line(const t_token_arr *tokens)
@@ -135,7 +135,7 @@ bool	is_cone_line(const t_token_arr *tokens)
 	};
 
 	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_CONE, 1, \
-									tokens, format) == true);
+									tokens, format));
 }
 
 bool	is_box_line(const t_token_arr *tokens)
@@ -152,5 +152,5 @@ bool	is_box_line(const t_token_arr *tokens)
 	};
 
 	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_BOX, 1, \
-									tokens, format) == true);
+									tokens, format));
 }

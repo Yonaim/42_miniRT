@@ -37,7 +37,7 @@ bool	is_camera_line(const t_token_arr *tokens)
 	};
 
 	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_CAMERA, 0, \
-									tokens, format) == true);
+									tokens, format));
 }
 
 bool	is_point_light_line(const t_token_arr *tokens)
@@ -55,5 +55,5 @@ bool	is_point_light_line(const t_token_arr *tokens)
 	};
 
 	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_LIGHT, 0, \
-									tokens, format) == true);
+									tokens, format));
 }
