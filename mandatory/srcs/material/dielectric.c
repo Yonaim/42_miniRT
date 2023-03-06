@@ -8,7 +8,7 @@ static t_color3	dielectric_emitted(
 					t_material *self, double u, double v, t_point3 p);
 static void		destroy_dielectric(t_material *self);
 
-t_material	*new_dielectric(double refractive_idx)
+t_material	*new_dielectric(const double refractive_idx)
 {
 	t_material_dielectric	*dielectric;
 

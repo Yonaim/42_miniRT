@@ -8,14 +8,14 @@ static t_color3	metal_emitted(
 					t_material *self, double u, double v, t_point3 p);
 static void		destroy_metal(t_material *self);
 
-t_material	*new_metal(t_texture *texture, double fuzz)
+t_material	*new_metal(const t_texture *texture, const double fuzz)
 {
 	t_material_metal	*metal;
 
 	metal = malloc(sizeof(t_material_metal));
 	if (!metal)
 		return (NULL);
-	metal->albedo = texture;
+	metal->albedo = (t_texture *)texture;
 	metal->fuzz = fuzz;
 	metal->scattered = metal_scattered;
 	metal->emitted = metal_emitted;

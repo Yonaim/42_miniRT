@@ -5,7 +5,7 @@ static int	get_tube_type(void);
 bool		hit_tube(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
 
-t_object	*new_tube(t_info_object_tube *info)
+t_object	*new_tube(const t_info_object_tube *info)
 {
 	t_object_tube	*new;
 

@@ -5,9 +5,10 @@ static int		get_box_type(void);
 static bool		hit_box(
 					t_object *self, t_ray *ray,
 					t_hit_record *h_rec, double t_max);
-int				add_box_faces(t_object_box *box, t_info_object_box *bo_info);
+int				add_box_faces(t_object_box *box, \
+								const t_info_object_box *bo_info);
 
-t_object	*new_box(t_info_object_box *bo_info)
+t_object	*new_box(const t_info_object_box *bo_info)
 {
 	t_object_box	*new;
 

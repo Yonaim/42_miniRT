@@ -1,7 +1,7 @@
 #include "object_internal.h"
 
 static void	_set_xy_rectangle_info(
-			t_info_object_xy_rectangle *xy_rec_info, t_info_object_box *bo_info)
+	t_info_object_xy_rectangle *xy_rec_info, const t_info_object_box *bo_info)
 {
 	xy_rec_info[0].material = bo_info->material;
 	xy_rec_info[0].x1 = bo_info->p_end1.x;
@@ -18,7 +18,7 @@ static void	_set_xy_rectangle_info(
 }
 
 static void	_set_xz_rectangle_info(
-			t_info_object_xz_rectangle *xz_rec_info, t_info_object_box *bo_info)
+	t_info_object_xz_rectangle *xz_rec_info, const t_info_object_box *bo_info)
 {
 	xz_rec_info[0].material = bo_info->material;
 	xz_rec_info[0].x1 = bo_info->p_end1.x;
@@ -35,7 +35,7 @@ static void	_set_xz_rectangle_info(
 }
 
 static void	_set_yz_rectangle_info(
-			t_info_object_yz_rectangle *yz_rec_info, t_info_object_box *bo_info)
+	t_info_object_yz_rectangle *yz_rec_info, const t_info_object_box *bo_info)
 {
 	yz_rec_info[0].material = bo_info->material;
 	yz_rec_info[0].y1 = bo_info->p_end1.y;
@@ -52,7 +52,7 @@ static void	_set_yz_rectangle_info(
 }
 
 
-int	add_box_faces(t_object_box *box, t_info_object_box *bo_info)
+int	add_box_faces(t_object_box *box, const t_info_object_box *bo_info)
 {
 	t_info_object_xy_rectangle	xy_rec_info[2];
 	t_info_object_xz_rectangle	xz_rec_info[2];

@@ -35,10 +35,10 @@ bool		determine_t(double *t, double root[2], double t_min, double t_max);
 void		swap_double_value(double *num1, double *num2);
 
 // Constructor
-t_object	*new_sphere(t_info_object_sphere *sp_info);
-t_object	*new_tube(t_info_object_tube *tb_info);
-t_object	*new_disk(t_info_object_disk *dk_info);
-t_object	*new_cone_lateral(t_info_object_cone_lateral *lat_info);
+t_object	*new_sphere(const t_info_object_sphere *sp_info);
+t_object	*new_tube(const t_info_object_tube *tb_info);
+t_object	*new_disk(const t_info_object_disk *dk_info);
+t_object	*new_cone_lateral(const t_info_object_cone_lateral *lat_info);
 t_object	*new_xy_rectangle(t_info_object_xy_rectangle *xy_rec_info);
 t_object	*new_xz_rectangle(t_info_object_xz_rectangle *xz_rec_info);
 t_object	*new_yz_rectangle(t_info_object_yz_rectangle *yz_rec_info);

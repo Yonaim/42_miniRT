@@ -5,7 +5,7 @@ static int	get_disk_type(void);
 static bool	hit_disk(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
 
-t_object	*new_disk(t_info_object_disk *dk_info)
+t_object	*new_disk(const t_info_object_disk *dk_info)
 {
 	t_object_disk	*new;
 

@@ -5,7 +5,7 @@ static int	get_cone_type(void);
 static bool	hit_cone(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
 
-t_object	*new_cone(t_info_object_cone *co_info)
+t_object	*new_cone(const t_info_object_cone *co_info)
 {
 	t_object_cone	*new;
 

@@ -5,7 +5,7 @@ static int	get_sphere_type(void);
 static bool	hit_sphere(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
 
-t_object	*new_sphere(t_info_object_sphere *sp_info)
+t_object	*new_sphere(const t_info_object_sphere *sp_info)
 {
 	t_object_sphere	*new;
 

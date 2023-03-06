@@ -5,7 +5,7 @@ static int	get_point_light_type(void);
 static bool	hit_point_light(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
 
-t_object	*new_point_light(t_info_object_point_light *ptl_info)
+t_object	*new_point_light(const t_info_object_point_light *ptl_info)
 {
 	t_object_point_light	*new;
 	t_info_object_sphere	sp_info;

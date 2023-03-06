@@ -11,14 +11,14 @@ static double	get_scattering_pdf(
 					t_material *self, t_ray *in_ray,
 					t_hit_record *h_rec, t_scatter_record *s_rec);
 
-t_material	*new_lambertian(t_texture *texture)
+t_material	*new_lambertian(const t_texture *texture)
 {
 	t_material_lambertian	*lambertian;
 
 	lambertian = malloc(sizeof(t_material_lambertian));
 	if (!lambertian)
 		return (NULL);
-	lambertian->albedo = texture;
+	lambertian->albedo = (t_texture *)texture;
 	lambertian->scattered = lambertian_scattered;
 	lambertian->emitted = lambertian_emitted;
 	lambertian->destroy = destroy_lambertian;

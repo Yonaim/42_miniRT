@@ -7,7 +7,7 @@ static t_color3	emmisive_emitted(
 					t_material *self, double u, double v, t_point3 p);
 static void		destroy_emmisive(t_material *self);
 
-t_material	*new_emmisive(t_color3 color)
+t_material	*new_emmisive(const t_color3 color)
 {
 	t_material_emmisive	*emmisive;
 

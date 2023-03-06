@@ -5,7 +5,7 @@ static int	get_plane_type(void);
 static bool	hit_plane(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
 
-t_object	*new_plane(t_info_object_plane *pl_info)
+t_object	*new_plane(const t_info_object_plane *pl_info)
 {
 	t_object_plane	*new;
 

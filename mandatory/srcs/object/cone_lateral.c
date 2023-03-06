@@ -5,7 +5,7 @@ static int	get_cone_lateral_type(void);
 bool		hit_cone_lateral(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
 
-t_object	*new_cone_lateral(t_info_object_cone_lateral *lat_info)
+t_object	*new_cone_lateral(const t_info_object_cone_lateral *lat_info)
 {
 	t_object_cone_lateral	*new;
 

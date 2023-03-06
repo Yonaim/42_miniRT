@@ -5,7 +5,7 @@ static int	get_cylinder_type(void);
 static bool	hit_cylinder(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
 
-t_object	*new_cylinder(t_info_object_cylinder *cy_info)
+t_object	*new_cylinder(const t_info_object_cylinder *cy_info)
 {
 	t_object_cylinder	*new;
 
