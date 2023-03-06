@@ -19,7 +19,7 @@ t_object	*new_point_light(const t_info_object_point_light *ptl_info)
 	sp_info.center = ptl_info->pos;
 	sp_info.radius = POINT_LIGHT_RADIUS;
 	sp_info.material.type = MATERIAL_EMMISIVE;
-	sp_info.material.rgb = v3_mul(ptl_info->rgb, ptl_info->brightness);
+	sp_info.material.texture.rgb1 = v3_mul(ptl_info->rgb, ptl_info->brightness);
 	new->sphere = new_sphere(&sp_info);
 	if (new->sphere == NULL)
 		return (NULL);
