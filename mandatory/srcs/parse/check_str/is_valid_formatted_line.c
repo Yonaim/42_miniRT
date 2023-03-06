@@ -4,8 +4,8 @@
 
 static bool	is_valid_material_specified(const t_token_arr *tokens, int offset)
 {
-	if (!(nth_token(tokens, offset)->type == TOKEN_PIPE \
-		&& (tokens->cnt == offset + 8 || tokens->cnt == offset + 10)))
+	if (nth_token(tokens, offset)->type != TOKEN_PIPE \
+		|| (tokens->cnt != offset + 8 && tokens->cnt != offset + 10))
 		return (false);
 	if (nth_token(tokens, offset + 1)->type == TOKEN_LPAREN \
 		&& nth_token(tokens, offset + 2)->type == TOKEN_NUMBER
