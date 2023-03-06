@@ -67,6 +67,7 @@ struct s_info_texture
 	int			type;
 	t_color3	rgb1;
 	t_color3	rgb2;
+	char		*path;
 };
 
 struct s_info_material

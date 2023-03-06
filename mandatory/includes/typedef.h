@@ -139,6 +139,7 @@ typedef void							(*t_destroy_texture)(\
 typedef t_info							*(*t_get_info_element)(const t_token_arr *tokens);
 typedef int								(*t_get_identifier_type)(const char *s);
 typedef	bool	 						(*t_is_element_line)(const t_token_arr *tokens);
+typedef	bool	 						(*t_is_valid_material)(const t_token_arr *tokens, int offset);
 typedef	int								(*t_put_element)(t_info *info, t_scene *scene);
 
 

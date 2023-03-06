@@ -122,6 +122,6 @@ double		parse_number(const t_token_arr *tokens, int *offset);
 
 bool		is_color3_in_255(const t_color3 *c);
 bool		is_normalized_vec3(const t_vector3 *v);
-
+bool	is_valid_material(const t_token_arr *tokens, int offset);
 
 #endif

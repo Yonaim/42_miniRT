@@ -16,25 +16,45 @@
 	bo | (30,0,0) (0,20,10) | (255,255,255)
 	(p_end1, p_end2, rgb)
 */
+t_info_texture get_info_texture(const t_token_arr *tokens, int offset)
+{
+	t_info_texture	tex_info;
+
+	tex_info.type = get_texture_type(nth_token(tokens, offset)->str);
+	if (tex_info.type == TEXTURE_SOLID)
+		tex_info.rgb1 = parse_vector3(tokens, &offset);
+	else if (tex_info.type == TEXTURE_CHECKER)
+	{
+		tex_info.rgb1 = parse_vector3(tokens, &offset);
+		tex_info.rgb2 = parse_vector3(tokens, &offset);
+	}
+	else if (tex_info.type == TEXTURE_IMAGE)
+		tex_info.path = ft_strdup(nth_token(tokens, offset)->str);
+	return (tex_info);
+}
+
 t_info_material get_info_material(const t_token_arr *tokens, int offset)
 {
-	t_info_material	m_info;
+	t_info_material	matl_info;
 
 	offset++;
 	if (nth_token(tokens, offset)->type == TOKEN_IDENTIFIER_MATERIAL)
 	{
-		m_info.type = get_material_type(nth_token(tokens, offset)->str);
-		m_info.texture.type = get_texture_type(\
-											nth_token(tokens, offset + 1)->str);
-		offset += 2;
+		matl_info.type = get_material_type(nth_token(tokens, offset++)->str);
+		if (matl_info.type == MATERIAL_METAL)
+			matl_info.fuzz = parse_number(tokens, &offset);
+		else if (matl_info.type == MATERIAL_DIELECTRIC)
+			matl_info.refractive_idx = parse_number(tokens, &offset);
+		if (matl_info.type != MATERIAL_DIELECTRIC)
+			matl_info.texture = get_info_texture(tokens, offset);
 	}
 	else
 	{
-		m_info.type = DEFAULT_MATERIAL;
-		m_info.texture.type = DEFAULT_TEXTURE;
+		matl_info.type = DEFAULT_MATERIAL;
+		matl_info.texture.type = DEFAULT_TEXTURE;
+		matl_info.texture.rgb1 = parse_vector3(tokens, &offset);
 	}	
-	m_info.texture.rgb1 = parse_vector3(tokens, &offset);
-	return (m_info);
+	return (matl_info);
 }
 
 t_info		*get_info_point_light(const t_token_arr *tokens)
