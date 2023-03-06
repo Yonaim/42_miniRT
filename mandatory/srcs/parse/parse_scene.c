@@ -61,7 +61,7 @@ int	parse_line(char *line, t_info **info, int *type)
 		return (SUCCESS);
 	*type = match_element_line_format(tokens);
 	*info = get_element_info(*type, tokens);
-	if (info == NULL)
+	if (*info == NULL)
 		return (FAILURE);
 	return (SUCCESS);
 }
