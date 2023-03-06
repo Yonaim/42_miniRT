@@ -19,7 +19,7 @@ t_info		*get_info_ambient(const t_token_arr *tokens)
 	info->brightness = parse_number(tokens, &offset);
 	info->rgb = parse_vector3(tokens, &offset);
 	if (is_num_in_range(info->brightness, 0, 1) == false \
-		|| is_vec3_in_range(info->rgb, 0, 1) == false)
+		|| is_color3_in_255(&info->rgb) == false)
 	{
 		free(info);
 		return (NULL);
@@ -31,7 +31,7 @@ t_info		*get_info_camera(const t_token_arr *tokens)
 {
 	t_info_camera	*info;
 	int				offset;
-	
+
 	info = malloc(sizeof(t_info_camera));
 	if (info == NULL)
 		return (NULL);
@@ -39,10 +39,8 @@ t_info		*get_info_camera(const t_token_arr *tokens)
 	info->origin = parse_vector3(tokens, &offset);
 	info->orient = parse_vector3(tokens, &offset);
 	info->fov = parse_number(tokens, &offset);
-	if (is_vec3_in_range(info->origin, 0, 1) == false \
-		|| is_vec3_in_range(info->orient, 0, 1) == false \
-		|| is_len_near_one(info->orient) == false \
-		|| is_num_in_range(info->fov, 0, 1) == false)
+	if (is_normalized_vec3(&info->orient) == false \
+		|| is_num_in_range(info->fov, 0, 180) == false)
 	{
 		free(info);
 		return (NULL);

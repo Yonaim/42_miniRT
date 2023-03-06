@@ -50,7 +50,7 @@ t_info		*get_info_point_light(const t_token_arr *tokens)
 	info->brightness = parse_number(tokens, &offset);
 	info->rgb = parse_vector3(tokens, &offset);
 	if (is_num_in_range(info->brightness, 0, 1) == false \
-		|| is_vec3_in_range(info->rgb, 0, 255) == false)
+		|| is_color3_in_255(&info->rgb) == false == false)
 	{
 		free(info);
 		return (NULL);
@@ -222,7 +222,7 @@ t_info		*get_info_box(const t_token_arr *tokens)
 	info->p_end1 = parse_vector3(tokens, &offset);
 	info->p_end2 = parse_vector3(tokens, &offset);
 	info->material = get_info_material(tokens, offset);
-	if (is_vec3_in_range(info->material.rgb, 0, 255) == false)
+	if (is_color3_in_255(&info->material.rgb) == false == false)
 	{
 		free(info);
 		return (NULL);
