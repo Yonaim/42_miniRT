@@ -71,7 +71,7 @@ t_info		*get_info_plane(const t_token_arr *tokens)
 	info->normal = parse_vector3(tokens, &offset);
 	info->material = get_info_material(tokens, offset);
 	if (is_normalized_vec3(&info->normal) == false \
-		|| is_color3_in_255(&info->material.rgb) == false)
+		|| is_color3_in_255(&info->material.texture.rgb1) == false)
 	{
 		free(info);
 		return (NULL);
@@ -91,7 +91,7 @@ t_info		*get_info_sphere(const t_token_arr *tokens)
 	info->center = parse_vector3(tokens, &offset);
 	info->radius = parse_number(tokens, &offset) / 2;
 	info->material = get_info_material(tokens, offset);
-	if (is_color3_in_255(&info->material.rgb) == false)
+	if (is_color3_in_255(&info->material.texture.rgb1) == false)
 	{
 		free(info);
 		return (NULL);
@@ -115,7 +115,7 @@ t_info		*get_info_disk(const t_token_arr *tokens)
 		offset++;
 	info->material = get_info_material(tokens, offset);
 	if (is_normalized_vec3(&info->normal) == false \
-		|| is_color3_in_255(&info->material.rgb) == false)
+		|| is_color3_in_255(&info->material.texture.rgb1) == false)
 	{
 		free(info);
 		return (NULL);
@@ -138,7 +138,7 @@ t_info		*get_info_tube(const t_token_arr *tokens)
 	info->height = parse_number(tokens, &offset);
 	info->material = get_info_material(tokens, offset);
 	if (is_normalized_vec3(&info->orient) == false \
-		|| is_color3_in_255(&info->material.rgb) == false)
+		|| is_color3_in_255(&info->material.texture.rgb1) == false)
 	{
 		free(info);
 		return (NULL);
@@ -184,7 +184,7 @@ t_info		*get_info_cone_lateral(const t_token_arr *tokens)
 	info->height = parse_number(tokens, &offset);
 	info->material = get_info_material(tokens, offset);
 	if (is_normalized_vec3(&info->orient) == false \
-		|| is_color3_in_255(&info->material.rgb) == false)
+		|| is_color3_in_255(&info->material.texture.rgb1) == false)
 	{
 		free(info);
 		return (NULL);
@@ -222,7 +222,7 @@ t_info		*get_info_box(const t_token_arr *tokens)
 	info->p_end1 = parse_vector3(tokens, &offset);
 	info->p_end2 = parse_vector3(tokens, &offset);
 	info->material = get_info_material(tokens, offset);
-	if (is_color3_in_255(&info->material.rgb) == false == false)
+	if (is_color3_in_255(&info->material.texture.rgb1) == false)
 	{
 		free(info);
 		return (NULL);
