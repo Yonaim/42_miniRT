@@ -24,9 +24,9 @@ t_info_material get_info_material(const t_token_arr *tokens, int offset)
 	if (nth_token(tokens, offset)->type == TOKEN_IDENTIFIER_MATERIAL)
 	{
 		m_info.type = get_material_type(nth_token(tokens, offset)->str);
-		offset++;
-		m_info.texture.type = get_texture_type(nth_token(tokens, offset)->str);
-		offset++;
+		m_info.texture.type = get_texture_type(\
+											nth_token(tokens, offset + 1)->str);
+		offset += 2;
 	}
 	else
 	{
