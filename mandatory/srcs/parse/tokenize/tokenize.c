@@ -35,7 +35,7 @@ static int	extract_tokens(char *line, t_token_arr *tokens)
 	t_token	*token;
 	int		type;
 
-	while (*line)
+	while (*line && *line != '\n')
 	{
 		while (is_space(*line) == true)
 			line++;
