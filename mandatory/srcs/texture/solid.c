@@ -10,7 +10,7 @@ t_texture	*new_solid(t_color3 rgb)
 	solid = malloc(sizeof(t_texture_solid));
 	if (!solid)
 		return (NULL);
-	solid->color = v3_div(rgb, 256);
+	solid->color = v3_div(rgb, 255);
 	solid->get_val = get_solid_val;
 	solid->destroy = destroy_solid;
 	return ((t_texture *)solid);

@@ -4,7 +4,8 @@ int	put_ambient_to_scene(t_info *info, t_scene *scene)
 {
 	const t_info_ambient_light *amb_info = (t_info_ambient_light *)info; 
 	
-	scene->world.background_color = v3_mul(amb_info->rgb, amb_info->brightness);
+	scene->world.background_color = v3_mul(amb_info->rgb, \
+										amb_info->brightness / 255);
 	return (1);
 }
 
