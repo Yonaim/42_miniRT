@@ -72,7 +72,6 @@ struct s_info_texture
 struct s_info_material
 {
 	int				type;
-	t_color3		rgb;
 	double			fuzz;
 	double			refractive_idx;
 	t_info_texture	texture;
