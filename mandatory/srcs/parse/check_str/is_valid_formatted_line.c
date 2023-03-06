@@ -45,7 +45,7 @@ static bool	is_valid_formatted_extra_line(const t_token_arr *tokens, \
 	return (true);
 }
 
-static bool	is_valid_formatted_solid_line(const t_token_arr *tokens, \
+static bool	is_valid_formatted_object_line(const t_token_arr *tokens, \
 										const int *form, const int form_len)
 {
 	int	i;
@@ -81,7 +81,7 @@ bool	is_valid_formatted_line(const char *elem_id, bool is_solid_elem, \
 	if (strcmp(elem_id, (nth_token(tokens, 0)->str)) != 0)
 		return (false);
 	if (is_solid_elem)
-		return (is_valid_formatted_solid_line(tokens, \
+		return (is_valid_formatted_object_line(tokens, \
 											form, length_of_format(form)));
 	else
 		return (is_valid_formatted_extra_line(tokens, \
