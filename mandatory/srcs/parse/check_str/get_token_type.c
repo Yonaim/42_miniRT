@@ -12,7 +12,7 @@ int	get_token_type(const char *str)
 		return (TOKEN_PIPE);
 	else if (*str == '#')
 		return (TOKEN_HASH);
-	else if (*str == '\0')
+	else if (*str == '\0' || *str == '\n')
 		return (TOKEN_NONE);
 	else
 		return (TOKEN_WORD);
