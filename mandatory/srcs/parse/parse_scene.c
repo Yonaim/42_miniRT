@@ -51,7 +51,7 @@ static t_info	*get_element_info(int type, const t_token_arr *tokens)
 		return (get_info_elem[type](tokens));
 }
 
-int	parse_line(char *line, t_info *info, int *type)
+int	parse_line(char *line, t_info **info, int *type)
 {
 	const t_token_arr	*tokens = tokenize(line);
 
@@ -60,7 +60,7 @@ int	parse_line(char *line, t_info *info, int *type)
 	if (((t_token *)tokens->data[0])->type == TOKEN_HASH)
 		return (SUCCESS);
 	*type = match_element_line_format(tokens);
-	info = get_element_info(*type, tokens);
+	*info = get_element_info(*type, tokens);
 	if (info == NULL)
 		return (FAILURE);
 	return (SUCCESS);
@@ -90,7 +90,7 @@ int	parse_scene(t_scene *scene, int fd)
 {
 	char		*line;
 	int			type;
-	t_info		info;
+	t_info		*info;
 	int			nth;
 	bool		exist[ELEMENT_TYPE_COUNT];
 
@@ -106,7 +106,7 @@ int	parse_scene(t_scene *scene, int fd)
 		}
 		if (is_must_be_one_element_type(type) && exist[type] == true)
 			handle_error("Error: duplicated declaration");
-		put_element_to_scene(&info, scene, type);
+		put_element_to_scene(info, scene, type);
 		exist[type] = true;
 		line = get_next_line(fd);
 		nth++;
