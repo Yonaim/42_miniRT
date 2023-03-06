@@ -15,6 +15,5 @@ int	put_camera_to_scene(t_info *info, t_scene *scene)
 	scene->cam.basis.dir = v3_mul(cam_info->orient, -1);
 	scene->cam.viewport.fov = cam_info->fov;
 	scene->cam.origin = cam_info->origin;
-	init_camera(&scene->cam);
 	return (1);
 }

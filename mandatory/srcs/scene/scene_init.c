@@ -11,5 +11,6 @@ void	init_scene(t_scene *scene, t_image *img, char *path)
 								INITIAL_OBJECT_ARR_SIZE) == FAILURE)
 		handle_error(ERRMSG_MALLOC_FAILED);
 	parse_scene(scene, fd);
+	init_camera(&scene->cam);
 	scene->img = img;
 }
