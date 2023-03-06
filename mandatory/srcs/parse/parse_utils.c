@@ -7,7 +7,7 @@ bool	is_color3_in_255(const t_color3 *c)
 
 bool	is_normalized_vec3(const t_vector3 *v)
 {
-	return (is_vec3_in_range(*v, 0, 1) == true \
+	return (is_vec3_in_range(*v, -1, 1) == true \
 		&& is_len_near_one(*v) == true);
 }
 
