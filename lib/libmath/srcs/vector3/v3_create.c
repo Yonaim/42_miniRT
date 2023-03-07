@@ -1,7 +1,7 @@
 
 #include "vector3.h"
 
-t_vector3	vector3(double x, double y, double z)
+t_vector3	vector3(const double x, const double y, const double z)
 {
 	t_vector3	v;
 
@@ -11,7 +11,7 @@ t_vector3	vector3(double x, double y, double z)
 	return (v);
 }
 
-t_point3	point3(double x, double y, double z)
+t_point3	point3(const double x, const double y, const double z)
 {
 	return ((t_point3)vector3(x, y, z));
 }

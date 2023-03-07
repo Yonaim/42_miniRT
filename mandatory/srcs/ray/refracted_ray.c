@@ -9,14 +9,6 @@ static double	reflectance(double cosine, double idx_ratio)
 	return (r0 + (1 - r0) * pow(1 - cosine, 5));
 }
 
-t_vector3	reflected_vector(t_vector3 in, t_vector3 n)
-{
-	t_vector3	reflected;
-
-	reflected = v3_sub(in, v3_mul(n, 2 * v3_dot(in, n)));
-	return (reflected);
-}
-
 t_vector3	refracted_vector(t_vector3 in, t_vector3 n, double idx_ratio)
 {
 	const double	cos_in = fmin(-v3_dot(in, n), 1);
@@ -34,12 +26,13 @@ t_vector3	refracted_vector(t_vector3 in, t_vector3 n, double idx_ratio)
 	return (refracted);
 }
 
-t_vector3	diffused_vector(t_onb *onb)
+t_ray	refracted_ray(t_vector3 in_dir, t_hit_record *rec, double idx_ratio)
 {
-	t_vector3	diffused;
+	const t_vector3	unit_in_dir = v3_normalize(in_dir);
+	t_vector3		refracted;
 
-	diffused = onb_local(*onb, v3_random_cosine_direction());
-	if (is_near_zero(diffused) == true)
-		diffused = onb->w;
-	return (diffused);
+	refracted = refracted_vector(unit_in_dir, rec->normal, idx_ratio);
+	refracted = v3_normalize(refracted);
+	return (ray(rec->p, refracted));
 }
+

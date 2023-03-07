@@ -1,11 +1,11 @@
 #include <stdbool.h>
 
-bool	is_in_range(double n, double min, double max)
+bool	is_in_range(const double n, const double min, const double max)
 {
 	return (min <= n && n <= max);
 }
 
-double	clamp(double x, double min, double max)
+double	clamp(const double x, const double min, const double max)
 {
 	if (x < min)
 		return (min);

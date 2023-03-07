@@ -1,11 +1,12 @@
 
 #include "material_internal.h"
 
-static bool		dielectric_scattered(
+static void		destroy_dielectric(t_material *self);
+static bool		dielectric_emit(
+					t_material *self, t_hit_record *h_rec, t_color3 *emission);
+static bool		dielectric_scatter(
 					t_material *self, t_ray *in,
 					t_hit_record *h_rec, t_scatter_record *s_rec);
-static t_color3	dielectric_emitted(t_material *self, t_hit_record *h_rec);
-static void		destroy_dielectric(t_material *self);
 static int		get_dielectric_type(void);
 
 t_material	*new_dielectric(double refractive_idx)
@@ -16,15 +17,32 @@ t_material	*new_dielectric(double refractive_idx)
 	if (!dielectric)
 		return (NULL);
 	dielectric->destroy = destroy_dielectric;
-	dielectric->emitted = dielectric_emitted;
-	dielectric->scattered = dielectric_scattered;
+	dielectric->emit = dielectric_emit;
+	dielectric->scatter = dielectric_scatter;
 	dielectric->get_type = get_dielectric_type;
 	dielectric->refractive_idx = refractive_idx;
 	return ((t_material *)dielectric);
 }
 
-static bool	dielectric_scattered(
-			t_material *self, t_ray *in,
+static void	destroy_dielectric(t_material *self)
+{
+	t_material_dielectric	*dielectric;
+
+	dielectric = (t_material_dielectric *)self;
+	free(dielectric);
+}
+
+static bool	dielectric_emit(
+			t_material *self, t_hit_record *h_rec, t_color3 *emission)
+{
+	(void)self;
+	(void)h_rec;
+	*emission = color3(0, 0, 0);
+	return (false);
+}
+
+static bool	dielectric_scatter(
+			t_material *self, t_ray *in_ray,
 			t_hit_record *h_rec, t_scatter_record *s_rec)
 {
 	const t_material_dielectric	*dielectric = (t_material_dielectric *)self;
@@ -35,23 +53,10 @@ static bool	dielectric_scattered(
 		refractive_idx_ratio = 1 / dielectric->refractive_idx;
 	else
 		refractive_idx_ratio = dielectric->refractive_idx;
-	s_rec->scattered = refracted_ray(in->dir, h_rec, refractive_idx_ratio);
+	s_rec->ray = refracted_ray(in_ray->dir, h_rec, refractive_idx_ratio);
+	s_rec->pdf_val = 1;
+	s_rec->s_pdf_val = 1;
 	return (true);
-}
-
-static t_color3	dielectric_emitted(t_material *self, t_hit_record *h_rec)
-{
-	(void)self;
-	(void)h_rec;
-	return (color3(0, 0, 0));
-}
-
-static void	destroy_dielectric(t_material *self)
-{
-	t_material_dielectric	*dielectric;
-
-	dielectric = (t_material_dielectric *)self;
-	free(dielectric);
 }
 
 static int	get_dielectric_type(void)

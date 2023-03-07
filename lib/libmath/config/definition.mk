@@ -59,12 +59,15 @@ VECTOR_FILE		=	v3_basic \
 					v3_length \
 					v3_normalize \
 					v3_product \
-					v3_random
+					v3_random \
+					v3_random_cosine_direction
 OTHER_FILE		=	angle \
 					range \
 					quadratic \
 					random \
-					orthonormal_basis
+					orthonormal_basis \
+					swap
+
 
 # file name(absolute path)
 VECTOR_OBJ		=	$(addprefix $(VECTOR_OBJ_PATH)/, $(addsuffix .o, $(VECTOR_FILE)))

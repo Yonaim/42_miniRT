@@ -18,8 +18,11 @@
 
 // declaration
 # include "dynamic_arr.h"
+# include "pdf.h"
 
 // constants
 # include "constants.h"
+
+t_object	*get_object(t_object_arr *object_arr, int idx);
 
 #endif

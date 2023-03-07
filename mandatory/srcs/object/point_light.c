@@ -5,6 +5,10 @@ static int	get_point_light_type(void);
 static bool	hit_point_light(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
 static bool	is_point_light(t_object *object);
+double 		calculate_point_light_sampling_pdf(
+				t_object *self, const t_vector3 *origin, const t_vector3 *dir);
+t_vector3	get_random_vector_to_point_light(
+				const t_object *self, const t_point3 *origin);
 
 t_object	*new_point_light(t_info_object_point_light *ptl_info)
 {
@@ -18,6 +22,8 @@ t_object	*new_point_light(t_info_object_point_light *ptl_info)
 	new->destroy = destroy_point_light;
 	new->get_type = get_point_light_type;
 	new->is_light = is_point_light;
+	new->pdf_value = calculate_point_light_sampling_pdf;
+	new->random = get_random_vector_to_point_light;
 	sp_info.center = ptl_info->pos;
 	sp_info.radius = POINT_LIGHT_RADIUS;
 	sp_info.material.type = MATERIAL_EMMISIVE;
@@ -53,6 +59,8 @@ static bool	hit_point_light(
 
 static bool	is_point_light(t_object *object)
 {
+dprintf(2, "this is point light~\n");
 	(void)object;
 	return (true);
 }
+

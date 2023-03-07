@@ -1,27 +1,31 @@
 #include <math.h>
 #include "orthonormal_basis.h"
 
-t_onb	build_orthonormal_basis_from_w(t_vector3 n)
+void	build_onb_from_w(t_onb *onb, const t_vector3 *n)
 {
-	t_onb		onb;
 	t_vector3	unit;
 
-	onb.w = v3_normalize(n);
-	if (fabs(onb.w.x) > 0.9)
+	onb->w = v3_normalize(*n);
+	if (fabs(onb->w.x) > 0.9)
 		unit = vector3(0, 1, 0);
 	else
 		unit = vector3(1, 0, 0);
-	onb.v = v3_normalize(v3_cross(onb.w, unit));
-	onb.u = v3_cross(onb.w, onb.v);
-	return (onb);
+	onb->v = v3_normalize(v3_cross(onb->w, unit));
+	onb->u = v3_cross(onb->w, onb->v);
 }
 
-t_vector3	onb_local(t_onb onb, t_vector3 v)
+void	transform_to_onb(
+		const t_onb *onb, const t_vector3 *in_vec, t_vector3 *out_vec)
 {
-	t_vector3	local;
+	*out_vec = v3_mul(onb->u, in_vec->x);
+	*out_vec = v3_add(*out_vec, v3_mul(onb->v, in_vec->y));
+	*out_vec = v3_add(*out_vec, v3_mul(onb->w, in_vec->z));
+}
 
-	local = v3_mul(onb.u, v.x);
-	local = v3_add(local, v3_mul(onb.v, v.y));
-	local = v3_add(local, v3_mul(onb.w, v.z));
-	return (local);
+void	transform_to_onb_in_place(const t_onb *onb, t_vector3 *in_vec)
+{
+	t_vector3	out_vec;
+
+	transform_to_onb(onb, in_vec, &out_vec);
+	*in_vec = out_vec;
 }

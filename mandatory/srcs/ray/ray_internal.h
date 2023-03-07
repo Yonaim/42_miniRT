@@ -6,13 +6,12 @@
 # include "s_ray.h"
 # include "s_camera.h"
 # include "s_hit_record.h"
+# include "s_scatter_record.h"
+# include "s_pdf.h"
+# include "pdf.h"
 
 // ray constructor
 t_ray		ray(t_point3 origin, t_vector3 dir);
-
-// scattered vectors
 t_vector3	reflected_vector(t_vector3 in, t_vector3 n);
-t_vector3	refracted_vector(t_vector3 in, t_vector3 n, double idx_ratio);
-t_vector3	diffused_vector(t_onb *onb);
 
 #endif

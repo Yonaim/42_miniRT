@@ -22,7 +22,7 @@ int	parse_element_point_light(t_scene *scene, char *str)
 	if (!is_num_in_range(brightness, 0, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
 	if (build_element_point_light(
-			&scene->world.objects, &pos, &brightness, &rgb) == FAILURE)
+			&scene->world, &pos, &brightness, &rgb) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -42,7 +42,7 @@ int	parse_element_plane(t_scene *scene, char *str)
 	if (!is_vec3_in_range(normal, -1, 1) || !is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
 	if (build_element_plane(
-			&scene->world.objects, &pos, &normal, &rgb) == FAILURE)
+			&scene->world, &pos, &normal, &rgb) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -62,7 +62,7 @@ int	parse_element_sphere(t_scene *scene, char *str)
 	if (!is_vec3_in_range(rgb, 0, 255))
 		return (FAILURE);
 	if (build_element_sphere(
-			&scene->world.objects, &pos, &diameter, &rgb) == FAILURE)
+			&scene->world, &pos, &diameter, &rgb) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -84,7 +84,7 @@ int	parse_element_cylinder(t_scene *scene, char *str)
 		return (FAILURE);
 	cy_parsing_info.orient = v3_normalize(cy_parsing_info.orient);
 	if (build_element_cylinder(
-			&scene->world.objects, &cy_parsing_info) == FAILURE)
+			&scene->world, &cy_parsing_info) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -106,7 +106,7 @@ int	parse_element_cone(t_scene *scene, char *str)
 		return (FAILURE);
 	co_parsing_info.orient = v3_normalize(co_parsing_info.orient);
 	if (build_element_cone(
-			&scene->world.objects, &co_parsing_info) == FAILURE)
+			&scene->world, &co_parsing_info) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

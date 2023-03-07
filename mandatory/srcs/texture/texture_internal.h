@@ -8,6 +8,7 @@
 // structures
 # include "typedef.h"
 # include "s_texture.h"
+# include "s_hit_record.h"
 
 // functions
 t_texture	*new_solid(t_color3 color);

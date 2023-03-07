@@ -17,21 +17,25 @@ t_color3	traced_color(t_ray *ray, t_world *world, int depth)
 	t_hit_record		h_rec;
 	t_scatter_record	s_rec;
 	t_material			*material;
-	t_color3			emitted;
-	t_color3			summed;
+	t_color3			color;
 
 	if (depth >= MAX_DEPTH)
 		return (color3(0, 0, 0));
 	if (hit_world(&world->objects, ray, &h_rec, depth) == false)
 		return (world->background_color);
 	material = h_rec.material;
-	emitted = material->emitted(material, &h_rec);
-	if (material->scattered(material, ray, &h_rec, &s_rec) == false)
-		return (emitted);
-	summed = v3_comp_wise(traced_color(&s_rec.scattered, world, depth + 1), \
-						s_rec.albedo);
-	summed = v3_mul(summed, \
-					material->s_pdf(material, ray, &h_rec, &s_rec.scattered)
-					/ s_rec.pdf_val);
-	return (v3_add(summed, emitted));
+	if (material->emit(material, &h_rec, &color) == true)
+		return (color);
+	s_rec.mixture_pdf = &world->mixture_pdf;
+//error_log("%d", depth);
+//error_log("%p", s_rec.mixture_pdf);
+//error_log("%p", s_rec.mixture_pdf->light_arr_pdf.lights);
+	material->scatter(material, ray, &h_rec, &s_rec);
+//error_log("%p", s_rec.mixture_pdf->light_arr_pdf.lights);
+// if (s_rec.pdf_val < 0.001)
+// error_log("what the %lf", s_rec.pdf_val);
+	color = v3_mul(s_rec.albedo, s_rec.s_pdf_val);
+	color = v3_comp_wise(color, traced_color(&s_rec.ray, world, depth + 1));
+	color = v3_div(color, s_rec.pdf_val);
+	return (color);
 }

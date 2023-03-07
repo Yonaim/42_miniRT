@@ -33,7 +33,7 @@ static void	_build_element_cylinder_disks(
 }
 
 int	build_element_cylinder(
-	t_object_arr *objects,
+	t_world *world,
 	t_parsing_info_object_cylinder *cy_parsing_info)
 {
 	t_info_object_cylinder	cy_info;
@@ -43,7 +43,7 @@ int	build_element_cylinder(
 	cy_info.texture.rgb1 = cy_parsing_info->rgb;
 	_build_element_cylinder_tube(&cy_info, cy_parsing_info);
 	_build_element_cylinder_disks(&cy_info, cy_parsing_info);
-	if (add_object(objects, new_cylinder(&cy_info)) == FAILURE)
+	if (add_object_to_world(world, new_cylinder(&cy_info)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
