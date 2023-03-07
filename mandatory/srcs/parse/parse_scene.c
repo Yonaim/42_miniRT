@@ -100,17 +100,17 @@ int	parse_scene(t_scene *scene, int fd)
 	while (line)
 	{
 		if (parse_line(line, &info, &type) == FAILURE)
-			handle_error("Error: parse line failed");
+			handle_error("parse line failed");
 		if (info != NULL)
 		{
 			if (is_must_be_one_element_type(type) && exist[type] == true)
-				handle_error("Error: duplicated declaration");
+				handle_error("duplicated declaration");
 			put_element_to_scene(info, scene, type);
 			exist[type] = true;
 		}
 		line = get_next_line(fd);
 	}
 	if (is_must_be_elements_exist(exist) == false)
-		handle_error("Error: There is no element that must exist");
+		handle_error("There is no element that must exist");
 	return (SUCCESS);
 }
