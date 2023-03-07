@@ -94,25 +94,21 @@ int	parse_scene(t_scene *scene, int fd)
 	char		*line;
 	int			type;
 	t_info		*info;
-	int			nth;
 	bool		exist[ELEMENT_TYPE_COUNT];
-
 	ft_memset(exist, false, sizeof(bool) * ELEMENT_TYPE_COUNT);
 	line = get_next_line(fd);
-	nth = 1;
 	while (line)
 	{
 		if (parse_line(line, &info, &type) == FAILURE)
+			handle_error("Error: parse line failed");
+		if (info != NULL)
 		{
-			printf("Error: parse %dth line failed\n", nth);
-			exit(1); // handle_error 함수 호출하여 에러 처리하도록 수정
+			if (is_must_be_one_element_type(type) && exist[type] == true)
+				handle_error("Error: duplicated declaration");
+			put_element_to_scene(info, scene, type);
+			exist[type] = true;
 		}
-		if (is_must_be_one_element_type(type) && exist[type] == true)
-			handle_error("Error: duplicated declaration");
-		put_element_to_scene(info, scene, type);
-		exist[type] = true;
 		line = get_next_line(fd);
-		nth++;
 	}
 	if (is_must_be_elements_exist(exist) == false)
 		handle_error("Error: There is no element that must exist");
