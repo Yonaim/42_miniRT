@@ -58,6 +58,25 @@ bool	is_valid_material_dielectric(const t_token_arr *tokens, int offset)
 		return (false);
 }
 
+bool	is_valid_material_emmisive(const t_token_arr *tokens, int offset)
+{
+	if (tokens->cnt == offset + 10 \
+		&& (strcmp(nth_token(tokens, ++offset)->str, \
+										IDENTIFIER_MATERIAL_EMMISIVE) == 0)
+		&& nth_token(tokens, offset)->type == TOKEN_IDENTIFIER_MATERIAL \
+		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_TEXTURE
+		&& nth_token(tokens, ++offset)->type == TOKEN_LPAREN
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_COMMA
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_COMMA
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_RPAREN)
+		return (true);
+	else
+		return (false);
+}
+
 bool	is_valid_material_default(const t_token_arr *tokens, int offset)
 {
 	if (tokens->cnt == offset + 8 \
@@ -91,6 +110,7 @@ bool	is_valid_material(const t_token_arr *tokens, int offset)
 		is_valid_material_lambertian,
 		is_valid_material_metal,
 		is_valid_material_dielectric,
+		is_valid_material_emmisive,
 		is_valid_material_random,
 	};
 	int							i;
