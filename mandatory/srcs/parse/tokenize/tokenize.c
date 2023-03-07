@@ -25,7 +25,9 @@ static t_token	*extract_non_word_token(char **line, int type)
 	if (!token)
 		return (NULL);
 	token->type = type;
-	token->str = NULL;
+	token->str = ft_substr(*line, 0, 1);
+	if (!token->str)
+		return (NULL);
 	*line += len;
 	return (token);
 }
