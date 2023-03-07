@@ -57,8 +57,11 @@ int	parse_line(char *line, t_info **info, int *type)
 
 	if (tokens == NULL)
 		return (FAILURE);
-	if (((t_token *)tokens->data[0])->type == TOKEN_HASH)
+	if (tokens->cnt == 0 || ((t_token *)tokens->data[0])->type == TOKEN_HASH)
+	{
+		*info = NULL;
 		return (SUCCESS);
+	}
 	*type = match_element_line_format(tokens);
 	*info = get_element_info(*type, tokens);
 	if (*info == NULL)
