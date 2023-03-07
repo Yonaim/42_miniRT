@@ -9,7 +9,7 @@ static int	get_idx_matching_string(const char **strs, const char *seek)
 	i = 0;
 	while (strs[i])
 	{
-		if (strcmp(seek, strs[i]) == 0) // TODO
+		if (ft_strcmp(seek, strs[i]) == 0)
 			return (i);
 		i++;
 	}

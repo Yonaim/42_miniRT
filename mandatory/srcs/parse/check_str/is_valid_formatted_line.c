@@ -52,7 +52,7 @@ int	length_of_format(const int *form)
 bool	is_valid_formatted_line(const char *elem_id, bool is_solid_elem, \
 									const t_token_arr *tokens, const int *form)
 {
-	if (strcmp(elem_id, (nth_token(tokens, 0)->str)) != 0)
+	if (ft_strcmp(elem_id, (nth_token(tokens, 0)->str)) != 0)
 		return (false);
 	if (is_solid_elem)
 		return (is_valid_formatted_object_line(tokens, \

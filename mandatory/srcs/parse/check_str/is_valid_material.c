@@ -4,7 +4,7 @@
 bool	is_valid_material_lambertian(const t_token_arr *tokens, int offset)
 {
 	if (tokens->cnt == offset + 10 \
-		&& (strcmp(nth_token(tokens, ++offset)->str, \
+		&& (ft_strcmp(nth_token(tokens, ++offset)->str, \
 										IDENTIFIER_MATERIAL_LAMBERTIAL) == 0)
 		&& nth_token(tokens, offset)->type == TOKEN_IDENTIFIER_MATERIAL \
 		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_TEXTURE
@@ -23,7 +23,7 @@ bool	is_valid_material_lambertian(const t_token_arr *tokens, int offset)
 bool	is_valid_material_metal(const t_token_arr *tokens, int offset)
 {
 	if (tokens->cnt == offset + 11 \
-		&& (strcmp(nth_token(tokens, ++offset)->str, \
+		&& (ft_strcmp(nth_token(tokens, ++offset)->str, \
 										IDENTIFIER_MATERIAL_METAL) == 0)
 		&& nth_token(tokens, offset)->type == TOKEN_IDENTIFIER_MATERIAL \
 		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
@@ -43,7 +43,7 @@ bool	is_valid_material_metal(const t_token_arr *tokens, int offset)
 bool	is_valid_material_dielectric(const t_token_arr *tokens, int offset)
 {
 	if (tokens->cnt == offset + 9 \
-		&& (strcmp(nth_token(tokens, ++offset)->str, \
+		&& (ft_strcmp(nth_token(tokens, ++offset)->str, \
 										IDENTIFIER_MATERIAL_DIELECTRIC) == 0)
 		&& nth_token(tokens, offset)->type == TOKEN_IDENTIFIER_MATERIAL \
 		&& nth_token(tokens, ++offset)->type == TOKEN_LPAREN \
@@ -61,7 +61,7 @@ bool	is_valid_material_dielectric(const t_token_arr *tokens, int offset)
 bool	is_valid_material_emmisive(const t_token_arr *tokens, int offset)
 {
 	if (tokens->cnt == offset + 10 \
-		&& (strcmp(nth_token(tokens, ++offset)->str, \
+		&& (ft_strcmp(nth_token(tokens, ++offset)->str, \
 										IDENTIFIER_MATERIAL_EMMISIVE) == 0)
 		&& nth_token(tokens, offset)->type == TOKEN_IDENTIFIER_MATERIAL \
 		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_TEXTURE
@@ -96,7 +96,7 @@ bool	is_valid_material_random(const t_token_arr *tokens, int offset)
 {
 	if (tokens->cnt == offset + 3 \
 		&& nth_token(tokens, offset + 1)->type == TOKEN_IDENTIFIER_MATERIAL
-		&& strcmp(nth_token(tokens, offset + 1)->str, \
+		&& ft_strcmp(nth_token(tokens, offset + 1)->str, \
 											IDENTIFIER_MATERIAL_RANDOM) == 0)
 		return (true);
 	else
