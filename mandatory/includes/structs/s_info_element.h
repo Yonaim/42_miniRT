@@ -82,9 +82,9 @@ struct s_info_texture
 
 struct s_info_object_point_light
 {
-	t_point3	pos;
-	double		brightness;
-	t_color3	rgb;
+	t_point3		pos;
+	double			brightness;
+	t_color3		rgb;
 };
 
 struct s_info_object_sphere

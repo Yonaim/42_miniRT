@@ -35,16 +35,20 @@ t_vector3	v3_comp_wise(const t_vector3 u, const t_vector3 v);
 // random vector
 t_vector3	v3_random(const double min, const double max);
 t_vector3	v3_random_in_unit_sphere(void);
+t_vector3	v3_random_in_sphere(double radius);
 t_vector3	v3_random_on_unit_sphere(void);
+t_vector3	v3_random_on_sphere(double radius);
 t_vector3	v3_random_in_unit_disk(void);
+t_vector3	v3_random_in_disk(double radius);
 t_vector3	v3_random_on_unit_disk(void);
+t_vector3	v3_random_on_disk(double radius);
 t_vector3	v3_random_cosine_direction(void);
 
 // discriminant
 bool		solve_quadratic(
-			const double a, const double b, const double c, double root[2]);
+				const double a, const double b, const double c, double root[2]);
 bool		solve_quadratic_half_b(
-			const double a, const double half_b, const double c, double root[2]);
+				const double a, const double half_b, const double c, double root[2]);
 
 // range
 bool		is_in_range(const double n, const double min, const double max);
@@ -57,7 +61,6 @@ double		degree_to_radian(const double degrees);
 double		random_double(void);
 double		random_double_range(const double min, const double max);
 int			random_int_range(int min, int max);
-
 
 // orthonormal basis
 void		build_onb_from_w(t_onb *onb, const t_vector3 *n);

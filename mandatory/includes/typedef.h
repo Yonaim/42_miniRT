@@ -5,10 +5,11 @@
 # include <stdio.h>
 # include <unistd.h>
 // debug
+# ifndef error_log
 # define error_log(fmt, ...) \
     dprintf(STDERR_FILENO, "%-40s[%3d] : %50s : " fmt "\n", \
 	__func__, __LINE__, #__VA_ARGS__, ##__VA_ARGS__)
-
+# endif
 
 // minirt
 typedef struct s_render_status			t_render_status;

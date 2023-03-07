@@ -57,7 +57,9 @@ static int	parse_element_info(t_scene *scene, char *str, int elem_exist[])
 
 	if (elem_type == NONE)
 		return (FAILURE);
-	if ((elem_type == AMBIENT || elem_type == CAMERA || elem_type == LIGHT) \
+	// if ((elem_type == AMBIENT || elem_type == CAMERA || elem_type == LIGHT) \
+	// 												&& elem_exist[elem_type])
+	if ((elem_type == AMBIENT || elem_type == CAMERA) \
 													&& elem_exist[elem_type])
 		return (FAILURE);
 	if (parse_func[elem_type](scene, str) == FAILURE)

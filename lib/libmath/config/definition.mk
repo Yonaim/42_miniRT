@@ -60,6 +60,8 @@ VECTOR_FILE		=	v3_basic \
 					v3_normalize \
 					v3_product \
 					v3_random \
+					v3_random_sphere \
+					v3_random_disk \
 					v3_random_cosine_direction
 OTHER_FILE		=	angle \
 					range \

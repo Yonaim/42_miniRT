@@ -47,8 +47,9 @@ static t_vector3	generate_cosine_random_vector(const t_pdf *self)
 {
 	const t_cosine_pdf	*cosine_pdf = (t_cosine_pdf *)self;
 	t_vector3			random_dir;
-	
+
 	generate_random_cosine_direction(&random_dir);
 	transform_to_onb_in_place(&cosine_pdf->onb, &random_dir);
+// error_log("generated cosine random vector!");
 	return (random_dir);
 }

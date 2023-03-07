@@ -1,43 +1,60 @@
-FILENAME		=		camera/camera_init\
+FILENAME		=		camera/init_camera\
+						dynamic_array/destroy_dynamic_arr\
+						dynamic_array/new_dynamic_arr\
+						dynamic_array/push_back_dynamic_arr\
+						main\
 						material/dielectric\
 						material/emmisive\
 						material/lambertian\
-						material/material\
 						material/metal\
-						material/random_material\
+						material/new_material\
+						material/new_random_material\
 						object/cone\
 						object/cone_lateral\
+						object/cone_lateral_hit\
+						object/cone_lateral_pdf\
+						object/cone_pdf\
 						object/cylinder\
+						object/cylinder_pdf\
 						object/disk\
+						object/disk_pdf\
 						object/plane\
+						object/plane_pdf\
 						object/point_light\
+						object/point_light_pdf\
 						object/sphere\
+						object/sphere_pdf\
 						object/tube\
 						object/tube_hit\
+						object/tube_pdf\
 						object/utils\
-						dynamic_array/darr_destroy\
-						dynamic_array/darr_new\
-						dynamic_array/darr_push_back\
-						object_array/object_arr_add\
-						object_array/object_arr_clear\
-						object_array/object_arr_hit\
-						object_array/object_arr_init\
+						object_array/add_object\
+						object_array/clear_object_arr\
+						object_array/get_object\
+						object_array/hit_object_arr\
+						object_array/init_object_arr\
+						parsing/build_element_cone\
+						parsing/build_element_cylinder\
+						parsing/build_element_solid\
 						parsing/ft_atof\
 						parsing/parse_element_extra\
 						parsing/parse_element_solid\
 						parsing/parse_scene\
 						parsing/parse_value\
 						parsing/utils\
-						pdf/pdf\
+						pdf/cosine_pdf\
+						pdf/light_arr_pdf\
+						pdf/mixture_pdf\
+						ray/diffused_ray\
 						ray/primary_ray\
 						ray/ray\
-						ray/scattered_ray\
-						ray/scattered_vector\
+						ray/reflected_ray\
+						ray/refracted_ray\
+						scene/flush_scene\
 						scene/gamma_correction\
+						scene/init_scene\
 						scene/manage_color\
-						scene/scene_flush\
-						scene/scene_init\
-						scene/scene_render\
+						scene/render_scene\
 						scene/shading\
 						texture/checker\
 						texture/solid\
@@ -46,5 +63,4 @@ FILENAME		=		camera/camera_init\
 						utils/handle_error\
 						utils/mlx_hook\
 						utils/mlx_utils\
-						main
-
+						

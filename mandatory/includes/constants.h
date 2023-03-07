@@ -34,13 +34,13 @@ enum e_success_or_failure
 # define UP_VECTOR					(t_vector3){0, 1, 0}
 
 // object
-# define POINT_LIGHT_RADIUS			5
+# define POINT_LIGHT_RADIUS			4
 
 // object array
 # define INITIAL_OBJ_ARR_SIZE		10
 
 // light
-// # define MAX_BRIGHTNESS				1
+# define MAX_BRIGHTNESS				1
 
 /** dev **/
 

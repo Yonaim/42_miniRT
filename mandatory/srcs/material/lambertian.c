@@ -49,20 +49,23 @@ static bool	lambertian_scatter(
 	const t_material_lambertian	*lambertian = (t_material_lambertian *)self;
 	const t_texture_solid		*solid = (t_texture_solid *)lambertian->albedo;
 
-//error_log("%p", s_rec->mixture_pdf);
-//error_log("%p", &s_rec->mixture_pdf->light_arr_pdf);
-//error_log("%p", s_rec->mixture_pdf->light_arr_pdf.lights);
+////error_log("%p", s_rec->mixture_pdf);
+////error_log("%p", &s_rec->mixture_pdf->light_arr_pdf);
+////error_log("%p", s_rec->mixture_pdf->light_arr_pdf.lights);
 	(void)in_ray;
+//error_log("scattering...");
 	update_mixture_pdf(s_rec->mixture_pdf, &h_rec->p, &h_rec->normal);
 	calculate_diffused_ray(h_rec, s_rec);
+//error_log("%lf %lf %lf", s_rec->ray.dir.x, s_rec->ray.dir.y, s_rec->ray.dir.z);
 	s_rec->albedo = solid->get_val((t_texture *)solid, h_rec);
 	s_rec->pdf_val = s_rec->mixture_pdf->get_val(\
 					(t_pdf *)s_rec->mixture_pdf, &s_rec->ray.dir);
 	s_rec->s_pdf_val = v3_dot(h_rec->normal, s_rec->ray.dir) / M_PI;
-// error_log("%lf", s_rec->pdf_val);
-// error_log("%lf", s_rec->s_pdf_val);
+//error_log("%lf", s_rec->pdf_val);
+//error_log("%lf", s_rec->s_pdf_val);
 	if (s_rec->s_pdf_val < 0)
 		s_rec->s_pdf_val = 0;
+//error_log("scattering done...\n");
 	return (true);
 }
 

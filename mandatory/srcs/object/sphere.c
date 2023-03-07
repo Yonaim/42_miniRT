@@ -86,7 +86,7 @@ static bool	hit_sphere(
 		return (false);
 	if (determine_t(&t, root, T_MINIMUM, t_max) == false)
 		return (false);
-	//error_log("is hit!");
+	////error_log("is hit!");
 	h_rec->t = t;
 	h_rec->p = ray_at(ray, t);
 	h_rec->material = sp->material;
@@ -113,9 +113,7 @@ static bool	is_sphere_light(t_object *object)
 {
 	const t_object_sphere	*sp = (t_object_sphere *)object;
 
-dprintf(2, "isn't it light?\n");
 	if (sp->material->get_type() == MATERIAL_EMMISIVE)
 		return (true);
-dprintf(2, "this is not light!!!\n");
 	return (false);
 }

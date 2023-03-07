@@ -19,6 +19,7 @@ t_color3	traced_color(t_ray *ray, t_world *world, int depth)
 	t_material			*material;
 	t_color3			color;
 
+// error_log("%d", depth);
 	if (depth >= MAX_DEPTH)
 		return (color3(0, 0, 0));
 	if (hit_world(&world->objects, ray, &h_rec, depth) == false)
@@ -27,13 +28,7 @@ t_color3	traced_color(t_ray *ray, t_world *world, int depth)
 	if (material->emit(material, &h_rec, &color) == true)
 		return (color);
 	s_rec.mixture_pdf = &world->mixture_pdf;
-//error_log("%d", depth);
-//error_log("%p", s_rec.mixture_pdf);
-//error_log("%p", s_rec.mixture_pdf->light_arr_pdf.lights);
 	material->scatter(material, ray, &h_rec, &s_rec);
-//error_log("%p", s_rec.mixture_pdf->light_arr_pdf.lights);
-// if (s_rec.pdf_val < 0.001)
-// error_log("what the %lf", s_rec.pdf_val);
 	color = v3_mul(s_rec.albedo, s_rec.s_pdf_val);
 	color = v3_comp_wise(color, traced_color(&s_rec.ray, world, depth + 1));
 	color = v3_div(color, s_rec.pdf_val);

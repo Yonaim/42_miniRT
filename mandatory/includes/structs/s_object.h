@@ -40,6 +40,8 @@ struct s_object_point_light
 	t_is_light						is_light;
 	t_get_random_vector_to_object	random;
 	t_calculate_object_sampling_pdf	pdf_value;
+	t_material						*material;
+	t_vector3						center;
 	t_object						*sphere;
 };
 
