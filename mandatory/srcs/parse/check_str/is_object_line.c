@@ -11,6 +11,25 @@
 	Solid element의 경우, '<element> <고유 정보> [material] [texture]'
 	ex) sp 0,0,20 20 l s 255,0,0
 */
+bool	is_point_light_line(const t_token_arr *tokens)
+{
+	const int	format[] = {
+		TOKEN_IDENTIFIER_ELEMENT, TOKEN_PIPE,
+		TOKEN_LPAREN,
+		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
+		TOKEN_NUMBER,
+		TOKEN_PIPE,
+		TOKEN_LPAREN,
+		TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER, TOKEN_COMMA, TOKEN_NUMBER,
+		TOKEN_RPAREN,
+		TOKEN_NONE
+	};
+
+	return (is_valid_formatted_line(IDENTIFIER_ELEMENT_LIGHT, 0, \
+									tokens, format));
+}
+
 
 bool	is_plane_line(const t_token_arr *tokens)
 {
