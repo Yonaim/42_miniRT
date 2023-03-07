@@ -4,7 +4,9 @@
 bool	is_valid_material_lambertian(const t_token_arr *tokens, int offset)
 {
 	if (tokens->cnt == offset + 10 \
-		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_MATERIAL \
+		&& (strcmp(nth_token(tokens, ++offset)->str, \
+										IDENTIFIER_MATERIAL_LAMBERTIAL) == 0)
+		&& nth_token(tokens, offset)->type == TOKEN_IDENTIFIER_MATERIAL \
 		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_TEXTURE
 		&& nth_token(tokens, ++offset)->type == TOKEN_LPAREN
 		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
@@ -21,7 +23,9 @@ bool	is_valid_material_lambertian(const t_token_arr *tokens, int offset)
 bool	is_valid_material_metal(const t_token_arr *tokens, int offset)
 {
 	if (tokens->cnt == offset + 11 \
-		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_MATERIAL \
+		&& (strcmp(nth_token(tokens, ++offset)->str, \
+										IDENTIFIER_MATERIAL_METAL) == 0)
+		&& nth_token(tokens, offset)->type == TOKEN_IDENTIFIER_MATERIAL \
 		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
 		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_TEXTURE
 		&& nth_token(tokens, ++offset)->type == TOKEN_LPAREN
@@ -39,7 +43,9 @@ bool	is_valid_material_metal(const t_token_arr *tokens, int offset)
 bool	is_valid_material_dielectric(const t_token_arr *tokens, int offset)
 {
 	if (tokens->cnt == offset + 9 \
-		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_MATERIAL \
+		&& (strcmp(nth_token(tokens, ++offset)->str, \
+										IDENTIFIER_MATERIAL_DIELECTRIC) == 0)
+		&& nth_token(tokens, offset)->type == TOKEN_IDENTIFIER_MATERIAL \
 		&& nth_token(tokens, ++offset)->type == TOKEN_LPAREN \
 		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
 		&& nth_token(tokens, ++offset)->type == TOKEN_COMMA
