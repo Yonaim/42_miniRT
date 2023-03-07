@@ -39,8 +39,13 @@ FILENAME		=		camera/init_camera\
 						parsing/ft_atof\
 						parsing/parse_element_extra\
 						parsing/parse_element_solid\
+						parsing/parse_element_extra\
+						parsing/build_element_cone\
+						parsing/build_element_solid\
+						parsing/ft_atof\
 						parsing/parse_scene\
 						parsing/parse_value\
+						parsing/build_element_cylinder\
 						parsing/utils\
 						pdf/cosine_pdf\
 						pdf/light_arr_pdf\

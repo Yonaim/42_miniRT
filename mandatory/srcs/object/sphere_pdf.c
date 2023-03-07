@@ -10,7 +10,11 @@
  * @param dir Direction of the ray
  * @return Probability density function value
  */
+<<<<<<< HEAD
 double	calculate_sphere_sampling_pdf(
+=======
+double	calculate_sphere_sampling_pdf(\
+>>>>>>> e6a87b3fd97d2683980f67bc4f69ec2845ac8b9b
 		t_object *self, const t_vector3 *origin, const t_vector3 *dir)
 {
 	const t_object_sphere	*sp = (t_object_sphere *)self;

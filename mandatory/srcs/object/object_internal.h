@@ -1,6 +1,9 @@
 #ifndef OBJECT_INTERNAL_H
 # define OBJECT_INTERNAL_H
 
+// window
+# define __USE_MISC
+
 // standard library
 # include <stdlib.h>
 # include <math.h>

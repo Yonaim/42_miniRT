@@ -80,6 +80,7 @@ static bool	hit_point_light(
 
 static bool	is_point_light(t_object *object)
 {
+dprintf(2, "this is point light~\n");
 	(void)object;
 	return (true);
 }

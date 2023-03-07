@@ -15,6 +15,7 @@ t_object	*new_sphere(t_info_object_sphere *sp_info)
 {
 	t_object_sphere	*new;
 
+
 	new = malloc(sizeof(t_object_sphere));
 	if (new == NULL)
 		return (NULL);
@@ -113,7 +114,9 @@ static bool	is_sphere_light(t_object *object)
 {
 	const t_object_sphere	*sp = (t_object_sphere *)object;
 
+dprintf(2, "isn't it light?\n");
 	if (sp->material->get_type() == MATERIAL_EMMISIVE)
 		return (true);
+dprintf(2, "this is not light!!!\n");
 	return (false);
 }
