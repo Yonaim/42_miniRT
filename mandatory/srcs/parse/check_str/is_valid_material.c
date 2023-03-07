@@ -4,15 +4,15 @@
 bool	is_valid_material_lambertian(const t_token_arr *tokens, int offset)
 {
 	if (tokens->cnt == offset + 10 \
-		&& nth_token(tokens, offset++)->type == TOKEN_IDENTIFIER_MATERIAL \
-		&& nth_token(tokens, offset++)->type == TOKEN_IDENTIFIER_TEXTURE
-		&& nth_token(tokens, offset++)->type == TOKEN_LPAREN
-		&& nth_token(tokens, offset++)->type == TOKEN_NUMBER
-		&& nth_token(tokens, offset++)->type == TOKEN_COMMA
-		&& nth_token(tokens, offset++)->type == TOKEN_NUMBER
-		&& nth_token(tokens, offset++)->type == TOKEN_COMMA
-		&& nth_token(tokens, offset++)->type == TOKEN_NUMBER
-		&& nth_token(tokens, offset++)->type == TOKEN_RPAREN)
+		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_MATERIAL \
+		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_TEXTURE
+		&& nth_token(tokens, ++offset)->type == TOKEN_LPAREN
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_COMMA
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_COMMA
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_RPAREN)
 		return (true);
 	else
 		return (false);
@@ -21,16 +21,16 @@ bool	is_valid_material_lambertian(const t_token_arr *tokens, int offset)
 bool	is_valid_material_metal(const t_token_arr *tokens, int offset)
 {
 	if (tokens->cnt == offset + 11 \
-		&& nth_token(tokens, offset++)->type == TOKEN_IDENTIFIER_MATERIAL \
-		&& nth_token(tokens, offset++)->type == TOKEN_NUMBER
-		&& nth_token(tokens, offset++)->type == TOKEN_IDENTIFIER_TEXTURE
-		&& nth_token(tokens, offset++)->type == TOKEN_LPAREN
-		&& nth_token(tokens, offset++)->type == TOKEN_NUMBER
-		&& nth_token(tokens, offset++)->type == TOKEN_COMMA
-		&& nth_token(tokens, offset++)->type == TOKEN_NUMBER
-		&& nth_token(tokens, offset++)->type == TOKEN_COMMA
-		&& nth_token(tokens, offset++)->type == TOKEN_NUMBER
-		&& nth_token(tokens, offset++)->type == TOKEN_RPAREN)
+		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_MATERIAL \
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_TEXTURE
+		&& nth_token(tokens, ++offset)->type == TOKEN_LPAREN
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_COMMA
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_COMMA
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_RPAREN)
 		return (true);
 	else
 		return (false);
@@ -39,14 +39,14 @@ bool	is_valid_material_metal(const t_token_arr *tokens, int offset)
 bool	is_valid_material_dielectric(const t_token_arr *tokens, int offset)
 {
 	if (tokens->cnt == offset + 9 \
-		&& nth_token(tokens, offset++)->type == TOKEN_IDENTIFIER_MATERIAL \
-		&& nth_token(tokens, offset++)->type == TOKEN_LPAREN \
-		&& nth_token(tokens, offset++)->type == TOKEN_NUMBER
-		&& nth_token(tokens, offset++)->type == TOKEN_COMMA
-		&& nth_token(tokens, offset++)->type == TOKEN_NUMBER
-		&& nth_token(tokens, offset++)->type == TOKEN_COMMA
-		&& nth_token(tokens, offset++)->type == TOKEN_NUMBER
-		&& nth_token(tokens, offset++)->type == TOKEN_RPAREN)
+		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_MATERIAL \
+		&& nth_token(tokens, ++offset)->type == TOKEN_LPAREN \
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_COMMA
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_COMMA
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_RPAREN)
 		return (true);
 	else
 		return (false);
@@ -55,13 +55,13 @@ bool	is_valid_material_dielectric(const t_token_arr *tokens, int offset)
 bool	is_valid_material_default(const t_token_arr *tokens, int offset)
 {
 	if (tokens->cnt == offset + 8 \
-		&& nth_token(tokens, offset++)->type == TOKEN_LPAREN \
-		&& nth_token(tokens, offset++)->type == TOKEN_NUMBER
-		&& nth_token(tokens, offset++)->type == TOKEN_COMMA
-		&& nth_token(tokens, offset++)->type == TOKEN_NUMBER
-		&& nth_token(tokens, offset++)->type == TOKEN_COMMA
-		&& nth_token(tokens, offset++)->type == TOKEN_NUMBER
-		&& nth_token(tokens, offset++)->type == TOKEN_RPAREN)
+		&& nth_token(tokens, ++offset)->type == TOKEN_LPAREN \
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_COMMA
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_COMMA
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
+		&& nth_token(tokens, ++offset)->type == TOKEN_RPAREN)
 		return (true);
 	else
 		return (false);
