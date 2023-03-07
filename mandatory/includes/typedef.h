@@ -2,7 +2,13 @@
 # define TYPEDEF_H
 
 # include "libmath.h"
-#include <stdio.h>
+# include <stdio.h>
+# include <unistd.h>
+// debug
+# define error_log(fmt, ...) \
+    dprintf(STDERR_FILENO, "%-40s[%3d] : %50s : " fmt "\n", \
+	__func__, __LINE__, #__VA_ARGS__, ##__VA_ARGS__)
+
 
 // minirt
 typedef struct s_render_status			t_render_status;
@@ -69,21 +75,20 @@ typedef t_vector3						t_color3;
 
 // texture 
 typedef t_color3						(*t_get_texture_value)(\
-												t_texture *texture, \
-												double u, \
-												double v, \
-												t_point3 p);
+												const t_texture *texture, \
+												const t_hit_record *h_rec);
 
 // material
 typedef bool							(*t_scatter)(\
-													t_material *self, \
-													t_ray *in, \
-													t_hit_record *h_rec, \
-													t_scatter_record *s_rec);
-
-typedef t_color3						(*t_emit)(\
 												t_material *self, \
-												t_hit_record *h_rec);
+												t_ray *in_ray, \
+												t_hit_record *h_rec, \
+												t_scatter_record *s_rec);
+
+typedef bool							(*t_emit)(\
+												t_material *self, \
+												t_hit_record *h_rec, \
+												t_color3 *emission);
 
 // object
 typedef bool							(*t_hit_object)(\
@@ -96,27 +101,22 @@ typedef int								(*t_get_object_type)(void);
 
 typedef bool							(*t_is_light)(t_object *self);
 
-typedef double							(*t_get_object_pdf_value)(\
+typedef double							(*t_calculate_object_sampling_pdf)(\
 												t_object *self, \
-												t_vector3 origin);
+												const t_point3 *origin, \
+												const t_vector3 *dir);
 
-typedef t_vector3						(*t_get_random_vec_to_object)(\
-												t_vector3 origin);
+typedef t_vector3						(*t_get_random_vector_to_object)(\
+												const t_object *self,
+												const t_point3 *origin);
 
 // material
 typedef int								(*t_get_material_type)(void);
 
-typedef double							(*t_scattering_pdf)(\
-												t_material *self,\
-												t_ray *in_ray, \
-												t_hit_record *h_rec, \
-												t_ray *scattered_ray);
-
 typedef void							(*t_destroy_object)(\
 												t_object *object);
 typedef void							(*t_destroy_material)(\
-												t_material *material);
-typedef void							(*t_destroy_texture)(\
+												t_material *material);typedef void							(*t_destroy_texture)(\
 												t_texture *texture);
 
 #endif

@@ -1,15 +1,21 @@
 #include "object_internal.h"
 
 static void	destroy_sphere(t_object *object);
-static int	get_sphere_type(void);
 static bool	hit_sphere(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);
-static void	get_sphere_uv(t_hit_record *record);
+static void	set_sphere_uv(t_hit_record *record);
+static int	get_sphere_type(void);
 static bool	is_sphere_light(t_object *object);
+double		calculate_sphere_sampling_pdf(
+				t_object *self, const t_vector3 *origin, const t_vector3 *dir);
+t_vector3	get_random_vector_to_sphere(
+				const t_object *self, const t_point3 *origin);
+
 
 t_object	*new_sphere(t_info_object_sphere *sp_info)
 {
 	t_object_sphere	*new;
+
 
 	new = malloc(sizeof(t_object_sphere));
 	if (new == NULL)
@@ -18,6 +24,8 @@ t_object	*new_sphere(t_info_object_sphere *sp_info)
 	new->destroy = destroy_sphere;
 	new->get_type = get_sphere_type;
 	new->is_light = is_sphere_light;
+	new->pdf_value = calculate_sphere_sampling_pdf;
+	new->random = get_random_vector_to_sphere;
 	new->material = new_material(&sp_info->material, &sp_info->texture);
 	if (new->material == NULL)
 		return (NULL);
@@ -80,10 +88,11 @@ static bool	hit_sphere(
 		return (false);
 	if (determine_t(&t, root, T_MINIMUM, t_max) == false)
 		return (false);
+	//error_log("is hit!");
 	h_rec->t = t;
 	h_rec->p = ray_at(ray, t);
 	h_rec->material = sp->material;
-	get_sphere_uv(h_rec);
+	set_sphere_uv(h_rec);
 	set_face_normal(h_rec, ray, v3_normalize(v3_sub(h_rec->p, sp->center)));
 	return (true);
 }
@@ -93,7 +102,7 @@ static bool	hit_sphere(
 	// (O - C)^2 = len_sqr_v3(oc)
 	// r^2 = pow(sp->radius, 2)
 
-static void	get_sphere_uv(t_hit_record *record)
+static void	set_sphere_uv(t_hit_record *record)
 {
 	const double	theta = acos(-record->p.y);
 	const double	phi = atan2(-record->p.z, record->p.x) + M_PI;
@@ -102,12 +111,13 @@ static void	get_sphere_uv(t_hit_record *record)
 	record->v = theta / M_PI;
 }
 
-
 static bool	is_sphere_light(t_object *object)
 {
 	const t_object_sphere	*sp = (t_object_sphere *)object;
 
+dprintf(2, "isn't it light?\n");
 	if (sp->material->get_type() == MATERIAL_EMMISIVE)
 		return (true);
+dprintf(2, "this is not light!!!\n");
 	return (false);
 }

@@ -7,8 +7,8 @@ CPPFLAGS		+= -I./$(LIB_PATH)/includes
 LIBMLX			= libmlx.a
 
 LIBMLX_PATH		= $(LIB_PATH)/libmlx
-LIBMLX_FLAGS	= -framework OpenGL -framework AppKit
-# LIBMLX_FLAGS	= -lXext -lX11 -lm -lz
+# LIBMLX_FLAGS	= -framework OpenGL -framework AppKit
+LIBMLX_FLAGS	= -lXext -lX11 -lm -lz
 
 LDFLAGS			+= -L./$(LIBMLX_PATH) $(LIBMLX_FLAGS)
 LDLIBS			+= -lmlx

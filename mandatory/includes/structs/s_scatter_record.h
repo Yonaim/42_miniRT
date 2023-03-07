@@ -4,16 +4,17 @@
 # include <stdbool.h>
 # include "typedef.h"
 # include "s_ray.h"
+# include "s_pdf.h"
 // pdf = probability density function
 
 struct s_scatter_record
 {
-	bool		is_specular;
-	t_ray		scattered;
-	t_color3	albedo;
-	t_ray		specular_ray;
-	double		pdf_val;
-	// t_pdf		*pdf;
+	t_ray			ray;
+	t_color3		albedo;
+	double			pdf_val;
+	double			s_pdf_val;
+	t_mixture_pdf	*mixture_pdf;
+	// t_ray	specular_ray;
 };
 
 #endif

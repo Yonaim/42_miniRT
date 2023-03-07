@@ -1,6 +1,8 @@
 #include "texture_internal.h"
 
-static t_color3	get_solid_val(t_texture *self, double u, double v, t_point3 p);
+static t_color3	get_solid_val(
+					const t_texture *self,
+					const t_hit_record *h_rec);
 static void		destroy_solid(t_texture *self);
 
 t_texture	*new_solid(t_color3 rgb)
@@ -16,13 +18,13 @@ t_texture	*new_solid(t_color3 rgb)
 	return ((t_texture *)solid);
 }
 
-static t_color3	get_solid_val(t_texture *self, double u, double v, t_point3 p)
+static t_color3	get_solid_val(
+				const t_texture *self,
+				const t_hit_record *h_rec)
 {
 	const t_texture_solid	*solid = (t_texture_solid *)self;
 
-	(void)u;
-	(void)v;
-	(void)p;
+	(void)h_rec;
 	return (solid->color);
 }
 

@@ -24,7 +24,7 @@ void	_build_element_cone_disk(
 }
 
 int	build_element_cone(
-	t_object_arr *objects,
+	t_world *world,
 	t_parsing_info_object_cone *co_parsing_info)
 {
 	t_info_object_cone	co_info;
@@ -34,7 +34,7 @@ int	build_element_cone(
 	co_info.texture.rgb1 = co_parsing_info->rgb;
 	_build_element_cone_lateral(&co_info, co_parsing_info);
 	_build_element_cone_disk(&co_info, co_parsing_info);
-	if (add_object(objects, new_cone(&co_info)) == FAILURE)
+	if (add_object_to_world(world, new_cone(&co_info)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

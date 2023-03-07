@@ -1,6 +1,7 @@
 #include "texture_internal.h"
 
-static t_color3	get_checker_val(t_texture *self, double u, double v, t_point3 p);
+static t_color3	get_checker_val(
+					const t_texture *self, 	const t_hit_record *h_rec);
 static void		destroy_checker(t_texture *self);
 
 t_texture	*new_checker_solid(t_color3 even, t_color3 odd)
@@ -31,17 +32,18 @@ t_texture	*new_checker(t_texture *even, t_texture *odd)
 	return ((t_texture *)checker);
 }
 
-static t_color3	get_checker_val(t_texture *self, double u, double v, t_point3 p)
+static t_color3	get_checker_val(
+				const t_texture *self, const t_hit_record *h_rec)
 {
 	const t_texture_checker	*checker = (t_texture_checker *)self;
-	const double			sines = sin(10 * p.x) \
-									* sin(10 * p.y) \
-									* sin(10 * p.z);
+	const double			sines = sin(10 * h_rec->p.x) \
+									* sin(10 * h_rec->p.y) \
+									* sin(10 * h_rec->p.z);
 
 	if (sines < 0)
-		return (checker->odd->get_val(checker->odd, u, v, p));
+		return (checker->odd->get_val(checker->odd, h_rec));
 	else
-		return (checker->even->get_val(checker->even, u, v, p));
+		return (checker->even->get_val(checker->even, h_rec));
 }
 
 static void	destroy_checker(t_texture *self)

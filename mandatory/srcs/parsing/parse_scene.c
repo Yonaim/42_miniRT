@@ -86,6 +86,7 @@ int	parse_scene(t_scene *scene, char *path)
 	}
 	if (!elem_exist[AMBIENT] || !elem_exist[CAMERA] || !elem_exist[LIGHT])
 		return (FAILURE);
+	printf("parsing done!\n");
 	return (SUCCESS);
 }
 

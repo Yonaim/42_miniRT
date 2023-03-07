@@ -19,7 +19,19 @@ double	random_double(void)
 	return (xorshift() / (INT_MAX + 1.0));
 }
 
-double	random_double_range(double min, double max)
+double	random_double_range(const double min, const double max)
 {
 	return (min + (max - min) * random_double());
+}
+
+int		random_int(void)
+{
+	return (xorshift());
+}
+
+int	random_int_range(const int min, const int max)
+{
+	if (min == max)
+		return (min);
+	return (random_int() % (max - min + 1) + min);
 }

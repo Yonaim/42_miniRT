@@ -15,7 +15,7 @@ bool	hit_object_arr_except_point_light(
 	i = 0;
 	while (i < objects->cnt)
 	{
-		cur_obj = (t_object *)objects->data[i];
+		cur_obj = get_object(objects, i);
 		if (cur_obj->get_type() != OBJECT_POINT_LIGHT
 			&& cur_obj->hit(cur_obj, in_ray, &cur_rec, closest_t) == true)
 		{
@@ -43,7 +43,7 @@ bool	hit_object_arr(
 	i = 0;
 	while (i < objects->cnt)
 	{
-		cur_obj = (t_object *)objects->data[i];
+		cur_obj = get_object(objects, i);
 		if (cur_obj->hit(cur_obj, in_ray, &cur_rec, closest_t) == true)
 		{
 			is_hit = true;

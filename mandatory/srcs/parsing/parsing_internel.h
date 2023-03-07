@@ -79,19 +79,19 @@ int			parse_element_cone(t_scene *scene, char *str);
 
 // build
 int			build_element_cone(
-				t_object_arr *objects,
+				t_world *world,
 				t_parsing_info_object_cone *co_parsing_info);
 int			build_element_cylinder(
-				t_object_arr *objects,
+				t_world *world,
 				t_parsing_info_object_cylinder *cy_parsing_info);
 int			build_element_point_light(
-				t_object_arr *objects,
+				t_world *world,
 				t_point3 *pos, double *brightness, t_vector3 *rgb);
 int			build_element_plane(
-				t_object_arr *objects,
+				t_world *world,
 				t_point3 *pos, t_vector3 *normal, t_vector3 *rgb);
 int			build_element_sphere(
-				t_object_arr *objects,
+				t_world *world,
 				t_point3 *pos, double *diameter, t_vector3 *rgb);
 
 // parse value

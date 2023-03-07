@@ -1,7 +1,7 @@
 
 #include "vector3.h"
 
-t_vector3	v3_normalize(t_vector3 v)
+t_vector3	v3_normalize(const t_vector3 v)
 {
 	if (is_near_zero(v) == true)
 		return (vector3(0, 0, 0));

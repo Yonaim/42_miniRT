@@ -17,10 +17,12 @@
 # include "s_hit_record.h"
 # include "s_material.h"
 # include "s_texture.h"
+# include "s_pdf.h"
 
 // prototype
 # include "ray.h"
 # include "texture.h"
+# include "pdf.h"
 
 t_material	*new_lambertian(t_texture *texture);
 t_material	*new_dielectric(double refractive_idx);
