@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:19:21 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 03:59:28 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 07:12:43 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ enum e_success_or_failure
 # define WINDOW_HEIGHT				800
 
 // t range
-# define T_MINIMUM					0.001
+# define T_MINIMUM					0.01
 # define T_INFINITY 				INT_MAX
 
 // sampling
-# define SAMPLES_PER_PIXEL			100
+# define SAMPLES_PER_PIXEL			1000
 # define PUT_IMG_TERM				5
 
 // recursive depth
@@ -42,7 +42,8 @@ enum e_success_or_failure
 # define FOCAL_DISTANCE				10.0
 
 // object
-# define POINT_LIGHT_RADIUS			5
+# define POINT_LIGHT_RADIUS			10
+# define BRIGHTNESS_CORRECT_VAL		3
 
 // dynamic array
 # define INITIAL_OBJECT_ARR_SIZE	10
