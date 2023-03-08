@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xy_rectangle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:18:43 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/05 22:00:53 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 04:12:42 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static bool	hit_xy_rectangle(
 				t_object *self,
 				t_ray *ray, t_hit_record *h_rec, double t_max);
 
-// TODO : x1 > x2 또는 y1 > y2인 경우에 대한 처리 추가
 t_object	*new_xy_rectangle(t_info_object_xy_rectangle *xy_rec_info)
 {
 	t_object_xy_rectangle	*new;

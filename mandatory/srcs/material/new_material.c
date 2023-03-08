@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   new_material.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:46:12 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/07 18:46:12 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 04:15:02 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "material_internal.h"
 #include "s_info_element.h"
 
-// texture type이 TEXTURE_NONE인 경우 texture 포인터에 널 포인터가 저장된다.
 t_material	*new_material(const t_info_material *matl_info)
 {
 	const t_texture	*texture = new_texture(&matl_info->texture);

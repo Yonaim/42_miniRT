@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cone_lateral_hit.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:19:21 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/05 20:19:21 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 04:12:52 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "object_internal.h"
 
-/*
-	TODO: hit 계산 공식 설명문 추가
-*/
 static bool	solve_cone_lateral_intersection_equation(
 				double root[2], const t_object_cone_lateral *lat, t_ray *ray);
 static bool	is_cone_lateral_sol_in_range(
