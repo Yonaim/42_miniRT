@@ -4,7 +4,7 @@ static double	ft_atof_fractional_part(char *str)
 {
 	double	n;
 	double	unit_n;
-	
+
 	n = 0;
 	unit_n = 0.1;
 	while (ft_isdigit(*str))
@@ -20,7 +20,7 @@ double	ft_atof(char *str)
 {
 	int		point_left;
 	double	point_right;
-	
+
 	point_left = ft_atoi(str);
 	point_right = 0;
 	while (*str == ' ' || *str == '\t')

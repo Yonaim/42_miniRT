@@ -190,5 +190,4 @@ struct s_info_object_box
 	t_info_material	material;
 };
 
-
 #endif

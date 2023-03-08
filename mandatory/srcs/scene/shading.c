@@ -1,4 +1,4 @@
-# include "scene_internal.h"
+#include "scene_internal.h"
 
 static bool	hit_world(
 			t_object_arr *objects, t_ray *in_ray,

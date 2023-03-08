@@ -1,5 +1,4 @@
 #include "parse_internal.h"
-#include <string.h>
 
 static int	match_element_line_format(const t_token_arr *tokens)
 {
@@ -15,7 +14,6 @@ static int	match_element_line_format(const t_token_arr *tokens)
 	[ELEMENT_CONE] = is_cone_line,
 	[ELEMENT_CONE_LATERAL] = is_cone_lateral_line,
 	[ELEMENT_BOX] = is_box_line,
-	NULL
 	};
 	int						idx;
 
@@ -31,7 +29,7 @@ static int	match_element_line_format(const t_token_arr *tokens)
 
 static t_info	*get_element_info(int type, const t_token_arr *tokens)
 {
-	const t_get_info_element get_info_elem[] = {
+	const t_get_info_element	get_info_elem[] = {
 	[ELEMENT_CAMERA] = get_info_camera,
 	[ELEMENT_AMBIENT] = get_info_ambient,
 	[ELEMENT_LIGHT] = get_info_point_light,
@@ -51,7 +49,26 @@ static t_info	*get_element_info(int type, const t_token_arr *tokens)
 		return (get_info_elem[type](tokens));
 }
 
-int	parse_line(char *line, t_info **info, int *type)
+static int	put_element_to_scene(t_info *info, t_scene *scene, int type)
+{
+	const t_put_element	put_to_scene[] = {
+	[ELEMENT_AMBIENT] = put_ambient_to_scene,
+	[ELEMENT_CAMERA] = put_camera_to_scene,
+	[ELEMENT_LIGHT] = put_point_light_to_scene,
+	[ELEMENT_PLANE] = put_plane_to_scene,
+	[ELEMENT_SPHERE] = put_sphere_to_scene,
+	[ELEMENT_DISK] = put_disk_to_scene,
+	[ELEMENT_TUBE] = put_tube_to_scene,
+	[ELEMENT_CYLINDER] = put_cylinder_to_scene,
+	[ELEMENT_CONE_LATERAL] = put_cone_lateral_to_scene,
+	[ELEMENT_CONE] = put_cone_to_scene,
+	[ELEMENT_BOX] = put_box_to_scene,
+	};
+
+	return (put_to_scene[type](info, scene));
+}
+
+static int	parse_line(char *line, t_info **info, int *type)
 {
 	const t_token_arr	*tokens = tokenize(line);
 
@@ -69,32 +86,13 @@ int	parse_line(char *line, t_info **info, int *type)
 	return (SUCCESS);
 }
 
-int	put_element_to_scene(t_info *info, t_scene *scene, int type)
-{
-	const t_put_element	put_to_scene[] = {
-	[ELEMENT_AMBIENT] = put_ambient_to_scene,
-	[ELEMENT_CAMERA] = put_camera_to_scene,
-	[ELEMENT_LIGHT] = put_point_light_to_scene,
-	[ELEMENT_PLANE] = put_plane_to_scene,
-	[ELEMENT_SPHERE] = put_sphere_to_scene,
-	[ELEMENT_DISK] = put_disk_to_scene,
-	[ELEMENT_TUBE] = put_tube_to_scene,
-	[ELEMENT_CYLINDER] = put_cylinder_to_scene,
-	[ELEMENT_CONE_LATERAL] = put_cone_lateral_to_scene,
-	[ELEMENT_CONE] = put_cone_to_scene,
-	[ELEMENT_BOX] = put_box_to_scene,
-	[ELEMENT_NONE] = NULL
-	};
-
-	return (put_to_scene[type](info, scene));
-}
-
 int	parse_scene(t_scene *scene, int fd)
 {
 	char		*line;
 	int			type;
 	t_info		*info;
 	bool		exist[ELEMENT_TYPE_COUNT];
+
 	ft_memset(exist, false, sizeof(bool) * ELEMENT_TYPE_COUNT);
 	line = get_next_line(fd);
 	while (line)

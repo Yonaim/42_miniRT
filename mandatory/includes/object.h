@@ -19,7 +19,6 @@ t_object	*new_xz_rectangle(const t_info_object_xz_rectangle *xz_rec_info);
 t_object	*new_yz_rectangle(const t_info_object_yz_rectangle *yz_rec_info);
 t_object	*new_box(const t_info_object_box *bo_info);
 
-
 // hit check
 bool		hit_sphere(
 				t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max);

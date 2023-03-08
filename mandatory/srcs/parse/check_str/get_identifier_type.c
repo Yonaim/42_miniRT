@@ -1,6 +1,5 @@
 
 #include "../parse_internal.h"
-#include <string.h>
 
 static int	get_idx_matching_string(const char **strs, const char *seek)
 {
@@ -44,9 +43,9 @@ int	get_material_type(const char *str)
 	[MATERIAL_DIELECTRIC] = IDENTIFIER_MATERIAL_DIELECTRIC,
 	[MATERIAL_EMMISIVE] = IDENTIFIER_MATERIAL_EMMISIVE,
 	[MATERIAL_RANDOM] = IDENTIFIER_MATERIAL_RANDOM,
-	[MATERIAL_NONE]	= NULL
+	[MATERIAL_NONE] = NULL
 	};
-	
+
 	return (get_idx_matching_string(identifier, str));
 }
 

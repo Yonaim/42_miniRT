@@ -1,7 +1,6 @@
 #include "../parse_internal.h"
 #include <stdbool.h>
 
-
 bool	is_number_str(char *s)
 {
 	while (*s == ' ' || *s == '\t')

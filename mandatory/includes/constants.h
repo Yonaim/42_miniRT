@@ -31,7 +31,6 @@ enum e_success_or_failure
 // camera
 # define APERTURE					0
 # define FOCAL_DISTANCE				10.0
-# define UP_VECTOR					(t_vector3){0, 1, 0}
 
 // object
 # define POINT_LIGHT_RADIUS			5
@@ -51,7 +50,5 @@ enum e_success_or_failure
 
 // camera
 # define FIELD_OF_VIEW				30
-# define LOOK_FROM					(t_point3){13, 2, 3}
-# define LOOK_AT					(t_point3){0, 0, 0}
 
 #endif

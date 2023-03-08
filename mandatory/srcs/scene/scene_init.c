@@ -1,5 +1,5 @@
-# include "scene_internal.h"
-# include <fcntl.h>
+#include "scene_internal.h"
+#include <fcntl.h>
 
 void	init_scene(t_scene *scene, t_image *img, char *path)
 {

@@ -7,11 +7,11 @@
 	L | (-40, 0, 30) 0.7 (255, 255, 255)
 */
 
-t_info		*get_info_ambient(const t_token_arr *tokens)
+t_info	*get_info_ambient(const t_token_arr *tokens)
 {
 	t_info_ambient_light	*info;
 	int						offset;
-	
+
 	info = malloc(sizeof(t_info_ambient_light));
 	if (info == NULL)
 		return (NULL);
@@ -27,7 +27,7 @@ t_info		*get_info_ambient(const t_token_arr *tokens)
 	return ((t_info *)info);
 }
 
-t_info		*get_info_camera(const t_token_arr *tokens)
+t_info	*get_info_camera(const t_token_arr *tokens)
 {
 	t_info_camera	*info;
 	int				offset;

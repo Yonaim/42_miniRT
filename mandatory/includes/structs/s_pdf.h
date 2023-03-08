@@ -3,7 +3,6 @@
 
 struct s_pdf
 {
-
 };
 
 #endif

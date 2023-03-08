@@ -11,6 +11,14 @@ bool	is_normalized_vec3(const t_vector3 *v)
 		&& is_len_near_one(*v) == true);
 }
 
+t_token	*nth_token(const t_token_arr *tokens, int nth)
+{
+	t_token	*token;
+
+	token = (t_token *)tokens->data[nth];
+	return (token);
+}
+
 t_vector3	parse_vector3(const t_token_arr *tokens, int *offset)
 {
 	t_vector3	v3;
@@ -29,12 +37,4 @@ double	parse_number(const t_token_arr *tokens, int *offset)
 	n = ft_atof(nth_token(tokens, *offset)->str);
 	(*offset) += 1;
 	return (n);
-}
-
-t_token	*nth_token(const t_token_arr *tokens, int nth)
-{
-	t_token *token;
-
-	token = (t_token *)tokens->data[nth];
-	return (token);
 }

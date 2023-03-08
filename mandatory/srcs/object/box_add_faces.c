@@ -51,7 +51,6 @@ static void	_set_yz_rectangle_info(
 	yz_rec_info[1].x = bo_info->p_end2.x;
 }
 
-
 int	add_box_faces(t_object_box *box, const t_info_object_box *bo_info)
 {
 	t_info_object_xy_rectangle	xy_rec_info[2];

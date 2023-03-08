@@ -1,21 +1,5 @@
 #include "../parse_internal.h"
 
-static t_token	*extract_word_token(char **line)
-{
-	t_token		*token;
-	const int	len = length_of_word(*line);
-
-	token = malloc(sizeof(t_token));
-	if (!token)
-		return (NULL);
-	token->type = TOKEN_WORD;
-	token->str = ft_substr(*line, 0, len);
-	if (!token->str)
-		return (NULL);
-	*line += len;
-	return (token);
-}
-
 static t_token	*extract_non_word_token(char **line, int type)
 {
 	t_token		*token;
@@ -26,6 +10,22 @@ static t_token	*extract_non_word_token(char **line, int type)
 		return (NULL);
 	token->type = type;
 	token->str = ft_substr(*line, 0, 1);
+	if (!token->str)
+		return (NULL);
+	*line += len;
+	return (token);
+}
+
+static t_token	*extract_word_token(char **line)
+{
+	t_token		*token;
+	const int	len = length_of_word(*line);
+
+	token = malloc(sizeof(t_token));
+	if (!token)
+		return (NULL);
+	token->type = TOKEN_WORD;
+	token->str = ft_substr(*line, 0, len);
 	if (!token->str)
 		return (NULL);
 	*line += len;

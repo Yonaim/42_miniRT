@@ -1,4 +1,4 @@
-# include "object_internal.h"
+#include "object_internal.h"
 
 static void	destroy_cone_lateral(t_object *object);
 static int	get_cone_lateral_type(void);

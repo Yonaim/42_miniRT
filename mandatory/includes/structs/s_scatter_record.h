@@ -13,7 +13,6 @@ struct s_scatter_record
 	t_color3	attenuation;
 	t_ray		specular_ray;
 	double		pdf_val;
-	// t_pdf		*pdf;
 };
 
 #endif

@@ -1,4 +1,4 @@
- #include "object_internal.h"
+#include "object_internal.h"
 
 static void	destroy_plane(t_object *object);
 static int	get_plane_type(void);

@@ -43,5 +43,4 @@ t_object	*new_xy_rectangle(t_info_object_xy_rectangle *xy_rec_info);
 t_object	*new_xz_rectangle(t_info_object_xz_rectangle *xz_rec_info);
 t_object	*new_yz_rectangle(t_info_object_yz_rectangle *yz_rec_info);
 
-
 #endif

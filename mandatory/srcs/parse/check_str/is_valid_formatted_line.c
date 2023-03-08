@@ -1,6 +1,5 @@
 
 #include "../parse_internal.h"
-#include <string.h>
 
 static bool	is_valid_formatted_extra_line(const t_token_arr *tokens, \
 										const int *form, const int form_len)
@@ -42,7 +41,7 @@ static bool	is_valid_formatted_object_line(const t_token_arr *tokens, \
 int	length_of_format(const int *form)
 {
 	int	len;
-	
+
 	len = 0;
 	while (form[len] != TOKEN_NONE)
 		len++;

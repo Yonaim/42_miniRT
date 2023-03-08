@@ -1,7 +1,7 @@
 #include "material_internal.h"
 
 static bool		emmisive_scattered(
-					t_material *self, t_ray *in, 
+					t_material *self, t_ray *in,
 					t_hit_record *h_rec, t_scatter_record *s_rec);
 static t_color3	emmisive_emitted(
 					t_material *self, double u, double v, t_point3 p);

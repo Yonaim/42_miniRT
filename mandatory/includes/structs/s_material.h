@@ -46,7 +46,6 @@ struct s_material_emmisive
 	t_destroy_material	destroy;
 	t_scattering_pdf	s_pdf;
 	t_texture			*emit;
-// brightness 감안하여 값 구하기
 };
 
 #endif
