@@ -18,7 +18,7 @@ void	init_scene(t_scene *scene, t_image *img, char *path)
 	const int	fd = open(path, O_RDONLY);
 
 	if (fd < 0)
-		handle_error("Error: open file failed\n");
+		handle_error("open file failed");
 	if (init_object_arr(&scene->world.objects, \
 								INITIAL_OBJECT_ARR_SIZE) == FAILURE)
 		handle_error(ERRMSG_MALLOC_FAILED);
