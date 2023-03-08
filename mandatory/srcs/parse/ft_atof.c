@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:18:52 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 06:04:45 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 07:49:31 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ double	ft_atof(char *str)
 		str++;
 	if (*str == '.')
 		point_right = ft_atof_fractional_part(++str);
-	return ((double)(point_left + point_right) * sign);
+	return ((double)(point_left + point_right)*sign);
 }

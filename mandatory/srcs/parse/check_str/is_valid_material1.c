@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 22:03:19 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 06:41:37 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 07:46:01 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ bool	is_valid_material(const t_token_arr *tokens, int offset)
 		is_valid_material_random,
 	};
 	int							i;
+
 	if (nth_token(tokens, offset)->type != TOKEN_PIPE)
 		return (false);
 	i = 0;
