@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "scene_internal.h"
+#include <stdio.h>
 
 static void	render_one_layer(t_scene *scene, int layer_cnt)
 {
@@ -55,9 +56,9 @@ int	render_scene(void *minirt)
 		layer_cnt++;
 		i++;
 	}
-	ft_printf("%d : rendering...\n", layer_cnt);
+	printf("%d : rendering...\n", layer_cnt);
 	if (layer_cnt == SAMPLES_PER_PIXEL)
-		ft_printf("rendering done!\n");
+		printf("rendering done!\n");
 	mlx_put_image_to_window(mlx->conn, mlx->win, mlx->img.obj, 0, 0);
 	return (SUCCESS);
 }
