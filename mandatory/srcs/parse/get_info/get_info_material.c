@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_info_material.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 03:35:28 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 03:35:47 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 06:50:37 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@ t_info_material	get_info_material(const t_token_arr *tokens, int offset)
 	t_info_material	matl_info;
 
 	offset++;
-	if (nth_token(tokens, offset)->type == TOKEN_IDENTIFIER_MATERIAL)
+	if (ft_strcmp(nth_token(tokens, offset)->str, \
+										IDENTIFIER_MATERIAL_RANDOM) == 0)
+		matl_info.type = MATERIAL_RANDOM;
+	else if (nth_token(tokens, offset)->type == TOKEN_IDENTIFIER_MATERIAL)
 	{
 		matl_info.type = get_material_type(nth_token(tokens, offset++)->str);
 		if (matl_info.type == MATERIAL_METAL)
 			matl_info.fuzz = parse_number(tokens, &offset);
 		else if (matl_info.type == MATERIAL_DIELECTRIC)
-			matl_info.refractive_idx = parse_number(tokens, &offset);
+			matl_info.refractive_idx = clamp(\
+										parse_number(tokens, &offset), 0, 1);
 		if (matl_info.type != MATERIAL_DIELECTRIC)
 			matl_info.texture = get_info_texture(tokens, offset);
 	}
