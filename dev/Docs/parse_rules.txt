@@ -49,7 +49,7 @@
 
 		- emm (emmisive)
 			: [texture]
-			ex) sp | (0, 0, 20) 20 | emm (255, 0, 0)
+			ex) sp | (0, 0, 20) 20 | emm sol (255, 0, 0)
 
 		- rand (random)
 			- texture도 포함하여 랜덤으로 값을 설정한다.
