@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 13:40:42 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/02/27 13:40:42 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 06:06:08 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_ray	ray(t_point3 origin, t_vector3 dir)
 	t_ray	ray;
 
 	ray.origin = origin;
-	ray.dir = dir;
+	ray.dir = v3_normalize(dir);
 	return (ray);
 }
 
