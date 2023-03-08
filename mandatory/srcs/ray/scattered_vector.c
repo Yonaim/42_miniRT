@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   scattered_vector.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/05 20:19:21 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/03/05 20:19:21 by yeonhkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ray_internal.h"
 
 static double	reflectance(double cosine, double idx_ratio)

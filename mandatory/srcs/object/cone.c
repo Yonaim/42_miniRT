@@ -1,4 +1,16 @@
-# include "object_internal.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cone.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/07 18:46:12 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/03/09 03:58:28 by yeonhkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "object_internal.h"
 
 static void	destroy_cone(t_object *object);
 static int	get_cone_type(void);

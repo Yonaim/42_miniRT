@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_valid_material2.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/09 03:40:02 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/03/09 03:43:22 by yeonhkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../parse_internal.h"
 
 bool	is_valid_material_lambertian(const t_token_arr *tokens, int offset)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_info_material.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/09 03:35:28 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/03/09 03:35:47 by yeonhkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../parse_internal.h"
 
 t_info_material	get_info_material(const t_token_arr *tokens, int offset)

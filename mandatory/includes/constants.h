@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   constants.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/05 20:19:21 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/03/09 03:59:28 by yeonhkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CONSTANTS_H
 # define CONSTANTS_H
@@ -12,8 +23,6 @@ enum e_success_or_failure
 
 // window
 # define WINDOW_NAME				"meyun & yona's wonderful miniRT"
-// # define WINDOW_WIDTH				1920
-// # define WINDOW_HEIGHT				1080
 # define WINDOW_WIDTH				1200
 # define WINDOW_HEIGHT				800
 
@@ -38,9 +47,6 @@ enum e_success_or_failure
 // dynamic array
 # define INITIAL_OBJECT_ARR_SIZE	10
 # define INITIAL_INFO_ARR_SIZE		10
-
-// light
-// # define MAX_BRIGHTNESS				1
 
 /** dev **/
 

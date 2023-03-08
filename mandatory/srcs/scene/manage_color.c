@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   manage_color.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/05 20:19:21 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/03/05 20:19:21 by yeonhkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "scene_internal.h"
 
 void	get_sampled_color(t_color3 *sampled_color, t_scene *scene, int x, int y)

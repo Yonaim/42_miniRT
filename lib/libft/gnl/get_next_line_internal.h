@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_internal.h                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/27 13:40:42 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/03/09 04:03:18 by yeonhkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_INTERNAL_H
+# define GET_NEXT_LINE_INTERNAL_H
 
 /*------------------ HEADERS ---------------------*/
 

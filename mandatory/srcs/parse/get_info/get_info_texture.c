@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_info_texture.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/09 03:35:23 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/03/09 03:35:46 by yeonhkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../parse_internal.h"
 
 t_info_texture	get_info_texture(const t_token_arr *tokens, int offset)

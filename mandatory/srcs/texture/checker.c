@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 00:16:49 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/03/09 03:58:44 by yeonhkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "texture_internal.h"
 
-static t_color3	get_checker_val(t_texture *self, double u, double v, t_point3 p);
+static t_color3	get_checker_val(t_texture *self, \
+									double u, double v, t_point3 p);
 static void		destroy_checker(t_texture *self);
 
 t_texture	*new_checker_solid(t_color3 even, t_color3 odd)

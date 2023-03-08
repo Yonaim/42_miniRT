@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   v3_length.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/05 20:18:52 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/03/09 04:04:24 by yeonhkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <math.h>
 #include <stdbool.h>
@@ -15,11 +26,9 @@ double	len_sqr_v3(t_vector3 v)
 
 bool	is_near_zero(t_vector3 v)
 {
-	const double	epsilon = EPSILON; // 굳이 지역변수로 뺀 이유가 있나?
-
-	return ((fabs(v.x) < epsilon) \
-			&& (fabs(v.y) < epsilon) \
-			&& (fabs(v.z) < epsilon));
+	return ((fabs(v.x) < EPSILON) \
+			&& (fabs(v.y) < EPSILON) \
+			&& (fabs(v.z) < EPSILON));
 }
 
 bool	is_len_near_one(t_vector3 v)
