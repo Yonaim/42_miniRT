@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 00:16:49 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 03:58:44 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 07:29:48 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,21 @@
 static t_color3	get_checker_val(t_texture *self, \
 									double u, double v, t_point3 p);
 static void		destroy_checker(t_texture *self);
+
+t_texture	*new_checker_single_solid(t_color3 even)
+{
+	
+	t_texture_checker	*checker;
+
+	checker = malloc(sizeof(t_texture_checker));
+	if (checker == NULL)
+		return (NULL);
+	checker->get_val = get_checker_val;
+	checker->destroy = destroy_checker;
+	checker->even = new_solid(even);
+	checker->odd = new_solid(color3(1, 1, 1));
+	return ((t_texture *)checker);
+}
 
 t_texture	*new_checker_solid(t_color3 even, t_color3 odd)
 {
