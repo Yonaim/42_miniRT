@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   scene_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:19:21 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/05 20:19:21 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 04:11:08 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene_internal.h"
 
-void	render_one_layer(t_scene *scene, int layer_cnt)
+static void	render_one_layer(t_scene *scene, int layer_cnt)
 {
 	t_color3	sampled_color;
 	t_color3	stored_color;
@@ -55,9 +55,9 @@ int	render_scene(void *minirt)
 		layer_cnt++;
 		i++;
 	}
-	printf("%d : rendering...\n", layer_cnt);
+	ft_printf("%d : rendering...\n", layer_cnt);
 	if (layer_cnt == SAMPLES_PER_PIXEL)
-		printf("rendering done!\n");
+		ft_printf("rendering done!\n");
 	mlx_put_image_to_window(mlx->conn, mlx->win, mlx->img.obj, 0, 0);
 	return (SUCCESS);
 }

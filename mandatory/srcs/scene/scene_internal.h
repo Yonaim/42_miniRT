@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_internal.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:17:05 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/05 22:02:17 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 04:10:01 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <math.h>
 // extra
 # include "constants.h"
+# include "libft.h"
 # include "handle_error.h"
 # include "typedef.h"
 // structures
