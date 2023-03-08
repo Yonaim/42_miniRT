@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:18:52 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 03:29:17 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 06:04:45 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,22 @@ double	ft_atof(char *str)
 {
 	int		point_left;
 	double	point_right;
+	int		sign;
 
-	point_left = ft_atoi(str);
+	sign = 1;
+	point_left = abs(ft_atoi(str));
 	point_right = 0;
 	while (*str == ' ' || *str == '\t')
 		str++;
 	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			sign = -1;
 		str++;
+	}
 	while (ft_isdigit(*str))
 		str++;
 	if (*str == '.')
 		point_right = ft_atof_fractional_part(++str);
-	if (point_left < 0)
-		return ((double)(point_left + (point_right * -1)));
-	else
-		return ((double)(point_left + point_right));
+	return ((double)(point_left + point_right) * sign);
 }
