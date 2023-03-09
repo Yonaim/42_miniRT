@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_random_material.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:19:21 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/05 20:57:12 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 09:09:11 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_material	*random_lambertian(void)
 	t_color3	color;
 	t_texture	*texture;
 
-	color = v3_random(0, 255.999);
+	color = v3_random(0, 255);
 	texture = new_solid(color);
 	return (new_lambertian(texture));
 }
@@ -46,7 +46,7 @@ static t_material	*random_metal(void)
 	double			fuzz;
 
 	info_texture.type = TEXTURE_SOLID;
-	info_texture.rgb1 = v3_random(150, 255.9);
+	info_texture.rgb1 = v3_random(150, 255);
 	texture = new_texture(&info_texture);
 	fuzz = random_double_range(0, 0.5);
 	return (new_metal(texture, fuzz));
