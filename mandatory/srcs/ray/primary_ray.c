@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   primary_ray.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:19:21 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/05 20:19:21 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 06:36:44 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ t_ray	primary_ray(t_camera *cam, double u, double v)
 	terminal_pt = v3_add(v3_add(cam->focus.bottom_left, \
 								v3_mul(cam->focus.horiz, u)), \
 						v3_mul(cam->focus.vert, v));
-	direction = v3_normalize(v3_sub(terminal_pt, initial_pt));
+	direction = v3_sub(terminal_pt, initial_pt);
 	return (ray(initial_pt, direction));
 }
