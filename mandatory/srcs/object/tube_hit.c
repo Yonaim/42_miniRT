@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tube_hit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:19:21 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/05 20:19:21 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 09:06:55 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@
 */
 static bool	solve_tube_intersection_equation(
 				double root[2], const t_object_tube *tb, t_ray *ray);
-static bool	is_tube_sol_in_range(t_vector3 *cp, const t_object_tube *tb);
+static bool	is_tube_sol_in_range(
+				double sol,
+				const t_object_tube *tb, t_ray *ray, t_hit_record *h_rec);
 static void	set_tube_face_normal(
 				t_vector3 *cp,
 				const t_object_tube *tb, t_ray *ray, t_hit_record *h_rec);
@@ -49,21 +51,16 @@ bool	hit_tube(
 {
 	const t_object_tube	*tb = (t_object_tube *)self;
 	double				root[2];
-	double				t;
-	t_vector3			cp;
 
 	if (solve_tube_intersection_equation(root, tb, ray) == false)
 		return (false);
-	if (determine_t(&t, root, T_MINIMUM, t_max) == false)
-		return (false);
-	h_rec->t = t;
-	h_rec->p = ray_at(ray, t);
-	h_rec->material = tb->material;
-	cp = v3_sub(h_rec->p, tb->center);
-	if (is_tube_sol_in_range(&cp, tb) == false)
-		return (false);
-	set_tube_face_normal(&cp, tb, ray, h_rec);
-	return (true);
+	if (is_num_in_range(root[0], T_MINIMUM, t_max)
+		&& (is_tube_sol_in_range(root[0], tb, ray, h_rec) == true))
+		return (true);
+	if (is_num_in_range(root[1], T_MINIMUM, t_max)
+		&& (is_tube_sol_in_range(root[1], tb, ray, h_rec) == true))
+		return (true);
+	return (false);
 }
 
 static bool	solve_tube_intersection_equation(
@@ -85,12 +82,21 @@ static bool	solve_tube_intersection_equation(
 	return (true);
 }
 
-static bool	is_tube_sol_in_range(t_vector3 *cp, const t_object_tube *tb)
+static bool	is_tube_sol_in_range(
+			double sol,
+			const t_object_tube *tb, t_ray *ray, t_hit_record *h_rec)
 {
-	const double	height_from_center = v3_dot(tb->orient, *cp);
+	t_vector3	cp;
+	double		height_from_center;
 
+	h_rec->t = sol;
+	h_rec->p = ray_at(ray, h_rec->t);
+	cp = v3_sub(h_rec->p, tb->center);
+	height_from_center = v3_dot(tb->orient, cp);
 	if (height_from_center < 0 || height_from_center > tb->height)
 		return (false);
+	h_rec->material = tb->material;
+	set_tube_face_normal(&cp, tb, ray, h_rec);
 	return (true);
 }
 
