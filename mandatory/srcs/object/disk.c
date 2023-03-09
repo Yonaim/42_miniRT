@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disk.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:46:12 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/07 18:46:12 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 09:22:04 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ t_object	*new_disk(const t_info_object_disk *dk_info)
 
 static void	destroy_disk(t_object *object)
 {
-	t_object_disk	*dk;
+	t_object_disk	*di;
 
-	dk = (t_object_disk *)object;
-	dk->material->destroy(dk->material);
-	free(dk);
+	di = (t_object_disk *)object;
+	di->material->destroy(di->material);
+	free(di);
 }
 
 static int	get_disk_type(void)
@@ -82,22 +82,22 @@ static int	get_disk_type(void)
 static bool	hit_disk(
 			t_object *self, t_ray *ray, t_hit_record *h_rec, double t_max)
 {
-	const t_object_disk		*dk = (t_object_disk *)self;
+	const t_object_disk		*di = (t_object_disk *)self;
 	double					t;
 	t_point3				p;
 
-	if (fabs(v3_dot(dk->normal, ray->dir)) < EPSILON)
+	if (fabs(v3_dot(di->normal, ray->dir)) < EPSILON)
 		return (false);
-	t = v3_dot(v3_sub(dk->center, ray->origin), dk->normal)
-		/ v3_dot(dk->normal, ray->dir);
+	t = v3_dot(v3_sub(di->center, ray->origin), di->normal)
+		/ v3_dot(di->normal, ray->dir);
 	if (t < T_MINIMUM || t > t_max)
 		return (false);
 	p = ray_at(ray, t);
-	if (len_v3(v3_sub(dk->center, p)) > dk->radius)
+	if (len_v3(v3_sub(di->center, p)) > di->radius)
 		return (false);
 	h_rec->t = t;
 	h_rec->p = p;
-	h_rec->material = dk->material;
-	set_face_normal(h_rec, ray, dk->normal);
+	h_rec->material = di->material;
+	set_face_normal(h_rec, ray, di->normal);
 	return (true);
 }
