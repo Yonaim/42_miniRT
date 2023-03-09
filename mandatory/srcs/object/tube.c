@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tube.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:46:12 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/07 18:46:12 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 09:21:44 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ t_object	*new_tube(const t_info_object_tube *info)
 
 static void	destroy_tube(t_object *object)
 {
-	t_object_tube	*tube;
+	t_object_tube	*tu;
 
-	tube = (t_object_tube *)object;
-	tube->material->destroy(tube->material);
-	free(tube);
+	tu = (t_object_tube *)object;
+	tu->material->destroy(tu->material);
+	free(tu);
 }
 
 static int	get_tube_type(void)
