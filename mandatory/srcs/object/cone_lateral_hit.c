@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:19:21 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 09:24:45 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/03/09 09:26:06 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ bool	hit_cone_lateral(
 	if (solve_cone_lateral_intersection_equation(root, cl, ray) == false)
 		return (false);
 	if (is_num_in_range(root[0], T_MINIMUM, t_max)
-		&& (is_con_lateral_sol_in_range(root[0], cl, ray, h_rec) == true))
+		&& (is_cone_lateral_sol_in_range(root[0], cl, ray, h_rec) == true))
 		return (true);
 	if (is_num_in_range(root[1], T_MINIMUM, t_max)
-		&& (is_con_lateral_sol_in_range(root[1], cl, ray, h_rec) == true))
+		&& (is_cone_lateral_sol_in_range(root[1], cl, ray, h_rec) == true))
 		return (true);
 	return (false);
 }
