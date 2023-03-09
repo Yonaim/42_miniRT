@@ -40,7 +40,7 @@
 		- met (metal) 
 			: fuzz [texture]
 			  (0 ~ 1)
-			ex) sp | (0, 0, 20) 20 | met 30 sol (255, 0, 0)
+			ex) sp | (0, 0, 20) 20 | met 0.3 sol (255, 0, 0)
 
 		- die (dielectric) 
 			: refractive_idx
@@ -49,7 +49,7 @@
 
 		- emm (emmisive)
 			: [texture]
-			ex) sp | (0, 0, 20) 20 | emm (255, 0, 0)
+			ex) sp | (0, 0, 20) 20 | emm sol (255, 0, 0)
 
 		- rand (random)
 			- texture도 포함하여 랜덤으로 값을 설정한다.
@@ -89,6 +89,7 @@ Solid element
 - material 및 texture가 있는 경우
 	ex) sp | (0, 0, 20) 20 | lam sol (255, 0, 0)
 
+--------------------------------------------------------------------------------
 <subject의 파일 형식 규칙> (mandatory)
 
 - Each type of element can be separated by one or more line break(s).

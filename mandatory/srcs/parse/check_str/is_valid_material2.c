@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid_material2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 03:40:02 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 03:43:22 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 06:31:50 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,11 @@ bool	is_valid_material_metal(const t_token_arr *tokens, int offset)
 
 bool	is_valid_material_dielectric(const t_token_arr *tokens, int offset)
 {
-	if (tokens->cnt == offset + 9 \
+	if (tokens->cnt == offset + 3 \
 		&& (ft_strcmp(nth_token(tokens, ++offset)->str, \
 										IDENTIFIER_MATERIAL_DIELECTRIC) == 0)
 		&& nth_token(tokens, offset)->type == TOKEN_IDENTIFIER_MATERIAL \
-		&& nth_token(tokens, ++offset)->type == TOKEN_LPAREN \
-		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
-		&& nth_token(tokens, ++offset)->type == TOKEN_COMMA
-		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
-		&& nth_token(tokens, ++offset)->type == TOKEN_COMMA
-		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER
-		&& nth_token(tokens, ++offset)->type == TOKEN_RPAREN)
+		&& nth_token(tokens, ++offset)->type == TOKEN_NUMBER)
 		return (true);
 	else
 		return (false);

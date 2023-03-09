@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_info_texture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 03:35:23 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 03:35:46 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 07:38:08 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_info_texture	get_info_texture(const t_token_arr *tokens, int offset)
 	else if (tex_info.type == TEXTURE_CHECKER)
 	{
 		tex_info.rgb1 = parse_vector3(tokens, &offset);
-		tex_info.rgb2 = parse_vector3(tokens, &offset);
 	}
 	else if (tex_info.type == TEXTURE_IMAGE)
 		tex_info.path = ft_strdup(nth_token(tokens, offset)->str);

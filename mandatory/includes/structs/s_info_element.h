@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_info_element.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:46:12 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 03:51:21 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 06:38:59 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ enum e_texture_types
 };
 
 # define ELEMENT_TYPE_COUNT		11
-# define MATERIAL_TYPE_COUNT	5
+# define MATERIAL_TYPE_COUNT	6
 # define TEXTURE_TYPE_COUNT		3
 
 # define DEFAULT_MATERIAL		MATERIAL_LAMBERTIAN

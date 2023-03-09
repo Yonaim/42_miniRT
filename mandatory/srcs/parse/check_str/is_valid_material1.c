@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid_material1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 22:03:19 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 03:42:44 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 07:46:01 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ bool	is_valid_material_default(const t_token_arr *tokens, int offset)
 
 bool	is_valid_material_random(const t_token_arr *tokens, int offset)
 {
-	if (tokens->cnt == offset + 3 \
-		&& nth_token(tokens, offset + 1)->type == TOKEN_IDENTIFIER_MATERIAL
-		&& ft_strcmp(nth_token(tokens, offset + 1)->str, \
+	if (tokens->cnt == offset + 2 \
+		&& nth_token(tokens, ++offset)->type == TOKEN_IDENTIFIER_MATERIAL
+		&& ft_strcmp(nth_token(tokens, offset)->str, \
 											IDENTIFIER_MATERIAL_RANDOM) == 0)
 		return (true);
 	else
