@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:19:21 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 09:21:21 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/03/09 09:24:45 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ bool	hit_cone_lateral(
 {
 	const t_object_cone_lateral	*cl = (t_object_cone_lateral *)self;
 	double						root[2];
-	double						t;
-	t_vector3					ap;
 
 	if (solve_cone_lateral_intersection_equation(root, cl, ray) == false)
 		return (false);
