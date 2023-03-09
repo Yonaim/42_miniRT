@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:19:21 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 07:12:43 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/03/09 10:14:28 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ enum e_success_or_failure
 };
 
 // window
-# define WINDOW_NAME				"meyun & yona's wonderful miniRT"
+# define WINDOW_NAME				"Go photon corps!"
 # define WINDOW_WIDTH				1200
 # define WINDOW_HEIGHT				800
 
