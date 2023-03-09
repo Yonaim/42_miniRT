@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   emmisive.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:46:12 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 03:46:07 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/09 07:13:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_material	*new_emmisive(const t_color3 color)
 	emmisive = malloc(sizeof(t_material_emmisive));
 	if (!emmisive)
 		return (NULL);
-	emmisive->emit = new_solid(color);
+	emmisive->emit = new_solid(v3_mul(color, BRIGHTNESS_CORRECT_VAL));
 	emmisive->scattered = emmisive_scattered;
 	emmisive->emitted = emmisive_emitted;
 	emmisive->destroy = destroy_emmisive;
