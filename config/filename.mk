@@ -1,4 +1,9 @@
 FILENAME		=		camera/camera_init\
+						dynamic_array/destroy_dynamic_arr\
+						dynamic_array/init_dynamic_arr\
+						dynamic_array/new_dynamic_arr\
+						dynamic_array/push_back_dynamic_arr\
+						main\
 						material/dielectric\
 						material/emmisive\
 						material/lambertian\
@@ -6,6 +11,7 @@ FILENAME		=		camera/camera_init\
 						material/new_material\
 						material/new_random_material\
 						object/box\
+						object/box_add_faces\
 						object/cone\
 						object/cone_lateral\
 						object/cone_lateral_hit\
@@ -20,26 +26,42 @@ FILENAME		=		camera/camera_init\
 						object/xy_rectangle\
 						object/xz_rectangle\
 						object/yz_rectangle\
-						dynamic_array/destroy_dynamic_arr\
-						dynamic_array/new_dynamic_arr\
-						dynamic_array/push_back_dynamic_arr\
 						object_array/add_object\
 						object_array/clear_object_arr\
 						object_array/hit_object_arr\
 						object_array/init_object_arr\
-						parsing/build_element_box\
-						parsing/parse_element_box\
-						parsing/parse_scene\
-						pdf/pdf\
+						parse/check_str/get_identifier_type\
+						parse/check_str/is_extra_line\
+						parse/check_str/is_object_line1\
+						parse/check_str/is_object_line2\
+						parse/check_str/is_valid_formatted_line\
+						parse/check_str/is_valid_material1\
+						parse/check_str/is_valid_material2\
+						parse/check_str/is_word_token_str\
+						parse/ft_atof\
+						parse/get_info/get_info_extra\
+						parse/get_info/get_info_material\
+						parse/get_info/get_info_object1\
+						parse/get_info/get_info_object2\
+						parse/get_info/get_info_texture\
+						parse/must_be_element\
+						parse/parse_scene\
+						parse/parse_utils\
+						parse/put_to_scene/put_extra_to_scene\
+						parse/put_to_scene/put_object_to_scene1\
+						parse/put_to_scene/put_object_to_scene2\
+						parse/tokenize/get_token_type\
+						parse/tokenize/tokenize\
+						parse/tokenize/tokenize_utils\
 						ray/primary_ray\
 						ray/ray\
 						ray/scattered_ray\
 						ray/scattered_vector\
+						scene/flush_scene\
 						scene/gamma_correction\
+						scene/init_scene\
 						scene/manage_color\
-						scene/scene_flush\
-						scene/scene_init\
-						scene/scene_render\
+						scene/render_scene\
 						scene/shading\
 						texture/checker\
 						texture/solid\
@@ -48,5 +70,4 @@ FILENAME		=		camera/camera_init\
 						utils/handle_error\
 						utils/mlx_hook\
 						utils/mlx_utils\
-						main
-
+						

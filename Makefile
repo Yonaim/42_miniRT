@@ -5,7 +5,7 @@ NAME			=	miniRT
 
 # compile 
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror -MMD -MP
+# CFLAGS			=	-Wall -Wextra -Werror -MMD -MP
 CFLAGS_SANITIZE	=	-fsanitize=address -g3
 CPPFLAGS		=	\
 					-I./$(PART_PATH)/includes \
