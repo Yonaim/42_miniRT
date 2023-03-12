@@ -73,6 +73,7 @@ enum e_rgb
 # define IDENTIFIER_TEXTURE_IMAGE			"img"
 
 t_token_arr		*tokenize(char *line);
+void			destroy_token_arr(t_token_arr *tokens);
 int				get_token_type(const char *str);
 int				length_of_word(const char *line);
 int				length_of_number(const char *line);
