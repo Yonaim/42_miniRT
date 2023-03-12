@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 22:14:01 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 03:42:39 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/12 00:14:34 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,44 +80,41 @@ static int	put_element_to_scene(t_info *info, t_scene *scene, int type)
 	return (put_to_scene[type](info, scene));
 }
 
-static int	parse_line(char *line, t_info **info, int *type)
+static int	parse_line(char *line, t_scene *scene, bool exist[])
 {
-	const t_token_arr	*tokens = tokenize(line);
+	t_token_arr	*tokens;
+	t_info		*info;
+	int			type;
 
+	tokens = tokenize(line);
 	if (tokens == NULL)
 		return (FAILURE);
 	if (tokens->cnt == 0 || ((t_token *)tokens->data[0])->type == TOKEN_HASH)
-	{
-		*info = NULL;
 		return (SUCCESS);
-	}
-	*type = match_element_line_format(tokens);
-	*info = get_element_info(*type, tokens);
-	if (*info == NULL)
+	type = match_element_line_format(tokens);
+	info = get_element_info(type, tokens);
+	if (info == NULL)
 		return (FAILURE);
+	if (is_must_be_one_element_type(type) && exist[type] == true)
+		handle_error("duplicated declaration");
+	put_element_to_scene(info, scene, type);
+	exist[type] = true;
+	free(info);
+	destroy_token_arr(tokens);
 	return (SUCCESS);
 }
 
 int	parse_scene(t_scene *scene, int fd)
 {
 	char		*line;
-	int			type;
-	t_info		*info;
 	bool		exist[ELEMENT_TYPE_COUNT];
 
 	ft_memset(exist, false, sizeof(bool) * ELEMENT_TYPE_COUNT);
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (parse_line(line, &info, &type) == FAILURE)
+		if (parse_line(line, scene, exist) == FAILURE)
 			handle_error("parse line failed");
-		if (info != NULL)
-		{
-			if (is_must_be_one_element_type(type) && exist[type] == true)
-				handle_error("duplicated declaration");
-			put_element_to_scene(info, scene, type);
-			exist[type] = true;
-		}
 		line = get_next_line(fd);
 	}
 	if (is_must_be_elements_exist(exist) == false)
