@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 22:14:01 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/12 00:14:34 by yona             ###   ########.fr       */
+/*   Updated: 2023/03/13 13:54:49 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ static int	parse_line(char *line, t_scene *scene, bool exist[])
 	if (tokens == NULL)
 		return (FAILURE);
 	if (tokens->cnt == 0 || ((t_token *)tokens->data[0])->type == TOKEN_HASH)
+	{
+		destroy_token_arr(tokens);
 		return (SUCCESS);
+	}
 	type = match_element_line_format(tokens);
 	info = get_element_info(type, tokens);
 	if (info == NULL)
@@ -115,6 +118,7 @@ int	parse_scene(t_scene *scene, int fd)
 	{
 		if (parse_line(line, scene, exist) == FAILURE)
 			handle_error("parse line failed");
+		free(line);
 		line = get_next_line(fd);
 	}
 	if (is_must_be_elements_exist(exist) == false)
