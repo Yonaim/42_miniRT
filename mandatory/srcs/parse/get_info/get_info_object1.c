@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_info_object.c                                  :+:      :+:    :+:   */
+/*   get_info_object1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:46:12 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 03:43:00 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:07:00 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ t_info	*get_info_sphere(const t_token_arr *tokens)
 	info->center = parse_vector3(tokens, &offset);
 	info->radius = parse_number(tokens, &offset) / 2;
 	info->material = get_info_material(tokens, offset);
-	if (is_color3_in_255(&info->material.texture.rgb1) == false)
+	if (info->radius > 0 \
+		|| is_color3_in_255(&info->material.texture.rgb1) == false)
 	{
 		free(info);
 		return (NULL);
