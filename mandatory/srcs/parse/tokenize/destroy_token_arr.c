@@ -13,5 +13,6 @@ void	destroy_token_arr(t_token_arr *tokens)
 		free(token);
 		i++;
 	}
+	free(tokens->data);
 	free(tokens);
 }
