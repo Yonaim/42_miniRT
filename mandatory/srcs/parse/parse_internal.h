@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_internal.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 18:46:12 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 03:44:47 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/14 10:38:04 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include "typedef.h"
 // structures
 # include "s_scene.h"
-# include "s_mlx.h"
+# include "s_mlx_bonus.h"
 # include "s_hit_record.h"
 # include "s_scatter_record.h"
 # include "s_material.h"

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:19:21 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/05 20:19:21 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/14 10:38:04 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "libft.h"
 #include "constants.h"
-#include "s_mlx.h"
+#include "s_mlx_bonus.h"
 #include "s_minirt.h"
 #include "mlx_utils.h"
 #include "scene.h"

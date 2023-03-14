@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:17:05 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 04:10:01 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/14 10:38:04 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 // structures
 # include "s_minirt.h"
 # include "s_scene.h"
-# include "s_mlx.h"
+# include "s_mlx_bonus.h"
 # include "s_hit_record.h"
 # include "s_scatter_record.h"
 # include "s_material.h"

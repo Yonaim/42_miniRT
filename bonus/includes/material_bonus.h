@@ -1,0 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   material_bonus.h                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/07 18:46:12 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/03/07 18:46:12 by yeonhkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef MATERIAL_BONUS_H
+# define MATERIAL_BONUS_H
+
+# include "s_info_element_bonus.h"
+# include "s_hit_record_bonus.h"
+# include "s_scatter_record_bonus.h"
+# include "typedef_bonus.h"
+
+t_material	*new_material(const t_info_material *material_info);
+t_material	*new_lambertian(t_texture *texture);
+t_material	*new_dielectric(double refractive_idx);
+t_material	*new_metal(t_texture *texture, double fuzz);
+t_material	*new_emmisive(t_color3 rgb);
+t_material	*new_random_material(void);
+
+#endif

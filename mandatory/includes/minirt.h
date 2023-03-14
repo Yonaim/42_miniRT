@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim  <yeonhkim@student.42seoul.>      +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 00:16:49 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/09 03:53:30 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/14 10:38:04 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "typedef.h"
 # include "handle_error.h"
 # include "s_minirt.h"
-# include "s_mlx.h"
+# include "s_mlx_bonus.h"
 # include "s_scene.h"
 # include "color.h"
 # include "camera.h"
