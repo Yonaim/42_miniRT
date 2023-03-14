@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 03:36:14 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/03/13 14:07:48 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/03/14 10:12:15 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ t_info	*get_info_disk(const t_token_arr *tokens)
 	while (nth_token(tokens, offset)->type == TOKEN_NUMBER)
 		offset++;
 	info->material = get_info_material(tokens, offset);
-	if (is_normalized_vec3(&info->normal) == false \
+	if (info->radius <= 0 \
+		|| is_normalized_vec3(&info->normal) == false \
 		|| is_color3_in_255(&info->material.texture.rgb1) == false)
 	{
 		free(info);
@@ -50,8 +51,8 @@ t_info	*get_info_tube(const t_token_arr *tokens)
 	info->radius = parse_number(tokens, &offset) / 2;
 	info->height = parse_number(tokens, &offset);
 	info->material = get_info_material(tokens, offset);
-	if (info->radius > 0
-		|| info->height > 0 \
+	if (info->radius <= 0
+		|| info->height <= 0 \
 		|| is_normalized_vec3(&info->orient) == false \
 		|| is_color3_in_255(&info->material.texture.rgb1) == false)
 	{
@@ -98,8 +99,8 @@ t_info	*get_info_cone_lateral(const t_token_arr *tokens)
 	info->radius = parse_number(tokens, &offset) / 2;
 	info->height = parse_number(tokens, &offset);
 	info->material = get_info_material(tokens, offset);
-	if (info->radius > 0 \
-		|| info->height > 0 \
+	if (info->radius <= 0 \
+		|| info->height <= 0 \
 		|| is_normalized_vec3(&info->orient) == false \
 		|| is_color3_in_255(&info->material.texture.rgb1) == false)
 	{
